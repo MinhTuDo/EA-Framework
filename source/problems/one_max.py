@@ -1,0 +1,3 @@
+class OneMax(Problem):
+    
+    pass
