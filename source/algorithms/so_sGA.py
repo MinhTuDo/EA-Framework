@@ -9,7 +9,7 @@ from utils.termination.convergence import Convergence
 class SGA(GA):
     def __init__(self,
                  pop_size,
-                 n_offs,
+                 n_offs=None,
                  initialization=RandomInitialization(),
                  selection=None,
                  crossover=UniformCrossover(),
@@ -22,6 +22,8 @@ class SGA(GA):
         self.elitist_archive = elitist_archive
         if selection is None:
             self.selection = TournamentSelection(elitist_archive)
+        if n_offs is None:
+            self.n_offs = self.pop_size
 
     def _next(self):
         offs = self.crossover._do(self)

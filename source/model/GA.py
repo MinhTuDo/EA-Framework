@@ -29,7 +29,7 @@ class GA(Algorithm):
         while not self.termination._criteria_met(self):
             self.next()
 
-        self._finalize()
+        self.finalize()
 
     def initialize(self):
         self.n_gens = 1
@@ -49,6 +49,7 @@ class GA(Algorithm):
         self.sub_tasks_each_gen()
 
     def sub_tasks_each_gen(self):
+        self._sub_tasks_each_gen()
         elite_idx = self.problem._arg_comparer(self.f_pop)
         self.opt = self.pop[elite_idx]
         self.f_opt = self.f_pop[elite_idx]
@@ -56,12 +57,22 @@ class GA(Algorithm):
             self.history.append(self.pop.copy())
         if self.verbose:
             print('## Gen {}: Best: {} - F: {}'.format(self.n_gens, self.opt, self.f_opt))
-        pass
+
+    ## Overide Methods ##
+    def _save_result(self):
+        self._save_result_ga()
+        
+        self.result.pop = self.pop
+        self.result.gens = self.n_gens
 
     ## Protected Methods ##
     def _initialize(self):
         pass
     def _next(self):
+        pass
+    def _sub_tasks_each_gen(self):
+        pass
+    def _save_result_ga(self):
         pass
     ## Protected Methods ##
 
