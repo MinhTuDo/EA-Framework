@@ -12,11 +12,16 @@ class OneMax(Problem):
                          domain, param_type, multi_dims)
         self._pareto_front = n_params
         self._pareto_set = np.ones((n_params,), dtype=param_type)
-        self._comparer = max
-        self._arg_comparer = np.argmax
-        
+        self._optimum = max
+        self._argopt = np.argmax
+    
+    ## Overide Methods ##
     def _evaluate(self, X):
         f = sum(X)
         return f
+
+    def _f_comparer(self, y1, y2):
+        return y1 > y2
+
 
     

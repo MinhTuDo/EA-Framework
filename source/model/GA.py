@@ -19,11 +19,11 @@ class GA(Algorithm):
         self.pop = None
         self.f_pop = None
         self.n_gens = None
-        pass
+        self.pop_prev = None
+        self.f_pop_prev = None
 
     def _run(self):
         self.initialize()
-        self.f_pop = self.evaluate(self.pop)
         self.sub_tasks_each_gen()
 
         while not self.termination._criteria_met(self):
@@ -50,7 +50,7 @@ class GA(Algorithm):
 
     def sub_tasks_each_gen(self):
         self._sub_tasks_each_gen()
-        elite_idx = self.problem._arg_comparer(self.f_pop)
+        elite_idx = self.problem._argopt(self.f_pop)
         self.opt = self.pop[elite_idx]
         self.f_opt = self.f_pop[elite_idx]
         if self.save_history:

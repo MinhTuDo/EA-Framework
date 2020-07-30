@@ -15,13 +15,17 @@ class Problem:
         self.multi_dims = multi_dims
         self.param_type = param_type
 
-        self._comparer = None
-        self._f_comparer = None
+        self._pareto_front = None
+        self._pareto_set = None
+        self._optimum = None
+        self._argopt = None
 
     def evaluate(self, pop):
         f_pop = np.array(list(map(self._evaluate, pop)))
         return f_pop
 
+
+    ## Protected Methods ##
     def _evaluate(self, X):
         pass
 
@@ -29,4 +33,9 @@ class Problem:
         pass
 
     def _pareto_set(self):
+        pass
+
+    def _comparer(self, x1, x2):
+        pass
+    def _f_comparer(self, y1, y2):
         pass

@@ -25,6 +25,9 @@ class SGA(GA):
         if n_offs is None:
             self.n_offs = self.pop_size
 
+    def _initialize(self):
+        self.f_pop = self.evaluate(self.pop)
+
     def _next(self):
         offs = self.crossover._do(self)
         f_offs = self.evaluate(offs)
