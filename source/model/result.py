@@ -6,7 +6,7 @@ class Result:
         self.start_time, self.end_time, self.exec_time = None, None, None
         self.success = None
         self.gens = None
-        self.f_calls = None
+        self.n_evals = None
         self.history = None
         self.pop = None
         pass

@@ -1,4 +1,5 @@
 from numpy import unique
+from model.termination import Termination
 class Convergence(Termination):
     def __init__(self):
         super().__init__()
