@@ -2,6 +2,12 @@ from model.operation import Operation
 import numpy as np
 from numpy import arange, newaxis
 
+class Operation:
+    def __init__(self):
+        pass
+    def _do(self, algorithm):
+        pass
+
 class MarginalProductModel(Operation):
     def __init__(self):
         super().__init__()
@@ -9,10 +15,11 @@ class MarginalProductModel(Operation):
     def build(self, ga):
         model = ga.model.copy()
         while len(model) != 1:
-            temp_model = self.__calc_MPM(ga)
-            if self.__model_converged(model, temp_model):
+            temp_model = self.__calc_MPM(ga.pop, model)
+            if self.__model_converged(temp_model, model):
                 break
-            model = temp_model
+            else:
+                model = temp_model
         
         return model
 
@@ -22,8 +29,7 @@ class MarginalProductModel(Operation):
                 return False
         return True
 
-    def __calc_MPM(self, ga):
-        pop, model = ga.pop, ga.model
+    def __calc_MPM(self, pop, model):
         current_MDL = self.__calc_MDL(pop, model)
         new_models = self.__get_new_models(model)
         new_MDLs = np.array([self.__calc_MDL(pop, model) for model in new_models])
@@ -46,6 +52,7 @@ class MarginalProductModel(Operation):
                 match = (group == event).sum(axis=1)
                 prob = np.count_nonzero(match == len(event)) / (N+1)
                 entropy += prob * np.log2(1 / (prob+epsilon))
+
         CPC = N * entropy
         return CPC + MC
 

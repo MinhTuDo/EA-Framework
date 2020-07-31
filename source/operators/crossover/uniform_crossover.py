@@ -9,7 +9,6 @@ class UniformCrossover(Operation):
         indices = np.arange(n_inds)
 
         offs = []
-        np.random.seed(ga.seed)
         np.random.shuffle(indices)
 
         for i in range(0, n_inds, 2):

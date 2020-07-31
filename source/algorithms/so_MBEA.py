@@ -29,6 +29,8 @@ class MBEA(GA):
 
     def _initialize(self):
         self.model = [[group] for group in np.arange(self.problem.n_params)]
+        self.f_pop = self.evaluate(self.pop)
+        self.sub_tasks_each_gen()
     
     def _next(self):
         self.model = self.model_builder.build(self)

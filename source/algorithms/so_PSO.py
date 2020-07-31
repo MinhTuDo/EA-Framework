@@ -1,6 +1,7 @@
 from model.GA import GA
-from utils.termination.max_time import MaxTime
+from utils.termination.max_time import MaxTimeTermination
 from operators.selection.historical_best_selection import HistoricalBestSelection
+from operators.initialization.random_initialization import RandomInitialization
 import numpy as np
 from numpy.random import uniform
 from numpy.random import rand
@@ -16,8 +17,8 @@ class PSO(GA):
                  ac=1.49618,
 
                  **kwargs):
-        super().__init__(pop_size, initialization, selection, mutation, **kwargs)
-        self.default_termination = MaxTime(5)
+        super().__init__(pop_size, initialization, selection, **kwargs)
+        self.default_termination = MaxTimeTermination(5)
         if not topology in ['star', 'ring']:
             raise Exception('Population Topology not found!')
         self.global_best_selection = self.star_topology_selection
@@ -38,6 +39,7 @@ class PSO(GA):
         indices = []
         n = self.pop_size
         f_p = self.f_pop_prev
+        f = self.f_pop
         for i in range(n-1):
             neighbors = (f[i-1], f[i], f_p[i+1])
             elite_idx = neighbors.index(optimum(neighbors))
@@ -63,8 +65,8 @@ class PSO(GA):
         return new_v
 
     def _initialize(self):
+        np.set_printoptions(suppress=True, precision=3)
         self.pop_prev = self.pop.copy()
-        self.f_pop_prev = self.f_pop.copy()
         (xl, xu) = self.problem.domain
         self.velocity = uniform(low=-abs(xu-xl),
                                 high=-abs(xu-xl),
@@ -76,9 +78,10 @@ class PSO(GA):
 
         prev_best_idx = set(self.selection._do(self))
         indices = set(np.arange(self.pop_size))
-        current_best_idx = indices - prev_best_idx
-        self.pop_prev = self.pop[current_best_idx]
-        self.f_pop_prev = self.f_pop[current_best_idx]
+        current_best_idx = list(indices - prev_best_idx)
+        if len(current_best_idx) != 0:
+            self.pop_prev[current_best_idx] = self.pop[current_best_idx]
+            self.f_pop_prev[current_best_idx] = self.f_pop[current_best_idx]
 
         global_best_idx = self.global_best_selection()
         self.global_best = self.pop_prev[global_best_idx]

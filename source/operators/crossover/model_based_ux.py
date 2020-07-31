@@ -13,7 +13,6 @@ class ModelBasedUniformCrossover(Operation):
         n_groups = len(ga.model)
 
         offs = []
-        np.random.seed(ga.seed)
         np.random.shuffle(indices)
 
         for i in range(0, n_inds, 2):
@@ -24,6 +23,10 @@ class ModelBasedUniformCrossover(Operation):
             for idx, group in enumerate(ga.model):
                 if points[idx] < 0.5:
                     offs1[group], offs2[group] = offs2[group].copy(), offs1[group]
+
+            # for group in ga.model:
+            #     if np.random.rand() < 0.5:
+            #         offs1[group], offs2[group] = offs2[group].copy(), offs1[group]
                 
             # swap_groups = ga.model[points < 0.5]
             # offs1[swap_groups], offs2[swap_groups] = offs2[swap_groups], offs1[swap_groups]

@@ -11,10 +11,9 @@ class TournamentSelection(Operation):
         indices = np.arange(n_inds)
         selection_size = ga.n_offs
         selected_indices = []
-        optimum = ga.problem._opt
+        optimum = ga.problem._optimum
         f_pop = ga.f_pop
 
-        np.random.seed(ga.seed)
 
         while len(selected_indices) < selection_size:
             np.random.shuffle(indices)

@@ -4,5 +4,5 @@ class Convergence(Termination):
     def __init__(self):
         super().__init__()
 
-    def _criteria_met(self, algorithm):
-        return len(unique(algorithm.pop, axis=0)) == 1
+    def _criteria_met(self, ga):
+        return len(unique(ga.pop, axis=0)) == 1

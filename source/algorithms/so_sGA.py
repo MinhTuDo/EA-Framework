@@ -27,6 +27,7 @@ class SGA(GA):
 
     def _initialize(self):
         self.f_pop = self.evaluate(self.pop)
+        self.sub_tasks_each_gen()
 
     def _next(self):
         offs = self.crossover._do(self)

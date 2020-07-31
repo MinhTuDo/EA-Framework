@@ -3,11 +3,11 @@ from model.algorithm import Algorithm
 class GA(Algorithm):
     def __init__(self,
                  pop_size,
-                 initialization,
-                 selection,
-                 crossover,
-                 mutation,
-                 n_offs,
+                 initialization=None,
+                 selection=None,
+                 crossover=None,
+                 mutation=None,
+                 n_offs=None,
                  **kwargs):
         super().__init__(**kwargs)
         self.pop_size = pop_size
@@ -24,7 +24,6 @@ class GA(Algorithm):
 
     def _run(self):
         self.initialize()
-        self.sub_tasks_each_gen()
 
         while not self.termination._criteria_met(self):
             self.next()

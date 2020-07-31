@@ -7,6 +7,8 @@ class Problem:
                  domain=(0, 0),
                  param_type=None,
                  multi_dims=False):
+        if n_params <= 0:
+            raise Exception('Parameters length must be greater than zero')
         self.n_params = n_params
         self.n_obj = n_obj
         self.n_constraints = n_constraints
