@@ -38,7 +38,7 @@ class GA(Algorithm):
         pass
 
     def evaluate(self, X):
-        f_X = self.problem.evaluate(X)
+        f_X = self.problem.evaluate_all(X)
         self.n_evals += len(f_X)
         return f_X
 

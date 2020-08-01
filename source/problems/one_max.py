@@ -15,7 +15,7 @@ class OneMax(Problem):
         self._argopt = np.argmax
     
     ## Overide Methods ##
-    def _evaluate(self, X):
+    def _function(self, X):
         f = sum(X)
         return f
 

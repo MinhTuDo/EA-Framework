@@ -21,7 +21,7 @@ class Rastrigin(Problem):
         self.A = 10
 
     ## Overide Methods ##
-    def _evaluate(self, X):
+    def _function(self, X):
         f = self.A*len(X) + (X**2 - self.A*cos(2*pi*X)).sum(axis=0)
         return f
 

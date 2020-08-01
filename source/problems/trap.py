@@ -22,7 +22,7 @@ class TrapMax(Problem):
         self.trap_size = trap_size
     
     ## Overide Methods ##
-    def _evaluate(self, X):
+    def _function(self, X):
         f = 0
         k = self.trap_size
         for i in range(0, self.n_params, k):

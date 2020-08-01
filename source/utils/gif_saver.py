@@ -99,9 +99,10 @@ class GifSaver:
         
         self.ax.contour(X, Y, Z, 
                         self.contour_density,
-                        cmap=cm.seismic)
+                        cmap=cm.jet)
         self.ax.set_xlabel(self.axis_labels[0])
         self.ax.set_ylabel(self.axis_labels[1])
+        self.ax.grid(True)
 
         self.problem_space_lim = (self.ax.get_xlim(), 
                                   self.ax.get_ylim())
@@ -117,15 +118,17 @@ class GifSaver:
         self.ax.set_title(title)
 
     def __get_problem_mesh(self):
-        step = 1 if self.problem.param_type == np.int else 0.25
+        step = 1 if self.problem.param_type == np.int else 0.1
         (xl, xu) = self.problem.domain
+        if self.problem.param_type == np.int:
+            xu += 1
         axis_points = np.arange(xl, xu, step)
         n = len(axis_points)
         if n % 2 != 0:
             axis_points = axis_points[:-1]
         x_mesh, y_mesh = np.meshgrid(axis_points, axis_points)
 
-        f = self.problem._evaluate
+        f = self.problem._function
         if self.problem.multi_dims:
             n = len(x_mesh)
             
