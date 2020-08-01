@@ -12,7 +12,8 @@ class TrapMax(Problem):
                          domain=(0, 1), 
                          param_type=np.int, 
                          multi_dims=True)
-
+        if n_params % trap_size != 0:
+            raise Exception('Parameters length must be divisible by trap size')
         self._pareto_front = n_params
         self._pareto_set = np.ones((1, n_params), dtype=self.param_type)
         self._optimum = max

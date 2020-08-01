@@ -53,7 +53,9 @@ class GA(Algorithm):
         self.opt = self.pop[elite_idx]
         self.f_opt = self.f_pop[elite_idx]
         if self.save_history:
-            self.history.append(self.pop.copy())
+            res = {'P': self.pop.copy(), 
+                   'F': self.f_pop.copy()}
+            self.history.append(res)
         if self.verbose:
             print('## Gen {}: Best: {} - F: {}'.format(self.n_gens, self.opt, self.f_opt))
 
