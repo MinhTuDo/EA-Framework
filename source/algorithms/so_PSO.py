@@ -65,7 +65,6 @@ class PSO(GA):
         return new_v
 
     def _initialize(self):
-        np.set_printoptions(suppress=True, precision=3)
         self.pop_prev = self.pop.copy()
         (xl, xu) = self.problem.domain
         self.velocity = uniform(low=-abs(xu-xl),

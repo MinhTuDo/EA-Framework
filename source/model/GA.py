@@ -1,4 +1,9 @@
 from model.algorithm import Algorithm
+from model.display import Display
+
+class GADisplay(Display):
+    def _do(self, ga):
+        self.add_attributes('gen', ga.n_gens)
 
 class GA(Algorithm):
     def __init__(self,
@@ -21,6 +26,7 @@ class GA(Algorithm):
         self.n_gens = None
         self.pop_prev = None
         self.f_pop_prev = None
+        self.default_display = GADisplay()
 
     def _run(self):
         self.initialize()
@@ -57,7 +63,8 @@ class GA(Algorithm):
                    'F': self.f_pop.copy()}
             self.history.append(res)
         if self.verbose:
-            print('## Gen {}: Best: {} - F: {}'.format(self.n_gens, self.opt, self.f_opt))
+            # print('## Gen {}: Best: {} - F: {}'.format(self.n_gens, self.opt, self.f_opt))
+            self.display.do(self)
 
     ## Overide Methods ##
     def _save_result(self):

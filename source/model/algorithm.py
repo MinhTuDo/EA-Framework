@@ -2,6 +2,7 @@ from abc import abstractmethod
 from model.result import Result
 import time
 import numpy as np
+from model.display import Display
 
 class Algorithm:
     def __init__(self, **kwargs):
@@ -22,6 +23,8 @@ class Algorithm:
         self.default_termination = None
         self.result = None
         self.success = None
+        self.display = None
+        self.default_display = Display()
 
     ### Public Methods
     def set_up_problem(self, 
@@ -33,6 +36,7 @@ class Algorithm:
                        epsilon=10**-5,
 
                        termination=None,
+                       display=None,
                        **kwargs):
         
         self.problem = problem
@@ -41,10 +45,13 @@ class Algorithm:
         self.epsilon = epsilon
         self.seed = seed
 
-        if termination is not None:
-            self.termination = termination
+        self.termination = termination
         if self.termination is None:
             self.termination = self.default_termination
+
+        self.display = display
+        if display is None:
+            self.display = self.default_display
 
         # self.n_gens = 1
         self.history = []
@@ -60,6 +67,9 @@ class Algorithm:
         
         self.save_result()
         return self.result
+
+    def sub_tasks_each_gen(self):
+        self._sub_tasks_each_gen()
 
     def save_result(self):
         self._save_result()
@@ -89,7 +99,7 @@ class Algorithm:
 
     def _save_result(self):
         pass
-
+    
     ### Protected Methods ###
 
     ### Abstract Methods ###

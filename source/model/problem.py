@@ -1,7 +1,10 @@
 import numpy as np
+import matplotlib
+matplotlib.use('tkagg')
 from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import cm
+from matplotlib import cm, ticker
 import matplotlib.pyplot as plt
+
 class Problem:
     def __init__(self,
                  n_params=-1,
@@ -25,23 +28,41 @@ class Problem:
         self._optimum = None
         self._argopt = None
 
+        self.data = None
+        self.contour_density = None
+        self.fig, self.ax = None, None
+        self.colorbar = None
+        self.plot_3D = None
+
     def evaluate_all(self, pop):
         f_pop = np.array(list(map(self._function, pop)))
         return f_pop
 
-    def plot(self, plot_3D=False):
+    def plot(self, 
+             plot_3D=False, 
+             contour_density=25,
+             colorbar=False, 
+             display_optimum=True):
         if self.n_params != 2:
             raise Exception('Cannot plot problem with more than 2 dimensions!')
+        self.plot_3D = plot_3D
+        self.colorbar = colorbar
+        self.contour_density = contour_density
+        self.__initialize_plot()
+        ax = None
         if plot_3D:
-            self._contour3D()
+            ax = self.__contour3D()
         else:
-            self.__contour2D()
-        pass
+            ax = self.__contour2D()
 
-    def get_plot_data(self):
+        if self.colorbar:
+            self.fig.colorbar(ax)
+        plt.show()
+
+    def make_data(self):
         step = 1 if self.param_type == np.int else 0.1
         (xl, xu) = self.domain
-        if self.problem.param_type == np.int:
+        if self.param_type == np.int:
             xu += 1
         axis_points = np.arange(xl, xu, step)
         n = len(axis_points)
@@ -49,8 +70,8 @@ class Problem:
             axis_points = axis_points[:-1]
         x_mesh, y_mesh = np.meshgrid(axis_points, axis_points)
 
-        f = self.problem._function
-        if self.problem.multi_dims:
+        f = self._function
+        if self.multi_dims:
             n = len(x_mesh)
             
             z_mesh = [f(np.array([x_mesh[i], y_mesh[i]])) for i in range(n)]
@@ -58,8 +79,7 @@ class Problem:
         else:
             z_mesh = np.array(f([x_mesh, y_mesh]))
 
-        self.problem_mesh = (x_mesh, y_mesh, z_mesh)
-        pass
+        self.data = (x_mesh, y_mesh, z_mesh)
 
 
     ## Protected Methods ##
@@ -78,8 +98,41 @@ class Problem:
         pass
 
     ## Private Methods ##
-    def __contour2D(self):
-        pass
+    def __contour2D(self, display_optimum=True):
+        (X, Y, Z) = self.data
+        global_optimums = self._pareto_set
+        if type(global_optimums) != type(None) and display_optimum:
+            global_optimums = global_optimums.reshape((-1, 2))
+            self.ax.plot(global_optimums[:, 0],
+                         global_optimums[:, 1],
+                         'rx',
+                         label='global optimum',
+                         markersize=10)
+        
+        ax = self.ax.contour(X, Y, Z, 
+                            self.contour_density,
+                            cmap=cm.jet)
+        return ax
+
 
     def __contour3D(self):
-        pass
+        (X, Y, Z) = self.data
+        surf = self.ax.plot_surface(X, Y, Z, 
+                                    cmap=cm.jet,
+                                    rstride=1,
+                                    cstride=1,
+                                    linewidth=0.2)
+        self.ax.set_zlabel("z")
+        return surf
+
+    def __initialize_plot(self):
+        xlabel, ylabel = 'x1', 'x2'
+        self.fig, self.ax = plt.subplots()
+        if self.plot_3D:
+            self.ax = Axes3D(self.fig, azim=-29, elev=50)
+            xlabel, ylabel = 'x', 'y'
+        self.ax.set_xlabel(xlabel)
+        self.ax.set_ylabel(ylabel)
+        self.ax.grid(True)
+        plt.suptitle('{}'.format(self.__class__.__name__))
+        self.make_data()
