@@ -20,6 +20,11 @@ class Display:
             self.__make_row(self.attributes.keys())
             self.header_displayed = True
             self.output += '\n'
+            header_length = len(self.output)
+            lines = self.__get_horizontal_line(header_length)
+            self.output += lines
+            self.output = lines + self.output
+
             
         self.__make_row(self.attributes.values())
         self.__display()
@@ -34,9 +39,9 @@ class Display:
     def __make_row(self, columns):
         for col in columns:
             if not isinstance(col, (int, float, str)):
-                self.output += '{}\t'
+                self.output += '|{}\t'
             else:
-                self.output += '{:<10}\t'
+                self.output += '|{:^12}'
         if self.format and self.header_displayed:
             columns = list(map(self.__format_number, columns))
 
@@ -54,4 +59,11 @@ class Display:
             return round(number, self.width)
         np.set_printoptions(suppress=True, precision=self.width)
         return number
+
+    def __get_horizontal_line(self, header_length):
+        lines = ''
+        for i in range(header_length):
+            lines += '='
+        lines += '\n'
+        return lines
         
