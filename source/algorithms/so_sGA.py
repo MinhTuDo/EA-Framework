@@ -3,7 +3,7 @@ from operators.initialization.random_initialization import RandomInitialization
 from operators.crossover.uniform_crossover import UniformCrossover
 from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
-from utils.termination.convergence import Convergence
+from terminations.convergence import Convergence
 
 
 class SGA(GA):

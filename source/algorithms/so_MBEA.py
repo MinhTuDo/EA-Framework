@@ -2,7 +2,7 @@ from model.GA import GA
 from operators.initialization.random_initialization import RandomInitialization
 from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
-from utils.termination.convergence import Convergence
+from terminations.convergence import Convergence
 from operators.crossover.model_based_ux import ModelBasedUniformCrossover
 from operators.model_builder.marginal_product_model import MarginalProductModel
 class MBEA(GA):

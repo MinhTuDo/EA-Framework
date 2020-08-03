@@ -2,7 +2,7 @@ import numpy as np
 from model.problem import Problem
 
 class Booth(Problem):
-    def __init__(self):
+    def __init__(self, **kwargs):
         super().__init__(n_params=2,
         
                          n_obj=1,

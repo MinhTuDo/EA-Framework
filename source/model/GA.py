@@ -3,7 +3,10 @@ from model.display import Display
 
 class GADisplay(Display):
     def _do(self, ga):
-        self.add_attributes('gen', ga.n_gens)
+        self.display_top = 5
+        self.add_attributes('n_gens', ga.n_gens)
+        self.add_attributes('n_evals', ga.n_evals)
+        self.add_attributes('F', ga.f_opt)
 
 class GA(Algorithm):
     def __init__(self,

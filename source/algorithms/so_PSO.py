@@ -1,5 +1,5 @@
 from model.GA import GA
-from utils.termination.max_time import MaxTimeTermination
+from terminations.max_time import MaxTimeTermination
 from operators.selection.historical_best_selection import HistoricalBestSelection
 from operators.initialization.random_initialization import RandomInitialization
 import numpy as np

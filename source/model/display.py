@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 class Display:
     def __init__(self):
@@ -7,6 +8,8 @@ class Display:
         self.output = ''
         self.format = None
         self.width = None
+        self.count = 0
+        self.display_top = -1
 
     def add_attributes(self, name, value, format=True, width=3):
         self.format = format
@@ -15,6 +18,7 @@ class Display:
 
 
     def do(self, algorithm):
+        self.__count_up()
         self._do(algorithm)
         if not self.header_displayed:
             self.__make_row(self.attributes.keys())
@@ -39,9 +43,9 @@ class Display:
     def __make_row(self, columns):
         for col in columns:
             if not isinstance(col, (int, float, str)):
-                self.output += '|{}\t'
+                self.output += '|{}  '
             else:
-                self.output += '|{:^12}'
+                self.output += '|{:>10}  '
         if self.format and self.header_displayed:
             columns = list(map(self.__format_number, columns))
 
@@ -66,4 +70,12 @@ class Display:
             lines += '='
         lines += '\n'
         return lines
+
+    def __count_up(self):
+        if self.display_top == -1:
+            return
+        self.count += 1
+        if self.count % 5 == 0:
+            self.header_displayed = False
+            os.system('clear')
         

@@ -22,4 +22,3 @@ class OnePointCrossover(Operation):
             offs.append(offs2)
         
         return np.reshape(offs, ga.pop.shape)
-        pass

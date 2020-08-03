@@ -4,4 +4,3 @@ class Termination:
 
     def _criteria_met(self, algorithm):
         pass
-    pass
