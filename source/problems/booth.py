@@ -12,7 +12,7 @@ class Booth(Problem):
                          multi_dims=False)
         
         self._pareto_front = 0
-        self._pareto_set = np.array([1, 3])[np.newaxis]
+        self._pareto_set = np.array([1, 3]).reshape((-1, self.n_params))
         self._optimum = min
         self._argopt = np.argmin
     

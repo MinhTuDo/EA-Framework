@@ -8,7 +8,7 @@ from numpy.random import rand
 
 class PSO(GA):
     def __init__(self,
-                 pop_size,
+                 pop_size=50,
                  initialization=RandomInitialization(),
                  selection=HistoricalBestSelection(),
                  topology='star',

@@ -7,7 +7,7 @@ from operators.crossover.model_based_ux import ModelBasedUniformCrossover
 from operators.model_builder.marginal_product_model import MarginalProductModel
 class MBEA(GA):
     def __init__(self,
-                 pop_size,
+                 pop_size=50,
                  n_offs=None,
                  initialization=RandomInitialization(),
                  model_builder=MarginalProductModel(),

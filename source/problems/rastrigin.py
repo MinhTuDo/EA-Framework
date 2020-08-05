@@ -2,8 +2,6 @@ from model.problem import Problem
 import numpy as np
 from numpy import cos, pi
 
-import numpy as np
-
 class Rastrigin(Problem):
     def __init__(self, n_params=2):
         super().__init__(n_params,

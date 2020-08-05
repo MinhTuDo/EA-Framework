@@ -33,6 +33,7 @@ class Problem:
         self.fig, self.ax = None, None
         self.colorbar = None
         self.plot_3D = None
+        self.step = None
 
     def evaluate_all(self, pop):
         f_pop = np.array(list(map(self._function, pop)))
@@ -51,20 +52,21 @@ class Problem:
         self.__initialize_plot()
         ax = None
         if plot_3D:
-            ax = self.__contour3D()
+            ax = self.contour3D()
         else:
-            ax = self.__contour2D()
+            ax = self.contour2D()
 
         if self.colorbar:
             self.fig.colorbar(ax)
         plt.show()
 
     def make_data(self):
-        step = 1 if self.param_type == np.int else 0.1
+        if self.step is None:
+            self.step = 1 if self.param_type == np.int else 0.1
         (xl, xu) = self.domain
         if self.param_type == np.int:
             xu += 1
-        axis_points = np.arange(xl, xu, step)
+        axis_points = np.arange(xl, xu, self.step)
         n = len(axis_points)
         if n % 2 != 0:
             axis_points = axis_points[:-1]
@@ -98,7 +100,7 @@ class Problem:
         pass
 
     ## Private Methods ##
-    def __contour2D(self, display_optimum=True):
+    def contour2D(self, display_optimum=True):
         (X, Y, Z) = self.data
         global_optimums = self._pareto_set
         if type(global_optimums) != type(None) and display_optimum:
@@ -108,14 +110,15 @@ class Problem:
                          'rx',
                          label='global optimum',
                          markersize=10)
-        
+        self.ax.grid(True)
         ax = self.ax.contour(X, Y, Z, 
                             self.contour_density,
                             cmap=cm.jet)
+        
         return ax
 
 
-    def __contour3D(self):
+    def contour3D(self):
         (X, Y, Z) = self.data
         surf = self.ax.plot_surface(X, Y, Z, 
                                     cmap=cm.jet,

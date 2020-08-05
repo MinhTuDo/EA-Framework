@@ -8,7 +8,7 @@ from terminations.convergence import Convergence
 
 class SGA(GA):
     def __init__(self,
-                 pop_size,
+                 pop_size=50,
                  n_offs=None,
                  initialization=RandomInitialization(),
                  selection=None,

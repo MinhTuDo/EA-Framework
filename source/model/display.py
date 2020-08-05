@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import numbers
 
 class Display:
     def __init__(self):
@@ -42,7 +43,7 @@ class Display:
     ## Private Methods ##
     def __make_row(self, columns):
         for col in columns:
-            if not isinstance(col, (int, float, str)):
+            if not isinstance(col, (numbers.Number, str)):
                 self.output += '|{}  '
             else:
                 self.output += '|{:>10}  '
@@ -59,7 +60,7 @@ class Display:
         print(self.output)
 
     def __format_number(self, number):
-        if isinstance(number, (int, float, complex)):
+        if isinstance(number, (numbers.Number)):
             return round(number, self.width)
         np.set_printoptions(suppress=True, precision=self.width)
         return number
