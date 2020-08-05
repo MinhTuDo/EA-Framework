@@ -76,7 +76,7 @@ class Display:
         if self.display_top == -1:
             return
         self.count += 1
-        if self.count % 5 == 0:
+        if self.count % self.display_top == 0:
             self.header_displayed = False
             os.system('clear')
         

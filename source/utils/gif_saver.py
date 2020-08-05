@@ -8,10 +8,12 @@ class GifSaver:
                  problem,
                  directory, 
                  filename,
+                 loop=True,
                  contour_density=None,
                  title=('', 12)):
         if problem.n_params > 2:
             raise Exception('Cannot plot problem with more than 2 dimensions!')
+        self.loop = loop
         self.problem = problem
         self.directory = directory
         self.__make_dir(self.directory)
@@ -44,18 +46,21 @@ class GifSaver:
 
     def make(self,
             result,
+            loop=True,
                 
             axis_labels=['x1', 'x2'],
             legend=None,
             loc='upper right',
             display_optimum=False):
+        self.loop = loop
         self.result = result
         self.axis_labels=axis_labels
         self.legend=legend
         self.loc = loc
         self.display_optimum = display_optimum
-        if self.data is None:
+        if self.problem.data is None:
             self.__get_data()
+            self.ax, self.fig = self.problem.ax, self.problem.fig
         print('Processing...')
         self.__animate()
         self.__convert_png_to_gif()
@@ -72,20 +77,24 @@ class GifSaver:
             os.makedirs(dir)
 
     def __convert_png_to_gif(self):
+        repeat = '' if self.loop else '-loop 1'
         filepath_temp = os.path.join(self.temp_dir, self.filename)
-        os.system('convert {}*.png {}.gif'.format(self.temp_dir, 
-                                                   filepath_temp))
+        command = 'convert {} {}*.png {}.gif'.format(repeat,
+                                                     self.temp_dir, 
+                                                     filepath_temp)
+        os.system(command)
 
     def __animate(self):
         problem_contour = self.problem.contour_density
         self.problem.contour_density = self.contour_density
         for gen, res in enumerate(self.result.history):
-            self.ax.clear()
+            
             self.__contour()
             self.__scatter(res['P'][:, 0], res['P'][:, 1], gen+1)
             name = '{:0>3d}.png'.format(gen)
             self.fig.suptitle(self.title[0], fontsize=self.title[1])
             self.fig.savefig(os.path.join(self.temp_dir, name))
+            self.ax.clear()
         
         self.problem.contour_density = problem_contour
             
@@ -108,5 +117,5 @@ class GifSaver:
 
     def __get_data(self):
         if self.problem.data is None:
-            self.problem.make_data()
+            self.problem.initialize_plot()
         self.data = self.problem.data

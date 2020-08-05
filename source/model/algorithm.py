@@ -86,10 +86,14 @@ class Algorithm:
 
     def finalize(self):
         self._finalize()
-        diff = np.abs(self.problem._pareto_set - self.opt).sum(axis=1, keepdims=False)
-        min_diff = min(diff)
-        if min_diff <= self.epsilon * self.problem.n_params:
+        if self.problem._pareto_set is None or \
+           self.problem._pareto_front is None:
+            return
+        diff = abs(self.problem._pareto_front - self.f_opt)
+        if diff <= self.epsilon:
             self.success = True
+        else:
+            self.success = False
 
     ### Public Methods ###
 

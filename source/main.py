@@ -7,24 +7,24 @@ import numpy as np
 
 class MyDisplay(Display):
     def _do(self, algorithm):
-        self.display_top = 5
+        self.display_top = 10
         self.add_attributes('n_gens', algorithm.n_gens)
         self.add_attributes('n_evals', algorithm.n_evals)
         self.add_attributes('min', algorithm.f_pop.std(), width=5)
         self.add_attributes('mean', algorithm.f_pop.mean(), width=5)
-        self.add_attributes('Elite', algorithm.opt)
+        self.add_attributes('F', algorithm.f_opt)
         
 
 display = MyDisplay()
 factory = GAFactory()
-problem = factory.get_problem('Shubert')()
-problem.plot(plot_3D=True, contour_density=20, colorbar=True)
+problem = factory.get_problem('ModifiedRastrigin')()
+# problem.plot(plot_3D=False, contour_density=20, colorbar=True)
 
-termination = factory.get_termination('MaxGenTermination')(200)
+termination = factory.get_termination('MaxGenTermination')(500)
 
 crossover = factory.get_crossover('ModelBasedUniformCrossover')()
 
-algorithm = factory.get_algorithm('PSO')(pop_size=500, 
+algorithm = factory.get_algorithm('PSO')(pop_size=5000, 
                                          termination=termination, 
                                          crossover=crossover,
                                          topology='ring')
@@ -34,11 +34,8 @@ result = optimize(problem,
                   termination=termination, 
                   verbose=True, 
                   save_history=True, 
-                  seed=1, 
+                  seed=18521578, 
                   display=display)
-# print(result.model)
-# print(result.exec_time)
-# print(result.n_evals)
 
-gif_saver = GifSaver(problem, 'gif', 'Modified-Rastrigin-PSO-Star', contour_density=20)
-gif_saver.make(result, display_optimum=True)
+gif_saver = GifSaver(problem, 'gif', 'Rastrigin-PSO-Star', contour_density=20)
+gif_saver.make(result, display_optimum=True, loop=False)

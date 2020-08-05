@@ -49,7 +49,7 @@ class Problem:
         self.plot_3D = plot_3D
         self.colorbar = colorbar
         self.contour_density = contour_density
-        self.__initialize_plot()
+        self.initialize_plot()
         ax = None
         if plot_3D:
             ax = self.contour3D()
@@ -128,7 +128,7 @@ class Problem:
         self.ax.set_zlabel("z")
         return surf
 
-    def __initialize_plot(self):
+    def initialize_plot(self):
         xlabel, ylabel = 'x1', 'x2'
         self.fig, self.ax = plt.subplots()
         if self.plot_3D:
