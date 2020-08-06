@@ -25,6 +25,7 @@ class Algorithm:
         self.success = None
         self.display = None
         self.default_display = Display()
+        self.log_saver = None
 
     ### Public Methods
     def set_up_problem(self, 

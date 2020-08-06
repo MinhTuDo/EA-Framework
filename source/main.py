@@ -17,14 +17,14 @@ class MyDisplay(Display):
 
 display = MyDisplay()
 factory = GAFactory()
-problem = factory.get_problem('ModifiedRastrigin')()
+problem = factory.get_problem('Rastrigin')()
 # problem.plot(plot_3D=False, contour_density=20, colorbar=True)
 
-termination = factory.get_termination('MaxGenTermination')(500)
+termination = factory.get_termination('MaxGenTermination')(50)
 
 crossover = factory.get_crossover('ModelBasedUniformCrossover')()
 
-algorithm = factory.get_algorithm('PSO')(pop_size=5000, 
+algorithm = factory.get_algorithm('PSO')(pop_size=500, 
                                          termination=termination, 
                                          crossover=crossover,
                                          topology='ring')
@@ -37,5 +37,7 @@ result = optimize(problem,
                   seed=18521578, 
                   display=display)
 
-gif_saver = GifSaver(problem, 'gif', 'Rastrigin-PSO-Star', contour_density=20)
-gif_saver.make(result, display_optimum=True, loop=False)
+print(result.success)
+
+# gif_saver = GifSaver(problem, 'gif', 'Rastrigin-PSO-Star', contour_density=20)
+# gif_saver.make(result, display_optimum=True, loop=False)
