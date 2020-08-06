@@ -3,6 +3,8 @@ from model.result import Result
 import time
 import numpy as np
 from model.display import Display
+from model.log_saver import LogSaver
+import os
 
 class Algorithm:
     def __init__(self, **kwargs):
@@ -13,6 +15,7 @@ class Algorithm:
         self.save_history = None
         self.history = None
         self.verbose = None
+        self.log = None
         self.seed = None
         # self.pop = None
         # self.f_pop = None
@@ -26,6 +29,8 @@ class Algorithm:
         self.display = None
         self.default_display = Display()
         self.log_saver = None
+        self.default_log_saver = LogSaver()
+        self.log_dir = 'log/'
 
     ### Public Methods
     def set_up_problem(self, 
@@ -33,18 +38,28 @@ class Algorithm:
 
                        seed=1,
                        verbose=False,
+                       log=False,
+                       log_dir=None,
                        save_history=False, 
                        epsilon=10**-5,
 
                        termination=None,
                        display=None,
+                       log_saver=None
                        **kwargs):
         
         self.problem = problem
         self.verbose = verbose
+        self.log = log
+        self.log_dir = log_dir
         self.save_history = save_history
         self.epsilon = epsilon
         self.seed = seed
+
+        if log:
+            self.log_dir = log_dir if log_dir is not None else self.log_dir
+            if not os.path.exists(self.log_dir):
+                os.makedirs(self.log_dir)
 
         self.termination = termination
         if self.termination is None:
@@ -53,7 +68,10 @@ class Algorithm:
         self.display = display
         if display is None:
             self.display = self.default_display
-
+        
+        self.log_saver = log_saver
+        if log_saver is None:
+            self.log_saver = self.default_log_saver
         # self.n_gens = 1
         self.history = []
         
@@ -95,6 +113,9 @@ class Algorithm:
             self.success = True
         else:
             self.success = False
+
+        if self.log:
+            self.log_saver.save(self)
 
     ### Public Methods ###
 

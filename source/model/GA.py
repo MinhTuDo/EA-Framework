@@ -1,9 +1,16 @@
 from model.algorithm import Algorithm
 from model.display import Display
+from model.log_saver import LogSaver
 
 class GADisplay(Display):
     def _do(self, ga):
         self.display_top = 5
+        self.add_attributes('n_gens', ga.n_gens)
+        self.add_attributes('n_evals', ga.n_evals)
+        self.add_attributes('F', ga.f_opt)
+
+class GALogSaver(LogSaver):
+    def _do(self, ga):
         self.add_attributes('n_gens', ga.n_gens)
         self.add_attributes('n_evals', ga.n_evals)
         self.add_attributes('F', ga.f_opt)
@@ -30,6 +37,7 @@ class GA(Algorithm):
         self.pop_prev = None
         self.f_pop_prev = None
         self.default_display = GADisplay()
+        self.default_log_saver = GALogSaver()
 
     def _run(self):
         self.initialize()
@@ -68,6 +76,8 @@ class GA(Algorithm):
         if self.verbose:
             # print('## Gen {}: Best: {} - F: {}'.format(self.n_gens, self.opt, self.f_opt))
             self.display.do(self)
+        if self.log:
+            self.log_saver.do(self)
 
     ## Overide Methods ##
     def _save_result(self):
