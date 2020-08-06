@@ -45,21 +45,16 @@ class Algorithm:
 
                        termination=None,
                        display=None,
-                       log_saver=None
+                       log_saver=None,
                        **kwargs):
         
         self.problem = problem
         self.verbose = verbose
         self.log = log
-        self.log_dir = log_dir
         self.save_history = save_history
         self.epsilon = epsilon
         self.seed = seed
 
-        if log:
-            self.log_dir = log_dir if log_dir is not None else self.log_dir
-            if not os.path.exists(self.log_dir):
-                os.makedirs(self.log_dir)
 
         self.termination = termination
         if self.termination is None:
@@ -72,6 +67,14 @@ class Algorithm:
         self.log_saver = log_saver
         if log_saver is None:
             self.log_saver = self.default_log_saver
+
+        if log_dir is not None:
+            self.log_dir = log_dir
+
+        if log:
+            self.log_dir = log_dir if log_dir is not None else self.log_dir
+            if not os.path.exists(self.log_dir):
+                os.makedirs(self.log_dir)
         # self.n_gens = 1
         self.history = []
         

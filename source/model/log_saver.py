@@ -1,10 +1,11 @@
 import pandas as pd
 import datetime
+import os
 
 class LogSaver():
     def __init__(self):
         self.attributes = {}
-        self.data_frame = None
+        self.data_frame = pd.DataFrame()
         self.now = datetime.datetime.now()
     
     def add_attributes(self, name, value):
@@ -12,10 +13,7 @@ class LogSaver():
 
     def do(self, algorithm):
         self._do(algorithm)
-        if self.data_frame is None:
-            self.data_frame = pd.DataFrame(self.attributes)
-        else:
-            self.data_frame.append(self.attributes)
+        self.data_frame = self.data_frame.append(self.attributes, ignore_index=True)
 
     def save(self, algorithm):
         filename = os.path.join(algorithm.log_dir, "data_" + self.now.strftime("%Y%m%d-%H%M") + ".csv")

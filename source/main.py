@@ -2,8 +2,15 @@ from model.display import Display
 from factory import GAFactory
 from optimize import optimize
 from utils.gif_saver import GifSaver
+from model.log_saver import LogSaver
 
 import numpy as np
+
+class MySaver(LogSaver):
+    def _do(self, algorithm):
+        self.add_attributes('n_gens', algorithm.n_gens) 
+        self.add_attributes('n_evals', algorithm.n_evals) 
+        self.add_attributes('F', algorithm.f_opt)
 
 class MyDisplay(Display):
     def _do(self, algorithm):
@@ -16,9 +23,10 @@ class MyDisplay(Display):
         
 
 display = MyDisplay()
+log_saver = MySaver()
 factory = GAFactory()
-problem = factory.get_problem('Rastrigin')()
-# problem.plot(plot_3D=False, contour_density=20, colorbar=True)
+problem = factory.get_problem('ModifiedRastrigin')()
+problem.plot(plot_3D=True, contour_density=20, colorbar=True)
 
 termination = factory.get_termination('MaxGenTermination')(50)
 
@@ -32,10 +40,12 @@ algorithm = factory.get_algorithm('PSO')(pop_size=500,
 result = optimize(problem, 
                   algorithm, 
                   termination=termination, 
-                  verbose=True, 
+                  verbose=True,
+                  log=True, 
                   save_history=True, 
                   seed=18521578, 
-                  display=display)
+                  display=display,
+                  log_saver=log_saver)
 
 print(result.success)
 
