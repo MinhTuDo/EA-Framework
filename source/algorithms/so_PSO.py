@@ -24,8 +24,6 @@ class PSO(GA):
         self.global_best_selection = self.star_topology_selection
         if topology != 'star':
             self.global_best_selection = self.ring_topology_selection
-        self.selection = selection
-        self.initialization = initialization
         self.intertia_weight = iw
         self.accel_const = ac
         self.global_best = None

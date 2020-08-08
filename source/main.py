@@ -47,7 +47,5 @@ result = optimize(problem,
                   display=display,
                   log_saver=log_saver)
 
-print(result.success)
-
 # gif_saver = GifSaver(problem, 'gif', 'Rastrigin-PSO-Star', contour_density=20)
 # gif_saver.make(result, display_optimum=True, loop=False)

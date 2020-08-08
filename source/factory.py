@@ -1,31 +1,6 @@
 import importlib
 import os
 
-# my_modules = []
-# for file in os.listdir(ALGORITHMS_DIR):
-#     module = { file.replace('.py', '') : [] }
-#     my_modules.append(module)
-
-# def get_module(module_name, class_name, **kwargs):
-#     my_class = None
-#     for file in os.listdir(module_getter[module_name]):
-#         if my_class is not None:
-#             return my_class(**kwargs)
-#         if file.endswith('.py'):
-#             module = file.replace('.py', '')
-#             module_path = '{}.{}'.format(module_getter[module_name],
-#                                         module)
-#             try:
-#                 module = importlib.import_module(module_path)
-#                 my_class = getattr(module, class_name)
-#             except AttributeError:
-#                 my_class = None
-    
-#     raise Exception('Class name not found!')
-
-# booth = get_module('problem', 'Booth')
-# booth.plot()
-
 class GAFactory:
     def __init__(self):
         self.ALGORITHMS_DIR = 'algorithms'
@@ -90,11 +65,4 @@ class GAFactory:
             return my_class
         raise Exception('Class name not found!')
 
-# factory = GAFactory()
-
-# algorithm = factory.get_algorithm('SGA')
-
-# problem = factory.get_problem('Rastrigin')
-
-# problem.plot(plot_3D=True)
 
