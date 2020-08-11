@@ -23,7 +23,6 @@ class GAFactory:
 
     def get_problem(self, problem_name):
         return self.__get_module('problem', problem_name)
-        pass
 
     def get_termination(self, termination_name):
         return self.__get_module('termination', termination_name)

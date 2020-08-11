@@ -1,13 +1,13 @@
 import numpy as np
 from keras.models import Model
 from keras.layers import Input, Conv2D, BatchNormalization, Activation, Add, Flatten, Dense, Dropout, MaxPool2D, AveragePooling2D
-from keras.datasets import cifar10
 from abc import abstractmethod
+from model.problem import Problem
 
 class GeneticCNN(Problem):
     def __init__(self,
-                 input_shape,
-                 classes,
+                 input_shape=None,
+                 classes=None,
                  data=(None, None, None),
                  activation_last='softmax',
                  optimizer='adam',
@@ -33,8 +33,8 @@ class GeneticCNN(Problem):
         self.stages = stages
         self.input_shape = input_shape
         self.classes = classes
-        self.hardcode = hardcode
         self.activation = activation
+        self.activation_last = activation_last
         self.Pool = Pool
         self.pool_size = pool_size
         self.init_filters = init_filters
@@ -43,13 +43,16 @@ class GeneticCNN(Problem):
         self.fc = fc
         self.dropout = dropout
         self.model = None
+        self.loss = loss
+        self.optimizer = optimizer
 
         self.train_data = data[0]
         self.test_data = data[1]
-        self.validate_data = data[2]
+        self.validation_data = data[2]
 
         self._optimum = max
         self._argopt = np.argmax
+        self._preprocess_input()
 
 
     def create_model(self, binary_string):
@@ -83,7 +86,7 @@ class GeneticCNN(Problem):
 
     ## Overide Methods ##
     def _function(self, X):
-        model = self.create_model(X)
+        self.model = self.create_model(X)
         self._model_fit()
         return self._model_evaluate()
     
@@ -104,6 +107,7 @@ class GeneticCNN(Problem):
 
     def __code_length_per_stage(self, k):
         l = (k * (k - 1)) // 2
+        return l
 
     def __conv_layer(self, X, f):
         node = X
