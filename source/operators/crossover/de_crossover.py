@@ -10,7 +10,7 @@ class DECrossover(Operation):
         offs = []
         for i in range(n_inds):
             x_i, v_i = ga.pop[i].copy(), ga.mutant_vectors[i].copy()
-            points = np.random.randn(n_params,)
+            points = np.random.uniform(size=(n_params,))
             x_i[points <= ga.cr] = v_i[points <= ga.cr]
 
             offs.append(x_i)

@@ -10,14 +10,11 @@ class PSO(GA):
     def __init__(self,
                  pop_size=50,
                  initialization=RandomInitialization(),
-                 selection=HistoricalBestSelection(),
                  topology='star',
-
                  iw=0.7298,
                  ac=1.49618,
-
                  **kwargs):
-        super().__init__(pop_size, initialization, selection, **kwargs)
+        super().__init__(pop_size, initialization, **kwargs)
         self.default_termination = MaxTimeTermination(5)
         if not topology in ['star', 'ring']:
             raise Exception('Population Topology not found!')
@@ -27,6 +24,8 @@ class PSO(GA):
         self.intertia_weight = iw
         self.accel_const = ac
         self.global_best = None
+        self.pop_prev = None
+        self.f_pop_prev = None
 
     def star_topology_selection(self):
         argopt = self.problem._argopt

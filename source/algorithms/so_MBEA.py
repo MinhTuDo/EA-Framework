@@ -10,16 +10,14 @@ class MBEA(GA):
                  pop_size=50,
                  n_offs=None,
                  initialization=RandomInitialization(),
-                 model_builder=MarginalProductModel(),
                  selection=None,
                  crossover=ModelBasedUniformCrossover(),
                  elitist_archive=2,
-                 mutation=None,
                  **kwargs):
         super().__init__(pop_size, initialization, selection,
                          crossover, mutation, n_offs, **kwargs)
+        self.model_builder = MarginalProductModel()
         self.default_termination = Convergence()
-        self.model_builder = model_builder
         self.elitist_archive = elitist_archive
         if selection is None:
             self.selection = TournamentSelection(elitist_archive)
