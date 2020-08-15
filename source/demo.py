@@ -26,14 +26,14 @@ class MyDisplay(Display):
 display = MyDisplay()
 log_saver = MySaver()
 factory = GAFactory()
-problem = factory.get_problem('TrapMax')(n_params=16, trap_size=4)
+problem = factory.get_problem('TrapMax')(n_params=20, trap_size=4)
 # problem.plot(plot_3D=True, contour_density=20, colorbar=True)
 
 termination = factory.get_termination('Convergence')()
 
 crossover = factory.get_crossover('GOM')()
 
-algorithm = factory.get_algorithm('GOMEA')(pop_size=20)
+algorithm = factory.get_algorithm('GOMEA')(pop_size=100, elitist_archive=4)
 
 result = optimize(problem, 
                   algorithm, 

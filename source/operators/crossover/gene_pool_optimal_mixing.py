@@ -9,17 +9,19 @@ class GOM(Operation):
     
     def _do(self, ga):
         self.trial_pop = ga.pop.copy()
-        self.model = ga.model.copy()
+        self.model = ga.model
+        
         N = ga.pop_size
+        random_indices = np.arange(N)
+        np.random.shuffle(random_indices)
         for i in range(N):
             np.random.shuffle(self.model)
             for group in self.model:
-                r = np.random.randint(low=0, high=N)
-                d = self.trial_pop[r]
+                d = self.trial_pop[random_indices[i]]
                 x_dash = self.trial_pop[i].copy()
                 x_dash[group] = d[group]
                 y_dash = ga.problem._function(x_dash)
+                ga.n_evals += 1
                 if ga.problem._f_comparer(y_dash, ga.f_pop[i]):
                     self.trial_pop[i] = x_dash
-                # x = x_dash if ga.problem._f_comparer(y_dash, ga.f_pop[i]) else x
         return self.trial_pop

@@ -1,6 +1,6 @@
 from model.GA import GA
 from operators.initialization.random_initialization import RandomInitialization
-from operators.crossover.uniform_crossover import UniformCrossover
+from operators.crossover.uniform_crossover import UX
 from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
 from terminations.convergence import Convergence
@@ -12,7 +12,7 @@ class SGA(GA):
                  n_offs=None,
                  initialization=RandomInitialization(),
                  selection=None,
-                 crossover=UniformCrossover(),
+                 crossover=UX(),
                  elitist_archive=2,
                  mutation=None,
                  **kwargs):
