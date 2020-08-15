@@ -1,6 +1,6 @@
 import numpy as np
 from model.operation import Operation
-class UniformCrossover(Operation):
+class UX(Operation):
     def __init__(self):
         pass
 

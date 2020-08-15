@@ -1,12 +1,7 @@
 from model.operation import Operation
 import numpy as np
 from numpy import arange, newaxis
-
-class Operation:
-    def __init__(self):
-        pass
-    def _do(self, algorithm):
-        pass
+from itertools import combinations, chain
 
 class MarginalProductModel(Operation):
     def __init__(self):
@@ -32,8 +27,9 @@ class MarginalProductModel(Operation):
     def __calc_MPM(self, pop, model):
         current_MDL = self.__calc_MDL(pop, model)
         new_models = self.__get_new_models(model)
-        new_MDLs = np.array([self.__calc_MDL(pop, model) for model in new_models])
-        return model if current_MDL < new_MDLs.min() else new_models[np.argmin(new_MDLs)]
+        new_MDLs = [self.__calc_MDL(pop, model) for model in new_models]
+        min_idx = np.argmin(new_MDLs)
+        return model if current_MDL < new_MDLs[min_idx] else new_models[min_idx]
 
     def __calc_MDL(self, pop, model):
         # Compute model complexity
@@ -42,18 +38,15 @@ class MarginalProductModel(Operation):
         MC = np.log2(N + 1) * (2**S - 1).sum()
 
         # Compute compressed population complexity
-        entropy = 0
-        epsilon = 10**-5
-        n_groups = len(model)
-        events = [arange(2**S[i])[:, newaxis] >> np.arange(S[i])[::-1] & 1 for i in range(n_groups)]
-        for i in range(n_groups):
-            for event in events[i]:
-                group = pop[:, model[i]]
-                match = (group == event).sum(axis=1)
-                prob = np.count_nonzero(match == len(event)) / (N+1)
-                entropy += prob * np.log2(1 / (prob+epsilon))
-
-        CPC = N * entropy
+        sum_H = 0
+        for group in model:
+            _, event_counts = np.unique(pop[:, group], 
+                                        axis=0, 
+                                        return_counts=True)
+            prob_per_event = event_counts / (N+1)
+            sum_entropy = (prob_per_event * np.log2(1/prob_per_event)).sum()
+            sum_H += sum_entropy
+        CPC = N * sum_H
         return CPC + MC
 
     def __get_new_models(self, current_model):
@@ -65,5 +58,8 @@ class MarginalProductModel(Operation):
                 del new_group[j-1]
                 new_group.append(current_model[i] + current_model[j])
                 new_models.append(new_group)
+
                 
         return new_models
+
+    

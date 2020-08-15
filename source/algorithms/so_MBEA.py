@@ -15,7 +15,7 @@ class MBEA(GA):
                  elitist_archive=2,
                  **kwargs):
         super().__init__(pop_size, initialization, selection,
-                         crossover, mutation, n_offs, **kwargs)
+                         crossover, n_offs, **kwargs)
         self.model_builder = MarginalProductModel()
         self.default_termination = Convergence()
         self.elitist_archive = elitist_archive
@@ -26,7 +26,7 @@ class MBEA(GA):
 
 
     def _initialize(self):
-        self.model = [[group] for group in np.arange(self.problem.n_params)]
+        self.model = np.arange(self.problem.n_params)[:, np.newaxis].tolist()
         self.f_pop = self.evaluate(self.pop)
         self.sub_tasks_each_gen()
     

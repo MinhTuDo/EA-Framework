@@ -5,6 +5,7 @@ import numpy as np
 from model.display import Display
 from model.log_saver import LogSaver
 import os
+import random
 
 class Algorithm:
     def __init__(self, **kwargs):
@@ -79,6 +80,7 @@ class Algorithm:
         self.history = []
         
         np.random.seed(seed)
+        random.seed(seed)
 
     def run(self):
         self.result = Result()

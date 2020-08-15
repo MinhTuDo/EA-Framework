@@ -1,7 +1,7 @@
 from model.operation import Operation
 import numpy as np
 
-class ModelBasedOnePointCrossover(Operation):
+class MB1X(Operation):
     def __init__(self):
         super().__init__()
 
