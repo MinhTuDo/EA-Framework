@@ -85,6 +85,11 @@ class PSO(GA):
         self.velocity = self.compute_velocity()
         self.pop = (self.pop + self.velocity).astype(self.problem.param_type)
 
+    def _save_history(self):
+        res = {'P': self.pop.copy(), 
+               'F': self.fitness_pop.copy()}
+        self.history.append(res)
+
 
 
 

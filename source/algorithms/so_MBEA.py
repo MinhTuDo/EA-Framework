@@ -44,8 +44,10 @@ class MBEA(GA):
         self.pop = self.pop[selected_indices]
         self.fitness_pop = self.fitness_pop[selected_indices]
 
-    def _sub_tasks_each_gen(self):
-        pass
-
     def _save_result_ga(self):
         self.result.model = self.model
+
+    def _save_history(self):
+        res = {'P': self.pop.copy(), 
+               'F': self.fitness_pop.copy()}
+        self.history.append(res)

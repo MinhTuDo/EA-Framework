@@ -10,7 +10,7 @@ class MySaver(LogSaver):
     def _do(self, algorithm):
         self.add_attributes('n_gens', algorithm.n_gens) 
         self.add_attributes('n_evals', algorithm.n_evals) 
-        self.add_attributes('F', algorithm.fitness_opt)
+        self.add_attributes('F', algorithm.fitness_pop[algorithm.elite_idx])
 
 class MyDisplay(Display):
     def _do(self, algorithm):
@@ -20,7 +20,7 @@ class MyDisplay(Display):
         self.add_attributes('min', algorithm.fitness_pop.min(), width=5)
         self.add_attributes('max', algorithm.fitness_pop.max(), width=5)
         self.add_attributes('mean', algorithm.fitness_pop.mean(), width=5)
-        self.add_attributes('F', algorithm.fitness_opt)
+        self.add_attributes('F', algorithm.fitness_pop[algorithm.elite_idx])
         
 
 display = MyDisplay()
@@ -33,7 +33,7 @@ termination = factory.get_termination('Convergence')()
 
 crossover = factory.get_crossover('GOM')()
 
-algorithm = factory.get_algorithm('MBEA')(pop_size=20, elitist_archive=2)
+algorithm = factory.get_algorithm('MBEA')(pop_size=50, elitist_archive=2)
 
 result = optimize(problem, 
                   algorithm, 

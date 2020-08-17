@@ -22,8 +22,9 @@ class Algorithm:
         # self.fitness_pop = None
         self.n_evals = None
         # self.n_gens = None
-        self.opt = None
-        self.fitness_opt = None
+        # self.opt = None
+        # self.fitness_opt = None
+        self.elite_idx = None
         self.default_termination = None
         self.result = None
         self.success = None
@@ -31,7 +32,7 @@ class Algorithm:
         self.default_display = Display()
         self.log_saver = None
         self.default_log_saver = LogSaver()
-        self.log_dir = 'log/'
+        # self.log_dir = 'log/'
 
     ### Public Methods
     def set_up_problem(self, 
@@ -100,7 +101,7 @@ class Algorithm:
         
         self.result.exec_time = self.end_time - self.start_time
         self.result.success = self.success
-        self.result.solution = self.opt
+        self.result.solution = self.pop[self.elite_idx]
         self.result.problem = self.problem
         self.result.algorithm = self
         # self.result.gens = self.n_gens
@@ -109,24 +110,24 @@ class Algorithm:
         # self.result.pop = self.pop
 
     def finalize(self):
-        self._finalize()
+        if self.log:
+            self.log_saver.save(self)
         if self.problem._pareto_set is None or \
            self.problem._pareto_front is None:
             return
-        diff = abs(self.problem._pareto_front - self.fitness_opt)
-        if diff <= self.epsilon:
-            self.success = True
-        else:
-            self.success = False
+        self._finalize()
 
-        if self.log:
-            self.log_saver.save(self)
+        
 
     ### Public Methods ###
 
     ### Protected Methods ###
     def _finalize(self):
-        pass
+        diff = abs(self.problem._pareto_front - self.fitness_pop[self.elite_idx])
+        if diff <= self.epsilon:
+            self.success = True
+        else:
+            self.success = False
 
     def _save_result(self):
         pass

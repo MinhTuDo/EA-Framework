@@ -24,7 +24,6 @@ class NSGAII(GA):
         if n_offs is None:
             self.n_offs = self.pop_size
         
-        # self.domination_count = None
         self.CD = None
         self.F_pop = None
         self.F_offs = None
@@ -36,7 +35,6 @@ class NSGAII(GA):
         count = np.zeros((pop.shape[0],))
         for i, f_i in enumerate(F_pop):
             count[i] = sum([self.problem._is_dominated(f_j, f_i) for f_j in F_pop])
-        
         return count
 
     def __non_dominated_rank(self):
@@ -64,22 +62,11 @@ class NSGAII(GA):
             pop.append(self.ranks[i])
             F_pop.append(self.ranks_F[i])
 
-        return np.vstack(rank).flatten(), np.vstack(pop), np.vstack(F_pop).flatten()
-        # return np.vstack(self.ranks.keys()), \
-        #        np.vstack(self.ranks.values()), \
-        #        np.vstack(self.ranks_F.values())
-
-
-    def __crowding_distance_sort(self, CD):
-        return CD.argsort()
+        return np.vstack(rank).flatten(), \
+               np.vstack(pop), \
+               np.vstack(F_pop)
     
     def __calc_crowding_distances(self, P_r):
-        # R = list(range(max(self.rank)))
-        # objectives = list(range(self.F_pop.shape[1])) 
-        # for r in R:
-            # indices = np.where(self.rank == r)
-            # CD_r = CD[indices]
-            # P_r = self.rank[self.rank == r]
         n = len(P_r)
         CD = np.zeros((n,))
         for obj in self.problem.objectives:
@@ -96,20 +83,43 @@ class NSGAII(GA):
         self.rank, self.pop, self.F_pop = self.__non_dominated_sort()
         self.CD = np.hstack(list(map(self.__calc_crowding_distances, self.ranks.values())))
         self.fitness_pop = np.vstack((self.rank, self.CD)).T
-        # self.sub_tasks_each_gen()
 
     def _next(self):
         selected_indices = self.selection._do(self)
         self.pop = self.pop[selected_indices]
-        self.fitness_pop = self.fitness_pop[selected_indices]
+        self.F_pop = self.F_pop[selected_indices]
+        # self.rank = self.rank[selected_indices]
+        # self.CD = self.CD[selected_indices]
+        # self.fitness_pop = self.fitness_pop[selected_indices]
+
         self.offs = self.crossover._do(self)
         self.F_offs = self.evaluate(self.offs).reshape((self.pop_size, self.problem.n_obj))
 
         self.pop = np.vstack((self.pop, self.offs))
         self.F_pop = np.vstack((self.F_pop, self.F_offs))
 
-        self.__non_dominated_rank()
-        sort_by_rank = self.__non_dominated_sort()
+        self.ranks, self.ranks_F = self.__non_dominated_rank()
+        # self.rank, self.pop, self.F_pop = self.__non_dominated_sort()
+
+        pop = []
+        F_pop = []
+        for rank, rank_F in zip(self.ranks.values(), self.ranks_F.values()):
+            if len(pop) + len(rank) > self.pop_size:
+                n_takes = len(pop) + len(rank) - self.pop_size
+                CD = self.__calc_crowding_distances(rank)
+                sorted_CD = CD.argsort()[::-1]
+                pop.append(rank[sorted_CD][:-n_takes])
+                F_pop.append(rank_F[sorted_CD][:-n_takes])
+                break
+            pop.append(rank)
+            F_pop.append(rank_F)
+        self.pop = np.vstack(pop)
+        self.F_pop = np.vstack(F_pop)
+
+    def _save_history(self):
+        res = {'P': self.pop.copy(), 
+               'F': self.F_pop.copy()}
+        self.history.append(res)
 
 
         

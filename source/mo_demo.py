@@ -7,29 +7,30 @@ from model.log_saver import LogSaver
 import numpy as np
 
 class MySaver(LogSaver):
-    def _do(self, algorithm):
-        self.add_attributes('n_gens', algorithm.n_gens) 
-        self.add_attributes('n_evals', algorithm.n_evals) 
-        self.add_attributes('F', algorithm.fitness_opt)
+    def _do(self, ga):
+        self.add_attributes('n_gens', ga.n_gens) 
+        self.add_attributes('n_evals', ga.n_evals) 
+        self.add_attributes('F', ga.F_pop[self.elite_idx])
 
 class MyDisplay(Display):
-    def _do(self, algorithm):
+    def _do(self, ga):
         self.display_top = -1
-        self.add_attributes('n_gens', algorithm.n_gens)
-        self.add_attributes('n_evals', algorithm.n_evals)
-        self.add_attributes('min', algorithm.fitness_pop.min(), width=5)
-        self.add_attributes('max', algorithm.fitness_pop.max(), width=5)
-        self.add_attributes('mean', algorithm.fitness_pop.mean(), width=5)
-        self.add_attributes('F', algorithm.fitness_opt)
+        self.add_attributes('n_gens', ga.n_gens)
+        self.add_attributes('n_evals', ga.n_evals)
+        # self.add_attributes('min', ga.F_pop.min(), width=5)
+        # self.add_attributes('max', ga.F_pop.max(), width=5)
+        # self.add_attributes('mean', ga.F_pop.mean(), width=5)
+        self.add_attributes('F', ga.F_pop[ga.elite_idx])
+        self.add_attributes('rank', ga.rank[ga.elite_idx])
         
 
 display = MyDisplay()
 log_saver = MySaver()
 factory = GAFactory()
-problem = factory.get_problem('SchafferN1')()
+problem = factory.get_problem('SchafferN1')(A=100)
 # problem.plot(plot_3D=True, contour_density=20, colorbar=True)
 
-termination = factory.get_termination('Convergence')()
+termination = factory.get_termination('MaxGenTermination')(50)
 
 crossover = factory.get_crossover('GOM')()
 

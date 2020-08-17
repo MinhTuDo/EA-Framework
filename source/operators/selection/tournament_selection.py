@@ -12,7 +12,7 @@ class TournamentSelection(Operation):
         selection_size = ga.n_offs
         selected_indices = []
         optimum = ga.problem._optimum
-        fitness = ga.fitness_pop
+        fitness = ga.fitness_pop[:, np.newaxis] if len(ga.fitness_pop.shape) == 1 else ga.fitness_pop
 
 
         while len(selected_indices) < selection_size:
@@ -20,7 +20,8 @@ class TournamentSelection(Operation):
 
             for i in range(0, n_inds, self.tournament_size):
                 idx_tournament = indices[i : i+self.tournament_size] 
-                elite_idx = list(filter(lambda idx : fitness[idx] == optimum(fitness[idx_tournament]), idx_tournament))
-                selected_indices.append(np.random.choice(elite_idx))
+                # elite_idx = list(filter(lambda idx : fitness[idx] == optimum(fitness[idx_tournament]), idx_tournament))
+                elite_idx = np.where((fitness[idx_tournament] == optimum(fitness[idx_tournament])).sum(axis=1) == fitness.shape[1])[0]
+                selected_indices.append(np.random.choice(idx_tournament[elite_idx]))
         
         return selected_indices

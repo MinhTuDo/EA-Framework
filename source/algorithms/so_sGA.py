@@ -40,3 +40,8 @@ class SGA(GA):
 
         self.pop = self.pop[selected_indices]
         self.fitness_pop = self.fitness_pop[selected_indices]
+
+    def _save_history(self):
+        res = {'P': self.pop.copy(), 
+               'F': self.fitness_pop.copy()}
+        self.history.append(res)

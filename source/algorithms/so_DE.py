@@ -38,4 +38,9 @@ class DE(GA):
         selected_indices = self.selection._do(self)
         self.pop[selected_indices] = self.offs[selected_indices]
 
+    def _save_history(self):
+        res = {'P': self.pop.copy(), 
+               'F': self.fitness_pop.copy()}
+        self.history.append(res)
+
         
