@@ -7,7 +7,7 @@ class RouletteSelection(Operation):
 
     def _do(self, ga):
         selected_indices = []
-        fitnesses = np.unique(ga.f_pop)
+        fitnesses = np.unique(ga.fitness_pop)
         probabilities = np.zeros(fitnesses.shape)
         sum_of_fitness = fitnesses.sum()
         prev_prob = 0

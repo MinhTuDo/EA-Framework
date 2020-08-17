@@ -15,12 +15,12 @@ class Beale(Problem):
         self._argopt = np.argmin
 
     ## Overide Methods ##
-    def _function(self, X):
+    def _f(self, X):
         f = (1.5 - X[0] + X[0]*X[1])**2 + \
             (2.25 - X[0] + X[0]*(X[1]**2))**2 + \
             (2.265 - X[0] + X[0]*(X[1]**3))**2
             
         return f
 
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         return y1 <= y2

@@ -36,8 +36,8 @@ class Problem:
         self.step = None
 
     def evaluate_all(self, pop):
-        f_pop = np.array(list(map(self._function, pop)))
-        return f_pop
+        fitness_pop = np.array(list(map(self._f, pop)))
+        return fitness_pop
 
     def plot(self, 
              plot_3D=False, 
@@ -72,7 +72,7 @@ class Problem:
             axis_points = axis_points[:-1]
         x_mesh, y_mesh = np.meshgrid(axis_points, axis_points)
 
-        f = self._function
+        f = self._f
         if self.multi_dims:
             n = len(x_mesh)
             
@@ -85,7 +85,7 @@ class Problem:
 
 
     ## Protected Methods ##
-    def _function(self, X):
+    def _f(self, X):
         pass
 
     def _pareto_front(self):
@@ -96,7 +96,7 @@ class Problem:
 
     def _comparer(self, x1, x2):
         pass
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         pass
 
     ## Private Methods ##

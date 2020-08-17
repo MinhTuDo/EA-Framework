@@ -19,9 +19,9 @@ class Rastrigin(Problem):
         self.A = 10
 
     ## Overide Methods ##
-    def _function(self, X):
+    def _f(self, X):
         f = self.A*len(X) + (X**2 - self.A*cos(2*pi*X)).sum(axis=0)
         return f
 
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         return y1 <= y2

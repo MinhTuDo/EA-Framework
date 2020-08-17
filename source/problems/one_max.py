@@ -15,11 +15,11 @@ class OneMax(Problem):
         self._argopt = np.argmax
     
     ## Overide Methods ##
-    def _function(self, X):
+    def _f(self, X):
         f = sum(X)
         return f
 
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         return y1 >= y2
 
 

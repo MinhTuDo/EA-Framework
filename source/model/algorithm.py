@@ -19,11 +19,11 @@ class Algorithm:
         self.log = None
         self.seed = None
         # self.pop = None
-        # self.f_pop = None
+        # self.fitness_pop = None
         self.n_evals = None
         # self.n_gens = None
         self.opt = None
-        self.f_opt = None
+        self.fitness_opt = None
         self.default_termination = None
         self.result = None
         self.success = None
@@ -113,7 +113,7 @@ class Algorithm:
         if self.problem._pareto_set is None or \
            self.problem._pareto_front is None:
             return
-        diff = abs(self.problem._pareto_front - self.f_opt)
+        diff = abs(self.problem._pareto_front - self.fitness_opt)
         if diff <= self.epsilon:
             self.success = True
         else:

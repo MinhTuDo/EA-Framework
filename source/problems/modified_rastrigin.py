@@ -26,12 +26,12 @@ class ModifiedRastrigin(Problem):
         self.step = 0.01
 
     ## Overide Methods ##
-    def _function(self, X):
+    def _f(self, X):
         try:
             f = -(10 + 9*cos(2*pi*X*self.k)).sum(axis=0)
         except:
             f = -(10 + 9*cos(2*pi*X*self.k[:, np.newaxis])).sum(axis=0)
         return f
 
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         return y1 <= y2

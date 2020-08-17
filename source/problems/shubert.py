@@ -17,12 +17,12 @@ class Shubert(Problem):
         self.j = np.arange(1, 6)
 
 
-    def _function(self, X):
+    def _f(self, X):
         try:
             f = -np.multiply.reduce(cos(X[:, np.newaxis].dot(self.j+1) + self.j).dot(self.j.T))
         except:
             f = -np.multiply.reduce(cos(X.dot(self.j+1) + self.j).dot(self.j.T))
         return f
 
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         return y1 <= y2

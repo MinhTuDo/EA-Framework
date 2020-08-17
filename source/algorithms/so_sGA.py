@@ -26,17 +26,17 @@ class SGA(GA):
             self.n_offs = self.pop_size
 
     def _initialize(self):
-        self.f_pop = self.evaluate(self.pop)
+        self.fitness_pop = self.evaluate(self.pop)
         self.sub_tasks_each_gen()
 
     def _next(self):
-        offs = self.crossover._do(self)
-        f_offs = self.evaluate(offs)
+        self.offs = self.crossover._do(self)
+        self.fitness_offs = self.evaluate(offs)
 
         self.pop = np.vstack((self.pop, offs))
-        self.f_pop = np.hstack((self.f_pop, f_offs))
+        self.fitness_pop = np.hstack((self.fitness_pop, fitness_offs))
 
         selected_indices = self.selection._do(self)
 
         self.pop = self.pop[selected_indices]
-        self.f_pop = self.f_pop[selected_indices]
+        self.fitness_pop = self.fitness_pop[selected_indices]

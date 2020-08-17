@@ -27,22 +27,22 @@ class MBEA(GA):
 
     def _initialize(self):
         self.model = np.arange(self.problem.n_params)[:, np.newaxis].tolist()
-        self.f_pop = self.evaluate(self.pop)
+        self.fitness_pop = self.evaluate(self.pop)
         self.sub_tasks_each_gen()
     
     def _next(self):
         self.model = self.model_builder.build(self)
         
         offs = self.crossover._do(self)
-        f_offs = self.evaluate(offs)
+        fitness_offs = self.evaluate(offs)
 
         self.pop = np.vstack((self.pop, offs))
-        self.f_pop = np.hstack((self.f_pop, f_offs))
+        self.fitness_pop = np.hstack((self.fitness_pop, fitness_offs))
 
         selected_indices = self.selection._do(self)
 
         self.pop = self.pop[selected_indices]
-        self.f_pop = self.f_pop[selected_indices]
+        self.fitness_pop = self.fitness_pop[selected_indices]
 
     def _sub_tasks_each_gen(self):
         pass

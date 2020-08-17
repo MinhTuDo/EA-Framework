@@ -20,8 +20,8 @@ class GOM(Operation):
                 d = self.trial_pop[random_indices[i]]
                 x_dash = self.trial_pop[i].copy()
                 x_dash[group] = d[group]
-                y_dash = ga.problem._function(x_dash)
+                y_dash = ga.problem._f(x_dash)
                 ga.n_evals += 1
-                if ga.problem._f_comparer(y_dash, ga.f_pop[i]):
+                if ga.problem._sol_compare(y_dash, ga.fitness_pop[i]):
                     self.trial_pop[i] = x_dash
         return self.trial_pop

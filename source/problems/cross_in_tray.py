@@ -21,10 +21,10 @@ class CrossInTray(Problem):
         self._argopt = np.argmin
 
     ## Overide Methods ##
-    def _function(self, X):
+    def _f(self, X):
         f = -0.0001 * (abs(sin(X[0]) * sin(X[1]) * \
             exp(abs(100 - sqrt(X[0]**2 + X[1]**2)/pi))) + 1)**0.1
         return f
 
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         return y1 <= y2

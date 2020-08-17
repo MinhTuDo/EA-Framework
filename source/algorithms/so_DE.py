@@ -24,18 +24,18 @@ class DE(GA):
         self.cr = cr
         self.default_termination = MaxTimeTermination(5)
         self.mutant_vectors = None
-        self.pop_prev = None
-        self.f_pop_prev = None
+        self.offs = None
+        self.fitness_offs = None
 
 
     def _next(self):
         self.mutant_vectors = self.mutation._do(self)
 
-        self.pop_prev = self.crossover._do(self)
+        self.offs = self.crossover._do(self)
 
-        self.f_pop_prev = self.evaluate(self.pop_prev)
-        self.f_pop = self.evaluate(self.pop)
-        prev_best_idx = self.selection._do(self)
-        self.pop[prev_best_idx] = self.pop_prev[prev_best_idx]
+        self.fitness_offs = self.evaluate(self.offs)
+        self.fitness_pop = self.evaluate(self.pop)
+        selected_indices = self.selection._do(self)
+        self.pop[selected_indices] = self.offs[selected_indices]
 
         

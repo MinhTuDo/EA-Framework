@@ -6,7 +6,7 @@ class HistoricalBestSelection(Operation):
         super().__init__()
     
     def _do(self, ga):
-        comparer = ga.problem._f_comparer
-        results = comparer(ga.f_pop_prev, ga.f_pop)
+        comparer = ga.problem._sol_compare
+        results = comparer(ga.fitness_offs, ga.fitness_pop)
         better_idx = np.where(results)[0]
         return better_idx

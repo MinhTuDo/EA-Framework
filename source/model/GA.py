@@ -7,13 +7,13 @@ class GADisplay(Display):
         self.display_top = 5
         self.add_attributes('n_gens', ga.n_gens)
         self.add_attributes('n_evals', ga.n_evals)
-        self.add_attributes('F', ga.f_opt)
+        self.add_attributes('F', ga.fitness_opt)
 
 class GALogSaver(LogSaver):
     def _do(self, ga):
         self.add_attributes('n_gens', ga.n_gens)
         self.add_attributes('n_evals', ga.n_evals)
-        self.add_attributes('F', ga.f_opt)
+        self.add_attributes('F', ga.fitness_opt)
 
 class GA(Algorithm):
     def __init__(self,
@@ -32,10 +32,10 @@ class GA(Algorithm):
         self.mutation = mutation
         self.n_offs = n_offs
         self.pop = None
-        self.f_pop = None
+        self.fitness_pop = None
         self.n_gens = None
-        self.pop_prev = None
-        self.f_pop_prev = None
+        self.offs = None
+        self.fitness_offs = None
         self.default_display = GADisplay()
         self.default_log_saver = GALogSaver()
 
@@ -52,7 +52,6 @@ class GA(Algorithm):
         self.n_evals = 0
         self.pop = self.initialization._do(self)
         self._initialize()
-        pass
 
     def evaluate(self, X):
         f_X = self.problem.evaluate_all(X)
@@ -66,15 +65,15 @@ class GA(Algorithm):
 
     def sub_tasks_each_gen(self):
         self._sub_tasks_each_gen()
-        elite_idx = self.problem._argopt(self.f_pop)
+        elite_idx = self.problem._argopt(self.fitness_pop)
         self.opt = self.pop[elite_idx]
-        self.f_opt = self.f_pop[elite_idx]
+        self.fitness_opt = self.fitness_pop[elite_idx]
         if self.save_history:
             res = {'P': self.pop.copy(), 
-                   'F': self.f_pop.copy()}
+                   'F': self.fitness_pop.copy()}
             self.history.append(res)
         if self.verbose:
-            # print('## Gen {}: Best: {} - F: {}'.format(self.n_gens, self.opt, self.f_opt))
+            # print('## Gen {}: Best: {} - F: {}'.format(self.n_gens, self.opt, self.fitness_opt))
             self.display.do(self)
         if self.log:
             self.log_saver.do(self)

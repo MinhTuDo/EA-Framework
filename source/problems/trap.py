@@ -22,7 +22,7 @@ class TrapMax(Problem):
         self.trap_size = trap_size
     
     ## Overide Methods ##
-    def _function(self, X):
+    def _f(self, X):
         f = 0
         k = self.trap_size
         for i in range(0, self.n_params, k):
@@ -31,5 +31,5 @@ class TrapMax(Problem):
             
         return f
 
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         return y1 >= y2

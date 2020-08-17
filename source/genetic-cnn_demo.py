@@ -12,16 +12,16 @@ class MySaver(LogSaver):
     def _do(self, algorithm):
         self.add_attributes('n_gens', algorithm.n_gens) 
         self.add_attributes('n_evals', algorithm.n_evals) 
-        self.add_attributes('F', algorithm.f_opt)
+        self.add_attributes('F', algorithm.fitness_opt)
 
 class MyDisplay(Display):
     def _do(self, algorithm):
         self.display_top = -1
         self.add_attributes('n_gens', algorithm.n_gens)
         self.add_attributes('n_evals', algorithm.n_evals)
-        self.add_attributes('min', algorithm.f_pop.std(), width=5)
-        self.add_attributes('mean', algorithm.f_pop.mean(), width=5)
-        self.add_attributes('F', algorithm.f_opt)
+        self.add_attributes('min', algorithm.fitness_pop.std(), width=5)
+        self.add_attributes('mean', algorithm.fitness_pop.mean(), width=5)
+        self.add_attributes('F', algorithm.fitness_opt)
         
 
 display = MyDisplay()

@@ -17,10 +17,10 @@ class SixHumpCamelBack(Problem):
         
         
     ## Overide Methods ##
-    def _function(self, X):
+    def _f(self, X):
         f = -4 * ((4 - 2.1*X[0]**2 + (X[0]**4)/3) * X[0]**2 + \
                   X[0]*X[1] + (4*X[1]**2 - 4) * X[1]**2)
         return f
 
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         return y1 <= y2

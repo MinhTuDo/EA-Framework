@@ -85,12 +85,12 @@ class GeneticCNN(Problem):
         return model
 
     ## Overide Methods ##
-    def _function(self, X):
+    def _f(self, X):
         self.model = self.create_model(X)
         self._model_fit()
         return self._model_evaluate()
     
-    def _f_comparer(self, y1, y2):
+    def _sol_compare(self, y1, y2):
         return y1 >= y2
 
     ## Abstract Methods ##

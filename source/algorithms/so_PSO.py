@@ -24,19 +24,19 @@ class PSO(GA):
         self.intertia_weight = iw
         self.accel_const = ac
         self.global_best = None
-        self.pop_prev = None
-        self.f_pop_prev = None
+        self.offs = None
+        self.fitness_offs = None
 
     def star_topology_selection(self):
         argopt = self.problem._argopt
-        return argopt(self.f_pop_prev, axis=0)
+        return argopt(self.fitness_offs, axis=0)
 
     def ring_topology_selection(self):
         optimum = self.problem._optimum
         indices = []
         n = self.pop_size
-        f_p = self.f_pop_prev
-        f = self.f_pop
+        f_p = self.fitness_offs
+        f = self.fitness_pop
         for i in range(n-1):
             neighbors = (f[i-1], f[i], f_p[i+1])
             elite_idx = neighbors.index(optimum(neighbors))
@@ -54,7 +54,7 @@ class PSO(GA):
         r_p, r_g = rand(), rand()
         c1, c2 = self.accel_const, self.accel_const
         w = self.intertia_weight
-        p = self.pop_prev
+        p = self.offs
         P = self.pop
         g = self.global_best
         v = self.velocity
@@ -62,25 +62,25 @@ class PSO(GA):
         return new_v
 
     def _initialize(self):
-        self.pop_prev = self.pop.copy()
+        self.offs = self.pop.copy()
         (xl, xu) = self.problem.domain
         self.velocity = uniform(low=-abs(xu-xl),
                                 high=-abs(xu-xl),
                                 size=self.pop.shape).astype(self.problem.param_type)
 
     def _next(self):
-        self.f_pop = self.evaluate(self.pop)
-        self.f_pop_prev = self.evaluate(self.pop_prev)
+        self.fitness_pop = self.evaluate(self.pop)
+        self.fitness_offs = self.evaluate(self.offs)
 
-        prev_best_idx = set(self.selection._do(self))
+        selected_indices = set(self.selection._do(self))
         indices = set(np.arange(self.pop_size))
-        current_best_idx = list(indices - prev_best_idx)
+        current_best_idx = list(indices - selected_indices)
         if len(current_best_idx) != 0:
-            self.pop_prev[current_best_idx] = self.pop[current_best_idx]
-            self.f_pop_prev[current_best_idx] = self.f_pop[current_best_idx]
+            self.offs[current_best_idx] = self.pop[current_best_idx]
+            self.fitness_offs[current_best_idx] = self.fitness_pop[current_best_idx]
 
         global_best_idx = self.global_best_selection()
-        self.global_best = self.pop_prev[global_best_idx]
+        self.global_best = self.offs[global_best_idx]
 
         self.velocity = self.compute_velocity()
         self.pop = (self.pop + self.velocity).astype(self.problem.param_type)
