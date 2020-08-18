@@ -97,6 +97,20 @@ class Problem:
     def _comparer(self, x1, x2):
         pass
     def _sol_compare(self, y1, y2):
+        r1, r2 = s1[0], s2[0]
+        cd1, cd2 = s1[1], s2[1]
+        if r1 < r2:
+            return True
+        if r1 > r2:
+            return False
+        if r1 == r2:
+            if cd1 > cd2:
+                return True
+            if cd1 < cd2:
+                return False
+        return True
+    
+    def _is_dominated(self, y1, y2):
         pass
 
     ## Private Methods ##

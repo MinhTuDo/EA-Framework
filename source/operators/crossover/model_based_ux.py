@@ -19,7 +19,7 @@ class MBUX(Operation):
             idx1, idx2 = indices[i], indices[i+1]
             offs1, offs2 = ga.pop[idx1].copy(), ga.pop[idx2].copy()
 
-            points = np.random.randn(n_groups,)
+            points = np.random.uniform(low=0, high=1, size=(n_params,))
             for idx, group in enumerate(ga.model):
                 if points[idx] < 0.5:
                     offs1[group], offs2[group] = offs2[group].copy(), offs1[group]
