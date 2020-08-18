@@ -9,7 +9,7 @@ class SchafferN1(Problem):
                          n_obj=2,
                          n_constraints=0,
                          domain=(-A, A),
-                         param_type=np.int,
+                         param_type=np.double,
                          multi_dims=False)
         # self._optimum = min
         # self._argopt = np.argmin

@@ -31,10 +31,10 @@ class SGA(GA):
 
     def _next(self):
         self.offs = self.crossover._do(self)
-        self.fitness_offs = self.evaluate(offs)
+        self.fitness_offs = self.evaluate(self.offs)
 
-        self.pop = np.vstack((self.pop, offs))
-        self.fitness_pop = np.hstack((self.fitness_pop, fitness_offs))
+        self.pop = np.vstack((self.pop, self.offs))
+        self.fitness_pop = np.vstack((self.fitness_pop, self.fitness_offs))
 
         selected_indices = self.selection._do(self)
 

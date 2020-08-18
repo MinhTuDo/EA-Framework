@@ -12,7 +12,7 @@ class TournamentSelection(Operation):
         selection_size = ga.n_offs
         selected_indices = []
         optimum = ga.problem._optimum
-        fitness = ga.fitness_pop[:, np.newaxis] if len(ga.fitness_pop.shape) == 1 else ga.fitness_pop
+        fitness = ga.fitness_pop
 
 
         while len(selected_indices) < selection_size:

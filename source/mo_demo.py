@@ -27,14 +27,14 @@ class MyDisplay(Display):
 display = MyDisplay()
 log_saver = MySaver()
 factory = GAFactory()
-problem = factory.get_problem('SchafferN1')(A=100)
+problem = factory.get_problem('SchafferN1')(A=4)
 # problem.plot(plot_3D=True, contour_density=20, colorbar=True)
 
-termination = factory.get_termination('MaxGenTermination')(50)
+termination = factory.get_termination('MaxGenTermination')(5)
 
 crossover = factory.get_crossover('GOM')()
 
-algorithm = factory.get_algorithm('NSGAII')(pop_size=20, elitist_archive=2)
+algorithm = factory.get_algorithm('NSGAII')(pop_size=300, elitist_archive=4)
 
 result = optimize(problem, 
                   algorithm, 
@@ -47,6 +47,29 @@ result = optimize(problem,
                   log_saver=log_saver)
 print(result.model)
 print(result.exec_time)
+
+gen1 = result.history[0]['F']
+gen5 = result.history[1]['F']
+gen10 = result.history[2]['F']
+
+import matplotlib.pyplot as plt
+
+f1 = result.problem.objectives[0]
+f2 = result.problem.objectives[1]
+
+
+# plt.plot(gen10[:, 0], gen10[:, 1], 'bo', label='gen 1')
+plt.plot(gen1[:, 0], gen1[:, 1], 'g.', label='gen 0')
+plt.plot(gen5[:, 0], gen5[:, 1], 'r.', label='gen 1')
+plt.plot(gen10[:, 0], gen10[:, 1], 'b.', label='gen 2')
+plt.xlabel('f1')
+plt.ylabel('f2')
+plt.xlim((0, 4))
+plt.ylim((0, 4))
+plt.legend(loc='upper right')
+plt.grid(linestyle='--')
+plt.title('Schaffer function N1.')
+plt.show()
 
 # gif_saver = GifSaver(problem, 'gif', 'Rastrigin-DE', contour_density=20)
 # gif_saver.make(result, display_optimum=True, loop=False)

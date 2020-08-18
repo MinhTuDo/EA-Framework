@@ -78,11 +78,12 @@ class NSGAII(GA):
         return CD
 
     def _initialize(self):
-        self.F_pop = self.evaluate(self.pop).reshape((self.pop_size, self.problem.n_obj))
+        self.F_pop = self.evaluate(self.pop)
         self.ranks, self.ranks_F = self.__non_dominated_rank()
         self.rank, self.pop, self.F_pop = self.__non_dominated_sort()
         self.CD = np.hstack(list(map(self.__calc_crowding_distances, self.ranks.values())))
         self.fitness_pop = np.vstack((self.rank, self.CD)).T
+        self.sub_tasks_each_gen()
 
     def _next(self):
         selected_indices = self.selection._do(self)
@@ -93,7 +94,7 @@ class NSGAII(GA):
         # self.fitness_pop = self.fitness_pop[selected_indices]
 
         self.offs = self.crossover._do(self)
-        self.F_offs = self.evaluate(self.offs).reshape((self.pop_size, self.problem.n_obj))
+        self.F_offs = self.evaluate(self.offs)
 
         self.pop = np.vstack((self.pop, self.offs))
         self.F_pop = np.vstack((self.F_pop, self.F_offs))

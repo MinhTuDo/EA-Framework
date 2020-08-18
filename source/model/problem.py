@@ -36,7 +36,7 @@ class Problem:
         self.step = None
 
     def evaluate_all(self, pop):
-        fitness_pop = np.array(list(map(self._f, pop)))
+        fitness_pop = np.reshape(list(map(self._f, pop)), (pop.shape[0], -1))
         return fitness_pop
 
     def plot(self, 

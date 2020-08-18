@@ -37,7 +37,7 @@ class MBEA(GA):
         fitness_offs = self.evaluate(offs)
 
         self.pop = np.vstack((self.pop, offs))
-        self.fitness_pop = np.hstack((self.fitness_pop, fitness_offs))
+        self.fitness_pop = np.vstack((self.fitness_pop, fitness_offs))
 
         selected_indices = self.selection._do(self)
 
