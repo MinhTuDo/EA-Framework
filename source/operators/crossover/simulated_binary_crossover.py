@@ -18,7 +18,7 @@ class SBX(Operation):
             idx1, idx2 = indices[i], indices[i+1]
             offs1, offs2 = ga.pop[idx1].copy(), ga.pop[idx2].copy()
 
-            points = np.random.uniform(low=0, high=1, size=(n_params,))
+            points = np.random.random((n_params,))
             beta = np.ones((points.shape))
             beta[points <= 0.5] *= 2 * points[points <= 0.5]
             beta[points > 0.5] *= 1 / (2 * (1 - points[points > 0.5]))
@@ -32,7 +32,10 @@ class SBX(Operation):
             offs1[offs1 > xu] = xu
             offs2[offs2 < xl] = xl
             offs2[offs2 > xu] = xu
-
+            # offs1[offs1 < xl] = np.random.rand()
+            # offs1[offs1 > xu] = np.random.rand()
+            # offs2[offs2 < xl] = np.random.rand()
+            # offs2[offs2 > xu] = np.random.rand()
             offs.append(offs1)
             offs.append(offs2)  
         
