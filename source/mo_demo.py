@@ -30,7 +30,7 @@ factory = GAFactory()
 problem = factory.get_problem('ZDT1')(n_params=30)
 # problem.plot(plot_3D=True, contour_density=20, colorbar=True)
 
-termination = factory.get_termination('MaxGenTermination')(500)
+termination = factory.get_termination('MaxGenTermination')(200)
 
 crossover = factory.get_crossover('GOM')()
 
@@ -51,7 +51,7 @@ print(result.exec_time)
 gen20 = result.history[19]['F']
 gen50 = result.history[49]['F']
 gen100 = result.history[99]['F']
-gen200 = result.history[499]['F']
+gen200 = result.history[199]['F']
 
 import matplotlib.pyplot as plt
 
@@ -63,14 +63,14 @@ import matplotlib.pyplot as plt
 plt.plot(gen20[:, 0], gen20[:, 1], 'g.', label='gen 20')
 plt.plot(gen50[:, 0], gen50[:, 1], 'r.', label='gen 50')
 plt.plot(gen100[:, 0], gen100[:, 1], 'c.', label='gen 100')
-plt.plot(gen200[:, 0], gen200[:, 1], 'b.', label='gen 500')
+plt.plot(gen200[:, 0], gen200[:, 1], 'b.', label='gen 200')
 plt.xlabel('f1')
 plt.ylabel('f2')
 # plt.xlim((0, 1))
 # plt.ylim((0, 1))
 plt.legend(loc='upper right')
 plt.grid(linestyle='--')
-plt.title('zdt1')
+plt.title('zdt1 (Bounded SBX)')
 plt.show()
 
 # gif_saver = GifSaver(problem, 'gif', 'Rastrigin-DE', contour_density=20)

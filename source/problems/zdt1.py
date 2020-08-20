@@ -35,16 +35,8 @@ class ZDT1(Problem):
     def _sol_compare(self, s1, s2):
         r1, r2 = s1[0], s2[0]
         cd1, cd2 = s1[1], s2[1]
-        if r1 < r2:
-            return True
-        if r1 > r2:
-            return False
-        if r1 == r2:
-            if cd1 > cd2:
-                return True
-            if cd1 < cd2:
-                return False
-        return True
+        return (r1 < r2) or \
+               (r1 == r2 and cd1 > cd2)
 
     def _is_dominated(self, y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
