@@ -53,8 +53,7 @@ class SBX(Operation):
     def __calc_beta_q(self, rand, beta):
         alpha = 2 - beta**-(self.eta+1)
         beta_q = np.empty(beta.shape)
-        mask = np.where(rand <= 1/alpha)
-        mask_not = np.where(rand > 1/alpha)
+        mask, mask_not = np.where(rand <= 1/alpha), np.where(rand > 1/alpha)
         beta_q[mask] = (rand[mask] * alpha[mask]) ** (1 / (self.eta + 1))
         beta_q[mask_not] = (1 / (2 - rand[mask_not] * alpha[mask_not])) ** (1 / (self.eta + 1))
         return beta_q
