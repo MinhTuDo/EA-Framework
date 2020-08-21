@@ -56,24 +56,17 @@ class NSGAII(GA):
         return ranks, ranks_F
 
     def __non_dominated_sort(self):
-        # rank = np.zeros((self.ranks[0].shape[0],))
-        # # pop = self.ranks[0]
-        # # F_pop = self.ranks_F[0]
-        # n_ranks = len(self.ranks)
-        # for i in range(1, n_ranks):
-        #     # pop = np.vstack((pop, self.ranks[i]))
-        #     # F_pop = np.vstack((F_pop, self.ranks_F[i]))
-        #     rank = np.concatenate((rank, np.ones(self.ranks[i].shape[0],)*i))
         rank = np.hstack([np.ones(self.ranks[i].shape[0]) * i for i in range(len(self.ranks))])
         pop = np.vstack(list(self.ranks.values()))
         F_pop = np.vstack(list(self.ranks_F.values()))
         return rank, pop, F_pop
     
     def __calc_crowding_distances(self, P_r):
-        CD = np.zeros((P_r.shape[0],))
-        for obj in self.problem.objectives:
-            f = np.array(list(map(obj, P_r))).flatten()
-            Q = f.argsort()
+        P, F = P_r
+        CD = np.zeros((P.shape[0],))
+        for f_i in range(F.shape[1]):
+            f = F[:, f_i]
+            Q = f.argsort(kind='mergesort')
             CD[Q[0]] = CD[Q[-1]] = np.inf
             for i in range(1, CD.shape[0]-1):
                 CD[Q[i]] += f[Q[i + 1]] - f[Q[i - 1]]
@@ -83,7 +76,8 @@ class NSGAII(GA):
         self.F_pop = self.evaluate(self.pop)
         self.ranks, self.ranks_F = self.__non_dominated_rank()
         self.rank, self.pop, self.F_pop = self.__non_dominated_sort()
-        self.CD = np.hstack(list(map(self.__calc_crowding_distances, self.ranks.values())))
+        self.CD = np.hstack(list(map(self.__calc_crowding_distances, zip(self.ranks.values(), 
+                                                                         self.ranks_F.values()))))
         self.fitness_pop = np.vstack((self.rank, self.CD)).T
         self.sub_tasks_each_gen()
 
@@ -101,27 +95,26 @@ class NSGAII(GA):
         self.ranks, self.ranks_F = self.__non_dominated_rank()
         
         n = 0
+        ranks, ranks_F = {}, {}
         for i in range(len(self.ranks)):
             if n + len(self.ranks[i]) >= self.pop_size:
                 n_takes = self.pop_size - n
-                # rank.append(np.ones((n_takes,)) * i)
-                CD_i = self.__calc_crowding_distances(self.ranks[i])
-                sorted_CD_i = CD_i.argsort()[::-1]
-                self.ranks[i] = self.ranks[i][sorted_CD_i][:n_takes]
-                self.ranks_F[i] = self.ranks_F[i][sorted_CD_i][:n_takes]
-                n_pop = len(self.ranks_F) - i
-                for j in range(len(self.ranks)-1, i, -1):
-                    self.ranks.pop(j)
-                    self.ranks_F.pop(j)
+                CD_i = self.__calc_crowding_distances((self.ranks[i], self.ranks_F[i]))
+                sorted_CD_i = CD_i.argsort(kind='mergesort')[::-1]
+                ranks[i] = self.ranks[i][sorted_CD_i][:n_takes]
+                ranks_F[i] = self.ranks_F[i][sorted_CD_i][:n_takes]
+
                 break
             n += self.ranks[i].shape[0]
-            
+            ranks[i] = self.ranks[i]
+            ranks_F[i] = self.ranks_F[i]
+
+        self.ranks, self.ranks_F = ranks, ranks_F    
         
         self.rank, self.pop, self.F_pop = self.__non_dominated_sort()
-        self.CD = np.hstack(list(map(self.__calc_crowding_distances, self.ranks.values())))
+        self.CD = np.hstack(list(map(self.__calc_crowding_distances, zip(self.ranks.values(), 
+                                                                         self.ranks_F.values()))))
         self.fitness_pop = np.vstack((self.rank, self.CD)).T
-        # self.pop = np.vstack(pop)
-        # self.F_pop = np.vstack(F_pop)
 
     def _save_history(self):
         res = {'P': self.pop.copy(), 

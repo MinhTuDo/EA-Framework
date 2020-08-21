@@ -11,8 +11,7 @@ class SBX(Operation):
     def _do(self, ga):
         (n_inds, n_params) = ga.pop.shape
         (xl, xu) = ga.problem.domain
-        XL = np.ones((n_params,)) * xl
-        XU = np.ones((n_params,)) * xu
+        
         indices = np.arange(n_inds)
 
         offs = []
@@ -22,8 +21,7 @@ class SBX(Operation):
             idx1, idx2 = indices[i], indices[i+1]
             offs1, offs2 = ga.pop[idx1].copy(), ga.pop[idx2].copy()
 
-
-            for j, xl, xu in zip(range(n_params), XL, XU):
+            for j in range(n_params):
                 if random.random() <= 0.5:
                     if abs(offs1[j] - offs2[j]) > 1e-14:
                         x1 = min(offs1[j], offs2[j])

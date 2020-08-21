@@ -33,7 +33,7 @@ termination = factory.get_termination('Convergence')()
 
 crossover = factory.get_crossover('GOM')()
 
-algorithm = factory.get_algorithm('SGA')(pop_size=20, elitist_archive=2)
+algorithm = factory.get_algorithm('GOMEA')(pop_size=40, elitist_archive=2)
 
 result = optimize(problem, 
                   algorithm, 
