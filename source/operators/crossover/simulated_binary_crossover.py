@@ -1,12 +1,13 @@
 from model.operation import Operation
 import numpy as np
-import random
+from numpy.random import random
+from numpy import minimum, maximum, logical_and
+#import random
 
 class SBX(Operation):
-    def __init__(self, eta=15, prob=0.9):
+    def __init__(self, eta=15):
         super().__init__()
         self.eta = eta
-        self.prob = prob
 
     def _do(self, ga):
         (n_inds, n_params) = ga.pop.shape
@@ -21,42 +22,39 @@ class SBX(Operation):
             idx1, idx2 = indices[i], indices[i+1]
             offs1, offs2 = ga.pop[idx1].copy(), ga.pop[idx2].copy()
 
-            for j in range(n_params):
-                if random.random() <= 0.5:
-                    if abs(offs1[j] - offs2[j]) > 1e-14:
-                        x1 = min(offs1[j], offs2[j])
-                        x2 = max(offs1[j], offs2[j])
-                        rand = random.random()
+            R = random((n_params,))
+            diffs = np.abs(offs1 - offs2)
+            crossover_points = np.where(logical_and(R <= 0.5, diffs > 1e-14))
+            x1 = minimum(offs1[crossover_points], offs2[crossover_points])
+            x2 = maximum(offs1[crossover_points], offs2[crossover_points])
+            rand = random((crossover_points[0].shape[0],))
 
-                        beta = 1 + (2 * (x1 - xl) / (x2 - x1))
-                        alpha = 2 - beta ** -(self.eta + 1)
-                        if rand <= 1/alpha:
-                            beta_q = (rand * alpha) ** (1 / (self.eta + 1))
-                        else:
-                            beta_q = (1 / (2 - rand * alpha)) ** (1 / (self.eta + 1))
+            beta = 1 + (2 * (x1-xl)/x2-xl)
+            beta_q = self.__calc_beta_q(rand, beta)
+            c1 = 0.5 * (x1+x2 - beta_q*(x2-x1))
 
-                        c1 = 0.5 * (x1 + x2 - beta_q * (x2 - x1))
+            beta = 1 + (2 * (xu-x2)/x2-x1)
+            beta_q = self.__calc_beta_q(rand, beta)
+            c2 = 0.5 * (x1+x2 + beta_q*(x2-x1))
 
-                        beta = 1 + (2 * (xu - x2) / (x2 - x1))
-                        alpha = 2 - beta ** -(self.eta + 1)
-                        if rand <= 1/alpha:
-                            beta_q = (rand * alpha) ** (1 / (self.eta + 1))
-                        else:
-                            beta_q = (1 / (2 - rand * alpha)) ** (1 / (self.eta + 1))
-                        
-                        c2 = 0.5 * (x1 + x2 + beta_q * (x2 - x1))
+            c1 = minimum(maximum(c1, xl), xu)
+            c2 = minimum(maximum(c2, xl), xu)
 
-                        c1 = min(max(c1, xl), xu)
-                        c2 = min(max(c2, xl), xu)
-
-                        if random.random() <= 0.5:
-                            offs1[j] = c2
-                            offs2[j] = c1
-                        else:
-                            offs1[j] = c1
-                            offs2[j] = c2
+            r = random(rand.shape)
+            c1[r <= 0.5], c2[r <= 0.5] = c2[r <= 0.5], c1[r <= 0.5]
+            offs1[crossover_points] = c1
+            offs2[crossover_points] = c2
 
             offs.append(offs1)
             offs.append(offs2)  
         
         return np.reshape(offs, ga.pop.shape)
+
+    def __calc_beta_q(self, rand, beta):
+        alpha = 2 - beta**-(self.eta+1)
+        beta_q = np.empty(beta.shape)
+        mask = np.where(rand <= 1/alpha)
+        mask_not = np.where(rand > 1/alpha)
+        beta_q[mask] = (rand[mask] * alpha[mask]) ** (1 / (self.eta + 1))
+        beta_q[mask_not] = (1 / (2 - rand[mask_not] * alpha[mask_not])) ** (1 / (self.eta + 1))
+        return beta_q
