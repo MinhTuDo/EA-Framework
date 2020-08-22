@@ -2,8 +2,9 @@ from model.operation import Operation
 import numpy as np
 
 class RouletteSelection(Operation):
-    def __init__(self):
+    def __init__(self, selection_size):
         super().__init__()
+        self.selection_size = selection_size
 
     def _do(self, ga):
         selected_indices = []

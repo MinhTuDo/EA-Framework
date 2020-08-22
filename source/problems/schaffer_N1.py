@@ -44,8 +44,8 @@ class SchafferN1(Problem):
         return True
 
     def _is_dominated(self, y1, y2):
-        return y1[0] < y2[0] and \
-               y1[1] < y2[1]
+        return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
+               (y1[0] < y2[0] or y1[1] < y2[1])
 
     def _get_best(self, Y):
         opt = Y[0]
