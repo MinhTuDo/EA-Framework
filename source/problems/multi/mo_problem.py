@@ -1,4 +1,4 @@
-from model import Problem
+from model.problem import Problem
 
 class MultiObjectiveProblem(Problem):
     def __init__(self, 
@@ -13,8 +13,8 @@ class MultiObjectiveProblem(Problem):
                          domain=domain,
                          param_type=param_type)
         
-        self.argopt = self.__argopt
-        self.optimum = self.__optimum
+        self._argopt = self.arg_optimum
+        self._optimum = self.optimum
 
     ## Protected Methods ##
     def _is_dominated(self, y1, y2):
@@ -28,13 +28,13 @@ class MultiObjectiveProblem(Problem):
                (r1 == r2 and cd1 > cd2)
 
     ## Private Methods ##
-    def __argopt(self, Y):
+    def optimum(self, Y):
         opt = Y[0]
         for y in Y:
             opt = opt if self._sol_compare(opt, y) else y
         return opt
 
-    def __optimum(self, Y):
+    def arg_optimum(self, Y):
         argopt = 0
         for i, y_i in enumerate(Y):
             argopt = argopt if self._sol_compare(Y[argopt], y_i) else i

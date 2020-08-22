@@ -4,8 +4,6 @@ from .so_problem import SingleObjectiveProblem
 class OneMax(SingleObjectiveProblem):
     def __init__(self, n_params=2):
         super().__init__(n_params,
-
-                         n_obj=1, 
                          n_constraints=0, 
                          domain=(0, 1), 
                          param_type=np.int, 
@@ -26,8 +24,6 @@ class OneMax(SingleObjectiveProblem):
 class ZeroMax(SingleObjectiveProblem):
     def __init__(self, n_params=2):
         super().__init__(n_params,
-
-                         n_obj=1, 
                          n_constraints=0, 
                          domain=(0, 1), 
                          param_type=np.int, 

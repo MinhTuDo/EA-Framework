@@ -1,8 +1,8 @@
-from model import Problem
+from .mo_problem import MultiObjectiveProblem
 import numpy as np
 from problems.single import OneMax, ZeroMax
 
-class OneMaxZeroMax(Problem):
+class OneMaxZeroMax(MultiObjectiveProblem):
     def __init__(self, n_params=2):
         super().__init__(n_params,
                          n_obj=2,

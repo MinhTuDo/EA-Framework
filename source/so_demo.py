@@ -1,5 +1,4 @@
 import algorithms.single as so
-import algorithms.multi_objective as mo
 
 from terminations import *
 
@@ -14,7 +13,6 @@ import operators.selection as sel
 import operators.model_builder as mb
 
 import problems.single as sp
-import problems.multi as mp
 
 class MySaver(LogSaver):
     def _do(self, algorithm):
@@ -35,16 +33,17 @@ class MyDisplay(Display):
 display = MyDisplay()
 log_saver = MySaver()
 
-problem = sp.TrapMax(n_params=20, trap_size=5)
+problem = sp.Himmelblau()
+problem._plot(plot_3D=False)
 termination = Convergence()
-crossover = cx.GOM()
-algorithm = so.MBEA(pop_size=50, elitist_archive=2)
+crossover = cx.UX()
+algorithm = so.SGA(pop_size=20, elitist_archive=2, crossover=crossover)
 
 result = optimize(problem,
                   algorithm,
                   termination=termination,
                   verbose=True,
-                  log=False,
+                  log=True,
                   save_history=True,
                   seed=2,
                   display=display,

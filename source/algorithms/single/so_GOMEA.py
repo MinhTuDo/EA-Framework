@@ -1,10 +1,10 @@
 from algorithms.GA import GA
-from operators.initialization import RandomInitialization
-from operators.selection import TournamentSelection
+from operators.initialization.random_initialization import RandomInitialization
+from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
-from terminations import Convergence
-from operators.crossover import GOM
-from operators.model_builder import LinkageTreeModel
+from terminations.convergence import Convergence
+from operators.crossover.gene_pool_optimal_mixing import GOM
+from operators.model_builder.linkage_tree_model import LinkageTreeModel
 
 class GOMEA(GA):
     def __init__(self,

@@ -1,9 +1,9 @@
 from algorithms.GA import GA
-from operators.initialization import RandomInitialization
-from operators.crossover import UX
-from operators.selection import TournamentSelection
+from operators.initialization.random_initialization import RandomInitialization
+from operators.crossover.uniform_crossover import UX
+from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
-from terminations import Convergence
+from terminations.convergence import Convergence
 
 
 class SGA(GA):

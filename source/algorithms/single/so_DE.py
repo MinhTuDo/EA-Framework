@@ -1,9 +1,9 @@
 from algorithms.GA import GA
-from terminations import MaxTimeTermination
-from operators.mutation import MutantVector
-from operators.crossover import DECrossover
-from operators.initialization import RandomInitialization
-from operators.selection import HistoricalBestSelection
+from terminations.max_time import MaxTimeTermination
+from operators.mutation.mutant_vector import MutantVector
+from operators.crossover.de_crossover import DECrossover
+from operators.initialization.random_initialization import RandomInitialization
+from operators.selection.historical_best_selection import HistoricalBestSelection
 import numpy as np
 from numpy.random import uniform, rand
 

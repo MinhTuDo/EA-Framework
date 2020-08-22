@@ -4,7 +4,6 @@ import numpy as np
 class Beale(SingleObjectiveProblem):
     def __init__(self):
         super().__init__(n_params=2,
-                         n_obj=-1,
                          n_constraints=0,
                          domain=(-4.5, 4.5),
                          param_type=np.double,

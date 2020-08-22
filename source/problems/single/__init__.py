@@ -1,7 +1,7 @@
 from .beale import *
 from .booth import *
 from .cross_in_tray import *
-from .genetic_cnn import *
+# from .genetic_cnn import *
 from .happy_cat import *
 from .himmelblau import *
 from .max import *

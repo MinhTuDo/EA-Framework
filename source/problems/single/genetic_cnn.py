@@ -26,7 +26,6 @@ class GeneticCNN(SingleObjectiveProblem):
                  **kwargs):
         super().__init__(n_params=sum(list(map(self.__code_length_per_stage, stages))),
                          param_type = np.int,
-                         n_obj=-1,
                          n_constraints=0,
                          domain=(0, 1),
                          multi_dims=True)

@@ -8,9 +8,6 @@ class ZDT1(MultiObjectiveProblem):
                          n_constraints=0,
                          domain=(0, 1),
                          param_type=np.double)
-
-        self.argopt = self.__argopt
-        self.optimum = self.__optimum
     
     def _f(self, X):
         f1 = self.__f1(X)

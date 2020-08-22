@@ -1,5 +1,5 @@
 import time
-from model import Termination
+from model.termination import Termination
 class MaxTimeTermination(Termination):
     def __init__(self, max_time):
         super().__init__()

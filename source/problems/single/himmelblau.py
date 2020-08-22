@@ -4,8 +4,6 @@ import numpy as np
 class Himmelblau(SingleObjectiveProblem):
     def __init__(self):
         super().__init__(n_params=2,
-                         
-                         n_obj=-1,
                          n_constraints=0,
                          domain=(-5, 5),
                          param_type=np.double,

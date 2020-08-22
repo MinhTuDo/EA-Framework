@@ -1,8 +1,8 @@
 from algorithms.GA import GA
-from operators.initialization import RandomInitialization
-from operators.mutation import PolynomialMutation
-from operators.crossover import SBX
-from operators.selection import TournamentSelection
+from operators.initialization.random_initialization import RandomInitialization
+from operators.mutation.polynomial_mutation import PolynomialMutation
+from operators.crossover.simulated_binary_crossover import SBX
+from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
 from terminations import Convergence
 

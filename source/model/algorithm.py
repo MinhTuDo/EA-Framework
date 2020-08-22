@@ -74,9 +74,9 @@ class Algorithm:
             self.log_dir = log_dir
 
         if log:
-            self.log_dir = log_dir if log_dir is not None else self.log_dir
-            if not os.path.exists(self.log_dir):
-                os.makedirs(self.log_dir)
+            log_saver.log_dir = log_dir if log_dir is not None else log_saver.log_dir
+            if not os.path.exists(log_saver.log_dir):
+                os.makedirs(log_saver.log_dir)
         # self.n_gens = 1
         self.history = []
         

@@ -1,10 +1,10 @@
 from algorithms.GA import GA
-from operators.initialization import RandomInitialization
-from operators.selection import TournamentSelection
+from operators.initialization.random_initialization import RandomInitialization
+from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
-from terminations import Convergence
-from operators.crossover import MBUX
-from operators.model_builder import MarginalProductModel
+from terminations.convergence import Convergence
+from operators.crossover.model_based_ux import MBUX
+from operators.model_builder.marginal_product_model import MarginalProductModel
 class MBEA(GA):
     def __init__(self,
                  pop_size=50,

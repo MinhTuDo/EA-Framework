@@ -5,8 +5,6 @@ from numpy import cos, pi
 class Rastrigin(SingleObjectiveProblem):
     def __init__(self, n_params=2):
         super().__init__(n_params,
-        
-                         n_obj=-1,
                          n_constraints=0,
                          domain=(-5.12, 5.12),
                          param_type=np.double,

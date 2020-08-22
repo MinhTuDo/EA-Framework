@@ -1,4 +1,6 @@
-from model import Algorithm, Display, LogSaver
+from model.algorithm import Algorithm
+from model.display import Display
+from model.log_saver import LogSaver
 
 class GADisplay(Display):
     def _do(self, ga):

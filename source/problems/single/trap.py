@@ -6,7 +6,6 @@ class TrapMax(SingleObjectiveProblem):
                  n_params,
                  trap_size):
         super().__init__(n_params,
-
                          n_constraints=0,
                          domain=(0, 1), 
                          param_type=np.int, 
