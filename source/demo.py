@@ -1,8 +1,7 @@
-from model.display import Display
+from model import Display, GifSaver, LogSaver
 from factory import GAFactory
 from optimize import optimize
-from utils.gif_saver import GifSaver
-from model.log_saver import LogSaver
+from utils import GifSaver
 
 import numpy as np
 
@@ -27,7 +26,7 @@ display = MyDisplay()
 log_saver = MySaver()
 factory = GAFactory()
 problem = factory.get_problem('TrapMax')(n_params=20, trap_size=5)
-# problem.plot(plot_3D=True, contour_density=20, colorbar=True)
+# problem._plot(_plot_3D=True, contour_density=20, colorbar=True)
 
 termination = factory.get_termination('Convergence')()
 

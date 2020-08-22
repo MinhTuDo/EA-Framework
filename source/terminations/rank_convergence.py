@@ -1,5 +1,5 @@
 from numpy import unique
-from model.termination import Termination
+from model import Termination
 class RankConvergence(Termination):
     def __init__(self):
         super().__init__()

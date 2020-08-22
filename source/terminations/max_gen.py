@@ -1,4 +1,4 @@
-from model.termination import Termination
+from model import Termination
 class MaxGenTermination(Termination):
     def __init__(self, max_gen):
         super().__init__()

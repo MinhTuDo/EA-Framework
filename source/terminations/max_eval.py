@@ -1,4 +1,4 @@
-from model.termination import Termination
+from model import Termination
 class MaxEvalTermination(Termination):
     def __init__(self, max_eval):
         super().__init__()

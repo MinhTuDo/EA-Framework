@@ -1,9 +1,9 @@
 from abc import abstractmethod
-from model.result import Result
+from .result import Result
 import time
 import numpy as np
-from model.display import Display
-from model.log_saver import LogSaver
+from .display import Display
+from .log_saver import LogSaver
 import os
 import random
 
