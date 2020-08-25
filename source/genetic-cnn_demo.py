@@ -1,7 +1,7 @@
 from model import Display, LogSaver
 from factory import GAFactory
 from optimize import optimize
-from utils import GifSaver
+from utils import SOGifMaker
 from keras.utils import to_categorical
 from keras.datasets import cifar10
 

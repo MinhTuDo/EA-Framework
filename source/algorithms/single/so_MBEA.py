@@ -5,6 +5,7 @@ import numpy as np
 from terminations.convergence import Convergence
 from operators.crossover.model_based_ux import MBUX
 from operators.model_builder.marginal_product_model import MarginalProductModel
+
 class MBEA(GA):
     def __init__(self,
                  pop_size=50,
@@ -12,10 +13,16 @@ class MBEA(GA):
                  initialization=RandomInitialization(),
                  selection=None,
                  crossover=MBUX(),
+                 mutation=None,
                  elitist_archive=2,
                  **kwargs):
-        super().__init__(pop_size, initialization, selection,
-                         crossover, n_offs, **kwargs)
+        super().__init__(pop_size, 
+                         initialization, 
+                         selection,
+                         crossover, 
+                         n_offs,
+                         mutation=mutation, 
+                         **kwargs)
         self.model_builder = MarginalProductModel()
         self.default_termination = Convergence()
         self.elitist_archive = elitist_archive

@@ -12,8 +12,8 @@ class GOMEA(GA):
                  n_offs=None,
                  initialization=RandomInitialization(),
                  selection=None,
-                 crossover=GOM(),
                  elitist_archive=2,
+                 mutation=None,
                  **kwargs):
         super().__init__(pop_size, initialization, selection,
                          crossover, n_offs, **kwargs)

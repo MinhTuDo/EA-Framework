@@ -5,9 +5,10 @@ from numpy import minimum, maximum, logical_and
 #import random
 
 class SBX(Operation):
-    def __init__(self, eta=15):
+    def __init__(self, eta=15, prob=0.5):
         super().__init__()
         self.eta = eta
+        self.prob = prob
 
     def _do(self, ga):
         (n_inds, n_params) = ga.pop.shape
@@ -24,7 +25,7 @@ class SBX(Operation):
 
             R = random((n_params,))
             diffs = np.abs(offs1 - offs2)
-            crossover_points = np.where(logical_and(R <= 0.5, diffs > 1e-14))
+            crossover_points = np.where(logical_and(R <= self.prob, diffs > 1e-14))
             x1 = minimum(offs1[crossover_points], offs2[crossover_points])
             x2 = maximum(offs1[crossover_points], offs2[crossover_points])
             rand = random((crossover_points[0].shape[0],))

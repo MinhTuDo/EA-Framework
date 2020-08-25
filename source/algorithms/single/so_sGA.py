@@ -12,12 +12,19 @@ class SGA(GA):
                  n_offs=None,
                  initialization=RandomInitialization(),
                  selection=None,
-                 crossover=UX(),
+                 crossover=None,
                  elitist_archive=2,
                  mutation=None,
                  **kwargs):
-        super().__init__(pop_size, initialization, selection,
-                         crossover, mutation, n_offs, **kwargs)
+
+        super().__init__(pop_size,
+                         initialization, 
+                         selection,
+                         crossover, 
+                         mutation, 
+                         n_offs, 
+                         **kwargs)
+                         
         self.default_termination = Convergence()
         self.elitist_archive = elitist_archive
         if selection is None:

@@ -6,6 +6,8 @@ from model import LogSaver, Display
 
 from optimize import optimize
 
+from utils import SOGifMaker
+
 import operators.crossover as cx
 import operators.initialization as init
 import operators.mutation as mut
@@ -34,16 +36,18 @@ display = MyDisplay()
 log_saver = MySaver()
 
 problem = sp.Himmelblau()
-problem._plot(plot_3D=False)
+# problem._plot(plot_3D=True)
 termination = Convergence()
 crossover = cx.UX()
-algorithm = so.SGA(pop_size=20, elitist_archive=2, crossover=crossover)
+algorithm = so.DE(pop_size=20, 
+                  elitist_archive=2, 
+                  crossover=crossover)
 
 result = optimize(problem,
                   algorithm,
                   termination=termination,
                   verbose=True,
-                  log=True,
+                  log=False,
                   save_history=True,
                   seed=2,
                   display=display,
@@ -51,5 +55,13 @@ result = optimize(problem,
 
 print(result.model)
 print(result.exec_time)
+
+problem._plot(result, plot_3D=False)
+
+gif_saver = SOGifMaker(problem, 
+                       directory='gif', 
+                       filename='Rastrigin-DE', 
+                       contour_density=20)
+gif_saver.make(result, plot_3D=False)
 
 

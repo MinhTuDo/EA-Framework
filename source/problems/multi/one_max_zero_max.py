@@ -11,8 +11,6 @@ class OneMaxZeroMax(MultiObjectiveProblem):
                          param_type=np.int)
         self.__f1 = OneMax(n_params)
         self.__f2 = ZeroMax(n_params)
-        self._argopt = self._get_best_idx
-        self._optimum = self._get_best
 
     def _f(self, X):
         f1 = self.__f1._f(X)

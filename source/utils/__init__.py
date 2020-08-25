@@ -1,1 +1,1 @@
-from .gif_saver import *
+from .gif_maker import *

@@ -1,10 +1,9 @@
 import numpy as np
 from model import Problem
-import matplotlib
-matplotlib.use('tkagg')
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm, ticker
 import matplotlib.pyplot as plt
+
 
 class SingleObjectiveProblem(Problem):
     def __init__(self,
@@ -20,43 +19,41 @@ class SingleObjectiveProblem(Problem):
                          param_type=param_type) 
         self.multi_dims = multi_dims
 
-        self.data = None
         self.contour_density = None
-        self.fig, self.ax = None, None
         self.colorbar = None
-        self.plot_3D = None
-        self.step = None
 
     ## Overide Methods ##
     def _plot(self, 
-             plot_3D=False, 
-             contour_density=25,
-             colorbar=False, 
-             display_optimum=True,
-             **kwargs):
+              result=None,
+              plot_3D=False, 
+              contour_density=25,
+              colorbar=False, 
+              show_pareto_front=True,
+              points=None,
+              **kwargs):
         if self.n_params != 2:
             raise Exception('Cannot plot problem with more than 2 dimensions!')
-        self.plot_3D = plot_3D
         self.colorbar = colorbar
+        self._points = points
         self.contour_density = contour_density
-        self.initialize_plot()
-        ax = None
-        if plot_3D:
-            ax = self.contour3D()
-        else:
-            ax = self.contour2D()
-
+        self.initialize_plot(plot_3D=plot_3D, 
+                             xlabel=r'$x_1$', 
+                             ylabel=r'$x_2$')
+        ax = self.contour3D() if plot_3D else self.contour2D()
+        if result is not None:
+            X, Y = result.history[-1]['P'][:, 0], result.history[-1]['P'][:, 1]
+            Z = result.history[-1]['F'] if plot_3D else None
+            self.scatter(X, Y, Z)
         if self.colorbar:
             self.fig.colorbar(ax)
         plt.show()
+        self.ax.clear()
 
     def _make_data(self):
-        if self.step is None:
-            self.step = 1 if self.param_type == np.int else 0.1
+        
         (xl, xu) = self.domain
-        if self.param_type == np.int:
-            xu += 1
-        axis_points = np.arange(xl, xu, self.step)
+        self._points = 100 if self._points is None else self._points
+        axis_points = np.linspace(xl, xu, self._points)
         n = len(axis_points)
         if n % 2 != 0:
             axis_points = axis_points[:-1]
@@ -71,20 +68,20 @@ class SingleObjectiveProblem(Problem):
         else:
             z_mesh = np.array(f([x_mesh, y_mesh]))
 
-        self.data = (x_mesh, y_mesh, z_mesh)
+        self._data = (x_mesh, y_mesh, z_mesh)
 
-    ## Private Methods ##
-    def contour2D(self, display_optimum=True):
-        (X, Y, Z) = self.data
+    ## Public Methods ##
+    def contour2D(self):
+        (X, Y, Z) = self._data
         global_optimums = self._pareto_set
-        if type(global_optimums) != type(None) and display_optimum:
+        if type(global_optimums) != type(None):
             global_optimums = global_optimums.reshape((-1, 2))
             self.ax.plot(global_optimums[:, 0],
                          global_optimums[:, 1],
                          'rx',
                          label='global optimum',
                          markersize=10)
-        self.ax.grid(True)
+        self.ax.grid(True, linestyle='--')
         ax = self.ax.contour(X, Y, Z, 
                             self.contour_density,
                             cmap=cm.jet)
@@ -93,23 +90,25 @@ class SingleObjectiveProblem(Problem):
 
 
     def contour3D(self):
-        (X, Y, Z) = self.data
+        (X, Y, Z) = self._data
         surf = self.ax.plot_surface(X, Y, Z, 
                                     cmap=cm.jet,
                                     rstride=1,
                                     cstride=1,
                                     linewidth=0.2)
-        self.ax.set_zlabel("z")
+        self.ax.set_zlabel(r'$f(x_1, x_2)$')
         return surf
 
-    def initialize_plot(self):
-        xlabel, ylabel = 'x1', 'x2'
-        self.fig, self.ax = plt.subplots()
-        if self.plot_3D:
-            self.ax = Axes3D(self.fig, azim=-29, elev=50)
-            xlabel, ylabel = 'x', 'y'
-        self.ax.set_xlabel(xlabel)
-        self.ax.set_ylabel(ylabel)
-        self.ax.grid(True, linestyle='--')
-        plt.suptitle('{}'.format(self.__class__.__name__))
-        self._make_data()
+    def scatter(self, X, Y, Z):
+        if Z is None:
+            lim = (self.ax.get_xlim(), self.ax.get_ylim())
+            self.ax.plot(X, Y, 'g.', label='genome')
+            self.ax.set_xlim(lim[0])
+            self.ax.set_ylim(lim[1])
+        else:
+            lim = (self.ax.get_xlim(), self.ax.get_ylim(), self.ax.get_zlim())
+            self.ax.scatter(X, Y, Z, 'g.', label='genome')
+            self.ax.set_xlim(lim[0])
+            self.ax.set_ylim(lim[1])
+            self.ax.set_zlim(lim[2])
+        self.ax.legend(loc='upper right')

@@ -66,15 +66,9 @@ class GA(Algorithm):
     def sub_tasks_each_gen(self):
         self.elite_idx = self.problem._argopt(self.fitness_pop)
         self._sub_tasks_each_gen()
-        # self.opt = self.pop[elite_idx]
-        # self.fitness_opt = self.fitness_pop[elite_idx]
         if self.save_history:
-            # res = {'P': self.pop.copy(), 
-            #        'F': self.fitness_pop.copy()}
-            # self.history.append(res)
             self._save_history()
         if self.verbose:
-            # print('## Gen {}: Best: {} - F: {}'.format(self.n_gens, self.opt, self.fitness_opt))
             self.display.do(self)
         if self.log:
             self.log_saver.do(self)

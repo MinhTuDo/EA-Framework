@@ -13,12 +13,17 @@ class NSGAII(GA):
                  n_offs=None,
                  initialization=RandomInitialization(),
                  selection=None,
-                 crossover=SBX(15),
+                 crossover=SBX(eta=15, prob=0.9),
                  elitist_archive=2,
-                 mutation=PolynomialMutation(),
+                 mutation=PolynomialMutation(eta=20),
                  **kwargs):
-        super().__init__(pop_size, initialization, selection,
-                         crossover, n_offs, **kwargs)
+        super().__init__(pop_size, 
+                         initialization, 
+                         selection,
+                         crossover, 
+                         mutation,
+                         n_offs, 
+                         **kwargs)
         self.default_termination = Convergence()
         self.elitist_archive = elitist_archive
         if selection is None:
@@ -88,6 +93,7 @@ class NSGAII(GA):
         self.F_pop = self.F_pop[selected_indices]
 
         self.offs = self.crossover._do(self)
+        self.offs = self.mutation._do(self)
         self.F_offs = self.evaluate(self.offs)
 
         self.pop = np.vstack((self.pop, self.offs))

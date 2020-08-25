@@ -33,3 +33,8 @@ class ZDT1(MultiObjectiveProblem):
     def _is_dominated(self, y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
                (y1[0] < y2[0] or y1[1] < y2[1])
+
+    def _calc_pareto_front(self):
+        X1 = np.linspace(self.domain[0], self.domain[1], self._points)
+        X2 = 1 - np.sqrt(X1)
+        return (X1, X2)
