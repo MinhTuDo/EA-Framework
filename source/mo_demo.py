@@ -39,9 +39,7 @@ problem._plot()
 
 termination = MaxEvalTermination(20000)
 
-crossover = cx.SBX(15, prob=0.9)
-
-algorithm = mo.NSGAII(pop_size=100, elitist_archive=4, crossover=crossover)
+algorithm = mo.NSGAII(pop_size=100, elitist_archive=4)
 
 result = optimize(problem, 
                   algorithm, 
@@ -61,26 +59,3 @@ gif_saver = MOGifMaker(problem,
                        directory='gif', 
                        filename='ZDT-NSGA-II')
 gif_saver.make(result)
-
-# gen20 = result.history[19]['F']
-# gen50 = result.history[49]['F']
-# gen100 = result.history[99]['F']
-# gen200 = result.history[199]['F']
-
-
-
-# plt.plot(gen20[:, 0], gen20[:, 1], 'g.', label='gen 20')
-# plt.plot(gen50[:, 0], gen50[:, 1], 'r.', label='gen 50')
-# plt.plot(gen100[:, 0], gen100[:, 1], 'c.', label='gen 100')
-# plt.plot(gen200[:, 0], gen200[:, 1], 'b.', label='gen 200')
-# plt.xlabel('f1')
-# plt.ylabel('f2')
-# # plt.xlim((0, 1))
-# # plt.ylim((0, 1))
-# plt.legend(loc='upper right')
-# plt.grid(linestyle='--')
-# plt.title('zdt1 (Bounded SBX)')
-# plt.show()
-
-# gif_saver = SOGifMaker(problem, 'gif', 'Rastrigin-DE', contour_density=20)
-# gif_saver.make(result, show_pareto_front=True, loop=False)

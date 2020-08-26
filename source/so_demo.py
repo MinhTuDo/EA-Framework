@@ -36,7 +36,7 @@ display = MyDisplay()
 log_saver = MySaver()
 
 problem = sp.Himmelblau()
-# problem._plot(plot_3D=True)
+
 termination = Convergence()
 crossover = cx.UX()
 algorithm = so.DE(pop_size=20, 
