@@ -3,6 +3,7 @@ from model import Problem
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm, ticker
 import matplotlib.pyplot as plt
+plt.rcParams["font.family"] = "serif"
 
 
 class SingleObjectiveProblem(Problem):

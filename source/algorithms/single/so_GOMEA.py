@@ -15,8 +15,12 @@ class GOMEA(GA):
                  elitist_archive=2,
                  mutation=None,
                  **kwargs):
-        super().__init__(pop_size, initialization, selection,
-                         crossover, n_offs, **kwargs)
+        super().__init__(pop_size=pop_size, 
+                         initialization=initialization, 
+                         selection=selection,
+                         n_offs=n_offs, 
+                         **kwargs)
+        self.crossover = GOM()
         self.model_builder = LinkageTreeModel()
         self.default_termination = Convergence()
         self.elitist_archive = elitist_archive
@@ -32,11 +36,12 @@ class GOMEA(GA):
     def _next(self):
         self.model = self.model_builder.build(self)
         
-        offs = self.crossover._do(self)
-        fitness_offs = self.evaluate(offs)
+        self.offs = self.crossover._do(self)
+        self.offs = self.mutation._do(self) if self.mutation is not None else self.offs
+        self.fitness_offs = self.evaluate(self.offs)
 
-        self.pop = np.vstack((self.pop, offs))
-        self.fitness_pop = np.vstack((self.fitness_pop, fitness_offs))
+        self.pop = np.vstack((self.pop, self.offs))
+        self.fitness_pop = np.vstack((self.fitness_pop, self.fitness_offs))
 
         selected_indices = self.selection._do(self)
 

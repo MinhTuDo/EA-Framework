@@ -1,6 +1,6 @@
 from algorithms.GA import GA
 from operators.initialization.random_initialization import RandomInitialization
-from operators.crossover.uniform_crossover import UX
+from operators.crossover.uniform_crossover import UniformCrossover
 from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
 from terminations.convergence import Convergence
@@ -38,6 +38,7 @@ class SGA(GA):
 
     def _next(self):
         self.offs = self.crossover._do(self)
+        self.offs = self.mutation._do(self) if self.mutation is not None else self.offs
         self.fitness_offs = self.evaluate(self.offs)
 
         self.pop = np.vstack((self.pop, self.offs))

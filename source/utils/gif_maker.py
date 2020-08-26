@@ -2,6 +2,8 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
+plt.rcParams["font.family"] = "serif"
+# plt.rcParams["font.serif"] = ["Times New Roman"] + plt.rcParams["font.serif"]
 
 class GifMaker:
     def __init__(self,

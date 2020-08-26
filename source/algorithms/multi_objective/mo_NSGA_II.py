@@ -1,7 +1,7 @@
 from algorithms.GA import GA
 from operators.initialization.random_initialization import RandomInitialization
 from operators.mutation.polynomial_mutation import PolynomialMutation
-from operators.crossover.simulated_binary_crossover import SBX
+from operators.crossover.simulated_binary_crossover import SimulatedBinaryCrossover
 from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
 from terminations import Convergence
@@ -13,7 +13,7 @@ class NSGAII(GA):
                  n_offs=None,
                  initialization=RandomInitialization(),
                  selection=None,
-                 crossover=SBX(eta=15, prob=0.9),
+                 crossover=SimulatedBinaryCrossover(eta=15, prob=0.9),
                  elitist_archive=2,
                  mutation=PolynomialMutation(eta=20),
                  **kwargs):
@@ -93,7 +93,7 @@ class NSGAII(GA):
         self.F_pop = self.F_pop[selected_indices]
 
         self.offs = self.crossover._do(self)
-        self.offs = self.mutation._do(self)
+        self.offs = self.mutation._do(self) if self.mutation is not None else self.offs
         self.F_offs = self.evaluate(self.offs)
 
         self.pop = np.vstack((self.pop, self.offs))

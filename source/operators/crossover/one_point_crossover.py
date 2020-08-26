@@ -1,6 +1,6 @@
 import numpy as np
 from model.operation import Operation
-class OneX(Operation):
+class OnePointCrossover(Operation):
     def __init__(self):
         super().__init__()
 

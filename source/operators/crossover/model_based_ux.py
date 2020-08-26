@@ -1,7 +1,7 @@
 from model.operation import Operation
 import numpy as np
 
-class MBUX(Operation):
+class MBUniformCrossover(Operation):
     def __init__(self):
         super().__init__()
 

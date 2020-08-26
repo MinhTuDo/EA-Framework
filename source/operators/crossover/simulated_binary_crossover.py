@@ -4,7 +4,7 @@ from numpy.random import random
 from numpy import minimum, maximum, logical_and
 #import random
 
-class SBX(Operation):
+class SimulatedBinaryCrossover(Operation):
     def __init__(self, eta=15, prob=0.5):
         super().__init__()
         self.eta = eta

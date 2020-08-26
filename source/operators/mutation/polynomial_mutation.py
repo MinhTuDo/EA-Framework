@@ -2,6 +2,7 @@ from model.operation import Operation
 import numpy as np
 from numpy.random import random
 from numpy import minimum, maximum
+
 class PolynomialMutation(Operation):
     def __init__(self, eta=20, prob=None):
         super().__init__()
@@ -9,16 +10,12 @@ class PolynomialMutation(Operation):
         self.prob = prob
 
     def _do(self, ga):
+        self.prob = 1/ga.problem.n_params if self.prob is None else self.prob
         (n_inds, n_params) = ga.offs.shape
         (xl, xu) = ga.problem.domain
-
         pop = ga.offs.copy()
 
-        if self.prob is None:
-            self.prob = 1/n_params
-
         indices = np.arange(n_inds)
-
         for idx in indices:
             R = random((n_params,))
             mutation_points = np.where(R <= self.prob)

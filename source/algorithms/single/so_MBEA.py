@@ -3,7 +3,7 @@ from operators.initialization.random_initialization import RandomInitialization
 from operators.selection.tournament_selection import TournamentSelection
 import numpy as np
 from terminations.convergence import Convergence
-from operators.crossover.model_based_ux import MBUX
+from operators.crossover.model_based_ux import MBUniformCrossover
 from operators.model_builder.marginal_product_model import MarginalProductModel
 
 class MBEA(GA):
@@ -12,15 +12,15 @@ class MBEA(GA):
                  n_offs=None,
                  initialization=RandomInitialization(),
                  selection=None,
-                 crossover=MBUX(),
+                 crossover=MBUniformCrossover(),
                  mutation=None,
                  elitist_archive=2,
                  **kwargs):
-        super().__init__(pop_size, 
-                         initialization, 
-                         selection,
-                         crossover, 
-                         n_offs,
+        super().__init__(pop_size=pop_size, 
+                         initialization=initialization, 
+                         selection=selection,
+                         crossover=crossover, 
+                         n_offs=n_offs,
                          mutation=mutation, 
                          **kwargs)
         self.model_builder = MarginalProductModel()
@@ -38,13 +38,27 @@ class MBEA(GA):
         self.sub_tasks_each_gen()
     
     def _next(self):
+        # self.model = self.model_builder.build(self)
+        
+        # self.offs = self.crossover._do(self)
+        # self.offs = self.mutation._do(self) if self.mutation is not None else self.offs
+        # fitness_offs = self.evaluate(self.offs)
+
+        # self.pop = np.vstack((self.pop, self.offs))
+        # self.fitness_pop = np.vstack((self.fitness_pop, self.fitness_offs))
+
+        # selected_indices = self.selection._do(self)
+
+        # self.pop = self.pop[selected_indices]
+        # self.fitness_pop = self.fitness_pop[selected_indices]
         self.model = self.model_builder.build(self)
         
-        offs = self.crossover._do(self)
-        fitness_offs = self.evaluate(offs)
+        self.offs = self.crossover._do(self)
+        self.offs = self.mutation._do(self) if self.mutation is not None else self.offs
+        self.fitness_offs = self.evaluate(self.offs)
 
-        self.pop = np.vstack((self.pop, offs))
-        self.fitness_pop = np.vstack((self.fitness_pop, fitness_offs))
+        self.pop = np.vstack((self.pop, self.offs))
+        self.fitness_pop = np.vstack((self.fitness_pop, self.fitness_offs))
 
         selected_indices = self.selection._do(self)
 
