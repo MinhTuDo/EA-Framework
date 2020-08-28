@@ -12,7 +12,7 @@ class SGA(GA):
                  n_offs=None,
                  initialization=RandomInitialization(),
                  selection=None,
-                 crossover=None,
+                 crossover=UniformCrossover(),
                  elitist_archive=2,
                  mutation=None,
                  **kwargs):

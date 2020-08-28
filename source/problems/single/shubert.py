@@ -17,11 +17,16 @@ class Shubert(SingleObjectiveProblem):
 
 
     def _f(self, X):
-        try:
-            f = -np.multiply.reduce(cos(X[:, np.newaxis].dot(self.j+1) + self.j).dot(self.j.T))
-        except:
-            f = -np.multiply.reduce(cos(X.dot(self.j+1) + self.j).dot(self.j.T))
-        return f
+        x1 = X[0]
+        x2 = X[1]
+        sum1 = 0
+        sum2 = 0
+        for i in range(5):
+            new1 = i * cos((i+1) * x1 + i)
+            new2 = i * cos((i+1) * x2 + i)
+            sum1 += new1
+            sum2 += new2
+        return sum1 * sum2
 
     def _sol_compare(self, y1, y2):
         return y1 <= y2

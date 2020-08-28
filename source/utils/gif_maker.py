@@ -156,8 +156,8 @@ class MOGifMaker(GifMaker):
 
     def _make_plot(self, plot, res, gen):
         plot()
-        self._ax.set_xlabel(r'$f(x_1)$')
-        self._ax.set_ylabel(r'$f(x_2)$')
+        self._ax.set_xlabel(r'$f_1(x)$')
+        self._ax.set_ylabel(r'$f_2(x)$')
         X, Y = res['F'][:, 0], res['F'][:, 1]
         Z = None if not self._plot_3D else res['F'][:, 2]
         return X, Y, Z

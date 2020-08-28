@@ -3,6 +3,7 @@ from model import Problem
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm, ticker
 import matplotlib.pyplot as plt
+from utils import denormalize
 plt.rcParams["font.family"] = "serif"
 
 
@@ -50,13 +51,11 @@ class SingleObjectiveProblem(Problem):
 
     def _make_data(self):
         (xl, xu) = self.domain
-        xl, xu = xl.min(), xu.max()
         self._points = 100 if self._points is None else self._points
-        axis_points = np.linspace(xl, xu, self._points)
-        n = len(axis_points)
-        if n % 2 != 0:
-            axis_points = axis_points[:-1]
-        x_mesh, y_mesh = np.meshgrid(axis_points, axis_points)
+        axis_1 = np.linspace(xl[0], xu[0], self._points)
+        axis_2 = np.linspace(xl[1], xu[1], self._points)
+        n = self._points
+        x_mesh, y_mesh = np.meshgrid(axis_1, axis_2)
 
         f = self._f
         if self.multi_dims:
