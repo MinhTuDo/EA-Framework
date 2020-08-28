@@ -33,9 +33,8 @@ class MyDisplay(Display):
 
 display = MyDisplay()
 log_saver = MySaver()
-problem = mp.ZDT1(n_params=30)
-problem._plot()
-# problem.plot(plot_3D=True, contour_density=20, colorbar=True)
+problem = mp.ZDT4(n_params=10)
+# problem._plot()
 
 termination = MaxEvalTermination(20000)
 
@@ -55,7 +54,7 @@ print(result.exec_time)
 
 problem._plot(result)
 
-gif_saver = MOGifMaker(problem, 
-                       directory='gif', 
-                       filename='ZDT-NSGA-II')
-gif_saver.make(result)
+# gif_saver = MOGifMaker(problem, 
+#                        directory='gif', 
+#                        filename='ZDT-NSGA-II')
+# gif_saver.make(result)

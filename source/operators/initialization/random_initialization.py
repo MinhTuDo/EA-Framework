@@ -1,6 +1,7 @@
 from numpy.random import uniform
 from model.operation import Operation
 import numpy as np
+
 class RandomInitialization(Operation):
     def __init__(self):
         super().__init__()

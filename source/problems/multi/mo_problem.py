@@ -44,8 +44,8 @@ class MultiObjectiveProblem(Problem):
             raise Exception('Cannot plot problem with more than 3 objectives')
         plot_3D = True if self.n_obj == 3 else False
         self.initialize_plot(plot_3D=plot_3D,
-                             xlabel=r'$f(x_1)$',
-                             ylabel=r'$f(y_1)$')
+                             xlabel=r'$f_1(x)$',
+                             ylabel=r'$f_2(x)$')
         self.plot_3D() if self.n_obj == 3 else self.plot_2D()
         if result is not None:
             X, Y = result.history[-1]['F'][:, 0], result.history[-1]['F'][:, 1]
