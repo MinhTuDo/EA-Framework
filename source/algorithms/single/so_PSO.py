@@ -3,8 +3,8 @@ from terminations.max_time import MaxTimeTermination
 from operators.selection.historical_best_selection import HistoricalBestSelection
 from operators.initialization.random_initialization import RandomInitialization
 import numpy as np
-from numpy.random import uniform
-from numpy.random import rand
+from numpy.random import random, rand
+from utils import denormalize
 
 class PSO(GA):
     def __init__(self,
@@ -26,6 +26,7 @@ class PSO(GA):
         self.global_best = None
         self.offs = None
         self.fitness_offs = None
+        self.selection = HistoricalBestSelection()
 
     def star_topology_selection(self):
         argopt = self.problem._argopt
@@ -61,12 +62,17 @@ class PSO(GA):
         new_v = w*v + c1*r_p * (p-P) + c2*r_g * (g-P)
         return new_v
 
+    def initialize_velocity(self, xl, xu):
+        xl = -abs(xu - xl)
+        xu = abs(xu - xl)
+        velocity = random(self.pop.shape)
+        velocity = denormalize(velocity, xl, xu)
+        return velocity
+
     def _initialize(self):
         self.offs = self.pop.copy()
         (xl, xu) = self.problem.domain
-        self.velocity = uniform(low=-abs(xu-xl),
-                                high=-abs(xu-xl),
-                                size=self.pop.shape).astype(self.problem.param_type)
+        self.velocity = self.initialize_velocity(xl, xu)
 
     def _next(self):
         self.fitness_pop = self.evaluate(self.pop)

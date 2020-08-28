@@ -10,13 +10,11 @@ class SingleObjectiveProblem(Problem):
     def __init__(self,
                  n_params=-1,
                  n_constraints=0,
-                 domain=(0, 0),
                  param_type=None,
                  multi_dims=False):
         super().__init__(n_params,
                          n_obj=1,
                          n_constraints=n_constraints,
-                         domain=domain,
                          param_type=param_type) 
         self.multi_dims = multi_dims
 
@@ -51,8 +49,8 @@ class SingleObjectiveProblem(Problem):
         self.ax.clear()
 
     def _make_data(self):
-        
         (xl, xu) = self.domain
+        xl, xu = xl.min(), xu.max()
         self._points = 100 if self._points is None else self._points
         axis_points = np.linspace(xl, xu, self._points)
         n = len(axis_points)

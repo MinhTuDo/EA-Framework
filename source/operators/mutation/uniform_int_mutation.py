@@ -8,6 +8,7 @@ class UniformIntMutation(Operation):
 
     def _do(self, ga):
         (xl, xu) = ga.problem.domain
+        xl, xu = xl.min(), xu.max()
         self.prob = 1/ga.problem.n_params if self.prob is None else self.prob
         R = np.random.random(ga.offs.shape)
         pop = ga.offs.copy()

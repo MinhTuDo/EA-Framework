@@ -12,7 +12,7 @@ class PolynomialMutation(Operation):
     def _do(self, ga):
         self.prob = 1/ga.problem.n_params if self.prob is None else self.prob
         (n_inds, n_params) = ga.offs.shape
-        (xl, xu) = ga.problem.domain
+        (XL, XU) = ga.problem.domain
         pop = ga.offs.copy()
 
         indices = np.arange(n_inds)
@@ -20,6 +20,7 @@ class PolynomialMutation(Operation):
             R = random((n_params,))
             mutation_points = np.where(R <= self.prob)
             x = pop[idx][mutation_points]
+            xl, xu = XL[mutation_points], XU[mutation_points]
 
             delta_1 = (x - xl) / (xu - xl)
             delta_2 = (xu - x) / (xu - xl)

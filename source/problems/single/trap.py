@@ -4,14 +4,17 @@ import numpy as np
 class TrapMax(SingleObjectiveProblem):
     def __init__(self,
                  n_params,
-                 trap_size):
+                 trap_size,
+                 **kwargs):
         super().__init__(n_params,
                          n_constraints=0,
-                         domain=(0, 1), 
                          param_type=np.int, 
                          multi_dims=True)
         if n_params % trap_size != 0:
             raise Exception('Parameters length must be divisible by trap size')
+        xl = np.ones((self.n_params,)) * 0
+        xu = np.ones((self.n_params,)) * 1
+        self.domain = (xl, xu)
         self._pareto_front = n_params
         self._pareto_set = np.ones((1, n_params), dtype=self.param_type)
         self._optimum = max

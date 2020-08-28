@@ -12,7 +12,7 @@ class SimulatedBinaryCrossover(Operation):
 
     def _do(self, ga):
         (n_inds, n_params) = ga.pop.shape
-        (xl, xu) = ga.problem.domain
+        (XL, XU) = ga.problem.domain
         
         indices = np.arange(n_inds)
 
@@ -26,6 +26,7 @@ class SimulatedBinaryCrossover(Operation):
             R = random((n_params,))
             diffs = np.abs(offs1 - offs2)
             crossover_points = np.where(logical_and(R <= self.prob, diffs > 1e-14))
+            xl, xu = XL[crossover_points], XU[crossover_points]
             x1 = minimum(offs1[crossover_points], offs2[crossover_points])
             x2 = maximum(offs1[crossover_points], offs2[crossover_points])
             rand = random((crossover_points[0].shape[0],))

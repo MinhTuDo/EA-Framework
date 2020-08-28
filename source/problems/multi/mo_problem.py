@@ -11,12 +11,10 @@ class MultiObjectiveProblem(Problem):
                  n_params=2, 
                  n_obj=2,
                  n_constraints=0,
-                 domain=(0, 0),
                  param_type=None):
         super().__init__(n_params=n_params,
                          n_obj=n_obj,
                          n_constraints=n_constraints,
-                         domain=domain,
                          param_type=param_type)
         
         self._argopt = self.arg_optimum
@@ -72,15 +70,17 @@ class MultiObjectiveProblem(Problem):
 
     ## Public Methods ##
     def plot_2D(self):
-        (X, Y) = self._data
-        if Y is not None:
-            self.ax.plot(X, Y, label='pareto front', color='red')
-            self.ax.grid(True, linestyle='--')
+        if self._data is not None:
+            (X, Y) = self._data
+            if Y is not None:
+                self.ax.plot(X, Y, label='pareto front', color='red')
+                self.ax.grid(True, linestyle='--')
 
     def plot_3D(self):
-        (X, Y, Z) = self._data
-        if Z is not None:
-            self.ax.plot(X, Y, Z, label='pareto front', color='red')
+        if self._data is not None:
+            (X, Y, Z) = self._data
+            if Z is not None:
+                self.ax.plot(X, Y, Z, label='pareto front', color='red')
 
     def scatter(self, X, Y, Z):
         if Z is None:

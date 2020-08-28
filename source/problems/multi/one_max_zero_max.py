@@ -4,11 +4,13 @@ from problems.single import OneMax, ZeroMax
 
 class OneMaxZeroMax(MultiObjectiveProblem):
     def __init__(self, n_params=2):
-        super().__init__(n_params,
+        super().__init__(n_params=n_params,
                          n_obj=2,
                          n_constraints=0,
-                         domain=(0, 1),
                          param_type=np.int)
+        xl = np.ones((self.n_params,)) * 0
+        xu = np.ones((self.n_params,)) * 1
+        self.domain = (xl, xu)
         self.__f1 = OneMax(n_params)
         self.__f2 = ZeroMax(n_params)
 

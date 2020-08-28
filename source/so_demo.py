@@ -35,16 +35,16 @@ class MyDisplay(Display):
 display = MyDisplay()
 log_saver = MySaver()
 
-problem = sp.Rastrigin(n_params=2)
+problem = sp.Himmelblau(n_params=2)
 problem._plot(plot_3D=True)
 
 
-termination = Convergence()
+termination = MaxEvalTermination(20000)
 # crossover = cx.UniformCrossover()
-mutation = mut.BitFlipMutation()
-algorithm = so.GOMEA(pop_size=50, 
+# mutation = mut.BitFlipMutation()
+algorithm = so.PSO(pop_size=50, 
                     elitist_archive=2,
-                    mutation=mutation)
+                    mutation=None)
 
 result = optimize(problem,
                   algorithm,
@@ -61,10 +61,10 @@ print(result.exec_time)
 
 problem._plot(result, plot_3D=False)
 
-gif_saver = SOGifMaker(problem, 
-                       directory='gif', 
-                       filename='Rastrigin-SGA', 
-                       contour_density=20)
-gif_saver.make(result, plot_3D=False)
+# gif_saver = SOGifMaker(problem, 
+#                        directory='gif', 
+#                        filename='Rastrigin-PSO', 
+#                        contour_density=20)
+# gif_saver.make(result, plot_3D=False)
 
 

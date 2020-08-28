@@ -5,7 +5,6 @@ from numpy.random import uniform
 class MutantVector(Operation):
     def __init__(self):
         super().__init__()
-        self.domain = None
         self.f = None
         self.pop_idx = None
         self.pop = None

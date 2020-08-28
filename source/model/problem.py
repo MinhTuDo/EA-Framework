@@ -7,14 +7,13 @@ class Problem:
                  n_params=-1,
                  n_obj=-1,
                  n_constraints=0,
-                 domain=(0, 0),
                  param_type=None):
         if n_params <= 0:
             raise Exception('Parameters length must be greater than zero')
         self.n_params = n_params
         self.n_obj = n_obj
         self.n_constraints = n_constraints
-        self.domain = domain
+        self.domain = None
         self.type = param_type
         # self.multi_dims = multi_dims
         self.param_type = param_type

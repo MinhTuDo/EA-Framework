@@ -7,8 +7,11 @@ class ZDT1(MultiObjectiveProblem):
         super().__init__(n_params,
                          n_obj=2,
                          n_constraints=0,
-                         domain=(0, 1),
                          param_type=np.double)
+
+        xl = np.ones((self.n_params,)) * 0
+        xu = np.ones((self.n_params,)) * 1
+        self.domain = (xl, xu)
     
     def _f(self, X):
         f1 = self.__f1(X)
@@ -36,7 +39,7 @@ class ZDT1(MultiObjectiveProblem):
                (y1[0] < y2[0] or y1[1] < y2[1])
 
     def _calc_pareto_front(self):
-        X1 = np.linspace(self.domain[0], self.domain[1], self._points)
+        X1 = np.linspace(0, 1, self._points)
         X2 = 1 - np.sqrt(X1)
         return (X1, X2)
 
@@ -45,8 +48,10 @@ class ZDT2(MultiObjectiveProblem):
         super().__init__(n_params,
                          n_obj=2,
                          n_constraints=0,
-                         domain=(0, 1),
                          param_type=np.double)
+        xl = np.ones((self.n_params,)) * 0
+        xu = np.ones((self.n_params,)) * 1
+        self.domain = (xl, xu)
     
     def _f(self, X):
         f1 = self.__f1(X)
@@ -74,7 +79,7 @@ class ZDT2(MultiObjectiveProblem):
                (y1[0] < y2[0] or y1[1] < y2[1])
 
     def _calc_pareto_front(self):
-        X1 = np.linspace(self.domain[0], self.domain[1], self._points)
+        X1 = np.linspace(0, 1, self._points)
         X2 = 1 - X1**2
         return (X1, X2)
 
@@ -84,8 +89,11 @@ class ZDT3(MultiObjectiveProblem):
         super().__init__(n_params,
                          n_obj=2,
                          n_constraints=0,
-                         domain=(0, 1),
                          param_type=np.double)
+
+        xl = np.ones((self.n_params,)) * 0
+        xu = np.ones((self.n_params,)) * 1
+        self.domain = (xl, xu)
     
     def _f(self, X):
         f1 = self.__f1(X)
@@ -135,8 +143,11 @@ class ZDT4(MultiObjectiveProblem):
         super().__init__(n_params,
                          n_obj=2,
                          n_constraints=0,
-                         domain=(-5, 5),
                          param_type=np.double)
+        xl = np.ones((self.n_params,)) * -5
+        xu = np.ones((self.n_params,)) * 5
+        xl[0], xu[0] = 0, 1
+        self.domain = (xl, xu)
     
     def _f(self, X):
         f1 = self.__f1(X)
@@ -165,7 +176,7 @@ class ZDT4(MultiObjectiveProblem):
                (y1[0] < y2[0] or y1[1] < y2[1])
 
     def _calc_pareto_front(self):
-        X1 = np.linspace(self.domain[0], self.domain[1], self._points)
+        X1 = np.linspace(0, 1, self._points)
         X2 = 1 - np.sqrt(X1)
         return (X1, X2)
 
@@ -174,8 +185,10 @@ class ZDT6(MultiObjectiveProblem):
         super().__init__(n_params,
                          n_obj=2,
                          n_constraints=0,
-                         domain=(0, 1),
                          param_type=np.double)
+        xl = np.ones((self.n_params,)) * 0
+        xu = np.ones((self.n_params,)) * 1
+        self.domain = (xl, xu)
     
     def _f(self, X):
         f1 = self.__f1(X)
@@ -202,7 +215,7 @@ class ZDT6(MultiObjectiveProblem):
                (y1[0] < y2[0] or y1[1] < y2[1])
 
     def _calc_pareto_front(self):
-        X1 = np.linspace(0.2807753191, self.domain[1], self._points)
+        X1 = np.linspace(0.2807753191, 1, self._points)
         X2 = 1 - X1**2
         return (X1, X2)
 

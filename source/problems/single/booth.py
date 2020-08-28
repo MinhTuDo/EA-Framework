@@ -6,10 +6,11 @@ class Booth(SingleObjectiveProblem):
         super().__init__(n_params=2,
         
                          n_constraints=0,
-                         domain=(-10, 10),
                          param_type=np.double,
                          multi_dims=False)
-        
+        xl = np.ones((self.n_params,)) * -10
+        xu = np.ones((self.n_params,)) * 10
+        self.domain = (xl, xu)
         self._pareto_front = 0
         self._pareto_set = np.array([1, 3]).reshape((-1, self.n_params))
         self._optimum = min

@@ -7,9 +7,10 @@ class SchafferN1(MultiObjectiveProblem):
         super().__init__(n_params=1,
                          n_obj=2,
                          n_constraints=0,
-                         domain=(-A, A),
-                         param_type=np.double,
-                         multi_dims=False)
+                         param_type=np.double)
+        xl = np.ones((self.n_params,)) * -A
+        xu = np.ones((self.n_params,)) * A
+        self.domain = (xl, xu)
 
     def __f1(self, X):
         return X**2

@@ -2,13 +2,14 @@ from .so_problem import SingleObjectiveProblem
 import numpy as np
 
 class SixHumpCamelBack(SingleObjectiveProblem):
-    def __init__(self):
+    def __init__(self, **kwargs):
         super().__init__(n_params=2,
                          n_constraints=0,
-                         domain=(-1.9, 1.9),
                          param_type=np.double,
                          multi_dims=False)
-        
+        xl = np.ones((self.n_params,)) * -1.9
+        xu = np.ones((self.n_params,)) * 1.9
+        self.domain = (xl, xu)
         self._optimum = min
         self._argopt = np.argmin
         self.step = 0.1

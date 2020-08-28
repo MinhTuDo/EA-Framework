@@ -3,13 +3,14 @@ import numpy as np
 from numpy import cos
 
 class Shubert(SingleObjectiveProblem):
-    def __init__(self, n_params=2):
+    def __init__(self, n_params=2, **kwargs):
         super().__init__(n_params,
                          n_constraints=0,
-                         domain=(-10, 10),
                          param_type=np.double,
                          multi_dims=True)
-
+        xl = np.ones((self.n_params,)) * -10
+        xu = np.ones((self.n_params,)) * 10
+        self.domain = (xl, xu)
         self._optimum = min
         self._argopt = np.argmin
         self.j = np.arange(1, 6)

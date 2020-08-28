@@ -2,12 +2,14 @@ from .so_problem import SingleObjectiveProblem
 import numpy as np
 
 class Beale(SingleObjectiveProblem):
-    def __init__(self):
+    def __init__(self, **kwargs):
         super().__init__(n_params=2,
                          n_constraints=0,
-                         domain=(-4.5, 4.5),
                          param_type=np.double,
                          multi_dims=False)
+        xl = np.ones((self.n_params,)) * -4.5
+        xu = np.ones((self.n_params,)) * 4.5
+        self.domain = (xl, xu)
         self._pareto_set = np.array([3, 0.5]).reshape((-1, self.n_params))
         self._pareto_front = 0
         self._optimum = min

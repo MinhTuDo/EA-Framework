@@ -27,8 +27,10 @@ class GeneticCNN(SingleObjectiveProblem):
         super().__init__(n_params=sum(list(map(self.__code_length_per_stage, stages))),
                          param_type = np.int,
                          n_constraints=0,
-                         domain=(0, 1),
                          multi_dims=True)
+        xl = np.ones((self.n_params,)) * 0
+        xu = np.ones((self.n_params,)) * 1
+        self.domain = (xl, xu)
         
         self.stages = stages
         self.input_shape = input_shape
