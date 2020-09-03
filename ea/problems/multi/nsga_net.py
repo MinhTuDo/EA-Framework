@@ -3,7 +3,9 @@ from keras.models import Model
 from keras.layers import Input, Conv2D, BatchNormalization, Activation, Add, Flatten, Dense, Dropout, MaxPool2D, AveragePooling2D
 from abc import abstractmethod
 from .mo_problem import MultiObjectiveProblem
-from keras_flops import get_flops
+import tensorflow as tf
+import keras.backend as K
+# from keras_flops import get_flops
 
 class NSGANET(MultiObjectiveProblem):
     def __init__(self,
@@ -96,6 +98,9 @@ class NSGANET(MultiObjectiveProblem):
         flops = get_flops(self.model) / 1e5
         return error_rate, flops
 
+    def get_flops(self):
+        run_meta = tf.RunMetadata()
+        # opts = tf.
     ## Abstract Methods ##
     @abstractmethod
     def _preprocess_input(self):
