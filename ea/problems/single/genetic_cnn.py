@@ -8,7 +8,7 @@ from .so_problem import SingleObjectiveProblem
 class GeneticCNN(SingleObjectiveProblem):
     def __init__(self,
                  input_shape=None,
-                 classes=None,
+                 n_classes=None,
                  data=(None, None, None),
                  activation_last='softmax',
                  optimizer='adam',
@@ -24,7 +24,7 @@ class GeneticCNN(SingleObjectiveProblem):
                  dropout=0.5,
                  activation='relu',
                  **kwargs):
-        super().__init__(n_params=sum(list(map(self.__code_length_per_stage, stages))),
+        super().__init__(n_params=sum(list(map(self.__calc_L, stages))),
                          param_type = np.int,
                          n_constraints=0,
                          multi_dims=True)
@@ -34,7 +34,7 @@ class GeneticCNN(SingleObjectiveProblem):
         
         self.stages = stages
         self.input_shape = input_shape
-        self.classes = classes
+        self.n_classes = n_classes
         self.activation = activation
         self.activation_last = activation_last
         self.Pool = Pool
@@ -62,13 +62,14 @@ class GeneticCNN(SingleObjectiveProblem):
         X = X_input
         
         for idx, K in enumerate(self.stages):
-            start_idx = 0 if idx == 0 else self.__code_length_per_stage(self.stages[idx-1])
-            end_idx = start_idx + self.__code_length_per_stage(K)
+            default_input = self.__conv(X, self.init_filters * (idx+1))
+            start_idx = 0 if idx == 0 else self.__calc_L(self.stages[idx-1])
+            end_idx = start_idx + self.__calc_L(K)
             code = binary_string[start_idx : end_idx]
-            X = self.__connect_nodes(X, 
-                                     code, 
-                                     K, 
-                                     self.init_filters * (idx+1))
+            X = self.__connect_nodes(default_input=default_input, 
+                                     code=code, 
+                                     n_nodes=K, 
+                                     filter_size=self.init_filters * (idx+1))
             X = self.Pool(pool_size=self.pool_size,
                           strides=self.strides,
                           padding='valid')(X)
@@ -77,7 +78,7 @@ class GeneticCNN(SingleObjectiveProblem):
         for n_units in self.fc:
             X = Dense(n_units, activation=self.activation)(X)
         X = Dropout(self.dropout)(X)
-        X = Dense(self.classes, activation=self.activation_last)(X)
+        X = Dense(self.n_classes, activation=self.activation_last)(X)
         
         model = Model(inputs=X_input, outputs=X)
         model.compile(loss=self.loss,
@@ -107,13 +108,13 @@ class GeneticCNN(SingleObjectiveProblem):
         pass
 
 
-    def __code_length_per_stage(self, k):
+    def __calc_L(self, k):
         l = (k * (k - 1)) // 2
         return l
 
-    def __conv_layer(self, X, f):
+    def __conv(self, X, filter_size):
         node = X
-        node = Conv2D(filters=f,
+        node = Conv2D(filters=filter_size,
                       kernel_size=self.kernel_size,
                       strides=self.strides,
                       padding='same')(node)
@@ -121,30 +122,49 @@ class GeneticCNN(SingleObjectiveProblem):
         node = Activation(self.activation)(node)
         return node
 
-    def __connect_nodes(self,
-                        X, 
-                        code,
-                        K,
-                        f):
-        a0 = self.__conv_layer(X, f)
-        nodes = { 'a1': self.__conv_layer(a0, f) }
 
-        for node in range(2, K+1):
-            nodes['a'+str(node)] = a0
-            end_idx = self.__code_length_per_stage(node)
-            start_idx = end_idx - (node-1)
-            prev_nodes = code[start_idx : end_idx]
-            connected_nodes = np.where(prev_nodes == 1)[0] + 1
-            for prev_node in connected_nodes:
-                if (prev_node == node-1):
-                    nodes['a'+str(node)] = self.__conv_layer(nodes['a'+str(node-1)], f)
-                else:
-                    nodes['a'+str(node)] = Add()([nodes['a'+str(node)],
-                                                  nodes['a'+str(prev_node)]])
-            
-        node_last = self.__conv_layer(nodes['a'+str(K)], f)   
-        return node_last
+    def __connect_nodes(self, 
+                        default_input, 
+                        code, 
+                        n_nodes, 
+                        filter_size):
+        if code.sum() == 0:
+            return self.__conv(default_input, filter_size)
 
+        nodes = np.arange(2, n_nodes+1)
+        end_indices = np.array(list(map(self.__calc_L, nodes)))
+        start_indices = end_indices - (nodes-1)
+        n_connections = [code[start_idx:end_idx] for start_idx, end_idx in zip(start_indices, end_indices)]
+        nodes = [None] * n_nodes
+        nodes[0] = self.__conv(default_input, filter_size)
+
+        for i, connection_i in enumerate(n_connections):
+            output_node = None
+            if connection_i.sum() == 0:
+                is_isolated = True
+                for j in range(i+1, len(n_connections)):
+                    if n_connections[j][i+1] == 1:
+                        is_isolated = False
+                        break
+                        
+                if not is_isolated:
+                    output_node = default_input
+                    nodes[i+1] = self.__conv(output_node, filter_size)
+            else:
+                connected_nodes = np.where(connection_i == 1)[0]
+                for node_i in connected_nodes:
+                    if output_node is None:
+                        output_node = nodes[node_i]
+                    else:
+                        output_node = Add()([output_node, nodes[node_i]])
+                nodes[i+1] = self.__conv(output_node, filter_size)
+                
+
+        for node_i in reversed(nodes):
+            if node_i is not None:
+                return self.__conv(node_i, filter_size)
+
+        return None
 
 
     

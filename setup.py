@@ -5,7 +5,7 @@ setup(
     version='0.1',
     packages=find_packages(),
     install_requires=[
-        'numpy', 'keras', 'tensorflow', 'matplotlib', 'pandas'
+        'numpy', 'keras', 'tensorflow', 'matplotlib', 'pandas', 'keras-flops'
     ],
     author='tu do',
     author_email='tu.dominh2k@gmail.com',
