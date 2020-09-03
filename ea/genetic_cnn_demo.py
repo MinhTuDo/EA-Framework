@@ -6,7 +6,7 @@ from keras.datasets import cifar10
 
 from terminations import *
 
-import problems.single as sp
+import problems.multi as mp
 
 import operators.crossover as cx
 import operators.initialization as init
@@ -14,7 +14,7 @@ import operators.mutation as mut
 import operators.selection as sel
 import operators.model_builder as mb
 
-import algorithms.single as so
+import algorithms.multi_objective as mo
 
 import numpy as np
 
@@ -37,7 +37,7 @@ class MyDisplay(Display):
 display = MyDisplay()
 log_saver = MySaver()
 
-GeneticCNN = sp.GeneticCNN
+GeneticCNN = mp.NSGANET
 class CustomizeGeneticCNN(GeneticCNN):
     def _preprocess_input(self):
         x_train, y_train = self.train_data
@@ -59,7 +59,8 @@ class CustomizeGeneticCNN(GeneticCNN):
                        epochs=1)
 
     def _model_evaluate(self):
-        self.model.evaluate(self.test_data[0], self.test_data[1])
+        [_, validate_acc] = self.model.evaluate(self.test_data[0], self.test_data[1])
+        return validate_acc
 
 train_data, test_data = cifar10.load_data()    
 problem = CustomizeGeneticCNN(input_shape=(32, 32, 3),
@@ -68,16 +69,20 @@ problem = CustomizeGeneticCNN(input_shape=(32, 32, 3),
                               activation_last='softmax',
                               optimizer='sgd',
                               loss='categorical_crossentropy',
-                              stages=(4, 5),
-                              fc=[120, 84],
+                              stages=(6, 6),
                               activation='relu')
 
-problem.create_model(np.array([1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1]))
+
 termination = MaxGenTermination(2)
 
-crossover = cx.UniformCrossover()
+crossover = cx.MBUniformCrossover(prob=0.9)
+mutation = mut.UniformIntMutation(prob=None)
 
-algorithm = so.SGA(pop_size=4)
+algorithm = mo.NSGAII(pop_size=4,
+                      crossover=crossover,
+                      elitist_archive=4,
+                      mutation=mutation)
+algorithm.model = problem.problem_model
 
 result = optimize(problem, 
                   algorithm, 

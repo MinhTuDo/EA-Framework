@@ -2,8 +2,9 @@ from model.operation import Operation
 import numpy as np
 
 class MBUniformCrossover(Operation):
-    def __init__(self):
+    def __init__(self, prob=0.5):
         super().__init__()
+        self.prob = prob
 
     def _do(self, ga):
         if not hasattr(ga, 'model'):
@@ -21,7 +22,7 @@ class MBUniformCrossover(Operation):
 
             points = np.random.uniform(low=0, high=1, size=(n_params,))
             for idx, group in enumerate(ga.model):
-                if points[idx] < 0.5:
+                if points[idx] < self.prob:
                     offs1[group], offs2[group] = offs2[group].copy(), offs1[group]
 
             # for group in ga.model:

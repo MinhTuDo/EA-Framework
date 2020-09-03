@@ -48,9 +48,7 @@ class GeneticCNN(SingleObjectiveProblem):
         self.loss = loss
         self.optimizer = optimizer
 
-        self.train_data = data[0]
-        self.test_data = data[1]
-        self.validation_data = data[2]
+        (self.train_data, self.test_data, self.validation_data) = data
 
         self._optimum = max
         self._argopt = np.argmax
@@ -69,7 +67,7 @@ class GeneticCNN(SingleObjectiveProblem):
             X = self.__connect_nodes(default_input=default_input, 
                                      code=code, 
                                      n_nodes=K, 
-                                     filter_size=self.init_filters * (idx+1))
+                                     n_filters=self.init_filters * (idx+1))
             X = self.Pool(pool_size=self.pool_size,
                           strides=self.strides,
                           padding='valid')(X)
@@ -112,9 +110,9 @@ class GeneticCNN(SingleObjectiveProblem):
         l = (k * (k - 1)) // 2
         return l
 
-    def __conv(self, X, filter_size):
+    def __conv(self, X, n_filters):
         node = X
-        node = Conv2D(filters=filter_size,
+        node = Conv2D(filters=n_filters,
                       kernel_size=self.kernel_size,
                       strides=self.strides,
                       padding='same')(node)
@@ -127,16 +125,16 @@ class GeneticCNN(SingleObjectiveProblem):
                         default_input, 
                         code, 
                         n_nodes, 
-                        filter_size):
+                        n_filters):
         if code.sum() == 0:
-            return self.__conv(default_input, filter_size)
+            return self.__conv(default_input, n_filters)
 
         nodes = np.arange(2, n_nodes+1)
         end_indices = np.array(list(map(self.__calc_L, nodes)))
         start_indices = end_indices - (nodes-1)
         n_connections = [code[start_idx:end_idx] for start_idx, end_idx in zip(start_indices, end_indices)]
         nodes = [None] * n_nodes
-        nodes[0] = self.__conv(default_input, filter_size)
+        nodes[0] = self.__conv(default_input, n_filters)
 
         for i, connection_i in enumerate(n_connections):
             output_node = None
@@ -149,7 +147,7 @@ class GeneticCNN(SingleObjectiveProblem):
                         
                 if not is_isolated:
                     output_node = default_input
-                    nodes[i+1] = self.__conv(output_node, filter_size)
+                    nodes[i+1] = self.__conv(output_node, n_filters)
             else:
                 connected_nodes = np.where(connection_i == 1)[0]
                 for node_i in connected_nodes:
@@ -157,12 +155,12 @@ class GeneticCNN(SingleObjectiveProblem):
                         output_node = nodes[node_i]
                     else:
                         output_node = Add()([output_node, nodes[node_i]])
-                nodes[i+1] = self.__conv(output_node, filter_size)
+                nodes[i+1] = self.__conv(output_node, n_filters)
                 
 
         for node_i in reversed(nodes):
             if node_i is not None:
-                return self.__conv(node_i, filter_size)
+                return self.__conv(node_i, n_filters)
 
         return None
 

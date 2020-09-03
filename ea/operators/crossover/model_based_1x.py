@@ -2,8 +2,9 @@ from model.operation import Operation
 import numpy as np
 
 class MB1X(Operation):
-    def __init__(self):
+    def __init__(self, prob=0.5):
         super().__init__()
+        self.prob = prob
 
     def _do(self, ga):
         if not hasattr(ga, 'model'):

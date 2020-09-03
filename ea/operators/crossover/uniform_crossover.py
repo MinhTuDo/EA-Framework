@@ -1,8 +1,8 @@
 import numpy as np
 from model.operation import Operation
 class UniformCrossover(Operation):
-    def __init__(self):
-        pass
+    def __init__(self, prob=0.5):
+        self.prob = prob
 
     def _do(self, ga):
         (n_inds, n_params) = ga.pop.shape
@@ -16,7 +16,7 @@ class UniformCrossover(Operation):
             offs1, offs2 = ga.pop[idx1].copy(), ga.pop[idx2].copy()
 
             points = np.random.uniform(low=0, high=1, size=(n_params,))
-            offs1[points < 0.5], offs2[points < 0.5] = offs2[points < 0.5], offs1[points < 0.5]
+            offs1[points < self.prob], offs2[points < self.prob] = offs2[points < self.prob], offs1[points < self.prob]
 
             offs.append(offs1)
             offs.append(offs2)
