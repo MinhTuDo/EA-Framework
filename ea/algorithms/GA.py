@@ -72,6 +72,8 @@ class GA(Algorithm):
             self.display.do(self)
         if self.log:
             self.log_saver.do(self)
+        if self.save:
+            self.obj_saver.save(self)
 
     ## Overide Methods ##
     def _save_result(self):

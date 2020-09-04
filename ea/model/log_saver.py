@@ -2,7 +2,7 @@ import pandas as pd
 import datetime
 import os
 
-class LogSaver():
+class LogSaver:
     def __init__(self, log_dir='./log'):
         self.attributes = {}
         self.data_frame = pd.DataFrame()
@@ -17,7 +17,7 @@ class LogSaver():
         self.data_frame = self.data_frame.append(self.attributes, ignore_index=True)
 
     def save(self, algorithm):
-        filename = os.path.join(self.log_dir, "data_" + self.now.strftime("%Y%m%d-%H%M") + ".csv")
+        filename = os.path.join(self.log_dir, "log_" + self.now.strftime("%Y%m%d-%H%M") + ".csv")
         self.data_frame.to_csv(filename)
 
     ## Overide Methods ##
