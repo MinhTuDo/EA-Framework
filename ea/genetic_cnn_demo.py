@@ -25,9 +25,9 @@ class MySaver(LogSaver):
         self.add_attributes('n_evals', ga.n_evals) 
         self.add_attributes('error_rate', ga.F_pop[ga.elite_idx])
         self.add_attributes('flops', ga.F_pop[ga.elite_idx])
-        self.add_attributes('architecture', ga.pop[ga.elite_idx])
         now = time.time()
         self.add_attributes('time', now - ga.start_time)
+        self.add_attributes('architecture', ga.pop[ga.elite_idx])
 
 class MyDisplay(Display):
     def _do(self, ga):
@@ -36,16 +36,16 @@ class MyDisplay(Display):
         self.add_attributes('n_evals', ga.n_evals) 
         self.add_attributes('error_rate', ga.F_pop[ga.elite_idx])
         self.add_attributes('flops', ga.F_pop[ga.elite_idx])
-        self.add_attributes('architecture', ga.pop[ga.elite_idx])
         now = time.time()
         self.add_attributes('time', now - ga.start_time)
+        self.add_attributes('architecture', ga.pop[ga.elite_idx])
         
 
 display = MyDisplay()
 log_saver = MySaver()
 
-GeneticCNN = mp.NSGANET
-class CustomizeGeneticCNN(GeneticCNN):
+NSGANET = mp.NSGANET
+class CustomizedNSGANET(NSGANET):
     def _preprocess_input(self):
         x_train, y_train = self.train_data
         x_train = x_train.astype('float32')
@@ -63,7 +63,7 @@ class CustomizeGeneticCNN(GeneticCNN):
     def _model_fit(self):
         self.model.fit(x=self.train_data[0],
                        y=self.train_data[1],
-                       epochs=1,
+                       epochs=25,
                        verbose=2)
 
     def _model_evaluate(self):
@@ -71,7 +71,7 @@ class CustomizeGeneticCNN(GeneticCNN):
         return validate_acc
 
 train_data, test_data = cifar10.load_data()    
-problem = CustomizeGeneticCNN(input_shape=(32, 32, 3),
+problem = CustomizedNSGANET(input_shape=(32, 32, 3),
                               n_classes=10,
                               data=(train_data, test_data, None),
                               activation_last='softmax',

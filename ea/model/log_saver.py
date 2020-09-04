@@ -17,7 +17,12 @@ class LogSaver:
         self.data_frame = self.data_frame.append(self.attributes, ignore_index=True)
 
     def save(self, algorithm):
-        filename = os.path.join(self.log_dir, "log_" + self.now.strftime("%Y%m%d-%H%M") + ".csv")
+        filename = os.path.join(self.log_dir, 
+                                "log_" + \
+                                self.now.strftime("%Y%m%d-%H%M") + \
+                                '_{}-{}_'.format(algorithm.__class__.__name__, 
+                                               algorithm.problem.__class__.__name__) + \
+                                ".csv")
         self.data_frame.to_csv(filename)
 
     ## Overide Methods ##

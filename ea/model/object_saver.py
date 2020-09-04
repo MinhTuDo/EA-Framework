@@ -20,7 +20,12 @@ class ObjectSaver:
         algorithm.problem = temp
         algorithm.log_saver = temp1
         algorithm.display = temp2
-        filename = os.path.join(self.save_dir, "obj_" + datetime.datetime.now().strftime("%Y%m%d-%H%M") + '.pickle' )
+        filename = os.path.join(self.save_dir, 
+                                "obj_" + \
+                                datetime.datetime.now().strftime("%Y%m%d-%H%M") + \
+                                '_{}-{}_'.format(algorithm.__class__.__name__,
+                                               algorithm.problem.__class__.__name__) +\
+                                '.pickle' )
         with open(filename, 'wb') as handle:
             pickle.dump(self.obj, handle, protocol=pickle.HIGHEST_PROTOCOL)
     
