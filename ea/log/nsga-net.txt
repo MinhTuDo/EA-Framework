@@ -1,57 +1,57 @@
-2020-09-04 14:01:37.447847: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
-2020-09-04 14:01:37.475875: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+2020-09-04 15:01:11.260635: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-09-04 15:01:11.287239: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:01:37.476128: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:01:37.477742: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:01:37.479015: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:01:37.479293: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:01:37.480888: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:01:37.481655: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:01:37.485104: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:01:37.486358: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:01:37.486684: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
-2020-09-04 14:01:37.510063: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2793165000 Hz
-2020-09-04 14:01:37.510943: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x555e26589350 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
-2020-09-04 14:01:37.510984: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
-2020-09-04 14:01:37.511832: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+2020-09-04 15:01:11.287474: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-04 15:01:11.289108: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-04 15:01:11.290406: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-04 15:01:11.290685: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-04 15:01:11.292294: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-04 15:01:11.293093: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-04 15:01:11.296544: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-04 15:01:11.297656: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-04 15:01:11.298001: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+2020-09-04 15:01:11.322128: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2793165000 Hz
+2020-09-04 15:01:11.323251: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b2b8b4c170 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-09-04 15:01:11.323299: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-09-04 15:01:11.324202: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:01:37.511902: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:01:37.511938: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:01:37.511971: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:01:37.512003: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:01:37.512035: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:01:37.512068: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:01:37.512100: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:01:37.513344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:01:37.513406: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:01:37.719830: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 14:01:37.719885: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 14:01:37.719908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 14:01:37.731033: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6441 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 14:01:37.732995: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x555e29c83590 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2020-09-04 14:01:37.733025: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1070, Compute Capability 6.1
-2020-09-04 14:01:41.895725: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 14:01:41.895940: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 14:01:41.896798: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+2020-09-04 15:01:11.324267: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-04 15:01:11.324312: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-04 15:01:11.324352: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-04 15:01:11.324392: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-04 15:01:11.324432: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-04 15:01:11.324471: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-04 15:01:11.324510: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-04 15:01:11.326000: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-04 15:01:11.326089: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-04 15:01:11.543696: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-04 15:01:11.543745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-04 15:01:11.543763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-04 15:01:11.545558: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6355 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-04 15:01:11.547493: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b2bc2ec9b0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-09-04 15:01:11.547532: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1070, Compute Capability 6.1
+2020-09-04 15:01:15.757335: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2020-09-04 15:01:15.757498: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2020-09-04 15:01:15.758137: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:01:41.896885: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:01:41.896938: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:01:41.896991: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:01:41.897042: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:01:41.897095: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:01:41.897145: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:01:41.897196: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:01:41.898072: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:01:41.898126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 14:01:41.898150: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 14:01:41.898170: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 14:01:41.899008: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6441 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 14:01:41.904612: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 14:01:41.904644: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.005ms.
-2020-09-04 14:01:41.904664: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
+2020-09-04 15:01:15.758200: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-04 15:01:15.758231: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-04 15:01:15.758260: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-04 15:01:15.758288: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-04 15:01:15.758316: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-04 15:01:15.758344: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-04 15:01:15.758372: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-04 15:01:15.758931: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-04 15:01:15.758974: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-04 15:01:15.758988: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-04 15:01:15.758997: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-04 15:01:15.759601: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6355 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-04 15:01:15.765017: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
+2020-09-04 15:01:15.765046: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.005ms.
+2020-09-04 15:01:15.765057: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.001ms.
 Using TensorFlow backend.
 WARNING:tensorflow:From /home/tudo/anaconda3/envs/tf_gpu/lib/python3.8/site-packages/tensorflow/python/ops/nn_ops.py:4179: tensor_shape_from_node_def_name (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
 Instructions for updating:
@@ -151,33 +151,82 @@ _TFProfRoot (--/848.64k flops)
   model/dense/BiasAdd (10/10 flops)
 
 ======================End of Report==========================
-2020-09-04 14:01:45.576054: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:01:45.767521: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:01:46.585379: W tensorflow/stream_executor/gpu/asm_compiler.cc:116] *** WARNING *** You are using ptxas 9.1.108, which is older than 9.2.88. ptxas 9.x before 9.2.88 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+2020-09-04 15:01:18.871980: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-04 15:01:19.061482: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-04 15:01:19.846009: W tensorflow/stream_executor/gpu/asm_compiler.cc:116] *** WARNING *** You are using ptxas 9.1.108, which is older than 9.2.88. ptxas 9.x before 9.2.88 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
 
 You do not need to update to CUDA 9.2.88; cherry-picking the ptxas binary is sufficient.
-1563/1563 - 22s - loss: 2.2446 - accuracy: 0.1890
-  1/313 [..............................] - ETA: 0s - loss: 1.8013 - accuracy: 0.2812 12/313 [>.............................] - ETA: 1s - loss: 1.9261 - accuracy: 0.3411 25/313 [=>............................] - ETA: 1s - loss: 1.9479 - accuracy: 0.3288 39/313 [==>...........................] - ETA: 1s - loss: 1.9423 - accuracy: 0.3125 54/313 [====>.........................] - ETA: 1s - loss: 1.9426 - accuracy: 0.3113 66/313 [=====>........................] - ETA: 0s - loss: 1.9376 - accuracy: 0.3073 81/313 [======>.......................] - ETA: 0s - loss: 1.9416 - accuracy: 0.3117 97/313 [========>.....................] - ETA: 0s - loss: 1.9473 - accuracy: 0.3041108/313 [=========>....................] - ETA: 0s - loss: 1.9420 - accuracy: 0.3079121/313 [==========>...................] - ETA: 0s - loss: 1.9415 - accuracy: 0.3076134/313 [===========>..................] - ETA: 0s - loss: 1.9448 - accuracy: 0.3060146/313 [============>.................] - ETA: 0s - loss: 1.9480 - accuracy: 0.3024159/313 [==============>...............] - ETA: 0s - loss: 1.9474 - accuracy: 0.3031173/313 [===============>..............] - ETA: 0s - loss: 1.9508 - accuracy: 0.2982186/313 [================>.............] - ETA: 0s - loss: 1.9527 - accuracy: 0.2972199/313 [==================>...........] - ETA: 0s - loss: 1.9520 - accuracy: 0.2988214/313 [===================>..........] - ETA: 0s - loss: 1.9521 - accuracy: 0.2973227/313 [====================>.........] - ETA: 0s - loss: 1.9525 - accuracy: 0.2964239/313 [=====================>........] - ETA: 0s - loss: 1.9495 - accuracy: 0.2969251/313 [=======================>......] - ETA: 0s - loss: 1.9468 - accuracy: 0.2982262/313 [========================>.....] - ETA: 0s - loss: 1.9490 - accuracy: 0.2971274/313 [=========================>....] - ETA: 0s - loss: 1.9520 - accuracy: 0.2960286/313 [==========================>...] - ETA: 0s - loss: 1.9524 - accuracy: 0.2969297/313 [===========================>..] - ETA: 0s - loss: 1.9512 - accuracy: 0.2976308/313 [============================>.] - ETA: 0s - loss: 1.9501 - accuracy: 0.2970313/313 [==============================] - 1s 4ms/step - loss: 1.9504 - accuracy: 0.2973
-2020-09-04 14:02:11.730849: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 14:02:11.730990: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 14:02:11.731825: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+Epoch 1/25
+1563/1563 - 19s - loss: 2.2052 - accuracy: 0.1697
+Epoch 2/25
+1563/1563 - 19s - loss: 2.0201 - accuracy: 0.2478
+Epoch 3/25
+1563/1563 - 18s - loss: 1.9559 - accuracy: 0.2677
+Epoch 4/25
+1563/1563 - 19s - loss: 1.8850 - accuracy: 0.2998
+Epoch 5/25
+1563/1563 - 19s - loss: 1.8048 - accuracy: 0.3313
+Epoch 6/25
+1563/1563 - 18s - loss: 1.7486 - accuracy: 0.3570
+Epoch 7/25
+1563/1563 - 19s - loss: 1.7171 - accuracy: 0.3701
+Epoch 8/25
+1563/1563 - 19s - loss: 1.6940 - accuracy: 0.3758
+Epoch 9/25
+1563/1563 - 18s - loss: 1.6787 - accuracy: 0.3824
+Epoch 10/25
+1563/1563 - 19s - loss: 1.6637 - accuracy: 0.3909
+Epoch 11/25
+1563/1563 - 19s - loss: 1.6550 - accuracy: 0.3908
+Epoch 12/25
+1563/1563 - 19s - loss: 1.6419 - accuracy: 0.3977
+Epoch 13/25
+1563/1563 - 19s - loss: 1.6409 - accuracy: 0.3970
+Epoch 14/25
+1563/1563 - 19s - loss: 1.6297 - accuracy: 0.4057
+Epoch 15/25
+1563/1563 - 19s - loss: 1.6265 - accuracy: 0.4034
+Epoch 16/25
+1563/1563 - 19s - loss: 1.6138 - accuracy: 0.4095
+Epoch 17/25
+1563/1563 - 19s - loss: 1.6128 - accuracy: 0.4070
+Epoch 18/25
+1563/1563 - 19s - loss: 1.6112 - accuracy: 0.4063
+Epoch 19/25
+1563/1563 - 19s - loss: 1.6059 - accuracy: 0.4100
+Epoch 20/25
+1563/1563 - 17s - loss: 1.5987 - accuracy: 0.4138
+Epoch 21/25
+1563/1563 - 16s - loss: 1.5981 - accuracy: 0.4135
+Epoch 22/25
+1563/1563 - 16s - loss: 1.5956 - accuracy: 0.4131
+Epoch 23/25
+1563/1563 - 16s - loss: 1.5943 - accuracy: 0.4140
+Epoch 24/25
+1563/1563 - 16s - loss: 1.5930 - accuracy: 0.4199
+Epoch 25/25
+1563/1563 - 17s - loss: 1.5891 - accuracy: 0.4164
+  1/313 [..............................] - ETA: 0s - loss: 1.5357 - accuracy: 0.4062 16/313 [>.............................] - ETA: 0s - loss: 1.6258 - accuracy: 0.4082 30/313 [=>............................] - ETA: 0s - loss: 1.6484 - accuracy: 0.4073 43/313 [===>..........................] - ETA: 0s - loss: 1.6313 - accuracy: 0.4222 54/313 [====>.........................] - ETA: 0s - loss: 1.6361 - accuracy: 0.4282 67/313 [=====>........................] - ETA: 0s - loss: 1.6404 - accuracy: 0.4240 79/313 [======>.......................] - ETA: 0s - loss: 1.6386 - accuracy: 0.4241 94/313 [========>.....................] - ETA: 0s - loss: 1.6522 - accuracy: 0.4219109/313 [=========>....................] - ETA: 0s - loss: 1.6531 - accuracy: 0.4189123/313 [==========>...................] - ETA: 0s - loss: 1.6550 - accuracy: 0.4190138/313 [============>.................] - ETA: 0s - loss: 1.6575 - accuracy: 0.4160153/313 [=============>................] - ETA: 0s - loss: 1.6541 - accuracy: 0.4171168/313 [===============>..............] - ETA: 0s - loss: 1.6530 - accuracy: 0.4163182/313 [================>.............] - ETA: 0s - loss: 1.6549 - accuracy: 0.4159197/313 [=================>............] - ETA: 0s - loss: 1.6562 - accuracy: 0.4156210/313 [===================>..........] - ETA: 0s - loss: 1.6583 - accuracy: 0.4138223/313 [====================>.........] - ETA: 0s - loss: 1.6661 - accuracy: 0.4126238/313 [=====================>........] - ETA: 0s - loss: 1.6588 - accuracy: 0.4135253/313 [=======================>......] - ETA: 0s - loss: 1.6543 - accuracy: 0.4144267/313 [========================>.....] - ETA: 0s - loss: 1.6613 - accuracy: 0.4132282/313 [==========================>...] - ETA: 0s - loss: 1.6638 - accuracy: 0.4135297/313 [===========================>..] - ETA: 0s - loss: 1.6638 - accuracy: 0.4132312/313 [============================>.] - ETA: 0s - loss: 1.6610 - accuracy: 0.4139313/313 [==============================] - 1s 4ms/step - loss: 1.6611 - accuracy: 0.4139
+2020-09-04 15:09:00.287169: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2020-09-04 15:09:00.287294: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2020-09-04 15:09:00.287968: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:02:11.731893: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:02:11.731927: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:02:11.731959: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:02:11.731991: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:02:11.732022: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:02:11.732054: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:02:11.732086: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:02:11.732646: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:02:11.732693: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 14:02:11.732708: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 14:02:11.732718: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 14:02:11.733320: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6441 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 14:02:11.738161: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 14:02:11.738191: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.002ms.
-2020-09-04 14:02:11.738203: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
+2020-09-04 15:09:00.288030: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-04 15:09:00.288063: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-04 15:09:00.288096: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-04 15:09:00.288127: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-04 15:09:00.288159: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-04 15:09:00.288190: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-04 15:09:00.288222: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-04 15:09:00.288816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-04 15:09:00.288859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-04 15:09:00.288871: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-04 15:09:00.288881: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-04 15:09:00.289523: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6355 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-04 15:09:00.294441: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
+2020-09-04 15:09:00.294470: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.003ms.
+2020-09-04 15:09:00.294491: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
 Parsing Inputs...
 
 =========================Options=============================
@@ -263,28 +312,77 @@ _TFProfRoot (--/12.35m flops)
   model_1/dense_1/BiasAdd (10/10 flops)
 
 ======================End of Report==========================
-1563/1563 - 17s - loss: 1.6874 - accuracy: 0.3793
-  1/313 [..............................] - ETA: 0s - loss: 1.3291 - accuracy: 0.5000 13/313 [>.............................] - ETA: 1s - loss: 1.3799 - accuracy: 0.4808 25/313 [=>............................] - ETA: 1s - loss: 1.4510 - accuracy: 0.4638 37/313 [==>...........................] - ETA: 1s - loss: 1.4420 - accuracy: 0.4764 51/313 [===>..........................] - ETA: 1s - loss: 1.4538 - accuracy: 0.4761 67/313 [=====>........................] - ETA: 0s - loss: 1.4377 - accuracy: 0.4804 81/313 [======>.......................] - ETA: 0s - loss: 1.4483 - accuracy: 0.4838 94/313 [========>.....................] - ETA: 0s - loss: 1.4495 - accuracy: 0.4840108/313 [=========>....................] - ETA: 0s - loss: 1.4438 - accuracy: 0.4818124/313 [==========>...................] - ETA: 0s - loss: 1.4414 - accuracy: 0.4814139/313 [============>.................] - ETA: 0s - loss: 1.4425 - accuracy: 0.4804153/313 [=============>................] - ETA: 0s - loss: 1.4385 - accuracy: 0.4818166/313 [==============>...............] - ETA: 0s - loss: 1.4410 - accuracy: 0.4804179/313 [================>.............] - ETA: 0s - loss: 1.4438 - accuracy: 0.4797194/313 [=================>............] - ETA: 0s - loss: 1.4434 - accuracy: 0.4789207/313 [==================>...........] - ETA: 0s - loss: 1.4429 - accuracy: 0.4771220/313 [====================>.........] - ETA: 0s - loss: 1.4487 - accuracy: 0.4751234/313 [=====================>........] - ETA: 0s - loss: 1.4458 - accuracy: 0.4758249/313 [======================>.......] - ETA: 0s - loss: 1.4456 - accuracy: 0.4775264/313 [========================>.....] - ETA: 0s - loss: 1.4452 - accuracy: 0.4776278/313 [=========================>....] - ETA: 0s - loss: 1.4470 - accuracy: 0.4765292/313 [==========================>...] - ETA: 0s - loss: 1.4453 - accuracy: 0.4784305/313 [============================>.] - ETA: 0s - loss: 1.4443 - accuracy: 0.4783313/313 [==============================] - 1s 4ms/step - loss: 1.4442 - accuracy: 0.4778
-2020-09-04 14:02:34.906094: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 14:02:34.906239: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 14:02:34.907002: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+Epoch 1/25
+1563/1563 - 15s - loss: 1.7280 - accuracy: 0.3605
+Epoch 2/25
+1563/1563 - 14s - loss: 1.4106 - accuracy: 0.4847
+Epoch 3/25
+1563/1563 - 15s - loss: 1.2721 - accuracy: 0.5403
+Epoch 4/25
+1563/1563 - 16s - loss: 1.1751 - accuracy: 0.5778
+Epoch 5/25
+1563/1563 - 16s - loss: 1.1128 - accuracy: 0.6009
+Epoch 6/25
+1563/1563 - 16s - loss: 1.0602 - accuracy: 0.6197
+Epoch 7/25
+1563/1563 - 17s - loss: 1.0250 - accuracy: 0.6312
+Epoch 8/25
+1563/1563 - 17s - loss: 0.9989 - accuracy: 0.6413
+Epoch 9/25
+1563/1563 - 17s - loss: 0.9799 - accuracy: 0.6502
+Epoch 10/25
+1563/1563 - 16s - loss: 0.9550 - accuracy: 0.6599
+Epoch 11/25
+1563/1563 - 17s - loss: 0.9450 - accuracy: 0.6630
+Epoch 12/25
+1563/1563 - 17s - loss: 0.9309 - accuracy: 0.6687
+Epoch 13/25
+1563/1563 - 16s - loss: 0.9153 - accuracy: 0.6724
+Epoch 14/25
+1563/1563 - 17s - loss: 0.9058 - accuracy: 0.6765
+Epoch 15/25
+1563/1563 - 17s - loss: 0.8951 - accuracy: 0.6795
+Epoch 16/25
+1563/1563 - 17s - loss: 0.8828 - accuracy: 0.6851
+Epoch 17/25
+1563/1563 - 17s - loss: 0.8739 - accuracy: 0.6877
+Epoch 18/25
+1563/1563 - 17s - loss: 0.8619 - accuracy: 0.6928
+Epoch 19/25
+1563/1563 - 17s - loss: 0.8610 - accuracy: 0.6943
+Epoch 20/25
+1563/1563 - 17s - loss: 0.8523 - accuracy: 0.6959
+Epoch 21/25
+1563/1563 - 17s - loss: 0.8467 - accuracy: 0.6990
+Epoch 22/25
+1563/1563 - 17s - loss: 0.8410 - accuracy: 0.7005
+Epoch 23/25
+1563/1563 - 17s - loss: 0.8308 - accuracy: 0.7039
+Epoch 24/25
+1563/1563 - 17s - loss: 0.8257 - accuracy: 0.7058
+Epoch 25/25
+1563/1563 - 17s - loss: 0.8193 - accuracy: 0.7085
+  1/313 [..............................] - ETA: 0s - loss: 0.8569 - accuracy: 0.5938 13/313 [>.............................] - ETA: 1s - loss: 1.0517 - accuracy: 0.6274 25/313 [=>............................] - ETA: 1s - loss: 1.0433 - accuracy: 0.6363 39/313 [==>...........................] - ETA: 1s - loss: 1.0373 - accuracy: 0.6410 53/313 [====>.........................] - ETA: 1s - loss: 1.0174 - accuracy: 0.6427 69/313 [=====>........................] - ETA: 0s - loss: 1.0331 - accuracy: 0.6377 85/313 [=======>......................] - ETA: 0s - loss: 1.0589 - accuracy: 0.6342100/313 [========>.....................] - ETA: 0s - loss: 1.0613 - accuracy: 0.6316115/313 [==========>...................] - ETA: 0s - loss: 1.0709 - accuracy: 0.6307127/313 [===========>..................] - ETA: 0s - loss: 1.0695 - accuracy: 0.6339142/313 [============>.................] - ETA: 0s - loss: 1.0671 - accuracy: 0.6353156/313 [=============>................] - ETA: 0s - loss: 1.0584 - accuracy: 0.6392171/313 [===============>..............] - ETA: 0s - loss: 1.0589 - accuracy: 0.6387183/313 [================>.............] - ETA: 0s - loss: 1.0559 - accuracy: 0.6405198/313 [=================>............] - ETA: 0s - loss: 1.0511 - accuracy: 0.6409214/313 [===================>..........] - ETA: 0s - loss: 1.0560 - accuracy: 0.6400230/313 [=====================>........] - ETA: 0s - loss: 1.0512 - accuracy: 0.6416243/313 [======================>.......] - ETA: 0s - loss: 1.0500 - accuracy: 0.6412258/313 [=======================>......] - ETA: 0s - loss: 1.0544 - accuracy: 0.6394274/313 [=========================>....] - ETA: 0s - loss: 1.0602 - accuracy: 0.6367291/313 [==========================>...] - ETA: 0s - loss: 1.0635 - accuracy: 0.6363304/313 [============================>.] - ETA: 0s - loss: 1.0626 - accuracy: 0.6365313/313 [==============================] - 1s 4ms/step - loss: 1.0633 - accuracy: 0.6368
+2020-09-04 15:15:54.410017: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2020-09-04 15:15:54.410140: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2020-09-04 15:15:54.410783: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:02:34.907091: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:02:34.907145: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:02:34.907197: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:02:34.907246: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:02:34.907294: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:02:34.907357: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:02:34.907406: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:02:34.908186: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:02:34.908239: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 14:02:34.908263: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 14:02:34.908282: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 14:02:34.909124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6441 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 14:02:34.913856: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 14:02:34.913887: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.003ms.
-2020-09-04 14:02:34.913908: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
+2020-09-04 15:15:54.410841: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-04 15:15:54.410871: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-04 15:15:54.410900: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-04 15:15:54.410942: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-04 15:15:54.410985: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-04 15:15:54.411017: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-04 15:15:54.411046: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-04 15:15:54.411682: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-04 15:15:54.411722: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-04 15:15:54.411734: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-04 15:15:54.411744: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-04 15:15:54.412419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6355 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-04 15:15:54.417366: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
+2020-09-04 15:15:54.417395: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.002ms.
+2020-09-04 15:15:54.417406: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
 Parsing Inputs...
 
 =========================Options=============================
@@ -374,565 +472,5 @@ _TFProfRoot (--/772.22m flops)
   model_2/average_pooling2d_3/AvgPool (4.99k/4.99k flops)
   model_2/dense_2/Softmax (50/50 flops)
   model_2/dense_2/BiasAdd (10/10 flops)
-
-======================End of Report==========================
-1563/1563 - 41s - loss: 1.4381 - accuracy: 0.4794
-  1/313 [..............................] - ETA: 0s - loss: 1.3886 - accuracy: 0.4375  7/313 [..............................] - ETA: 2s - loss: 1.6120 - accuracy: 0.4464 13/313 [>.............................] - ETA: 2s - loss: 1.5972 - accuracy: 0.4688 20/313 [>.............................] - ETA: 2s - loss: 1.6099 - accuracy: 0.4547 27/313 [=>............................] - ETA: 2s - loss: 1.6326 - accuracy: 0.4502 34/313 [==>...........................] - ETA: 2s - loss: 1.6360 - accuracy: 0.4540 40/313 [==>...........................] - ETA: 2s - loss: 1.6369 - accuracy: 0.4516 46/313 [===>..........................] - ETA: 2s - loss: 1.6408 - accuracy: 0.4457 53/313 [====>.........................] - ETA: 2s - loss: 1.6397 - accuracy: 0.4522 59/313 [====>.........................] - ETA: 2s - loss: 1.6304 - accuracy: 0.4507 66/313 [=====>........................] - ETA: 2s - loss: 1.6292 - accuracy: 0.4541 72/313 [=====>........................] - ETA: 2s - loss: 1.6243 - accuracy: 0.4549 78/313 [======>.......................] - ETA: 2s - loss: 1.6345 - accuracy: 0.4523 85/313 [=======>......................] - ETA: 1s - loss: 1.6528 - accuracy: 0.4460 92/313 [=======>......................] - ETA: 1s - loss: 1.6537 - accuracy: 0.4474 99/313 [========>.....................] - ETA: 1s - loss: 1.6438 - accuracy: 0.4495105/313 [=========>....................] - ETA: 1s - loss: 1.6540 - accuracy: 0.4488110/313 [=========>....................] - ETA: 1s - loss: 1.6615 - accuracy: 0.4466116/313 [==========>...................] - ETA: 1s - loss: 1.6543 - accuracy: 0.4480122/313 [==========>...................] - ETA: 1s - loss: 1.6528 - accuracy: 0.4475129/313 [===========>..................] - ETA: 1s - loss: 1.6516 - accuracy: 0.4489136/313 [============>.................] - ETA: 1s - loss: 1.6486 - accuracy: 0.4499142/313 [============>.................] - ETA: 1s - loss: 1.6416 - accuracy: 0.4518148/313 [=============>................] - ETA: 1s - loss: 1.6321 - accuracy: 0.4563155/313 [=============>................] - ETA: 1s - loss: 1.6342 - accuracy: 0.4565162/313 [==============>...............] - ETA: 1s - loss: 1.6343 - accuracy: 0.4560169/313 [===============>..............] - ETA: 1s - loss: 1.6348 - accuracy: 0.4545175/313 [===============>..............] - ETA: 1s - loss: 1.6347 - accuracy: 0.4539181/313 [================>.............] - ETA: 1s - loss: 1.6295 - accuracy: 0.4553188/313 [=================>............] - ETA: 1s - loss: 1.6358 - accuracy: 0.4535195/313 [=================>............] - ETA: 1s - loss: 1.6368 - accuracy: 0.4534202/313 [==================>...........] - ETA: 0s - loss: 1.6380 - accuracy: 0.4531208/313 [==================>...........] - ETA: 0s - loss: 1.6401 - accuracy: 0.4521214/313 [===================>..........] - ETA: 0s - loss: 1.6368 - accuracy: 0.4533220/313 [====================>.........] - ETA: 0s - loss: 1.6418 - accuracy: 0.4501227/313 [====================>.........] - ETA: 0s - loss: 1.6363 - accuracy: 0.4500234/313 [=====================>........] - ETA: 0s - loss: 1.6301 - accuracy: 0.4507240/313 [======================>.......] - ETA: 0s - loss: 1.6259 - accuracy: 0.4516246/313 [======================>.......] - ETA: 0s - loss: 1.6283 - accuracy: 0.4512253/313 [=======================>......] - ETA: 0s - loss: 1.6306 - accuracy: 0.4503260/313 [=======================>......] - ETA: 0s - loss: 1.6295 - accuracy: 0.4505267/313 [========================>.....] - ETA: 0s - loss: 1.6316 - accuracy: 0.4497273/313 [=========================>....] - ETA: 0s - loss: 1.6330 - accuracy: 0.4484279/313 [=========================>....] - ETA: 0s - loss: 1.6344 - accuracy: 0.4467285/313 [==========================>...] - ETA: 0s - loss: 1.6349 - accuracy: 0.4471292/313 [==========================>...] - ETA: 0s - loss: 1.6312 - accuracy: 0.4482299/313 [===========================>..] - ETA: 0s - loss: 1.6339 - accuracy: 0.4476306/313 [============================>.] - ETA: 0s - loss: 1.6348 - accuracy: 0.4478312/313 [============================>.] - ETA: 0s - loss: 1.6359 - accuracy: 0.4478313/313 [==============================] - 3s 9ms/step - loss: 1.6351 - accuracy: 0.4479
-2020-09-04 14:03:23.805061: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 14:03:23.805186: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 14:03:23.805788: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
-pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
-coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:03:23.805858: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:03:23.805892: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:03:23.805921: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:03:23.805949: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:03:23.805977: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:03:23.806005: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:03:23.806034: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:03:23.806589: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:03:23.806630: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 14:03:23.806644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 14:03:23.806654: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 14:03:23.807250: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6441 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 14:03:23.812082: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 14:03:23.812123: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.002ms.
-2020-09-04 14:03:23.812135: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.001ms.
-Parsing Inputs...
-
-=========================Options=============================
--max_depth                  10000
--min_bytes                  0
--min_peak_bytes             0
--min_residual_bytes         0
--min_output_bytes           0
--min_micros                 0
--min_accelerator_micros     0
--min_cpu_micros             0
--min_params                 0
--min_float_ops              1
--min_occurrence             0
--step                       -1
--order_by                   float_ops
--account_type_regexes       .*
--start_name_regexes         .*
--trim_name_regexes          
--show_name_regexes          .*
--hide_name_regexes          
--account_displayed_op_only  true
--select                     float_ops
--output                     stdout:
-
-==================Model Analysis Report======================
-
-Doc:
-scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
-flops: Number of float operations. Note: Please read the implementation for the math behind it.
-
-Profile:
-node name | # float_ops
-_TFProfRoot (--/1.52b flops)
-  model_3/conv2d_51/Conv2D (235.36m/235.36m flops)
-  model_3/conv2d_50/Conv2D (235.36m/235.36m flops)
-  model_3/conv2d_49/Conv2D (235.36m/235.36m flops)
-  model_3/conv2d_52/Conv2D (235.36m/235.36m flops)
-  model_3/conv2d_54/Conv2D (235.36m/235.36m flops)
-  model_3/conv2d_55/Conv2D (235.36m/235.36m flops)
-  model_3/conv2d_58/Conv2D (14.71m/14.71m flops)
-  model_3/conv2d_56/Conv2D (14.71m/14.71m flops)
-  model_3/conv2d_57/Conv2D (14.71m/14.71m flops)
-  model_3/conv2d_59/Conv2D (14.71m/14.71m flops)
-  model_3/conv2d_60/Conv2D (14.71m/14.71m flops)
-  model_3/conv2d_62/Conv2D (14.71m/14.71m flops)
-  model_3/conv2d_63/Conv2D (14.71m/14.71m flops)
-  model_3/conv2d_48/Conv2D (6.25m/6.25m flops)
-  model_3/batch_normalization_55/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_3/batch_normalization_54/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_3/batch_normalization_52/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_3/batch_normalization_51/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_3/batch_normalization_50/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_3/batch_normalization_49/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_3/batch_normalization_48/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_3/add_27/add (115.71k/115.71k flops)
-  model_3/conv2d_55/BiasAdd (115.71k/115.71k flops)
-  model_3/conv2d_54/BiasAdd (115.71k/115.71k flops)
-  model_3/conv2d_52/BiasAdd (115.71k/115.71k flops)
-  model_3/conv2d_50/BiasAdd (115.71k/115.71k flops)
-  model_3/conv2d_49/BiasAdd (115.71k/115.71k flops)
-  model_3/conv2d_48/BiasAdd (115.71k/115.71k flops)
-  model_3/conv2d_51/BiasAdd (115.71k/115.71k flops)
-  model_3/add_24/add (115.71k/115.71k flops)
-  model_3/batch_normalization_59/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_3/batch_normalization_56/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_3/batch_normalization_57/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_3/batch_normalization_58/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_3/batch_normalization_60/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_3/batch_normalization_62/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_3/batch_normalization_63/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_3/dense_3/MatMul (9.04k/9.04k flops)
-  model_3/conv2d_59/BiasAdd (7.23k/7.23k flops)
-  model_3/max_pooling2d_2/MaxPool (7.23k/7.23k flops)
-  model_3/conv2d_63/BiasAdd (7.23k/7.23k flops)
-  model_3/add_28/add (7.23k/7.23k flops)
-  model_3/conv2d_62/BiasAdd (7.23k/7.23k flops)
-  model_3/add_31/add (7.23k/7.23k flops)
-  model_3/conv2d_60/BiasAdd (7.23k/7.23k flops)
-  model_3/conv2d_58/BiasAdd (7.23k/7.23k flops)
-  model_3/conv2d_57/BiasAdd (7.23k/7.23k flops)
-  model_3/conv2d_56/BiasAdd (7.23k/7.23k flops)
-  model_3/max_pooling2d_3/MaxPool (452/452 flops)
-  model_3/dense_3/Softmax (50/50 flops)
-  model_3/dense_3/BiasAdd (10/10 flops)
-
-======================End of Report==========================
-1563/1563 - 54s - loss: 1.4857 - accuracy: 0.4649
-  1/313 [..............................] - ETA: 0s - loss: 1.3253 - accuracy: 0.5625  6/313 [..............................] - ETA: 3s - loss: 1.3220 - accuracy: 0.5417 10/313 [..............................] - ETA: 3s - loss: 1.3132 - accuracy: 0.5250 15/313 [>.............................] - ETA: 3s - loss: 1.3227 - accuracy: 0.5208 20/313 [>.............................] - ETA: 3s - loss: 1.2675 - accuracy: 0.5531 25/313 [=>............................] - ETA: 3s - loss: 1.3018 - accuracy: 0.5412 30/313 [=>............................] - ETA: 3s - loss: 1.2928 - accuracy: 0.5417 34/313 [==>...........................] - ETA: 3s - loss: 1.2835 - accuracy: 0.5423 38/313 [==>...........................] - ETA: 3s - loss: 1.2718 - accuracy: 0.5477 43/313 [===>..........................] - ETA: 3s - loss: 1.2774 - accuracy: 0.5494 47/313 [===>..........................] - ETA: 3s - loss: 1.2859 - accuracy: 0.5472 52/313 [===>..........................] - ETA: 3s - loss: 1.2912 - accuracy: 0.5433 57/313 [====>.........................] - ETA: 3s - loss: 1.2769 - accuracy: 0.5493 62/313 [====>.........................] - ETA: 3s - loss: 1.2736 - accuracy: 0.5524 67/313 [=====>........................] - ETA: 2s - loss: 1.2715 - accuracy: 0.5536 72/313 [=====>........................] - ETA: 2s - loss: 1.2705 - accuracy: 0.5547 77/313 [======>.......................] - ETA: 2s - loss: 1.2677 - accuracy: 0.5556 82/313 [======>.......................] - ETA: 2s - loss: 1.2834 - accuracy: 0.5534 86/313 [=======>......................] - ETA: 2s - loss: 1.2845 - accuracy: 0.5538 90/313 [=======>......................] - ETA: 2s - loss: 1.2874 - accuracy: 0.5524 95/313 [========>.....................] - ETA: 2s - loss: 1.2833 - accuracy: 0.5513100/313 [========>.....................] - ETA: 2s - loss: 1.2820 - accuracy: 0.5522105/313 [=========>....................] - ETA: 2s - loss: 1.2914 - accuracy: 0.5509110/313 [=========>....................] - ETA: 2s - loss: 1.2981 - accuracy: 0.5489114/313 [=========>....................] - ETA: 2s - loss: 1.3000 - accuracy: 0.5482118/313 [==========>...................] - ETA: 2s - loss: 1.2988 - accuracy: 0.5493122/313 [==========>...................] - ETA: 2s - loss: 1.2924 - accuracy: 0.5499127/313 [===========>..................] - ETA: 2s - loss: 1.2834 - accuracy: 0.5549131/313 [===========>..................] - ETA: 2s - loss: 1.2786 - accuracy: 0.5558135/313 [===========>..................] - ETA: 2s - loss: 1.2800 - accuracy: 0.5549139/313 [============>.................] - ETA: 2s - loss: 1.2773 - accuracy: 0.5567144/313 [============>.................] - ETA: 2s - loss: 1.2780 - accuracy: 0.5566149/313 [=============>................] - ETA: 2s - loss: 1.2725 - accuracy: 0.5579154/313 [=============>................] - ETA: 1s - loss: 1.2622 - accuracy: 0.5611158/313 [==============>...............] - ETA: 1s - loss: 1.2601 - accuracy: 0.5611162/313 [==============>...............] - ETA: 1s - loss: 1.2624 - accuracy: 0.5610166/313 [==============>...............] - ETA: 1s - loss: 1.2609 - accuracy: 0.5604171/313 [===============>..............] - ETA: 1s - loss: 1.2607 - accuracy: 0.5603176/313 [===============>..............] - ETA: 1s - loss: 1.2632 - accuracy: 0.5600181/313 [================>.............] - ETA: 1s - loss: 1.2605 - accuracy: 0.5606186/313 [================>.............] - ETA: 1s - loss: 1.2616 - accuracy: 0.5601190/313 [=================>............] - ETA: 1s - loss: 1.2607 - accuracy: 0.5602195/313 [=================>............] - ETA: 1s - loss: 1.2623 - accuracy: 0.5591200/313 [==================>...........] - ETA: 1s - loss: 1.2596 - accuracy: 0.5598205/313 [==================>...........] - ETA: 1s - loss: 1.2621 - accuracy: 0.5604209/313 [===================>..........] - ETA: 1s - loss: 1.2623 - accuracy: 0.5612214/313 [===================>..........] - ETA: 1s - loss: 1.2642 - accuracy: 0.5599219/313 [===================>..........] - ETA: 1s - loss: 1.2673 - accuracy: 0.5582224/313 [====================>.........] - ETA: 1s - loss: 1.2627 - accuracy: 0.5600229/313 [====================>.........] - ETA: 1s - loss: 1.2605 - accuracy: 0.5606234/313 [=====================>........] - ETA: 0s - loss: 1.2586 - accuracy: 0.5610238/313 [=====================>........] - ETA: 0s - loss: 1.2578 - accuracy: 0.5617243/313 [======================>.......] - ETA: 0s - loss: 1.2556 - accuracy: 0.5630248/313 [======================>.......] - ETA: 0s - loss: 1.2587 - accuracy: 0.5616252/313 [=======================>......] - ETA: 0s - loss: 1.2587 - accuracy: 0.5629257/313 [=======================>......] - ETA: 0s - loss: 1.2581 - accuracy: 0.5626262/313 [========================>.....] - ETA: 0s - loss: 1.2617 - accuracy: 0.5615265/313 [========================>.....] - ETA: 0s - loss: 1.2604 - accuracy: 0.5623270/313 [========================>.....] - ETA: 0s - loss: 1.2614 - accuracy: 0.5626275/313 [=========================>....] - ETA: 0s - loss: 1.2617 - accuracy: 0.5626280/313 [=========================>....] - ETA: 0s - loss: 1.2664 - accuracy: 0.5609284/313 [==========================>...] - ETA: 0s - loss: 1.2674 - accuracy: 0.5613288/313 [==========================>...] - ETA: 0s - loss: 1.2668 - accuracy: 0.5617293/313 [===========================>..] - ETA: 0s - loss: 1.2647 - accuracy: 0.5626298/313 [===========================>..] - ETA: 0s - loss: 1.2650 - accuracy: 0.5621302/313 [===========================>..] - ETA: 0s - loss: 1.2633 - accuracy: 0.5632307/313 [============================>.] - ETA: 0s - loss: 1.2649 - accuracy: 0.5628311/313 [============================>.] - ETA: 0s - loss: 1.2645 - accuracy: 0.5624313/313 [==============================] - 4s 12ms/step - loss: 1.2646 - accuracy: 0.5621
-2020-09-04 14:04:26.971440: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 14:04:26.971571: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 14:04:26.976555: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
-pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
-coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:04:26.976628: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:04:26.976659: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:04:26.976687: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:04:26.976715: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:04:26.976743: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:04:26.976770: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:04:26.976799: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:04:26.977350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:04:26.977388: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 14:04:26.977401: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 14:04:26.977411: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 14:04:26.978015: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6441 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 14:04:26.982100: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 14:04:26.982129: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.002ms.
-2020-09-04 14:04:26.982141: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.001ms.
-Parsing Inputs...
-
-=========================Options=============================
--max_depth                  10000
--min_bytes                  0
--min_peak_bytes             0
--min_residual_bytes         0
--min_output_bytes           0
--min_micros                 0
--min_accelerator_micros     0
--min_cpu_micros             0
--min_params                 0
--min_float_ops              1
--min_occurrence             0
--step                       -1
--order_by                   float_ops
--account_type_regexes       .*
--start_name_regexes         .*
--trim_name_regexes          
--show_name_regexes          .*
--hide_name_regexes          
--account_displayed_op_only  true
--select                     float_ops
--output                     stdout:
-
-==================Model Analysis Report======================
-
-Doc:
-scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
-flops: Number of float operations. Note: Please read the implementation for the math behind it.
-
-Profile:
-node name | # float_ops
-_TFProfRoot (--/609.23m flops)
-  model_4/conv2d_67/Conv2D (77.88m/77.88m flops)
-  model_4/conv2d_68/Conv2D (77.88m/77.88m flops)
-  model_4/conv2d_65/Conv2D (77.88m/77.88m flops)
-  model_4/conv2d_69/Conv2D (77.88m/77.88m flops)
-  model_4/conv2d_70/Conv2D (77.88m/77.88m flops)
-  model_4/conv2d_71/Conv2D (77.88m/77.88m flops)
-  model_4/conv2d_75/Conv2D (19.47m/19.47m flops)
-  model_4/conv2d_72/Conv2D (19.47m/19.47m flops)
-  model_4/conv2d_73/Conv2D (19.47m/19.47m flops)
-  model_4/conv2d_79/Conv2D (19.47m/19.47m flops)
-  model_4/conv2d_76/Conv2D (19.47m/19.47m flops)
-  model_4/conv2d_78/Conv2D (19.47m/19.47m flops)
-  model_4/conv2d_77/Conv2D (19.47m/19.47m flops)
-  model_4/conv2d_64/Conv2D (3.59m/3.59m flops)
-  model_4/batch_normalization_69/FusedBatchNormV3 (133.51k/133.51k flops)
-  model_4/batch_normalization_70/FusedBatchNormV3 (133.51k/133.51k flops)
-  model_4/batch_normalization_71/FusedBatchNormV3 (133.51k/133.51k flops)
-  model_4/batch_normalization_68/FusedBatchNormV3 (133.51k/133.51k flops)
-  model_4/batch_normalization_67/FusedBatchNormV3 (133.51k/133.51k flops)
-  model_4/batch_normalization_65/FusedBatchNormV3 (133.51k/133.51k flops)
-  model_4/batch_normalization_64/FusedBatchNormV3 (133.51k/133.51k flops)
-  model_4/dense_4/MatMul (83.20k/83.20k flops)
-  model_4/conv2d_69/BiasAdd (66.56k/66.56k flops)
-  model_4/conv2d_70/BiasAdd (66.56k/66.56k flops)
-  model_4/conv2d_71/BiasAdd (66.56k/66.56k flops)
-  model_4/add_33/add (66.56k/66.56k flops)
-  model_4/conv2d_67/BiasAdd (66.56k/66.56k flops)
-  model_4/conv2d_65/BiasAdd (66.56k/66.56k flops)
-  model_4/conv2d_64/BiasAdd (66.56k/66.56k flops)
-  model_4/add_32/add (66.56k/66.56k flops)
-  model_4/add_34/add (66.56k/66.56k flops)
-  model_4/conv2d_68/BiasAdd (66.56k/66.56k flops)
-  model_4/batch_normalization_72/FusedBatchNormV3 (33.67k/33.67k flops)
-  model_4/batch_normalization_73/FusedBatchNormV3 (33.67k/33.67k flops)
-  model_4/batch_normalization_75/FusedBatchNormV3 (33.67k/33.67k flops)
-  model_4/batch_normalization_76/FusedBatchNormV3 (33.67k/33.67k flops)
-  model_4/batch_normalization_79/FusedBatchNormV3 (33.67k/33.67k flops)
-  model_4/batch_normalization_77/FusedBatchNormV3 (33.67k/33.67k flops)
-  model_4/batch_normalization_78/FusedBatchNormV3 (33.67k/33.67k flops)
-  model_4/conv2d_73/BiasAdd (16.64k/16.64k flops)
-  model_4/max_pooling2d_4/MaxPool (16.64k/16.64k flops)
-  model_4/conv2d_79/BiasAdd (16.64k/16.64k flops)
-  model_4/add_35/add (16.64k/16.64k flops)
-  model_4/conv2d_78/BiasAdd (16.64k/16.64k flops)
-  model_4/add_36/add (16.64k/16.64k flops)
-  model_4/conv2d_77/BiasAdd (16.64k/16.64k flops)
-  model_4/add_37/add (16.64k/16.64k flops)
-  model_4/conv2d_76/BiasAdd (16.64k/16.64k flops)
-  model_4/conv2d_75/BiasAdd (16.64k/16.64k flops)
-  model_4/conv2d_72/BiasAdd (16.64k/16.64k flops)
-  model_4/max_pooling2d_5/MaxPool (4.16k/4.16k flops)
-  model_4/dense_4/Softmax (50/50 flops)
-  model_4/dense_4/BiasAdd (10/10 flops)
-
-======================End of Report==========================
-=================================================================================
-|    n_gens  |   n_evals  |error_rate  |     flops  |      time  |architecture  
-=================================================================================
-|         1  |         4  |[    0.438 15242.209]  |[    0.438 15242.209]  |   168.561  |[0 1 0 1 1 1 0 0 0 0 0 0 1 1 0 0 1 1 0 0 1 0 1 1 1 0 0 1 1 0 0 0 0 1 1 0 1
- 1 0 1 1 1 0 0 0]  
-1563/1563 - 40s - loss: 1.4506 - accuracy: 0.4807
-  1/313 [..............................] - ETA: 0s - loss: 2.0641 - accuracy: 0.3125  7/313 [..............................] - ETA: 2s - loss: 2.2541 - accuracy: 0.2812 13/313 [>.............................] - ETA: 2s - loss: 2.1776 - accuracy: 0.3125 20/313 [>.............................] - ETA: 2s - loss: 2.1714 - accuracy: 0.3313 27/313 [=>............................] - ETA: 2s - loss: 2.1722 - accuracy: 0.3322 34/313 [==>...........................] - ETA: 2s - loss: 2.1602 - accuracy: 0.3346 41/313 [==>...........................] - ETA: 2s - loss: 2.1539 - accuracy: 0.3331 48/313 [===>..........................] - ETA: 2s - loss: 2.1404 - accuracy: 0.3385 54/313 [====>.........................] - ETA: 2s - loss: 2.1463 - accuracy: 0.3374 60/313 [====>.........................] - ETA: 2s - loss: 2.1163 - accuracy: 0.3453 67/313 [=====>........................] - ETA: 1s - loss: 2.1156 - accuracy: 0.3456 74/313 [======>.......................] - ETA: 1s - loss: 2.1082 - accuracy: 0.3450 81/313 [======>.......................] - ETA: 1s - loss: 2.1311 - accuracy: 0.3418 87/313 [=======>......................] - ETA: 1s - loss: 2.1262 - accuracy: 0.3445 93/313 [=======>......................] - ETA: 1s - loss: 2.1225 - accuracy: 0.3471100/313 [========>.....................] - ETA: 1s - loss: 2.1151 - accuracy: 0.3472106/313 [=========>....................] - ETA: 1s - loss: 2.1118 - accuracy: 0.3496113/313 [=========>....................] - ETA: 1s - loss: 2.1230 - accuracy: 0.3493120/313 [==========>...................] - ETA: 1s - loss: 2.1146 - accuracy: 0.3497126/313 [===========>..................] - ETA: 1s - loss: 2.1093 - accuracy: 0.3519133/313 [===========>..................] - ETA: 1s - loss: 2.1055 - accuracy: 0.3515139/313 [============>.................] - ETA: 1s - loss: 2.1033 - accuracy: 0.3532145/313 [============>.................] - ETA: 1s - loss: 2.0987 - accuracy: 0.3532152/313 [=============>................] - ETA: 1s - loss: 2.0977 - accuracy: 0.3528159/313 [==============>...............] - ETA: 1s - loss: 2.0932 - accuracy: 0.3536166/313 [==============>...............] - ETA: 1s - loss: 2.0950 - accuracy: 0.3528173/313 [===============>..............] - ETA: 1s - loss: 2.1008 - accuracy: 0.3524180/313 [================>.............] - ETA: 1s - loss: 2.1045 - accuracy: 0.3521186/313 [================>.............] - ETA: 1s - loss: 2.1029 - accuracy: 0.3520193/313 [=================>............] - ETA: 0s - loss: 2.1019 - accuracy: 0.3523199/313 [==================>...........] - ETA: 0s - loss: 2.0984 - accuracy: 0.3535206/313 [==================>...........] - ETA: 0s - loss: 2.1021 - accuracy: 0.3519213/313 [===================>..........] - ETA: 0s - loss: 2.1062 - accuracy: 0.3515220/313 [====================>.........] - ETA: 0s - loss: 2.1100 - accuracy: 0.3503226/313 [====================>.........] - ETA: 0s - loss: 2.1065 - accuracy: 0.3518232/313 [=====================>........] - ETA: 0s - loss: 2.1055 - accuracy: 0.3512239/313 [=====================>........] - ETA: 0s - loss: 2.1009 - accuracy: 0.3521246/313 [======================>.......] - ETA: 0s - loss: 2.1009 - accuracy: 0.3525253/313 [=======================>......] - ETA: 0s - loss: 2.0987 - accuracy: 0.3526260/313 [=======================>......] - ETA: 0s - loss: 2.1004 - accuracy: 0.3523267/313 [========================>.....] - ETA: 0s - loss: 2.0993 - accuracy: 0.3524273/313 [=========================>....] - ETA: 0s - loss: 2.1036 - accuracy: 0.3516279/313 [=========================>....] - ETA: 0s - loss: 2.1105 - accuracy: 0.3515286/313 [==========================>...] - ETA: 0s - loss: 2.1115 - accuracy: 0.3516292/313 [==========================>...] - ETA: 0s - loss: 2.1065 - accuracy: 0.3530299/313 [===========================>..] - ETA: 0s - loss: 2.1065 - accuracy: 0.3535306/313 [============================>.] - ETA: 0s - loss: 2.1064 - accuracy: 0.3532313/313 [==============================] - ETA: 0s - loss: 2.1063 - accuracy: 0.3530313/313 [==============================] - 3s 8ms/step - loss: 2.1063 - accuracy: 0.3530
-2020-09-04 14:05:15.008923: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 14:05:15.009055: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 14:05:15.009866: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
-pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
-coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:05:15.009932: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:05:15.009964: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:05:15.009993: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:05:15.010022: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:05:15.010051: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:05:15.010080: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:05:15.010121: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:05:15.010809: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:05:15.010852: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 14:05:15.010867: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 14:05:15.010877: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 14:05:15.011507: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6441 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 14:05:15.015738: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 14:05:15.015769: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.003ms.
-2020-09-04 14:05:15.015781: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.001ms.
-Parsing Inputs...
-
-=========================Options=============================
--max_depth                  10000
--min_bytes                  0
--min_peak_bytes             0
--min_residual_bytes         0
--min_output_bytes           0
--min_micros                 0
--min_accelerator_micros     0
--min_cpu_micros             0
--min_params                 0
--min_float_ops              1
--min_occurrence             0
--step                       -1
--order_by                   float_ops
--account_type_regexes       .*
--start_name_regexes         .*
--trim_name_regexes          
--show_name_regexes          .*
--hide_name_regexes          
--account_displayed_op_only  true
--select                     float_ops
--output                     stdout:
-
-==================Model Analysis Report======================
-
-Doc:
-scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
-flops: Number of float operations. Note: Please read the implementation for the math behind it.
-
-Profile:
-node name | # float_ops
-_TFProfRoot (--/1.52b flops)
-  model_5/conv2d_83/Conv2D (235.36m/235.36m flops)
-  model_5/conv2d_82/Conv2D (235.36m/235.36m flops)
-  model_5/conv2d_81/Conv2D (235.36m/235.36m flops)
-  model_5/conv2d_84/Conv2D (235.36m/235.36m flops)
-  model_5/conv2d_86/Conv2D (235.36m/235.36m flops)
-  model_5/conv2d_87/Conv2D (235.36m/235.36m flops)
-  model_5/conv2d_90/Conv2D (14.71m/14.71m flops)
-  model_5/conv2d_88/Conv2D (14.71m/14.71m flops)
-  model_5/conv2d_89/Conv2D (14.71m/14.71m flops)
-  model_5/conv2d_91/Conv2D (14.71m/14.71m flops)
-  model_5/conv2d_92/Conv2D (14.71m/14.71m flops)
-  model_5/conv2d_94/Conv2D (14.71m/14.71m flops)
-  model_5/conv2d_95/Conv2D (14.71m/14.71m flops)
-  model_5/conv2d_80/Conv2D (6.25m/6.25m flops)
-  model_5/batch_normalization_87/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_5/batch_normalization_86/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_5/batch_normalization_84/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_5/batch_normalization_83/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_5/batch_normalization_82/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_5/batch_normalization_81/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_5/batch_normalization_80/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_5/add_41/add (115.71k/115.71k flops)
-  model_5/conv2d_87/BiasAdd (115.71k/115.71k flops)
-  model_5/conv2d_86/BiasAdd (115.71k/115.71k flops)
-  model_5/conv2d_84/BiasAdd (115.71k/115.71k flops)
-  model_5/conv2d_82/BiasAdd (115.71k/115.71k flops)
-  model_5/conv2d_81/BiasAdd (115.71k/115.71k flops)
-  model_5/conv2d_80/BiasAdd (115.71k/115.71k flops)
-  model_5/conv2d_83/BiasAdd (115.71k/115.71k flops)
-  model_5/add_38/add (115.71k/115.71k flops)
-  model_5/max_pooling2d_6/MaxPool (28.93k/28.93k flops)
-  model_5/batch_normalization_91/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_5/batch_normalization_88/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_5/batch_normalization_89/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_5/batch_normalization_90/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_5/batch_normalization_92/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_5/batch_normalization_94/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_5/batch_normalization_95/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_5/dense_5/MatMul (9.04k/9.04k flops)
-  model_5/conv2d_91/BiasAdd (7.23k/7.23k flops)
-  model_5/conv2d_95/BiasAdd (7.23k/7.23k flops)
-  model_5/add_42/add (7.23k/7.23k flops)
-  model_5/conv2d_94/BiasAdd (7.23k/7.23k flops)
-  model_5/add_45/add (7.23k/7.23k flops)
-  model_5/conv2d_92/BiasAdd (7.23k/7.23k flops)
-  model_5/conv2d_90/BiasAdd (7.23k/7.23k flops)
-  model_5/conv2d_89/BiasAdd (7.23k/7.23k flops)
-  model_5/conv2d_88/BiasAdd (7.23k/7.23k flops)
-  model_5/max_pooling2d_7/MaxPool (1.81k/1.81k flops)
-  model_5/dense_5/Softmax (50/50 flops)
-  model_5/dense_5/BiasAdd (10/10 flops)
-
-======================End of Report==========================
-1563/1563 - 55s - loss: 1.4300 - accuracy: 0.4887
-  1/313 [..............................] - ETA: 0s - loss: 1.0141 - accuracy: 0.7188  5/313 [..............................] - ETA: 3s - loss: 1.2834 - accuracy: 0.5938  9/313 [..............................] - ETA: 3s - loss: 1.2624 - accuracy: 0.5660 13/313 [>.............................] - ETA: 3s - loss: 1.1880 - accuracy: 0.5938 18/313 [>.............................] - ETA: 3s - loss: 1.1964 - accuracy: 0.5833 23/313 [=>............................] - ETA: 3s - loss: 1.1880 - accuracy: 0.5842 27/313 [=>............................] - ETA: 3s - loss: 1.1984 - accuracy: 0.5880 31/313 [=>............................] - ETA: 3s - loss: 1.1744 - accuracy: 0.5907 36/313 [==>...........................] - ETA: 3s - loss: 1.2082 - accuracy: 0.5868 41/313 [==>...........................] - ETA: 3s - loss: 1.2148 - accuracy: 0.5907 45/313 [===>..........................] - ETA: 3s - loss: 1.2045 - accuracy: 0.5944 50/313 [===>..........................] - ETA: 3s - loss: 1.2240 - accuracy: 0.5919 55/313 [====>.........................] - ETA: 3s - loss: 1.2264 - accuracy: 0.5898 59/313 [====>.........................] - ETA: 3s - loss: 1.2305 - accuracy: 0.5900 64/313 [=====>........................] - ETA: 3s - loss: 1.2421 - accuracy: 0.5859 69/313 [=====>........................] - ETA: 2s - loss: 1.2421 - accuracy: 0.5842 73/313 [=====>........................] - ETA: 2s - loss: 1.2433 - accuracy: 0.5813 78/313 [======>.......................] - ETA: 2s - loss: 1.2377 - accuracy: 0.5837 83/313 [======>.......................] - ETA: 2s - loss: 1.2499 - accuracy: 0.5791 88/313 [=======>......................] - ETA: 2s - loss: 1.2533 - accuracy: 0.5774 93/313 [=======>......................] - ETA: 2s - loss: 1.2494 - accuracy: 0.5803 98/313 [========>.....................] - ETA: 2s - loss: 1.2551 - accuracy: 0.5810103/313 [========>.....................] - ETA: 2s - loss: 1.2454 - accuracy: 0.5843107/313 [=========>....................] - ETA: 2s - loss: 1.2538 - accuracy: 0.5815112/313 [=========>....................] - ETA: 2s - loss: 1.2576 - accuracy: 0.5834116/313 [==========>...................] - ETA: 2s - loss: 1.2558 - accuracy: 0.5830120/313 [==========>...................] - ETA: 2s - loss: 1.2563 - accuracy: 0.5831124/313 [==========>...................] - ETA: 2s - loss: 1.2509 - accuracy: 0.5852129/313 [===========>..................] - ETA: 2s - loss: 1.2521 - accuracy: 0.5850134/313 [===========>..................] - ETA: 2s - loss: 1.2446 - accuracy: 0.5879138/313 [============>.................] - ETA: 2s - loss: 1.2441 - accuracy: 0.5883143/313 [============>.................] - ETA: 2s - loss: 1.2416 - accuracy: 0.5892148/313 [=============>................] - ETA: 2s - loss: 1.2430 - accuracy: 0.5880153/313 [=============>................] - ETA: 1s - loss: 1.2383 - accuracy: 0.5905158/313 [==============>...............] - ETA: 1s - loss: 1.2366 - accuracy: 0.5894163/313 [==============>...............] - ETA: 1s - loss: 1.2381 - accuracy: 0.5872167/313 [===============>..............] - ETA: 1s - loss: 1.2389 - accuracy: 0.5865171/313 [===============>..............] - ETA: 1s - loss: 1.2406 - accuracy: 0.5850176/313 [===============>..............] - ETA: 1s - loss: 1.2410 - accuracy: 0.5849181/313 [================>.............] - ETA: 1s - loss: 1.2401 - accuracy: 0.5851186/313 [================>.............] - ETA: 1s - loss: 1.2448 - accuracy: 0.5843191/313 [=================>............] - ETA: 1s - loss: 1.2460 - accuracy: 0.5839195/313 [=================>............] - ETA: 1s - loss: 1.2483 - accuracy: 0.5825199/313 [==================>...........] - ETA: 1s - loss: 1.2459 - accuracy: 0.5831203/313 [==================>...........] - ETA: 1s - loss: 1.2469 - accuracy: 0.5831207/313 [==================>...........] - ETA: 1s - loss: 1.2493 - accuracy: 0.5808211/313 [===================>..........] - ETA: 1s - loss: 1.2514 - accuracy: 0.5806216/313 [===================>..........] - ETA: 1s - loss: 1.2535 - accuracy: 0.5802221/313 [====================>.........] - ETA: 1s - loss: 1.2560 - accuracy: 0.5795226/313 [====================>.........] - ETA: 1s - loss: 1.2511 - accuracy: 0.5813231/313 [=====================>........] - ETA: 1s - loss: 1.2477 - accuracy: 0.5825235/313 [=====================>........] - ETA: 0s - loss: 1.2488 - accuracy: 0.5823240/313 [======================>.......] - ETA: 0s - loss: 1.2504 - accuracy: 0.5828245/313 [======================>.......] - ETA: 0s - loss: 1.2501 - accuracy: 0.5825250/313 [======================>.......] - ETA: 0s - loss: 1.2511 - accuracy: 0.5814255/313 [=======================>......] - ETA: 0s - loss: 1.2474 - accuracy: 0.5825260/313 [=======================>......] - ETA: 0s - loss: 1.2520 - accuracy: 0.5808265/313 [========================>.....] - ETA: 0s - loss: 1.2540 - accuracy: 0.5805269/313 [========================>.....] - ETA: 0s - loss: 1.2546 - accuracy: 0.5809274/313 [=========================>....] - ETA: 0s - loss: 1.2560 - accuracy: 0.5811279/313 [=========================>....] - ETA: 0s - loss: 1.2562 - accuracy: 0.5811284/313 [==========================>...] - ETA: 0s - loss: 1.2567 - accuracy: 0.5811289/313 [==========================>...] - ETA: 0s - loss: 1.2539 - accuracy: 0.5817294/313 [===========================>..] - ETA: 0s - loss: 1.2533 - accuracy: 0.5814299/313 [===========================>..] - ETA: 0s - loss: 1.2552 - accuracy: 0.5807303/313 [============================>.] - ETA: 0s - loss: 1.2523 - accuracy: 0.5816307/313 [============================>.] - ETA: 0s - loss: 1.2552 - accuracy: 0.5805311/313 [============================>.] - ETA: 0s - loss: 1.2578 - accuracy: 0.5795313/313 [==============================] - 4s 12ms/step - loss: 1.2581 - accuracy: 0.5797
-2020-09-04 14:06:18.217420: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 14:06:18.217552: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 14:06:18.218152: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
-pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
-coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:06:18.218214: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:06:18.218244: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:06:18.218273: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:06:18.218301: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:06:18.218330: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:06:18.218359: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:06:18.218387: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:06:18.218946: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:06:18.218986: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 14:06:18.218998: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 14:06:18.219008: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 14:06:18.219797: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6441 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 14:06:18.223899: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 14:06:18.223929: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.002ms.
-2020-09-04 14:06:18.223941: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.001ms.
-Parsing Inputs...
-
-=========================Options=============================
--max_depth                  10000
--min_bytes                  0
--min_peak_bytes             0
--min_residual_bytes         0
--min_output_bytes           0
--min_micros                 0
--min_accelerator_micros     0
--min_cpu_micros             0
--min_params                 0
--min_float_ops              1
--min_occurrence             0
--step                       -1
--order_by                   float_ops
--account_type_regexes       .*
--start_name_regexes         .*
--trim_name_regexes          
--show_name_regexes          .*
--hide_name_regexes          
--account_displayed_op_only  true
--select                     float_ops
--output                     stdout:
-
-==================Model Analysis Report======================
-
-Doc:
-scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
-flops: Number of float operations. Note: Please read the implementation for the math behind it.
-
-Profile:
-node name | # float_ops
-_TFProfRoot (--/746.21k flops)
-  model_6/conv2d_96/Conv2D (110.59k/110.59k flops)
-  model_6/conv2d_99/Conv2D (73.73k/73.73k flops)
-  model_6/conv2d_103/Conv2D (73.73k/73.73k flops)
-  model_6/conv2d_98/Conv2D (73.73k/73.73k flops)
-  model_6/conv2d_102/Conv2D (73.73k/73.73k flops)
-  model_6/conv2d_97/Conv2D (73.73k/73.73k flops)
-  model_6/conv2d_100/Conv2D (73.73k/73.73k flops)
-  model_6/conv2d_105/Conv2D (18.43k/18.43k flops)
-  model_6/conv2d_106/Conv2D (18.43k/18.43k flops)
-  model_6/conv2d_104/Conv2D (18.43k/18.43k flops)
-  model_6/conv2d_107/Conv2D (18.43k/18.43k flops)
-  model_6/conv2d_108/Conv2D (18.43k/18.43k flops)
-  model_6/conv2d_110/Conv2D (18.43k/18.43k flops)
-  model_6/conv2d_111/Conv2D (18.43k/18.43k flops)
-  model_6/batch_normalization_96/FusedBatchNormV3 (4.11k/4.11k flops)
-  model_6/batch_normalization_99/FusedBatchNormV3 (4.11k/4.11k flops)
-  model_6/batch_normalization_98/FusedBatchNormV3 (4.11k/4.11k flops)
-  model_6/batch_normalization_97/FusedBatchNormV3 (4.11k/4.11k flops)
-  model_6/batch_normalization_103/FusedBatchNormV3 (4.11k/4.11k flops)
-  model_6/batch_normalization_102/FusedBatchNormV3 (4.11k/4.11k flops)
-  model_6/batch_normalization_100/FusedBatchNormV3 (4.11k/4.11k flops)
-  model_6/dense_6/MatMul (2.56k/2.56k flops)
-  model_6/add_49/add (2.05k/2.05k flops)
-  model_6/conv2d_96/BiasAdd (2.05k/2.05k flops)
-  model_6/conv2d_97/BiasAdd (2.05k/2.05k flops)
-  model_6/conv2d_98/BiasAdd (2.05k/2.05k flops)
-  model_6/conv2d_99/BiasAdd (2.05k/2.05k flops)
-  model_6/max_pooling2d_8/MaxPool (2.05k/2.05k flops)
-  model_6/add_46/add (2.05k/2.05k flops)
-  model_6/conv2d_103/BiasAdd (2.05k/2.05k flops)
-  model_6/conv2d_102/BiasAdd (2.05k/2.05k flops)
-  model_6/conv2d_100/BiasAdd (2.05k/2.05k flops)
-  model_6/batch_normalization_104/FusedBatchNormV3 (1.04k/1.04k flops)
-  model_6/batch_normalization_105/FusedBatchNormV3 (1.04k/1.04k flops)
-  model_6/batch_normalization_111/FusedBatchNormV3 (1.04k/1.04k flops)
-  model_6/batch_normalization_110/FusedBatchNormV3 (1.04k/1.04k flops)
-  model_6/batch_normalization_108/FusedBatchNormV3 (1.04k/1.04k flops)
-  model_6/batch_normalization_107/FusedBatchNormV3 (1.04k/1.04k flops)
-  model_6/batch_normalization_106/FusedBatchNormV3 (1.04k/1.04k flops)
-  model_6/max_pooling2d_9/MaxPool (512/512 flops)
-  model_6/conv2d_106/BiasAdd (512/512 flops)
-  model_6/add_50/add (512/512 flops)
-  model_6/add_53/add (512/512 flops)
-  model_6/conv2d_111/BiasAdd (512/512 flops)
-  model_6/conv2d_110/BiasAdd (512/512 flops)
-  model_6/conv2d_108/BiasAdd (512/512 flops)
-  model_6/conv2d_104/BiasAdd (512/512 flops)
-  model_6/conv2d_107/BiasAdd (512/512 flops)
-  model_6/conv2d_105/BiasAdd (512/512 flops)
-  model_6/dense_6/Softmax (50/50 flops)
-  model_6/dense_6/BiasAdd (10/10 flops)
-
-======================End of Report==========================
-1563/1563 - 18s - loss: 2.2154 - accuracy: 0.1746
-  1/313 [..............................] - ETA: 0s - loss: 1.7301 - accuracy: 0.3125 13/313 [>.............................] - ETA: 1s - loss: 1.8628 - accuracy: 0.3197 24/313 [=>............................] - ETA: 1s - loss: 1.8919 - accuracy: 0.3021 36/313 [==>...........................] - ETA: 1s - loss: 1.9020 - accuracy: 0.3047 47/313 [===>..........................] - ETA: 1s - loss: 1.8942 - accuracy: 0.3045 59/313 [====>.........................] - ETA: 1s - loss: 1.8852 - accuracy: 0.3040 70/313 [=====>........................] - ETA: 1s - loss: 1.8888 - accuracy: 0.3027 83/313 [======>.......................] - ETA: 1s - loss: 1.8864 - accuracy: 0.3035 94/313 [========>.....................] - ETA: 0s - loss: 1.8828 - accuracy: 0.3052107/313 [=========>....................] - ETA: 0s - loss: 1.8800 - accuracy: 0.3084119/313 [==========>...................] - ETA: 0s - loss: 1.8782 - accuracy: 0.3070130/313 [===========>..................] - ETA: 0s - loss: 1.8782 - accuracy: 0.3082144/313 [============>.................] - ETA: 0s - loss: 1.8730 - accuracy: 0.3147156/313 [=============>................] - ETA: 0s - loss: 1.8742 - accuracy: 0.3151168/313 [===============>..............] - ETA: 0s - loss: 1.8769 - accuracy: 0.3140179/313 [================>.............] - ETA: 0s - loss: 1.8791 - accuracy: 0.3125191/313 [=================>............] - ETA: 0s - loss: 1.8743 - accuracy: 0.3135203/313 [==================>...........] - ETA: 0s - loss: 1.8741 - accuracy: 0.3136215/313 [===================>..........] - ETA: 0s - loss: 1.8743 - accuracy: 0.3122226/313 [====================>.........] - ETA: 0s - loss: 1.8754 - accuracy: 0.3110236/313 [=====================>........] - ETA: 0s - loss: 1.8727 - accuracy: 0.3126248/313 [======================>.......] - ETA: 0s - loss: 1.8703 - accuracy: 0.3109259/313 [=======================>......] - ETA: 0s - loss: 1.8686 - accuracy: 0.3108272/313 [=========================>....] - ETA: 0s - loss: 1.8704 - accuracy: 0.3112284/313 [==========================>...] - ETA: 0s - loss: 1.8681 - accuracy: 0.3116297/313 [===========================>..] - ETA: 0s - loss: 1.8687 - accuracy: 0.3125308/313 [============================>.] - ETA: 0s - loss: 1.8647 - accuracy: 0.3123313/313 [==============================] - 1s 4ms/step - loss: 1.8648 - accuracy: 0.3124
-2020-09-04 14:06:42.207043: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 14:06:42.207153: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 14:06:42.207763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
-pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
-coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 14:06:42.207830: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 14:06:42.207861: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 14:06:42.207890: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 14:06:42.207918: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 14:06:42.207947: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 14:06:42.207976: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 14:06:42.208004: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 14:06:42.208579: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 14:06:42.208618: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 14:06:42.208630: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 14:06:42.208640: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 14:06:42.209241: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6441 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 14:06:42.213735: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 14:06:42.213767: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.002ms.
-2020-09-04 14:06:42.213779: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.001ms.
-Parsing Inputs...
-
-=========================Options=============================
--max_depth                  10000
--min_bytes                  0
--min_peak_bytes             0
--min_residual_bytes         0
--min_output_bytes           0
--min_micros                 0
--min_accelerator_micros     0
--min_cpu_micros             0
--min_params                 0
--min_float_ops              1
--min_occurrence             0
--step                       -1
--order_by                   float_ops
--account_type_regexes       .*
--start_name_regexes         .*
--trim_name_regexes          
--show_name_regexes          .*
--hide_name_regexes          
--account_displayed_op_only  true
--select                     float_ops
--output                     stdout:
-
-==================Model Analysis Report======================
-
-Doc:
-scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
-flops: Number of float operations. Note: Please read the implementation for the math behind it.
-
-Profile:
-node name | # float_ops
-_TFProfRoot (--/1.77b flops)
-  model_7/conv2d_115/Conv2D (235.36m/235.36m flops)
-  model_7/conv2d_114/Conv2D (235.36m/235.36m flops)
-  model_7/conv2d_113/Conv2D (235.36m/235.36m flops)
-  model_7/conv2d_116/Conv2D (235.36m/235.36m flops)
-  model_7/conv2d_117/Conv2D (235.36m/235.36m flops)
-  model_7/conv2d_118/Conv2D (235.36m/235.36m flops)
-  model_7/conv2d_119/Conv2D (235.36m/235.36m flops)
-  model_7/conv2d_122/Conv2D (14.71m/14.71m flops)
-  model_7/conv2d_120/Conv2D (14.71m/14.71m flops)
-  model_7/conv2d_121/Conv2D (14.71m/14.71m flops)
-  model_7/conv2d_127/Conv2D (14.71m/14.71m flops)
-  model_7/conv2d_126/Conv2D (14.71m/14.71m flops)
-  model_7/conv2d_125/Conv2D (14.71m/14.71m flops)
-  model_7/conv2d_124/Conv2D (14.71m/14.71m flops)
-  model_7/conv2d_123/Conv2D (14.71m/14.71m flops)
-  model_7/conv2d_112/Conv2D (6.25m/6.25m flops)
-  model_7/batch_normalization_112/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_7/batch_normalization_116/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_7/batch_normalization_113/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_7/batch_normalization_114/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_7/batch_normalization_115/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_7/batch_normalization_119/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_7/batch_normalization_118/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_7/batch_normalization_117/FusedBatchNormV3 (232.10k/232.10k flops)
-  model_7/conv2d_119/BiasAdd (115.71k/115.71k flops)
-  model_7/conv2d_118/BiasAdd (115.71k/115.71k flops)
-  model_7/conv2d_117/BiasAdd (115.71k/115.71k flops)
-  model_7/add_55/add (115.71k/115.71k flops)
-  model_7/conv2d_116/BiasAdd (115.71k/115.71k flops)
-  model_7/conv2d_114/BiasAdd (115.71k/115.71k flops)
-  model_7/conv2d_113/BiasAdd (115.71k/115.71k flops)
-  model_7/conv2d_112/BiasAdd (115.71k/115.71k flops)
-  model_7/add_56/add (115.71k/115.71k flops)
-  model_7/conv2d_115/BiasAdd (115.71k/115.71k flops)
-  model_7/add_54/add (115.71k/115.71k flops)
-  model_7/max_pooling2d_10/MaxPool (65.09k/65.09k flops)
-  model_7/batch_normalization_122/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_7/batch_normalization_120/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_7/batch_normalization_121/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_7/batch_normalization_123/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_7/batch_normalization_124/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_7/batch_normalization_125/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_7/batch_normalization_126/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_7/batch_normalization_127/FusedBatchNormV3 (15.14k/15.14k flops)
-  model_7/dense_7/MatMul (9.04k/9.04k flops)
-  model_7/conv2d_123/BiasAdd (7.23k/7.23k flops)
-  model_7/conv2d_127/BiasAdd (7.23k/7.23k flops)
-  model_7/conv2d_126/BiasAdd (7.23k/7.23k flops)
-  model_7/add_57/add (7.23k/7.23k flops)
-  model_7/conv2d_125/BiasAdd (7.23k/7.23k flops)
-  model_7/add_58/add (7.23k/7.23k flops)
-  model_7/conv2d_124/BiasAdd (7.23k/7.23k flops)
-  model_7/add_59/add (7.23k/7.23k flops)
-  model_7/conv2d_122/BiasAdd (7.23k/7.23k flops)
-  model_7/conv2d_121/BiasAdd (7.23k/7.23k flops)
-  model_7/conv2d_120/BiasAdd (7.23k/7.23k flops)
-  model_7/max_pooling2d_11/MaxPool (4.07k/4.07k flops)
-  model_7/dense_7/Softmax (50/50 flops)
-  model_7/dense_7/BiasAdd (10/10 flops)
 
 ======================End of Report==========================

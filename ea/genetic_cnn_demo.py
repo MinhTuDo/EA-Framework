@@ -21,13 +21,15 @@ import time
 
 class MySaver(LogSaver):
     def _do(self, ga):
-        self.add_attributes('n_gens', ga.n_gens) 
-        self.add_attributes('n_evals', ga.n_evals) 
+        self.add_attributes('architecture', ga.pop[ga.elite_idx])
         self.add_attributes('error_rate', ga.F_pop[ga.elite_idx])
         self.add_attributes('flops', ga.F_pop[ga.elite_idx])
+        self.add_attributes('n_gens', ga.n_gens) 
+        self.add_attributes('n_evals', ga.n_evals) 
+        
         now = time.time()
         self.add_attributes('time', now - ga.start_time)
-        self.add_attributes('architecture', ga.pop[ga.elite_idx])
+        
 
 class MyDisplay(Display):
     def _do(self, ga):
@@ -63,7 +65,7 @@ class CustomizedNSGANET(NSGANET):
     def _model_fit(self):
         self.model.fit(x=self.train_data[0],
                        y=self.train_data[1],
-                       epochs=25,
+                       epochs=self.epochs,
                        verbose=2)
 
     def _model_evaluate(self):
@@ -75,18 +77,19 @@ problem = CustomizedNSGANET(input_shape=(32, 32, 3),
                               n_classes=10,
                               data=(train_data, test_data, None),
                               activation_last='softmax',
-                              optimizer='adam',
+                              optimizer='sgd',
                               loss='categorical_crossentropy',
                               stages=(6, 6),
-                              activation='relu')
+                              activation='relu',
+                              epochs=25)
 
 
-termination = MaxGenTermination(5)
+termination = MaxGenTermination(200)
 
 crossover = cx.MBUniformCrossover(prob=0.9)
-mutation = mut.BitFlipMutation(prob=None)
+mutation = mut.BitFlipMutation(prob=0.02)
 
-algorithm = mo.NSGAII(pop_size=4,
+algorithm = mo.NSGAII(pop_size=40,
                       crossover=crossover,
                       elitist_archive=2,
                       mutation=mutation)

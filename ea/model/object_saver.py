@@ -23,6 +23,7 @@ class ObjectSaver:
         filename = os.path.join(self.save_dir, 
                                 "obj_" + \
                                 datetime.datetime.now().strftime("%Y%m%d-%H%M") + \
+                                '_gen-{}_'.format(algorithm.n_gens) + \
                                 '_{}-{}_'.format(algorithm.__class__.__name__,
                                                algorithm.problem.__class__.__name__) +\
                                 '.pickle' )

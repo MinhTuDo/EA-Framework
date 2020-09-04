@@ -6,6 +6,7 @@ from .mo_problem import MultiObjectiveProblem
 import tensorflow as tf
 import keras.backend as K
 from keras_flops import get_flops
+import keras
 
 class NSGANET(MultiObjectiveProblem):
     def __init__(self,
@@ -14,7 +15,7 @@ class NSGANET(MultiObjectiveProblem):
                  n_classes=None,
                  activation='relu',
                  activation_last='softmax',
-                 optimizer='adam',
+                 optimizer='sgd',
                  loss='categorical_crossentropy',
                  stages=(6, 6),
                  epochs=1,
@@ -45,6 +46,8 @@ class NSGANET(MultiObjectiveProblem):
         self.binary_string = None
 
         (self.train_data, self.test_data, self.validation_data) = data
+
+        self.epochs = epochs
 
         self._preprocess_input()
 
@@ -81,9 +84,12 @@ class NSGANET(MultiObjectiveProblem):
 
         flops = get_flops(model)
 
+        steps = self.epochs
+        lr = tf.keras.experimental.CosineDecay(initial_learning_rate=0.025, decay_steps=steps)
+        opt = keras.optimizers.SGD(learning_rate=0.025)
 
         model.compile(loss=self.loss,
-                      optimizer=self.optimizer,
+                      optimizer=opt,
                       metrics=['accuracy'])
 
         return model, flops
@@ -98,22 +104,6 @@ class NSGANET(MultiObjectiveProblem):
         error_rate = 1 - self._model_evaluate()
         flops = flops / 1e5
         return error_rate, flops
-
-    def get_flops(self):
-        session = tf.compat.v1.Session()
-        graph = tf.compat.v1.get_default_graph()
-        with graph.as_default():
-            with session.as_default():
-                run_meta = tf.compat.v1.RunMetadata()
-                opts = tf.compat.v1.profiler.ProfileOptionBuilder.float_operation()
-
-                # Optional: save printed results to file
-                # flops_log_path = os.path.join(tempfile.gettempdir(), 'tf_flops_log.txt')
-                # opts['output'] = 'file:outfile={}'.format(flops_log_path)
-
-                # We use the Keras session graph in the call to the profiler.
-                flops = tf.compat.v1.profiler.profile(graph=graph,
-                                                    run_meta=run_meta, cmd='op', options=opts)
 
         tf.compat.v1.reset_default_graph()
 
