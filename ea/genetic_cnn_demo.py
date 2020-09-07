@@ -81,7 +81,7 @@ problem = CustomizedNSGANET(input_shape=(32, 32, 3),
                               loss='categorical_crossentropy',
                               stages=(6, 6),
                               activation='relu',
-                              epochs=25)
+                              epochs=5)
 
 
 termination = MaxGenTermination(200)

@@ -47,6 +47,12 @@ class GA(Algorithm):
 
         self.finalize()
 
+    def run_continue(self):
+        while not self.termination._criteria_met(self):
+            self.next()
+
+        self.finalize()
+
     def initialize(self):
         self.n_gens = 1
         self.n_evals = 0

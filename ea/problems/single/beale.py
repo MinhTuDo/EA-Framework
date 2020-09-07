@@ -19,7 +19,7 @@ class Beale(SingleObjectiveProblem):
     def _f(self, X):
         f = (1.5 - X[0] + X[0]*X[1])**2 + \
             (2.25 - X[0] + X[0]*(X[1]**2))**2 + \
-            (2.265 - X[0] + X[0]*(X[1]**3))**2
+            (2.625 - X[0] + X[0]*(X[1]**3))**2
             
         return f
 

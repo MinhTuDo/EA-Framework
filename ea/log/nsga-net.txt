@@ -1,57 +1,57 @@
-2020-09-04 15:01:11.260635: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
-2020-09-04 15:01:11.287239: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+2020-09-07 10:32:05.856756: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-09-07 10:32:05.896688: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 15:01:11.287474: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 15:01:11.289108: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 15:01:11.290406: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 15:01:11.290685: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 15:01:11.292294: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 15:01:11.293093: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 15:01:11.296544: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 15:01:11.297656: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 15:01:11.298001: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
-2020-09-04 15:01:11.322128: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2793165000 Hz
-2020-09-04 15:01:11.323251: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b2b8b4c170 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
-2020-09-04 15:01:11.323299: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
-2020-09-04 15:01:11.324202: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+2020-09-07 10:32:05.896923: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:32:05.898550: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:32:05.899809: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:32:05.900088: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:32:05.901681: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:32:05.902463: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:32:05.905832: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:32:05.907407: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:32:05.907725: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+2020-09-07 10:32:05.932326: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2793350000 Hz
+2020-09-07 10:32:05.933120: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b4ce39c610 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-09-07 10:32:05.933154: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-09-07 10:32:05.934345: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 15:01:11.324267: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 15:01:11.324312: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 15:01:11.324352: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 15:01:11.324392: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 15:01:11.324432: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 15:01:11.324471: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 15:01:11.324510: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 15:01:11.326000: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 15:01:11.326089: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 15:01:11.543696: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 15:01:11.543745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 15:01:11.543763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 15:01:11.545558: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6355 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 15:01:11.547493: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b2bc2ec9b0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2020-09-04 15:01:11.547532: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1070, Compute Capability 6.1
-2020-09-04 15:01:15.757335: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 15:01:15.757498: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 15:01:15.758137: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+2020-09-07 10:32:05.934404: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:32:05.934435: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:32:05.934464: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:32:05.934493: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:32:05.934521: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:32:05.934549: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:32:05.934578: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:32:05.936089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:32:05.936173: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:32:06.150492: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-07 10:32:06.150542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-07 10:32:06.150555: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-07 10:32:06.152346: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6915 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-07 10:32:06.154212: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b4d1b3ba80 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-09-07 10:32:06.154237: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1070, Compute Capability 6.1
+2020-09-07 10:32:10.226626: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2020-09-07 10:32:10.226787: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2020-09-07 10:32:10.227438: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 15:01:15.758200: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 15:01:15.758231: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 15:01:15.758260: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 15:01:15.758288: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 15:01:15.758316: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 15:01:15.758344: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 15:01:15.758372: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 15:01:15.758931: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 15:01:15.758974: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 15:01:15.758988: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 15:01:15.758997: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 15:01:15.759601: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6355 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 15:01:15.765017: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 15:01:15.765046: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.005ms.
-2020-09-04 15:01:15.765057: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.001ms.
+2020-09-07 10:32:10.227497: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:32:10.227526: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:32:10.227568: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:32:10.227592: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:32:10.227630: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:32:10.227654: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:32:10.227678: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:32:10.228211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:32:10.228253: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-07 10:32:10.228266: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-07 10:32:10.228275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-07 10:32:10.228887: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6915 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-07 10:32:10.235119: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
+2020-09-07 10:32:10.235157: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.008ms.
+2020-09-07 10:32:10.235171: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.001ms.
 Using TensorFlow backend.
 WARNING:tensorflow:From /home/tudo/anaconda3/envs/tf_gpu/lib/python3.8/site-packages/tensorflow/python/ops/nn_ops.py:4179: tensor_shape_from_node_def_name (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
 Instructions for updating:
@@ -151,82 +151,82 @@ _TFProfRoot (--/848.64k flops)
   model/dense/BiasAdd (10/10 flops)
 
 ======================End of Report==========================
-2020-09-04 15:01:18.871980: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 15:01:19.061482: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 15:01:19.846009: W tensorflow/stream_executor/gpu/asm_compiler.cc:116] *** WARNING *** You are using ptxas 9.1.108, which is older than 9.2.88. ptxas 9.x before 9.2.88 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+2020-09-07 10:32:12.813125: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:32:12.972538: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:32:13.573324: W tensorflow/stream_executor/gpu/asm_compiler.cc:116] *** WARNING *** You are using ptxas 9.1.108, which is older than 9.2.88. ptxas 9.x before 9.2.88 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
 
 You do not need to update to CUDA 9.2.88; cherry-picking the ptxas binary is sufficient.
 Epoch 1/25
-1563/1563 - 19s - loss: 2.2052 - accuracy: 0.1697
+1563/1563 - 20s - loss: 2.1610 - accuracy: 0.2005
 Epoch 2/25
-1563/1563 - 19s - loss: 2.0201 - accuracy: 0.2478
+1563/1563 - 19s - loss: 2.0029 - accuracy: 0.2647
 Epoch 3/25
-1563/1563 - 18s - loss: 1.9559 - accuracy: 0.2677
+1563/1563 - 19s - loss: 1.9186 - accuracy: 0.2952
 Epoch 4/25
-1563/1563 - 19s - loss: 1.8850 - accuracy: 0.2998
+1563/1563 - 19s - loss: 1.8581 - accuracy: 0.3115
 Epoch 5/25
-1563/1563 - 19s - loss: 1.8048 - accuracy: 0.3313
+1563/1563 - 18s - loss: 1.7976 - accuracy: 0.3378
 Epoch 6/25
-1563/1563 - 18s - loss: 1.7486 - accuracy: 0.3570
+1563/1563 - 19s - loss: 1.7427 - accuracy: 0.3638
 Epoch 7/25
-1563/1563 - 19s - loss: 1.7171 - accuracy: 0.3701
+1563/1563 - 20s - loss: 1.6958 - accuracy: 0.3803
 Epoch 8/25
-1563/1563 - 19s - loss: 1.6940 - accuracy: 0.3758
+1563/1563 - 18s - loss: 1.6690 - accuracy: 0.3938
 Epoch 9/25
-1563/1563 - 18s - loss: 1.6787 - accuracy: 0.3824
+1563/1563 - 20s - loss: 1.6542 - accuracy: 0.4046
 Epoch 10/25
-1563/1563 - 19s - loss: 1.6637 - accuracy: 0.3909
+1563/1563 - 19s - loss: 1.6345 - accuracy: 0.4102
 Epoch 11/25
-1563/1563 - 19s - loss: 1.6550 - accuracy: 0.3908
+1563/1563 - 20s - loss: 1.6204 - accuracy: 0.4134
 Epoch 12/25
-1563/1563 - 19s - loss: 1.6419 - accuracy: 0.3977
+1563/1563 - 20s - loss: 1.6078 - accuracy: 0.4236
 Epoch 13/25
-1563/1563 - 19s - loss: 1.6409 - accuracy: 0.3970
+1563/1563 - 20s - loss: 1.5906 - accuracy: 0.4278
 Epoch 14/25
-1563/1563 - 19s - loss: 1.6297 - accuracy: 0.4057
+1563/1563 - 20s - loss: 1.5806 - accuracy: 0.4333
 Epoch 15/25
-1563/1563 - 19s - loss: 1.6265 - accuracy: 0.4034
+1563/1563 - 20s - loss: 1.5718 - accuracy: 0.4336
 Epoch 16/25
-1563/1563 - 19s - loss: 1.6138 - accuracy: 0.4095
+1563/1563 - 19s - loss: 1.5647 - accuracy: 0.4353
 Epoch 17/25
-1563/1563 - 19s - loss: 1.6128 - accuracy: 0.4070
+1563/1563 - 20s - loss: 1.5571 - accuracy: 0.4391
 Epoch 18/25
-1563/1563 - 19s - loss: 1.6112 - accuracy: 0.4063
+1563/1563 - 19s - loss: 1.5540 - accuracy: 0.4404
 Epoch 19/25
-1563/1563 - 19s - loss: 1.6059 - accuracy: 0.4100
+1563/1563 - 20s - loss: 1.5466 - accuracy: 0.4439
 Epoch 20/25
-1563/1563 - 17s - loss: 1.5987 - accuracy: 0.4138
+1563/1563 - 19s - loss: 1.5415 - accuracy: 0.4445
 Epoch 21/25
-1563/1563 - 16s - loss: 1.5981 - accuracy: 0.4135
+1563/1563 - 20s - loss: 1.5357 - accuracy: 0.4475
 Epoch 22/25
-1563/1563 - 16s - loss: 1.5956 - accuracy: 0.4131
+1563/1563 - 19s - loss: 1.5327 - accuracy: 0.4441
 Epoch 23/25
-1563/1563 - 16s - loss: 1.5943 - accuracy: 0.4140
+1563/1563 - 20s - loss: 1.5361 - accuracy: 0.4475
 Epoch 24/25
-1563/1563 - 16s - loss: 1.5930 - accuracy: 0.4199
+1563/1563 - 20s - loss: 1.5284 - accuracy: 0.4469
 Epoch 25/25
-1563/1563 - 17s - loss: 1.5891 - accuracy: 0.4164
-  1/313 [..............................] - ETA: 0s - loss: 1.5357 - accuracy: 0.4062 16/313 [>.............................] - ETA: 0s - loss: 1.6258 - accuracy: 0.4082 30/313 [=>............................] - ETA: 0s - loss: 1.6484 - accuracy: 0.4073 43/313 [===>..........................] - ETA: 0s - loss: 1.6313 - accuracy: 0.4222 54/313 [====>.........................] - ETA: 0s - loss: 1.6361 - accuracy: 0.4282 67/313 [=====>........................] - ETA: 0s - loss: 1.6404 - accuracy: 0.4240 79/313 [======>.......................] - ETA: 0s - loss: 1.6386 - accuracy: 0.4241 94/313 [========>.....................] - ETA: 0s - loss: 1.6522 - accuracy: 0.4219109/313 [=========>....................] - ETA: 0s - loss: 1.6531 - accuracy: 0.4189123/313 [==========>...................] - ETA: 0s - loss: 1.6550 - accuracy: 0.4190138/313 [============>.................] - ETA: 0s - loss: 1.6575 - accuracy: 0.4160153/313 [=============>................] - ETA: 0s - loss: 1.6541 - accuracy: 0.4171168/313 [===============>..............] - ETA: 0s - loss: 1.6530 - accuracy: 0.4163182/313 [================>.............] - ETA: 0s - loss: 1.6549 - accuracy: 0.4159197/313 [=================>............] - ETA: 0s - loss: 1.6562 - accuracy: 0.4156210/313 [===================>..........] - ETA: 0s - loss: 1.6583 - accuracy: 0.4138223/313 [====================>.........] - ETA: 0s - loss: 1.6661 - accuracy: 0.4126238/313 [=====================>........] - ETA: 0s - loss: 1.6588 - accuracy: 0.4135253/313 [=======================>......] - ETA: 0s - loss: 1.6543 - accuracy: 0.4144267/313 [========================>.....] - ETA: 0s - loss: 1.6613 - accuracy: 0.4132282/313 [==========================>...] - ETA: 0s - loss: 1.6638 - accuracy: 0.4135297/313 [===========================>..] - ETA: 0s - loss: 1.6638 - accuracy: 0.4132312/313 [============================>.] - ETA: 0s - loss: 1.6610 - accuracy: 0.4139313/313 [==============================] - 1s 4ms/step - loss: 1.6611 - accuracy: 0.4139
-2020-09-04 15:09:00.287169: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 15:09:00.287294: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 15:09:00.287968: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+1563/1563 - 19s - loss: 1.5239 - accuracy: 0.4526
+  1/313 [..............................] - ETA: 0s - loss: 1.2592 - accuracy: 0.5625 13/313 [>.............................] - ETA: 1s - loss: 1.3956 - accuracy: 0.4976 25/313 [=>............................] - ETA: 1s - loss: 1.4417 - accuracy: 0.4938 36/313 [==>...........................] - ETA: 1s - loss: 1.4234 - accuracy: 0.4939 45/313 [===>..........................] - ETA: 1s - loss: 1.4228 - accuracy: 0.4889 55/313 [====>.........................] - ETA: 1s - loss: 1.4259 - accuracy: 0.4909 64/313 [=====>........................] - ETA: 1s - loss: 1.4278 - accuracy: 0.4888 74/313 [======>.......................] - ETA: 1s - loss: 1.4353 - accuracy: 0.4865 86/313 [=======>......................] - ETA: 1s - loss: 1.4521 - accuracy: 0.4804 98/313 [========>.....................] - ETA: 1s - loss: 1.4608 - accuracy: 0.4777110/313 [=========>....................] - ETA: 0s - loss: 1.4646 - accuracy: 0.4733120/313 [==========>...................] - ETA: 0s - loss: 1.4635 - accuracy: 0.4721131/313 [===========>..................] - ETA: 0s - loss: 1.4604 - accuracy: 0.4719141/313 [============>.................] - ETA: 0s - loss: 1.4545 - accuracy: 0.4723152/313 [=============>................] - ETA: 0s - loss: 1.4513 - accuracy: 0.4743162/313 [==============>...............] - ETA: 0s - loss: 1.4507 - accuracy: 0.4753172/313 [===============>..............] - ETA: 0s - loss: 1.4508 - accuracy: 0.4749183/313 [================>.............] - ETA: 0s - loss: 1.4572 - accuracy: 0.4730195/313 [=================>............] - ETA: 0s - loss: 1.4572 - accuracy: 0.4731206/313 [==================>...........] - ETA: 0s - loss: 1.4579 - accuracy: 0.4722217/313 [===================>..........] - ETA: 0s - loss: 1.4617 - accuracy: 0.4713228/313 [====================>.........] - ETA: 0s - loss: 1.4590 - accuracy: 0.4718240/313 [======================>.......] - ETA: 0s - loss: 1.4576 - accuracy: 0.4723253/313 [=======================>......] - ETA: 0s - loss: 1.4573 - accuracy: 0.4720265/313 [========================>.....] - ETA: 0s - loss: 1.4573 - accuracy: 0.4738275/313 [=========================>....] - ETA: 0s - loss: 1.4579 - accuracy: 0.4742288/313 [==========================>...] - ETA: 0s - loss: 1.4576 - accuracy: 0.4757301/313 [===========================>..] - ETA: 0s - loss: 1.4570 - accuracy: 0.4761311/313 [============================>.] - ETA: 0s - loss: 1.4567 - accuracy: 0.4763313/313 [==============================] - 1s 5ms/step - loss: 1.4566 - accuracy: 0.4763
+2020-09-07 10:40:21.152227: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2020-09-07 10:40:21.152345: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2020-09-07 10:40:21.152961: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 15:09:00.288030: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 15:09:00.288063: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 15:09:00.288096: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 15:09:00.288127: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 15:09:00.288159: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 15:09:00.288190: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 15:09:00.288222: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 15:09:00.288816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 15:09:00.288859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 15:09:00.288871: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 15:09:00.288881: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 15:09:00.289523: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6355 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 15:09:00.294441: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 15:09:00.294470: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.003ms.
-2020-09-04 15:09:00.294491: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
+2020-09-07 10:40:21.153024: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:40:21.153054: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:40:21.153084: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:40:21.153114: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:40:21.153143: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:40:21.153173: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:40:21.153202: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:40:21.153824: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:40:21.153866: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-07 10:40:21.153879: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-07 10:40:21.153888: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-07 10:40:21.154541: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6915 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-07 10:40:21.159471: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
+2020-09-07 10:40:21.159495: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.003ms.
+2020-09-07 10:40:21.159504: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
 Parsing Inputs...
 
 =========================Options=============================
@@ -313,76 +313,76 @@ _TFProfRoot (--/12.35m flops)
 
 ======================End of Report==========================
 Epoch 1/25
-1563/1563 - 15s - loss: 1.7280 - accuracy: 0.3605
+1563/1563 - 18s - loss: 1.7380 - accuracy: 0.3568
 Epoch 2/25
-1563/1563 - 14s - loss: 1.4106 - accuracy: 0.4847
+1563/1563 - 17s - loss: 1.3672 - accuracy: 0.5048
 Epoch 3/25
-1563/1563 - 15s - loss: 1.2721 - accuracy: 0.5403
+1563/1563 - 18s - loss: 1.2348 - accuracy: 0.5563
 Epoch 4/25
-1563/1563 - 16s - loss: 1.1751 - accuracy: 0.5778
+1563/1563 - 17s - loss: 1.1590 - accuracy: 0.5849
 Epoch 5/25
-1563/1563 - 16s - loss: 1.1128 - accuracy: 0.6009
+1563/1563 - 18s - loss: 1.1030 - accuracy: 0.6043
 Epoch 6/25
-1563/1563 - 16s - loss: 1.0602 - accuracy: 0.6197
+1563/1563 - 18s - loss: 1.0603 - accuracy: 0.6208
 Epoch 7/25
-1563/1563 - 17s - loss: 1.0250 - accuracy: 0.6312
+1563/1563 - 18s - loss: 1.0338 - accuracy: 0.6336
 Epoch 8/25
-1563/1563 - 17s - loss: 0.9989 - accuracy: 0.6413
+1563/1563 - 18s - loss: 1.0049 - accuracy: 0.6411
 Epoch 9/25
-1563/1563 - 17s - loss: 0.9799 - accuracy: 0.6502
+1563/1563 - 18s - loss: 0.9794 - accuracy: 0.6517
 Epoch 10/25
-1563/1563 - 16s - loss: 0.9550 - accuracy: 0.6599
+1563/1563 - 18s - loss: 0.9603 - accuracy: 0.6568
 Epoch 11/25
-1563/1563 - 17s - loss: 0.9450 - accuracy: 0.6630
+1563/1563 - 17s - loss: 0.9430 - accuracy: 0.6646
 Epoch 12/25
-1563/1563 - 17s - loss: 0.9309 - accuracy: 0.6687
+1563/1563 - 17s - loss: 0.9282 - accuracy: 0.6693
 Epoch 13/25
-1563/1563 - 16s - loss: 0.9153 - accuracy: 0.6724
+1563/1563 - 18s - loss: 0.9111 - accuracy: 0.6767
 Epoch 14/25
-1563/1563 - 17s - loss: 0.9058 - accuracy: 0.6765
+1563/1563 - 18s - loss: 0.8962 - accuracy: 0.6824
 Epoch 15/25
-1563/1563 - 17s - loss: 0.8951 - accuracy: 0.6795
+1563/1563 - 18s - loss: 0.8848 - accuracy: 0.6848
 Epoch 16/25
-1563/1563 - 17s - loss: 0.8828 - accuracy: 0.6851
+1563/1563 - 18s - loss: 0.8756 - accuracy: 0.6906
 Epoch 17/25
-1563/1563 - 17s - loss: 0.8739 - accuracy: 0.6877
+1563/1563 - 17s - loss: 0.8677 - accuracy: 0.6927
 Epoch 18/25
-1563/1563 - 17s - loss: 0.8619 - accuracy: 0.6928
+1563/1563 - 17s - loss: 0.8584 - accuracy: 0.6958
 Epoch 19/25
-1563/1563 - 17s - loss: 0.8610 - accuracy: 0.6943
+1563/1563 - 18s - loss: 0.8502 - accuracy: 0.6974
 Epoch 20/25
-1563/1563 - 17s - loss: 0.8523 - accuracy: 0.6959
+1563/1563 - 18s - loss: 0.8417 - accuracy: 0.7005
 Epoch 21/25
-1563/1563 - 17s - loss: 0.8467 - accuracy: 0.6990
+1563/1563 - 17s - loss: 0.8365 - accuracy: 0.7043
 Epoch 22/25
-1563/1563 - 17s - loss: 0.8410 - accuracy: 0.7005
+1563/1563 - 18s - loss: 0.8316 - accuracy: 0.7068
 Epoch 23/25
-1563/1563 - 17s - loss: 0.8308 - accuracy: 0.7039
+1563/1563 - 18s - loss: 0.8224 - accuracy: 0.7076
 Epoch 24/25
-1563/1563 - 17s - loss: 0.8257 - accuracy: 0.7058
+1563/1563 - 18s - loss: 0.8137 - accuracy: 0.7114
 Epoch 25/25
-1563/1563 - 17s - loss: 0.8193 - accuracy: 0.7085
-  1/313 [..............................] - ETA: 0s - loss: 0.8569 - accuracy: 0.5938 13/313 [>.............................] - ETA: 1s - loss: 1.0517 - accuracy: 0.6274 25/313 [=>............................] - ETA: 1s - loss: 1.0433 - accuracy: 0.6363 39/313 [==>...........................] - ETA: 1s - loss: 1.0373 - accuracy: 0.6410 53/313 [====>.........................] - ETA: 1s - loss: 1.0174 - accuracy: 0.6427 69/313 [=====>........................] - ETA: 0s - loss: 1.0331 - accuracy: 0.6377 85/313 [=======>......................] - ETA: 0s - loss: 1.0589 - accuracy: 0.6342100/313 [========>.....................] - ETA: 0s - loss: 1.0613 - accuracy: 0.6316115/313 [==========>...................] - ETA: 0s - loss: 1.0709 - accuracy: 0.6307127/313 [===========>..................] - ETA: 0s - loss: 1.0695 - accuracy: 0.6339142/313 [============>.................] - ETA: 0s - loss: 1.0671 - accuracy: 0.6353156/313 [=============>................] - ETA: 0s - loss: 1.0584 - accuracy: 0.6392171/313 [===============>..............] - ETA: 0s - loss: 1.0589 - accuracy: 0.6387183/313 [================>.............] - ETA: 0s - loss: 1.0559 - accuracy: 0.6405198/313 [=================>............] - ETA: 0s - loss: 1.0511 - accuracy: 0.6409214/313 [===================>..........] - ETA: 0s - loss: 1.0560 - accuracy: 0.6400230/313 [=====================>........] - ETA: 0s - loss: 1.0512 - accuracy: 0.6416243/313 [======================>.......] - ETA: 0s - loss: 1.0500 - accuracy: 0.6412258/313 [=======================>......] - ETA: 0s - loss: 1.0544 - accuracy: 0.6394274/313 [=========================>....] - ETA: 0s - loss: 1.0602 - accuracy: 0.6367291/313 [==========================>...] - ETA: 0s - loss: 1.0635 - accuracy: 0.6363304/313 [============================>.] - ETA: 0s - loss: 1.0626 - accuracy: 0.6365313/313 [==============================] - 1s 4ms/step - loss: 1.0633 - accuracy: 0.6368
-2020-09-04 15:15:54.410017: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
-2020-09-04 15:15:54.410140: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
-2020-09-04 15:15:54.410783: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+1563/1563 - 18s - loss: 0.8148 - accuracy: 0.7127
+  1/313 [..............................] - ETA: 0s - loss: 0.5841 - accuracy: 0.8438 13/313 [>.............................] - ETA: 1s - loss: 0.8731 - accuracy: 0.6779 24/313 [=>............................] - ETA: 1s - loss: 0.8793 - accuracy: 0.6693 36/313 [==>...........................] - ETA: 1s - loss: 0.8830 - accuracy: 0.6832 48/313 [===>..........................] - ETA: 1s - loss: 0.9025 - accuracy: 0.6777 60/313 [====>.........................] - ETA: 1s - loss: 0.9140 - accuracy: 0.6745 71/313 [=====>........................] - ETA: 1s - loss: 0.9316 - accuracy: 0.6695 82/313 [======>.......................] - ETA: 1s - loss: 0.9448 - accuracy: 0.6665 94/313 [========>.....................] - ETA: 0s - loss: 0.9513 - accuracy: 0.6722107/313 [=========>....................] - ETA: 0s - loss: 0.9565 - accuracy: 0.6703119/313 [==========>...................] - ETA: 0s - loss: 0.9592 - accuracy: 0.6699130/313 [===========>..................] - ETA: 0s - loss: 0.9533 - accuracy: 0.6714143/313 [============>.................] - ETA: 0s - loss: 0.9451 - accuracy: 0.6764154/313 [=============>................] - ETA: 0s - loss: 0.9425 - accuracy: 0.6778166/313 [==============>...............] - ETA: 0s - loss: 0.9466 - accuracy: 0.6760177/313 [===============>..............] - ETA: 0s - loss: 0.9517 - accuracy: 0.6727189/313 [=================>............] - ETA: 0s - loss: 0.9531 - accuracy: 0.6723200/313 [==================>...........] - ETA: 0s - loss: 0.9476 - accuracy: 0.6739211/313 [===================>..........] - ETA: 0s - loss: 0.9447 - accuracy: 0.6734223/313 [====================>.........] - ETA: 0s - loss: 0.9485 - accuracy: 0.6725235/313 [=====================>........] - ETA: 0s - loss: 0.9447 - accuracy: 0.6738246/313 [======================>.......] - ETA: 0s - loss: 0.9431 - accuracy: 0.6734257/313 [=======================>......] - ETA: 0s - loss: 0.9423 - accuracy: 0.6727267/313 [========================>.....] - ETA: 0s - loss: 0.9433 - accuracy: 0.6722279/313 [=========================>....] - ETA: 0s - loss: 0.9419 - accuracy: 0.6718290/313 [==========================>...] - ETA: 0s - loss: 0.9411 - accuracy: 0.6716300/313 [===========================>..] - ETA: 0s - loss: 0.9389 - accuracy: 0.6723312/313 [============================>.] - ETA: 0s - loss: 0.9415 - accuracy: 0.6713313/313 [==============================] - 1s 5ms/step - loss: 0.9412 - accuracy: 0.6713
+2020-09-07 10:47:48.800482: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2020-09-07 10:47:48.800608: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2020-09-07 10:47:48.801176: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
 coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
-2020-09-04 15:15:54.410841: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-09-04 15:15:54.410871: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-09-04 15:15:54.410900: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-09-04 15:15:54.410942: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-09-04 15:15:54.410985: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-09-04 15:15:54.411017: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-09-04 15:15:54.411046: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-09-04 15:15:54.411682: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
-2020-09-04 15:15:54.411722: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-09-04 15:15:54.411734: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
-2020-09-04 15:15:54.411744: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
-2020-09-04 15:15:54.412419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6355 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
-2020-09-04 15:15:54.417366: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
-2020-09-04 15:15:54.417395: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.002ms.
-2020-09-04 15:15:54.417406: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
+2020-09-07 10:47:48.801234: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:47:48.801263: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:47:48.801303: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:47:48.801331: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:47:48.801357: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:47:48.801383: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:47:48.801410: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:47:48.801954: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:47:48.801996: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-07 10:47:48.802014: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-07 10:47:48.802027: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-07 10:47:48.802655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6915 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-07 10:47:48.807051: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
+2020-09-07 10:47:48.807074: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.002ms.
+2020-09-07 10:47:48.807083: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
 Parsing Inputs...
 
 =========================Options=============================
@@ -474,3 +474,13 @@ _TFProfRoot (--/772.22m flops)
   model_2/dense_2/BiasAdd (10/10 flops)
 
 ======================End of Report==========================
+Epoch 1/25
+1563/1563 - 40s - loss: 1.4846 - accuracy: 0.4640
+Epoch 2/25
+1563/1563 - 41s - loss: 0.9828 - accuracy: 0.6517
+Epoch 3/25
+1563/1563 - 41s - loss: 0.7821 - accuracy: 0.7254
+Epoch 4/25
+1563/1563 - 41s - loss: 0.6641 - accuracy: 0.7677
+Epoch 5/25
+1563/1563 - 42s - loss: 0.5821 - accuracy: 0.7973
