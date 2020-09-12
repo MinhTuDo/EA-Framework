@@ -21,18 +21,18 @@ import algorithms.multi_objective as mo
 
 np.set_printoptions(suppress=True)
 
-filename = './log/obj_20200908-0413_gen-2__NSGAII-CustomizedNSGANET_.pickle'
+filename = './log/obj_20200912-0349_gen-10__NSGAII-CustomizedNSGANET_.pickle'
 gen2 = None
 with open(filename, 'rb') as handle:
     gen2 = pickle.load(handle)
 
-filename = './log/obj_20200905-1357_gen-1__NSGAII-CustomizedNSGANET_.pickle'
+filename = './log/obj_20200911-1836_gen-9__NSGAII-CustomizedNSGANET_.pickle'
 gen1 = None
 with open(filename, 'rb') as handle:
     gen1 = pickle.load(handle)
 
-plt.plot(gen2.ranks_F[0][:, 1]/10, gen2.ranks_F[0][:, 0]*100, 'b.', label='gen-2')
-plt.plot(gen1.ranks_F[0][:, 1]/10, gen1.ranks_F[0][:, 0]*100, 'r.', label='gen-1')
+plt.plot(gen2.ranks_F[0][:, 1]/10, gen2.ranks_F[0][:, 0]*100, 'b.', label='gen-10')
+plt.plot(gen1.ranks_F[0][:, 1]/10, gen1.ranks_F[0][:, 0]*100, 'r.', label='gen-9')
 plt.xlabel('flops (MB)')
 plt.ylabel('error rate (%)')
 plt.legend(loc='upper right')
