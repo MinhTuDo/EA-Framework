@@ -4,3 +4,4 @@ tensorflow
 matplotlib 
 pandas
 keras-flops
+pickle5
