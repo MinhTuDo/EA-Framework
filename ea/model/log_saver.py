@@ -3,7 +3,7 @@ import datetime
 import os
 
 class LogSaver():
-    def __init__(self, log_dir='./log'):
+    def __init__(self, log_dir='./logs'):
         self.attributes = {}
         self.data_frame = pd.DataFrame()
         self.now = datetime.datetime.now()

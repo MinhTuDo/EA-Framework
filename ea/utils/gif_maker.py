@@ -93,7 +93,7 @@ class SOGifMaker(GifMaker):
     def __init__(self, 
                  problem,
                  filename,
-                 directory='gif', 
+                 directory='assets', 
                  contour_density=None,
                  title=('', 12),
                  **kwargs):
