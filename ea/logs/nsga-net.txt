@@ -1,0 +1,486 @@
+2020-09-07 10:32:05.856756: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-09-07 10:32:05.896688: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
+coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
+2020-09-07 10:32:05.896923: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:32:05.898550: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:32:05.899809: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:32:05.900088: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:32:05.901681: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:32:05.902463: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:32:05.905832: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:32:05.907407: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:32:05.907725: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+2020-09-07 10:32:05.932326: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2793350000 Hz
+2020-09-07 10:32:05.933120: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b4ce39c610 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-09-07 10:32:05.933154: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-09-07 10:32:05.934345: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
+coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
+2020-09-07 10:32:05.934404: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:32:05.934435: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:32:05.934464: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:32:05.934493: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:32:05.934521: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:32:05.934549: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:32:05.934578: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:32:05.936089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:32:05.936173: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:32:06.150492: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-07 10:32:06.150542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-07 10:32:06.150555: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-07 10:32:06.152346: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6915 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-07 10:32:06.154212: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b4d1b3ba80 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-09-07 10:32:06.154237: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1070, Compute Capability 6.1
+2020-09-07 10:32:10.226626: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2020-09-07 10:32:10.226787: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2020-09-07 10:32:10.227438: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
+coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
+2020-09-07 10:32:10.227497: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:32:10.227526: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:32:10.227568: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:32:10.227592: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:32:10.227630: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:32:10.227654: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:32:10.227678: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:32:10.228211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:32:10.228253: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-07 10:32:10.228266: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-07 10:32:10.228275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-07 10:32:10.228887: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6915 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-07 10:32:10.235119: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
+2020-09-07 10:32:10.235157: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.008ms.
+2020-09-07 10:32:10.235171: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.001ms.
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/tudo/anaconda3/envs/tf_gpu/lib/python3.8/site-packages/tensorflow/python/ops/nn_ops.py:4179: tensor_shape_from_node_def_name (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.graph_util.tensor_shape_from_node_def_name`
+Parsing Inputs...
+
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  0
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 0
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              1
+-min_occurrence             0
+-step                       -1
+-order_by                   float_ops
+-account_type_regexes       .*
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     float_ops
+-output                     stdout:
+
+==================Model Analysis Report======================
+
+Doc:
+scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
+flops: Number of float operations. Note: Please read the implementation for the math behind it.
+
+Profile:
+node name | # float_ops
+_TFProfRoot (--/848.64k flops)
+  model/conv2d/Conv2D (110.59k/110.59k flops)
+  model/conv2d_3/Conv2D (73.73k/73.73k flops)
+  model/conv2d_2/Conv2D (73.73k/73.73k flops)
+  model/conv2d_4/Conv2D (73.73k/73.73k flops)
+  model/conv2d_7/Conv2D (73.73k/73.73k flops)
+  model/conv2d_1/Conv2D (73.73k/73.73k flops)
+  model/conv2d_5/Conv2D (73.73k/73.73k flops)
+  model/conv2d_6/Conv2D (73.73k/73.73k flops)
+  model/conv2d_13/Conv2D (18.43k/18.43k flops)
+  model/conv2d_10/Conv2D (18.43k/18.43k flops)
+  model/conv2d_15/Conv2D (18.43k/18.43k flops)
+  model/conv2d_11/Conv2D (18.43k/18.43k flops)
+  model/conv2d_14/Conv2D (18.43k/18.43k flops)
+  model/conv2d_8/Conv2D (18.43k/18.43k flops)
+  model/conv2d_9/Conv2D (18.43k/18.43k flops)
+  model/conv2d_12/Conv2D (18.43k/18.43k flops)
+  model/batch_normalization_4/FusedBatchNormV3 (4.11k/4.11k flops)
+  model/batch_normalization_7/FusedBatchNormV3 (4.11k/4.11k flops)
+  model/batch_normalization_6/FusedBatchNormV3 (4.11k/4.11k flops)
+  model/batch_normalization_5/FusedBatchNormV3 (4.11k/4.11k flops)
+  model/batch_normalization_3/FusedBatchNormV3 (4.11k/4.11k flops)
+  model/batch_normalization_2/FusedBatchNormV3 (4.11k/4.11k flops)
+  model/batch_normalization_1/FusedBatchNormV3 (4.11k/4.11k flops)
+  model/batch_normalization/FusedBatchNormV3 (4.11k/4.11k flops)
+  model/dense/MatMul (2.56k/2.56k flops)
+  model/conv2d_4/BiasAdd (2.05k/2.05k flops)
+  model/add_1/add (2.05k/2.05k flops)
+  model/conv2d_3/BiasAdd (2.05k/2.05k flops)
+  model/conv2d_5/BiasAdd (2.05k/2.05k flops)
+  model/conv2d_2/BiasAdd (2.05k/2.05k flops)
+  model/conv2d_6/BiasAdd (2.05k/2.05k flops)
+  model/conv2d_7/BiasAdd (2.05k/2.05k flops)
+  model/max_pooling2d/MaxPool (2.05k/2.05k flops)
+  model/add/add (2.05k/2.05k flops)
+  model/add_2/add (2.05k/2.05k flops)
+  model/conv2d_1/BiasAdd (2.05k/2.05k flops)
+  model/conv2d/BiasAdd (2.05k/2.05k flops)
+  model/batch_normalization_10/FusedBatchNormV3 (1.04k/1.04k flops)
+  model/batch_normalization_11/FusedBatchNormV3 (1.04k/1.04k flops)
+  model/batch_normalization_9/FusedBatchNormV3 (1.04k/1.04k flops)
+  model/batch_normalization_8/FusedBatchNormV3 (1.04k/1.04k flops)
+  model/batch_normalization_15/FusedBatchNormV3 (1.04k/1.04k flops)
+  model/batch_normalization_14/FusedBatchNormV3 (1.04k/1.04k flops)
+  model/batch_normalization_13/FusedBatchNormV3 (1.04k/1.04k flops)
+  model/batch_normalization_12/FusedBatchNormV3 (1.04k/1.04k flops)
+  model/add_4/add (512/512 flops)
+  model/max_pooling2d_1/MaxPool (512/512 flops)
+  model/conv2d_9/BiasAdd (512/512 flops)
+  model/add_3/add (512/512 flops)
+  model/conv2d_13/BiasAdd (512/512 flops)
+  model/conv2d_8/BiasAdd (512/512 flops)
+  model/add_5/add (512/512 flops)
+  model/conv2d_10/BiasAdd (512/512 flops)
+  model/conv2d_11/BiasAdd (512/512 flops)
+  model/conv2d_15/BiasAdd (512/512 flops)
+  model/conv2d_12/BiasAdd (512/512 flops)
+  model/conv2d_14/BiasAdd (512/512 flops)
+  model/dense/Softmax (50/50 flops)
+  model/dense/BiasAdd (10/10 flops)
+
+======================End of Report==========================
+2020-09-07 10:32:12.813125: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:32:12.972538: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:32:13.573324: W tensorflow/stream_executor/gpu/asm_compiler.cc:116] *** WARNING *** You are using ptxas 9.1.108, which is older than 9.2.88. ptxas 9.x before 9.2.88 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You do not need to update to CUDA 9.2.88; cherry-picking the ptxas binary is sufficient.
+Epoch 1/25
+1563/1563 - 20s - loss: 2.1610 - accuracy: 0.2005
+Epoch 2/25
+1563/1563 - 19s - loss: 2.0029 - accuracy: 0.2647
+Epoch 3/25
+1563/1563 - 19s - loss: 1.9186 - accuracy: 0.2952
+Epoch 4/25
+1563/1563 - 19s - loss: 1.8581 - accuracy: 0.3115
+Epoch 5/25
+1563/1563 - 18s - loss: 1.7976 - accuracy: 0.3378
+Epoch 6/25
+1563/1563 - 19s - loss: 1.7427 - accuracy: 0.3638
+Epoch 7/25
+1563/1563 - 20s - loss: 1.6958 - accuracy: 0.3803
+Epoch 8/25
+1563/1563 - 18s - loss: 1.6690 - accuracy: 0.3938
+Epoch 9/25
+1563/1563 - 20s - loss: 1.6542 - accuracy: 0.4046
+Epoch 10/25
+1563/1563 - 19s - loss: 1.6345 - accuracy: 0.4102
+Epoch 11/25
+1563/1563 - 20s - loss: 1.6204 - accuracy: 0.4134
+Epoch 12/25
+1563/1563 - 20s - loss: 1.6078 - accuracy: 0.4236
+Epoch 13/25
+1563/1563 - 20s - loss: 1.5906 - accuracy: 0.4278
+Epoch 14/25
+1563/1563 - 20s - loss: 1.5806 - accuracy: 0.4333
+Epoch 15/25
+1563/1563 - 20s - loss: 1.5718 - accuracy: 0.4336
+Epoch 16/25
+1563/1563 - 19s - loss: 1.5647 - accuracy: 0.4353
+Epoch 17/25
+1563/1563 - 20s - loss: 1.5571 - accuracy: 0.4391
+Epoch 18/25
+1563/1563 - 19s - loss: 1.5540 - accuracy: 0.4404
+Epoch 19/25
+1563/1563 - 20s - loss: 1.5466 - accuracy: 0.4439
+Epoch 20/25
+1563/1563 - 19s - loss: 1.5415 - accuracy: 0.4445
+Epoch 21/25
+1563/1563 - 20s - loss: 1.5357 - accuracy: 0.4475
+Epoch 22/25
+1563/1563 - 19s - loss: 1.5327 - accuracy: 0.4441
+Epoch 23/25
+1563/1563 - 20s - loss: 1.5361 - accuracy: 0.4475
+Epoch 24/25
+1563/1563 - 20s - loss: 1.5284 - accuracy: 0.4469
+Epoch 25/25
+1563/1563 - 19s - loss: 1.5239 - accuracy: 0.4526
+  1/313 [..............................] - ETA: 0s - loss: 1.2592 - accuracy: 0.5625 13/313 [>.............................] - ETA: 1s - loss: 1.3956 - accuracy: 0.4976 25/313 [=>............................] - ETA: 1s - loss: 1.4417 - accuracy: 0.4938 36/313 [==>...........................] - ETA: 1s - loss: 1.4234 - accuracy: 0.4939 45/313 [===>..........................] - ETA: 1s - loss: 1.4228 - accuracy: 0.4889 55/313 [====>.........................] - ETA: 1s - loss: 1.4259 - accuracy: 0.4909 64/313 [=====>........................] - ETA: 1s - loss: 1.4278 - accuracy: 0.4888 74/313 [======>.......................] - ETA: 1s - loss: 1.4353 - accuracy: 0.4865 86/313 [=======>......................] - ETA: 1s - loss: 1.4521 - accuracy: 0.4804 98/313 [========>.....................] - ETA: 1s - loss: 1.4608 - accuracy: 0.4777110/313 [=========>....................] - ETA: 0s - loss: 1.4646 - accuracy: 0.4733120/313 [==========>...................] - ETA: 0s - loss: 1.4635 - accuracy: 0.4721131/313 [===========>..................] - ETA: 0s - loss: 1.4604 - accuracy: 0.4719141/313 [============>.................] - ETA: 0s - loss: 1.4545 - accuracy: 0.4723152/313 [=============>................] - ETA: 0s - loss: 1.4513 - accuracy: 0.4743162/313 [==============>...............] - ETA: 0s - loss: 1.4507 - accuracy: 0.4753172/313 [===============>..............] - ETA: 0s - loss: 1.4508 - accuracy: 0.4749183/313 [================>.............] - ETA: 0s - loss: 1.4572 - accuracy: 0.4730195/313 [=================>............] - ETA: 0s - loss: 1.4572 - accuracy: 0.4731206/313 [==================>...........] - ETA: 0s - loss: 1.4579 - accuracy: 0.4722217/313 [===================>..........] - ETA: 0s - loss: 1.4617 - accuracy: 0.4713228/313 [====================>.........] - ETA: 0s - loss: 1.4590 - accuracy: 0.4718240/313 [======================>.......] - ETA: 0s - loss: 1.4576 - accuracy: 0.4723253/313 [=======================>......] - ETA: 0s - loss: 1.4573 - accuracy: 0.4720265/313 [========================>.....] - ETA: 0s - loss: 1.4573 - accuracy: 0.4738275/313 [=========================>....] - ETA: 0s - loss: 1.4579 - accuracy: 0.4742288/313 [==========================>...] - ETA: 0s - loss: 1.4576 - accuracy: 0.4757301/313 [===========================>..] - ETA: 0s - loss: 1.4570 - accuracy: 0.4761311/313 [============================>.] - ETA: 0s - loss: 1.4567 - accuracy: 0.4763313/313 [==============================] - 1s 5ms/step - loss: 1.4566 - accuracy: 0.4763
+2020-09-07 10:40:21.152227: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2020-09-07 10:40:21.152345: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2020-09-07 10:40:21.152961: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
+coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
+2020-09-07 10:40:21.153024: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:40:21.153054: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:40:21.153084: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:40:21.153114: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:40:21.153143: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:40:21.153173: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:40:21.153202: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:40:21.153824: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:40:21.153866: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-07 10:40:21.153879: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-07 10:40:21.153888: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-07 10:40:21.154541: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6915 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-07 10:40:21.159471: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
+2020-09-07 10:40:21.159495: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.003ms.
+2020-09-07 10:40:21.159504: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
+Parsing Inputs...
+
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  0
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 0
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              1
+-min_occurrence             0
+-step                       -1
+-order_by                   float_ops
+-account_type_regexes       .*
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     float_ops
+-output                     stdout:
+
+==================Model Analysis Report======================
+
+Doc:
+scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
+flops: Number of float operations. Note: Please read the implementation for the math behind it.
+
+Profile:
+node name | # float_ops
+_TFProfRoot (--/12.35m flops)
+  model_1/conv2d_19/Conv2D (1.49m/1.49m flops)
+  model_1/conv2d_18/Conv2D (1.49m/1.49m flops)
+  model_1/conv2d_20/Conv2D (1.49m/1.49m flops)
+  model_1/conv2d_17/Conv2D (1.49m/1.49m flops)
+  model_1/conv2d_22/Conv2D (1.49m/1.49m flops)
+  model_1/conv2d_23/Conv2D (1.49m/1.49m flops)
+  model_1/conv2d_16/Conv2D (497.66k/497.66k flops)
+  model_1/conv2d_26/Conv2D (373.25k/373.25k flops)
+  model_1/conv2d_24/Conv2D (373.25k/373.25k flops)
+  model_1/conv2d_25/Conv2D (373.25k/373.25k flops)
+  model_1/conv2d_27/Conv2D (373.25k/373.25k flops)
+  model_1/conv2d_28/Conv2D (373.25k/373.25k flops)
+  model_1/conv2d_30/Conv2D (373.25k/373.25k flops)
+  model_1/conv2d_31/Conv2D (373.25k/373.25k flops)
+  model_1/batch_normalization_23/FusedBatchNormV3 (18.49k/18.49k flops)
+  model_1/batch_normalization_22/FusedBatchNormV3 (18.49k/18.49k flops)
+  model_1/batch_normalization_20/FusedBatchNormV3 (18.49k/18.49k flops)
+  model_1/batch_normalization_19/FusedBatchNormV3 (18.49k/18.49k flops)
+  model_1/batch_normalization_18/FusedBatchNormV3 (18.49k/18.49k flops)
+  model_1/batch_normalization_17/FusedBatchNormV3 (18.49k/18.49k flops)
+  model_1/batch_normalization_16/FusedBatchNormV3 (18.49k/18.49k flops)
+  model_1/dense_1/MatMul (11.52k/11.52k flops)
+  model_1/add_9/add (9.22k/9.22k flops)
+  model_1/conv2d_23/BiasAdd (9.22k/9.22k flops)
+  model_1/conv2d_22/BiasAdd (9.22k/9.22k flops)
+  model_1/conv2d_20/BiasAdd (9.22k/9.22k flops)
+  model_1/conv2d_18/BiasAdd (9.22k/9.22k flops)
+  model_1/conv2d_17/BiasAdd (9.22k/9.22k flops)
+  model_1/conv2d_16/BiasAdd (9.22k/9.22k flops)
+  model_1/average_pooling2d/AvgPool (9.22k/9.22k flops)
+  model_1/conv2d_19/BiasAdd (9.22k/9.22k flops)
+  model_1/batch_normalization_26/FusedBatchNormV3 (4.66k/4.66k flops)
+  model_1/batch_normalization_24/FusedBatchNormV3 (4.66k/4.66k flops)
+  model_1/batch_normalization_25/FusedBatchNormV3 (4.66k/4.66k flops)
+  model_1/batch_normalization_27/FusedBatchNormV3 (4.66k/4.66k flops)
+  model_1/batch_normalization_28/FusedBatchNormV3 (4.66k/4.66k flops)
+  model_1/batch_normalization_30/FusedBatchNormV3 (4.66k/4.66k flops)
+  model_1/batch_normalization_31/FusedBatchNormV3 (4.66k/4.66k flops)
+  model_1/conv2d_25/BiasAdd (2.30k/2.30k flops)
+  model_1/conv2d_26/BiasAdd (2.30k/2.30k flops)
+  model_1/conv2d_27/BiasAdd (2.30k/2.30k flops)
+  model_1/conv2d_24/BiasAdd (2.30k/2.30k flops)
+  model_1/conv2d_28/BiasAdd (2.30k/2.30k flops)
+  model_1/conv2d_30/BiasAdd (2.30k/2.30k flops)
+  model_1/average_pooling2d_1/AvgPool (2.30k/2.30k flops)
+  model_1/conv2d_31/BiasAdd (2.30k/2.30k flops)
+  model_1/add_13/add (2.30k/2.30k flops)
+  model_1/dense_1/Softmax (50/50 flops)
+  model_1/dense_1/BiasAdd (10/10 flops)
+
+======================End of Report==========================
+Epoch 1/25
+1563/1563 - 18s - loss: 1.7380 - accuracy: 0.3568
+Epoch 2/25
+1563/1563 - 17s - loss: 1.3672 - accuracy: 0.5048
+Epoch 3/25
+1563/1563 - 18s - loss: 1.2348 - accuracy: 0.5563
+Epoch 4/25
+1563/1563 - 17s - loss: 1.1590 - accuracy: 0.5849
+Epoch 5/25
+1563/1563 - 18s - loss: 1.1030 - accuracy: 0.6043
+Epoch 6/25
+1563/1563 - 18s - loss: 1.0603 - accuracy: 0.6208
+Epoch 7/25
+1563/1563 - 18s - loss: 1.0338 - accuracy: 0.6336
+Epoch 8/25
+1563/1563 - 18s - loss: 1.0049 - accuracy: 0.6411
+Epoch 9/25
+1563/1563 - 18s - loss: 0.9794 - accuracy: 0.6517
+Epoch 10/25
+1563/1563 - 18s - loss: 0.9603 - accuracy: 0.6568
+Epoch 11/25
+1563/1563 - 17s - loss: 0.9430 - accuracy: 0.6646
+Epoch 12/25
+1563/1563 - 17s - loss: 0.9282 - accuracy: 0.6693
+Epoch 13/25
+1563/1563 - 18s - loss: 0.9111 - accuracy: 0.6767
+Epoch 14/25
+1563/1563 - 18s - loss: 0.8962 - accuracy: 0.6824
+Epoch 15/25
+1563/1563 - 18s - loss: 0.8848 - accuracy: 0.6848
+Epoch 16/25
+1563/1563 - 18s - loss: 0.8756 - accuracy: 0.6906
+Epoch 17/25
+1563/1563 - 17s - loss: 0.8677 - accuracy: 0.6927
+Epoch 18/25
+1563/1563 - 17s - loss: 0.8584 - accuracy: 0.6958
+Epoch 19/25
+1563/1563 - 18s - loss: 0.8502 - accuracy: 0.6974
+Epoch 20/25
+1563/1563 - 18s - loss: 0.8417 - accuracy: 0.7005
+Epoch 21/25
+1563/1563 - 17s - loss: 0.8365 - accuracy: 0.7043
+Epoch 22/25
+1563/1563 - 18s - loss: 0.8316 - accuracy: 0.7068
+Epoch 23/25
+1563/1563 - 18s - loss: 0.8224 - accuracy: 0.7076
+Epoch 24/25
+1563/1563 - 18s - loss: 0.8137 - accuracy: 0.7114
+Epoch 25/25
+1563/1563 - 18s - loss: 0.8148 - accuracy: 0.7127
+  1/313 [..............................] - ETA: 0s - loss: 0.5841 - accuracy: 0.8438 13/313 [>.............................] - ETA: 1s - loss: 0.8731 - accuracy: 0.6779 24/313 [=>............................] - ETA: 1s - loss: 0.8793 - accuracy: 0.6693 36/313 [==>...........................] - ETA: 1s - loss: 0.8830 - accuracy: 0.6832 48/313 [===>..........................] - ETA: 1s - loss: 0.9025 - accuracy: 0.6777 60/313 [====>.........................] - ETA: 1s - loss: 0.9140 - accuracy: 0.6745 71/313 [=====>........................] - ETA: 1s - loss: 0.9316 - accuracy: 0.6695 82/313 [======>.......................] - ETA: 1s - loss: 0.9448 - accuracy: 0.6665 94/313 [========>.....................] - ETA: 0s - loss: 0.9513 - accuracy: 0.6722107/313 [=========>....................] - ETA: 0s - loss: 0.9565 - accuracy: 0.6703119/313 [==========>...................] - ETA: 0s - loss: 0.9592 - accuracy: 0.6699130/313 [===========>..................] - ETA: 0s - loss: 0.9533 - accuracy: 0.6714143/313 [============>.................] - ETA: 0s - loss: 0.9451 - accuracy: 0.6764154/313 [=============>................] - ETA: 0s - loss: 0.9425 - accuracy: 0.6778166/313 [==============>...............] - ETA: 0s - loss: 0.9466 - accuracy: 0.6760177/313 [===============>..............] - ETA: 0s - loss: 0.9517 - accuracy: 0.6727189/313 [=================>............] - ETA: 0s - loss: 0.9531 - accuracy: 0.6723200/313 [==================>...........] - ETA: 0s - loss: 0.9476 - accuracy: 0.6739211/313 [===================>..........] - ETA: 0s - loss: 0.9447 - accuracy: 0.6734223/313 [====================>.........] - ETA: 0s - loss: 0.9485 - accuracy: 0.6725235/313 [=====================>........] - ETA: 0s - loss: 0.9447 - accuracy: 0.6738246/313 [======================>.......] - ETA: 0s - loss: 0.9431 - accuracy: 0.6734257/313 [=======================>......] - ETA: 0s - loss: 0.9423 - accuracy: 0.6727267/313 [========================>.....] - ETA: 0s - loss: 0.9433 - accuracy: 0.6722279/313 [=========================>....] - ETA: 0s - loss: 0.9419 - accuracy: 0.6718290/313 [==========================>...] - ETA: 0s - loss: 0.9411 - accuracy: 0.6716300/313 [===========================>..] - ETA: 0s - loss: 0.9389 - accuracy: 0.6723312/313 [============================>.] - ETA: 0s - loss: 0.9415 - accuracy: 0.6713313/313 [==============================] - 1s 5ms/step - loss: 0.9412 - accuracy: 0.6713
+2020-09-07 10:47:48.800482: I tensorflow/core/grappler/devices.cc:55] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2020-09-07 10:47:48.800608: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2020-09-07 10:47:48.801176: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1070 computeCapability: 6.1
+coreClock: 1.7085GHz coreCount: 15 deviceMemorySize: 7.93GiB deviceMemoryBandwidth: 238.66GiB/s
+2020-09-07 10:47:48.801234: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-07 10:47:48.801263: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-07 10:47:48.801303: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-07 10:47:48.801331: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-07 10:47:48.801357: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-07 10:47:48.801383: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-07 10:47:48.801410: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-07 10:47:48.801954: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-09-07 10:47:48.801996: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-07 10:47:48.802014: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2020-09-07 10:47:48.802027: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2020-09-07 10:47:48.802655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6915 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-09-07 10:47:48.807051: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:797] Optimization results for grappler item: graph_to_optimize
+2020-09-07 10:47:48.807074: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0.002ms.
+2020-09-07 10:47:48.807083: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:799]   function_optimizer: function_optimizer did nothing. time = 0ms.
+Parsing Inputs...
+
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  0
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 0
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              1
+-min_occurrence             0
+-step                       -1
+-order_by                   float_ops
+-account_type_regexes       .*
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     float_ops
+-output                     stdout:
+
+==================Model Analysis Report======================
+
+Doc:
+scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
+flops: Number of float operations. Note: Please read the implementation for the math behind it.
+
+Profile:
+node name | # float_ops
+_TFProfRoot (--/772.22m flops)
+  model_2/conv2d_33/Conv2D (112.14m/112.14m flops)
+  model_2/conv2d_34/Conv2D (112.14m/112.14m flops)
+  model_2/conv2d_35/Conv2D (112.14m/112.14m flops)
+  model_2/conv2d_36/Conv2D (112.14m/112.14m flops)
+  model_2/conv2d_38/Conv2D (112.14m/112.14m flops)
+  model_2/conv2d_39/Conv2D (112.14m/112.14m flops)
+  model_2/conv2d_47/Conv2D (13.25m/13.25m flops)
+  model_2/conv2d_41/Conv2D (13.25m/13.25m flops)
+  model_2/conv2d_46/Conv2D (13.25m/13.25m flops)
+  model_2/conv2d_44/Conv2D (13.25m/13.25m flops)
+  model_2/conv2d_43/Conv2D (13.25m/13.25m flops)
+  model_2/conv2d_42/Conv2D (13.25m/13.25m flops)
+  model_2/conv2d_40/Conv2D (13.25m/13.25m flops)
+  model_2/conv2d_32/Conv2D (4.31m/4.31m flops)
+  model_2/batch_normalization_34/FusedBatchNormV3 (160.21k/160.21k flops)
+  model_2/batch_normalization_35/FusedBatchNormV3 (160.21k/160.21k flops)
+  model_2/batch_normalization_36/FusedBatchNormV3 (160.21k/160.21k flops)
+  model_2/batch_normalization_38/FusedBatchNormV3 (160.21k/160.21k flops)
+  model_2/batch_normalization_39/FusedBatchNormV3 (160.21k/160.21k flops)
+  model_2/batch_normalization_33/FusedBatchNormV3 (160.21k/160.21k flops)
+  model_2/batch_normalization_32/FusedBatchNormV3 (160.21k/160.21k flops)
+  model_2/conv2d_38/BiasAdd (79.87k/79.87k flops)
+  model_2/conv2d_36/BiasAdd (79.87k/79.87k flops)
+  model_2/conv2d_39/BiasAdd (79.87k/79.87k flops)
+  model_2/conv2d_35/BiasAdd (79.87k/79.87k flops)
+  model_2/conv2d_34/BiasAdd (79.87k/79.87k flops)
+  model_2/add_16/add (79.87k/79.87k flops)
+  model_2/conv2d_32/BiasAdd (79.87k/79.87k flops)
+  model_2/add_18/add (79.87k/79.87k flops)
+  model_2/conv2d_33/BiasAdd (79.87k/79.87k flops)
+  model_2/add_17/add (79.87k/79.87k flops)
+  model_2/add_14/add (79.87k/79.87k flops)
+  model_2/average_pooling2d_2/AvgPool (37.75k/37.75k flops)
+  model_2/dense_2/MatMul (24.96k/24.96k flops)
+  model_2/batch_normalization_41/FusedBatchNormV3 (19.34k/19.34k flops)
+  model_2/batch_normalization_40/FusedBatchNormV3 (19.34k/19.34k flops)
+  model_2/batch_normalization_42/FusedBatchNormV3 (19.34k/19.34k flops)
+  model_2/batch_normalization_43/FusedBatchNormV3 (19.34k/19.34k flops)
+  model_2/batch_normalization_44/FusedBatchNormV3 (19.34k/19.34k flops)
+  model_2/batch_normalization_46/FusedBatchNormV3 (19.34k/19.34k flops)
+  model_2/batch_normalization_47/FusedBatchNormV3 (19.34k/19.34k flops)
+  model_2/add_22/add (9.44k/9.44k flops)
+  model_2/conv2d_47/BiasAdd (9.44k/9.44k flops)
+  model_2/conv2d_46/BiasAdd (9.44k/9.44k flops)
+  model_2/conv2d_44/BiasAdd (9.44k/9.44k flops)
+  model_2/add_19/add (9.44k/9.44k flops)
+  model_2/conv2d_43/BiasAdd (9.44k/9.44k flops)
+  model_2/add_21/add (9.44k/9.44k flops)
+  model_2/conv2d_42/BiasAdd (9.44k/9.44k flops)
+  model_2/conv2d_41/BiasAdd (9.44k/9.44k flops)
+  model_2/add_23/add (9.44k/9.44k flops)
+  model_2/conv2d_40/BiasAdd (9.44k/9.44k flops)
+  model_2/average_pooling2d_3/AvgPool (4.99k/4.99k flops)
+  model_2/dense_2/Softmax (50/50 flops)
+  model_2/dense_2/BiasAdd (10/10 flops)
+
+======================End of Report==========================
+Epoch 1/25
+1563/1563 - 40s - loss: 1.4846 - accuracy: 0.4640
+Epoch 2/25
+1563/1563 - 41s - loss: 0.9828 - accuracy: 0.6517
+Epoch 3/25
+1563/1563 - 41s - loss: 0.7821 - accuracy: 0.7254
+Epoch 4/25
+1563/1563 - 41s - loss: 0.6641 - accuracy: 0.7677
+Epoch 5/25
+1563/1563 - 42s - loss: 0.5821 - accuracy: 0.7973

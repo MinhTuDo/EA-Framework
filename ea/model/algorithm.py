@@ -6,6 +6,7 @@ from .display import Display
 from .log_saver import LogSaver
 import os
 import random
+from .object_saver import ObjectSaver
 
 class Algorithm:
     def __init__(self, **kwargs):
@@ -17,6 +18,7 @@ class Algorithm:
         self.history = None
         self.verbose = None
         self.log = None
+        self.save = None
         self.seed = None
         # self.pop = None
         # self.fitness_pop = None
@@ -31,6 +33,7 @@ class Algorithm:
         self.display = None
         self.default_display = Display()
         self.log_saver = None
+        self.obj_saver = ObjectSaver()
         self.default_log_saver = LogSaver()
         # self.log_dir = 'log/'
 
@@ -42,6 +45,8 @@ class Algorithm:
                        verbose=False,
                        log=False,
                        log_dir=None,
+                       save=False,
+                       save_dir=None,
                        save_history=False, 
                        epsilon=10**-5,
 
@@ -53,6 +58,7 @@ class Algorithm:
         self.problem = problem
         self.verbose = verbose
         self.log = log
+        self.save = save
         self.save_history = save_history
         self.epsilon = epsilon
         self.seed = seed
@@ -73,10 +79,16 @@ class Algorithm:
         if log_dir is not None:
             self.log_dir = log_dir
 
+        
+
         if log:
             log_saver.log_dir = log_dir if log_dir is not None else log_saver.log_dir
             if not os.path.exists(log_saver.log_dir):
                 os.makedirs(log_saver.log_dir)
+        if save:
+            self.obj_saver.save_dir = save_dir if save_dir is not None else self.obj_saver.save_dir
+            if not os.path.exists(self.obj_saver.save_dir):
+                os.makedirs(self.obj_saver.save_dir)
         # self.n_gens = 1
         self.history = []
         
@@ -112,6 +124,7 @@ class Algorithm:
     def finalize(self):
         if self.log:
             self.log_saver.save(self)
+
         if self.problem._pareto_set is None or \
            self.problem._pareto_front is None:
             return

@@ -47,6 +47,12 @@ class GA(Algorithm):
 
         self.finalize()
 
+    def run_continue(self):
+        while not self.termination._criteria_met(self):
+            self.next()
+
+        self.finalize()
+
     def initialize(self):
         self.n_gens = 1
         self.n_evals = 0
@@ -72,6 +78,8 @@ class GA(Algorithm):
             self.display.do(self)
         if self.log:
             self.log_saver.do(self)
+        if self.save:
+            self.obj_saver.save(self)
 
     ## Overide Methods ##
     def _save_result(self):
