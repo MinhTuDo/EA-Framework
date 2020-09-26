@@ -1,6 +1,6 @@
 class Agent:
     def __init__(self, config):
-        self.config = config.clone()
+        self.config = config.copy()
 
     def load_checkpoint(self, filename):
         raise NotImplementedError

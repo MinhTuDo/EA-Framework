@@ -1,3 +1,3 @@
 from .GA import *
-from . import single
-from . import multi_objective
+from .single import *
+from .multi_objective import *

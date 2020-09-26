@@ -13,38 +13,54 @@ class EvoNet(Module):
                  genome, 
                  input_size, 
                  output_size, 
-                 n_nodes):
+                 n_nodes,
+                 **kwargs):
         
         super(EvoNet, self).__init__()
-
-        genome_dict = {}
-        bit_count = 0
-        for encode_name, n in n_bits.items():
-            n_repeats = len(n_nodes) if encode_name != 'pool_size' else len(n_nodes)-1
-            encode_bits = genome[::-1][bit_count : bit_count+(n*n_repeats)][::-1]
-            encode_val = [int(''.join(str(bit) for bit in encode_bits[i:i+n]), 2) for i in range(0, n_repeats, n)]
-            target = np.array(target_val[encode_name])
-            encode_val = target[encode_val]
-            bit_count += n * n_repeats
-            genome_dict[encode_name] = encode_val
+        indices = np.arange(len(genome))
 
         connections_length = [((n*(n-1)) // 2) + 3 for n in n_nodes]
-        list_connections = []
+        list_connections, list_indices = [], []
         for i, (length, n_node) in enumerate(zip(connections_length, n_nodes)):
             phase = genome[i*length : (i+1)*length]
-            list_nodes = []
+            phase_indices = indices[i*length : (i+1)* length]
+            list_nodes, node_indices = [], []
             start = 0
             for i in range(1, n_node):
                 end = start + i
-                list_nodes += [phase[start : end]]
+                list_nodes += [phase[start : end].tolist()]
+                node_indices += [phase_indices[start : end].tolist()]
                 start = end
                 
             list_nodes += [[phase[-3]], [int(''.join(str(bit) for bit in phase[-2:]), 2)]]
+            node_indices += [*[[phase_indices[-3]], phase_indices[-2:].tolist()]]
+
             list_connections += [list_nodes]
+            list_indices += [*node_indices]
+        
+        genome_dict = {}
+        bit_count = 0
+        for encode_name, n in self.n_bits.items():
+            encode_indices = indices[::-1][bit_count : bit_count + (n*len(n_nodes))][::-1]
+            list_indices += [encode_indices[i:i+n].tolist() for i in range(0, len(encode_indices), n)]
+
+            encode_bits = genome[::-1][bit_count : bit_count + (n*len(n_nodes))][::-1]
+            encode_val = [int(''.join(str(bit) for bit in encode_bits[i:i+n]), 2) for i in range(0, len(encode_bits), n)]
+            target = np.array(self.target_val[encode_name])
+            encode_val = target[encode_val]
+            bit_count += n * len(n_nodes)
+            genome_dict[encode_name] = encode_val
+
+        channels = genome_dict['channels']
+        new_channels = [None] * len(channels)
+        for i, channel in enumerate(channels):
+            new_channels[i] = [channels[i-1] if i != 0 else input_size[2], channel]
+        genome_dict['channels'] = new_channels
 
         genome_dict['list_genomes'] = list_connections
 
         self.model = VariableGenomeDecoder(**genome_dict, repeats=None).get_model()
+        self.genome_model = list_indices
 
         out = self.model(torch.autograd.Variable(torch.zeros(1, *input_size)))
         shape = out.data.shape

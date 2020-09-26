@@ -48,7 +48,7 @@ class Algorithm:
                        save=False,
                        save_dir=None,
                        save_history=False, 
-                       epsilon=10**-5,
+                       epsilon=1e-5,
 
                        termination=None,
                        display=None,
@@ -78,7 +78,6 @@ class Algorithm:
 
         if log_dir is not None:
             self.log_dir = log_dir
-
         
 
         if log:

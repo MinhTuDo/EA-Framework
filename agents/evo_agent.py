@@ -16,7 +16,9 @@ class EvoAgent(Agent):
         operations = ['crossover', 'mutation', 'selection', 'model_builder', 'initialization']
         modules = [cx, mut, sel, mb, init]
         for op, module in zip(operations, modules):
-            name = config['algorithm'][op]
-            config['algorithm'][op] = getattr(module, name, None)(**config['{}_args'.format(name)])
+            if op in config['algorithm_args']:
+                name = config['algorithm_args'][op]
+                config['algorithm_args'][op] = getattr(module, name, None)(**config['algorithm_args']['{}_args'.format(op)])
         self.algorithm = globals()[config['algorithm']](**config['algorithm_args'])
         self.problem = globals()[config['problem']](**config['problem_args'])
+        self.termination = globals()[config['termination']](**config['termination_args'])

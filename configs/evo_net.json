@@ -1,0 +1,81 @@
+{
+    "agent": "EvoAgent",
+    "problem": "NSGANet",
+    "problem_args": {
+        "n_bits": {"kernel_size": 2, "pool_size": 1, "channels": 2},
+        "n_nodes": [6, 6, 6],
+        "input_size": [32, 32, 3],
+        "output_size": 10,
+        "arch_config": {
+            "agent": "DeepLearningAgent",
+            "cuda": true,
+            "seed": 1,
+            "max_epochs": 25,
+            "verbose": true,
+            "report_freq": 50,
+            "validate_every": 25,
+            
+            "data_loader": "Cifar10",
+            "data_loader_args": {
+                "data_folder": "~/Downloads/cifar10-python/",
+                "pin_memory": true,
+                "num_workers": 4,
+                "batch_size": 128
+            },
+
+            "model": "EvoNet",
+
+            "criterion": "CrossEntropyLoss",
+            "criterion_args": {},
+
+            "optimizer": "Adam",
+            "optimizer_args": {
+                "lr": 0.025,
+                "momentum": 0.9,
+                "weight_decay": 3e-4
+            }
+        },
+        "predictor_config": {
+            "agent": "DeepLearningAgent",
+            "cuda": false,
+            "seed": 1,
+            "verbose": false,
+            "model": "FullyConnected",
+            "model_args": {
+                "layer_dims": [5, 7, 7, 1],
+                "activations": ["relu", "relu", null]
+            },
+            "criterion": "MSELoss",
+            "criterion_args": {},
+
+            "optimizer": "SGD",
+            "optimizer_args": {
+                "lr": 0.001,
+                "momentum": 0.5,
+                "weight_decay": 0
+            }
+            
+        }
+    },
+
+    "algorithm": "NSGAII",
+    "algorithm_args": {
+        "pop_size": 40,
+        "n_offs": 40,
+        "elitist_archive": 4,
+        "mutation": "BitFlipMutation",
+        "mutation_args": {"prob": 0.02},
+        "crossover": "MBUniformCrossover",
+        "crossover_args": {"prob": 0.9}
+    },
+
+    "setup_args": {
+        "seed": 1,
+        "log": true,
+        "save_history": true,
+        "verbose": true
+    },
+
+    "termination": "MaxGenTermination",
+    "termination_args": {"max_gen": 200}
+}
