@@ -7,6 +7,7 @@ import tensorflow as tf
 import keras.backend as K
 from keras_flops import get_flops
 import keras
+import torch
 
 class NSGANET(MultiObjectiveProblem):
     def __init__(self,
@@ -67,8 +68,9 @@ class NSGANET(MultiObjectiveProblem):
             default_input = self.__conv(X, n_filters, kernel_size)
             start_idx = 0 if s == 0 else self.__calc_L(self.stages[s-1])
             end_idx = start_idx + self.__calc_L(K_s)
+            phase_code = code[start_idx : end_idx]
             X = self.__connect_nodes(default_input=default_input,
-                                     code=code,
+                                     code=phase_code,
                                      n_nodes=K_s,
                                      n_filters=n_filters,
                                      kernel_size=kernel_size)
