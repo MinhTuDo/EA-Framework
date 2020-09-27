@@ -24,6 +24,8 @@ class NSGANet(MultiObjectiveProblem):
         xl = np.zeros((self.n_params,))
         xu = np.ones((self.n_params,))
         self.domain = (xl, xu)
+        random_genome = np.zeros((self.n_params,))
+        self.problem_model = EvoNet.setup_model_args(genome=random_genome, **arch_config['model_args'])
 
         self.arch_config = arch_config
 
@@ -33,7 +35,6 @@ class NSGANet(MultiObjectiveProblem):
 
         self.hash_dict = {}
         self.input_size = self.arch_config['model_args']['input_size']
-
 
 
     ## Overide Methods ##
@@ -57,13 +58,11 @@ class NSGANet(MultiObjectiveProblem):
         if pred_val_err < 20 or self.predictor.sample_count < 40:
             agent.train()
             self.predictor.sample_count += 1
-        else:
-            print('Predict!')
+            valid_error, infer_time = self.__infer(agent)
 
-        valid_error, infer_time = self.__infer(agent)
-
-        target = torch.tensor([valid_error], dtype=torch.float)
-        self.predictor.feed_forward(_input, target)
+            target = torch.tensor([valid_error], dtype=torch.float)
+            self.predictor.feed_forward(_input, target)
+            
         self.hash_dict[key] = (valid_error, n_flops)
         return self.hash_dict[key]
 

@@ -15,8 +15,33 @@ class EvoNet(Module):
                  **kwargs):
         
         super(EvoNet, self).__init__()
-        indices = np.arange(len(genome))
 
+        genome_dict, list_indices = self.setup_model_args(n_nodes, genome, n_bits, target_val, input_size)
+
+        self.model = VariableGenomeDecoder(**genome_dict, repeats=None).get_model()
+        self.genome_model = list_indices
+
+        out = None
+        with torch.no_grad():
+            out = self.model(torch.autograd.Variable(torch.zeros(1, *list(reversed(input_size)))))
+        shape = out.data.shape
+
+        self.gap = nn.AvgPool2d(kernel_size=(shape[-2], shape[-1]), stride=1)
+
+        shape = self.gap(out).data.shape
+
+        self.linear = nn.Linear(shape[1]*shape[2]*shape[3], output_size)
+
+        self.model.zero_grad()
+
+    @staticmethod
+    def setup_model_args(n_nodes, 
+                         genome, 
+                         n_bits, 
+                         target_val, 
+                         input_size):
+                         
+        indices = np.arange(len(genome))
         connections_length = [((n*(n-1)) // 2) + 3 for n in n_nodes]
         list_connections, list_indices = [], []
         for i, (length, n_node) in enumerate(zip(connections_length, n_nodes)):
@@ -29,13 +54,13 @@ class EvoNet(Module):
                 list_nodes += [phase[start : end].tolist()]
                 node_indices += [phase_indices[start : end].tolist()]
                 start = end
-                
+
             list_nodes += [[phase[-3]], [int(''.join(str(bit) for bit in phase[-2:]), 2)]]
             node_indices += [*[[phase_indices[-3]], phase_indices[-2:].tolist()]]
 
             list_connections += [list_nodes]
             list_indices += [*node_indices]
-        
+
         genome_dict = {}
         bit_count = 0
         for encode_name, n in n_bits.items():
@@ -56,22 +81,7 @@ class EvoNet(Module):
         genome_dict['channels'] = new_channels
 
         genome_dict['list_genome'] = list_connections
-
-        self.model = VariableGenomeDecoder(**genome_dict, repeats=None).get_model()
-        self.genome_model = list_indices
-
-        out = None
-        with torch.no_grad():
-            out = self.model(torch.autograd.Variable(torch.zeros(1, *list(reversed(input_size)))))
-        shape = out.data.shape
-
-        self.gap = nn.AvgPool2d(kernel_size=(shape[-2], shape[-1]), stride=1)
-
-        shape = self.gap(out).data.shape
-
-        self.linear = nn.Linear(shape[1]*shape[2]*shape[3], output_size)
-
-        self.model.zero_grad()
+        return genome_dict, list_indices
 
     def forward(self, x):
         x = self.gap(self.model(x))

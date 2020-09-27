@@ -7,7 +7,7 @@
             "seed": 1,
             "max_epochs": 3,
             "verbose": true,
-            "report_freq": 2,
+            "report_freq": 5,
             "validate_every": 25,
             
             "data_loader": "FakeData",
