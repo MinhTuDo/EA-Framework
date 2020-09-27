@@ -12,10 +12,12 @@ class SchafferN1(MultiObjectiveProblem):
         xu = np.ones((self.n_params,)) * A
         self.domain = (xl, xu)
 
-    def __f1(self, X):
+    @staticmethod
+    def __f1(X):
         return X**2
     
-    def __f2(self, X):
+    @staticmethod
+    def __f2(X):
         return (X - 2)**2
 
     ## Overide Methods ##
@@ -24,6 +26,7 @@ class SchafferN1(MultiObjectiveProblem):
         f2 = self.__f2(X)
         return f1, f2
 
-    def _is_dominated(self, y1, y2):
+    @staticmethod
+    def _is_dominated(y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
                (y1[0] < y2[0] or y1[1] < y2[1])

@@ -4,15 +4,11 @@ from .mo_problem import MultiObjectiveProblem
 import torch
 from graphs.models.evo_net import EvoNet
 from utils.flops_benchmark import add_flops_counting_methods
-from agents import *
+from agents.dl_agent import DeepLearningAgent
 import time
 
 class NSGANet(MultiObjectiveProblem):
     def __init__(self, 
-                 n_bits, 
-                 n_nodes, 
-                 input_size,
-                 output_size,
                  arch_config, 
                  predictor_config,
                  **kwargs):
@@ -20,7 +16,8 @@ class NSGANet(MultiObjectiveProblem):
         super().__init__(param_type=np.int,
                          n_constraints=0,
                          n_obj=2)
-        n_encode_bits = n_bits
+        n_encode_bits = arch_config['model_args']['n_bits']
+        n_nodes = arch_config['model_args']['n_nodes']
         max_node_per_phase = max(n_nodes)
         connection_bits = (max_node_per_phase * (max_node_per_phase-1)) // 2 + 2 + 1    # plus one residual bit & two node type bits
         self.n_params = (sum(n_encode_bits.values()) + connection_bits) * len(n_nodes)
@@ -28,76 +25,89 @@ class NSGANet(MultiObjectiveProblem):
         xu = np.ones((self.n_params,))
         self.domain = (xl, xu)
 
-        agent_constructor = globals()[arch_config['agent']]
-        self.agent = agent_constructor(arch_config)
-        agent_constructor = globals()[predictor_config['agent']]
-        self.predictor = agent_constructor(predictor_config)
+        self.arch_config = arch_config
 
-        self.input_size = input_size
-        self.output_size = output_size
+        self.predictor = DeepLearningAgent(predictor_config)
+        self.predictor.model.train()
+        setattr(self.predictor, 'sample_count', 1)
+
+        self.hash_dict = {}
+        self.input_size = self.arch_config['model_args']['input_size']
 
 
 
     ## Overide Methods ##
+    def _f(self, X):
+        key = self.__get_key(X)
+        if key in self.hash_dict:
+            return self.hash_dict[key]
+
+        self.arch_config['model_args']['genome'] = X
+        agent = DeepLearningAgent(self.arch_config)
+
+        n_params = self.__calc_trainable_params(agent.parameters)
+        n_flops = self.__calc_flops(agent.model, agent.device, self.input_size)
+
+        train_error, _ = agent.train_one_epoch()
+        valid_error, infer_time = self.__infer(agent)
+
+        _input = self.__create_sample(train_error, valid_error, infer_time, n_params, n_flops)
+        with torch.no_grad():
+            pred_val_err = self.predictor.model(_input)
+        if pred_val_err < 20 or self.predictor.sample_count < 40:
+            agent.train()
+            self.predictor.sample_count += 1
+        else:
+            print('Predict!')
+
+        valid_error, infer_time = self.__infer(agent)
+
+        target = torch.tensor([valid_error], dtype=torch.float)
+        self.predictor.feed_forward(_input, target)
+        self.hash_dict[key] = (valid_error, n_flops)
+        return self.hash_dict[key]
+
+    @staticmethod
     def _is_dominated(self, y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
                (y1[0] < y2[0] or y1[1] < y2[1])
-    
-    def _f(self, X):
-        device = self.agent.device
-    
-        model = self.agent(genome=X, 
-                           input_size=self.input_size, 
-                           output_size=self.output_size).model
 
-        n_params = self.__calc_trainable_params(self.agent.parameters)
-
-        self.agent.to(device)
-        _, train_error = self.agent.train_one_epoch()
-        valid_error, infer_time = self.infer()
-
-        n_flops = self.__calc_flops(model, device)
-
-        _input = torch.tensor([train_error, valid_error, infer_time, n_params, n_flops], dtype=torch.float)
-        predicted_valid_error = self.predictor.model(_input)
-        self.agent.train() if predicted_valid_error < 20 else ...   # threshold
-
-        valid_error, infer_time = self.infer()
-
-        target = torch.tensor(valid_error, dtype=torch.float)
-        self.predictor.model.train()
-        self.predictor.feed_forward(_input, target)
-
-        return valid_error, n_flops
-
-    def infer(self):
-        infer_time = time.time()
-        _, valid_error = self.agent.validate()
-        infer_time = time.time() - infer_time
-        return valid_error, infer_time
-
-    def __calc_flops(self, model, device):
+    @staticmethod
+    def __calc_flops(model, device, input_size):
         model = add_flops_counting_methods(model)
         model.eval()
         model.start_flops_count()
-        random_data = torch.randn(1, *self.config['input_size'])
+        random_data = torch.randn(1, *list(reversed(input_size)))
         model(torch.autograd.Variable(random_data).to(device))
         n_flops = (model.compute_average_flops_cost() / 1e6).round(4)
         return n_flops
 
-    def __calc_trainable_params(self, params):
-        return (p.size().prod() for p in params).sum() / 1e6
+    @staticmethod
+    def __calc_trainable_params(params):
+        return np.sum(np.prod(p.size()) for p in params) / 1e6
+
+    @staticmethod
+    def __get_key(X):
+        key = ''.join(str(bit) for bit in X)
+        return key
+
+    @staticmethod
+    def __create_sample(train_error, 
+                        valid_error, 
+                        infer_time, 
+                        n_params, 
+                        n_flops):
+        _input = torch.tensor([train_error, valid_error, infer_time, n_params, n_flops], dtype=torch.float)
+        _input = (_input - _input.mean()) / _input.std()
+        return _input
+
+    @staticmethod
+    def __infer(agent):
+        infer_time = time.time()
+        valid_error, _ = agent.validate()
+        infer_time = time.time() - infer_time
+        return valid_error, infer_time
         
-    ## Abstract Methods ##
-    @abstractmethod
-    def _preprocess_input(self):
-        pass
-    @abstractmethod
-    def _model_fit(self):
-        pass
-    @abstractmethod
-    def _model_evaluate(self):
-        pass
 
 
         

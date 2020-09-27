@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.optim.lr_scheduler as scheduler
 from torch import optim
 from torch.utils.tensorboard import SummaryWriter
-
+import torch
 import os
 
 
@@ -25,16 +25,14 @@ class DeepLearningAgent(Agent):
         
         self.criterion = getattr(nn, config['criterion'], None)(**config['criterion_args'])
 
-        def create_model(model_args):
-            self.model = globals()[config['model']](**model_args)
-            self.parameters = filter(lambda p: p.requires_grad, self.model.parameters())
-            self.optimizer = getattr(optim, config['optimizer'], None)(self.parameters,
-                                                                       **config['optimizer_args'])
+        self.model = globals()[config['model']](**config['model_args'])
+        self.parameters = list(filter(lambda p: p.requires_grad, self.model.parameters()))
+        self.optimizer = getattr(optim, config['optimizer'], None)(self.parameters,
+                                                                    **config['optimizer_args'])
 
-            if 'scheduler' in config:
-                self.optimizer = getattr(scheduler, config['scheduler'])(self.optimizer, self.max_epochs)
-        
-        create_model(config['model_args']) if 'model_args' in config else ...
+        if 'scheduler' in config:
+            self.optimizer = getattr(scheduler, config['scheduler'])(self.optimizer, self.max_epochs)
+    
 
         if 'data_loader' in config and 'data_loader_args' in config:
             data_loader = globals()[config['data_loader']](**config['data_loader_args'])
@@ -54,17 +52,19 @@ class DeepLearningAgent(Agent):
 
         # get device
         self.device = device = torch.device("cuda:0" if self.cuda else "cpu")
+        self.model = self.model.to(self.device)
+        self.criterion = self.criterion.to(self.device)
         
         print("Program will run on *****{}*****".format(self.device))
 
         # set manual seed
         self.manual_seed = config['seed']
-
+        torch.manual_seed(self.manual_seed)
         # load checkpoint
         # self.load_checkpoint(self.config.checkpoint_file)
 
         # summary writer
-        self.summary_writer = SummaryWriter() if config['summary_writer'] else None
+        self.summary_writer = SummaryWriter() if 'summary_writer' in config and config['summary_writer'] else None
 
         # save path
         self.save_path = './pretrained_weights'
@@ -73,9 +73,8 @@ class DeepLearningAgent(Agent):
         self.validate_msg = '\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'
         self.train_msg = 'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'
 
-    def to(self, device):
-        self.model = self.model.to(self.device)
-        self.criterion = self.criterion.to(self.device)
+        self.train_err = self.train_loss = self.test_err = self.test_loss = 0
+
 
     def run(self):
         try:
@@ -89,10 +88,10 @@ class DeepLearningAgent(Agent):
             print("You have entered CTRL+C.. Wait to finalize") 
 
     def train(self):
-        for epoch in range(self.max_epochs):
-            self.train_one_epoch()
-            if self.current_epoch % self.valid_every == 0:
-                self.validate()
+        while self.current_epoch < self.max_epochs:
+            self.train_err, self.train_loss = self.train_one_epoch()
+            if self.current_epoch % self.validate_every == 0:
+                self.test_err, self.test_loss = self.validate()
             self.current_epoch += 1
 
 
@@ -101,7 +100,7 @@ class DeepLearningAgent(Agent):
         correct = total = train_loss = 0
         n_inputs = len(self.train_queue.dataset)
         for step, (inputs, targets) in enumerate(self.train_queue):
-            loss, outputs = self.feed_forward(inputs, targets)
+            targets, loss, outputs = self.feed_forward(inputs, targets)
 
             train_loss += loss.item()
             predicted = self.predict(outputs)
@@ -114,24 +113,25 @@ class DeepLearningAgent(Agent):
 
             self.current_iter += 1
         
-        error_rates = train_loss/total
-        acc = 100.*correct/total
+        avg_loss = train_loss/total
+        err = 100.*(1- (correct/total))
         if self.summary_writer:
-            self.summary_writer.add_scalar('Loss/train', error_rates, self.current_epoch)
-            self.summary_writer.add_scalar('Accuracy/train', acc, self.current_epoch)
+            self.summary_writer.add_scalar('Loss/train', avg_loss, self.current_epoch)
+            self.summary_writer.add_scalar('Accuracy/train', err, self.current_epoch)
 
-        return acc, error_rates
+        # torch.cuda.empty_cache()
+        return err, avg_loss
 
     def feed_forward(self, inputs, targets):
         inputs, targets = inputs.to(self.device), targets.to(self.device)
         self.optimizer.zero_grad()
-        outputs = self.model(inputs).view_as(targets)
+        outputs = self.model(inputs)
         loss = self.criterion(outputs, targets)
 
         loss.backward()
         self.optimizer.step()
 
-        return loss, outputs
+        return targets, loss, outputs
 
     def validate(self):
         self.model.eval()
@@ -149,17 +149,17 @@ class DeepLearningAgent(Agent):
                 correct += predicted.eq(targets.view_as(predicted)).sum().item()
 
                 if self.verbose and step % self.report_freq == 0:
-                    error_rates = test_loss/total
+                    avg_loss = test_loss/total
                     acc = 100.*correct/total
-                    print(self.validate_msg.format(error_rates, correct, total, acc))
+                    print(self.validate_msg.format(avg_loss, correct, total, acc))
 
-        error_rates = test_loss/total
-        acc = 100.*correct/total
+        avg_loss = test_loss/total
+        err = 100.*(1- (correct/total))
         if self.summary_writer:
-            self.summary_writer.add_scalar('Loss/test', error_rates, self.current_epoch)
-            self.summary_writer.add_scalar('Accuracy/test', acc, self.current_epoch)
+            self.summary_writer.add_scalar('Loss/test', avg_loss, self.current_epoch)
+            self.summary_writer.add_scalar('Accuracy/test', err, self.current_epoch)
 
-        return acc, error_rates
+        return err, avg_loss
 
     def predict(self, outputs):
         if outputs.shape[1] == 1:

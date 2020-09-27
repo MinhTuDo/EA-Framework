@@ -5,15 +5,13 @@ import torch.nn as nn
 import numpy as np
 
 class EvoNet(Module):
-    n_bits = {'kernel_size': 2, 'pool_size': 1, 'channels': 2}
-    target_val = {'kernel_size': [3, 5, 7, 9],
-                  'pool_size': [1, 2],
-                  'channels': [16, 32, 64, 128]}
     def __init__(self, 
                  genome, 
                  input_size, 
                  output_size, 
                  n_nodes,
+                 n_bits,
+                 target_val,
                  **kwargs):
         
         super(EvoNet, self).__init__()
@@ -40,13 +38,13 @@ class EvoNet(Module):
         
         genome_dict = {}
         bit_count = 0
-        for encode_name, n in self.n_bits.items():
+        for encode_name, n in n_bits.items():
             encode_indices = indices[::-1][bit_count : bit_count + (n*len(n_nodes))][::-1]
             list_indices += [encode_indices[i:i+n].tolist() for i in range(0, len(encode_indices), n)]
 
             encode_bits = genome[::-1][bit_count : bit_count + (n*len(n_nodes))][::-1]
             encode_val = [int(''.join(str(bit) for bit in encode_bits[i:i+n]), 2) for i in range(0, len(encode_bits), n)]
-            target = np.array(self.target_val[encode_name])
+            target = np.array(target_val[encode_name])
             encode_val = target[encode_val]
             bit_count += n * len(n_nodes)
             genome_dict[encode_name] = encode_val
@@ -57,12 +55,14 @@ class EvoNet(Module):
             new_channels[i] = [channels[i-1] if i != 0 else input_size[2], channel]
         genome_dict['channels'] = new_channels
 
-        genome_dict['list_genomes'] = list_connections
+        genome_dict['list_genome'] = list_connections
 
         self.model = VariableGenomeDecoder(**genome_dict, repeats=None).get_model()
         self.genome_model = list_indices
 
-        out = self.model(torch.autograd.Variable(torch.zeros(1, *input_size)))
+        out = None
+        with torch.no_grad():
+            out = self.model(torch.autograd.Variable(torch.zeros(1, *list(reversed(input_size)))))
         shape = out.data.shape
 
         self.gap = nn.AvgPool2d(kernel_size=(shape[-2], shape[-1]), stride=1)
@@ -75,5 +75,5 @@ class EvoNet(Module):
 
     def forward(self, x):
         x = self.gap(self.model(x))
-        x = x.flatten()
+        x = x.view(x.size(0), -1)
         return self.linear(x)

@@ -18,7 +18,8 @@ class ZDT1(MultiObjectiveProblem):
         f2 = self.__f2(X)
         return f1, f2
     
-    def __f1(self, X):
+    @staticmethod
+    def __f1(X):
         return X[0]
 
     def __f2(self, X):
@@ -30,11 +31,13 @@ class ZDT1(MultiObjectiveProblem):
         g = 1 + (9/(self.n_params-1) * X[1:].sum())
         return g
 
-    def __h(self, f1, g):
+    @staticmethod
+    def __h(f1, g):
         return 1 - np.power(f1/g, 0.5)
 
 
-    def _is_dominated(self, y1, y2):
+    @staticmethod
+    def _is_dominated(y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
                (y1[0] < y2[0] or y1[1] < y2[1])
 
@@ -58,7 +61,8 @@ class ZDT2(MultiObjectiveProblem):
         f2 = self.__f2(X)
         return f1, f2
     
-    def __f1(self, X):
+    @staticmethod
+    def __f1(X):
         return X[0]
 
     def __f2(self, X):
@@ -70,11 +74,13 @@ class ZDT2(MultiObjectiveProblem):
         g = 1 + (9/(self.n_params-1) * X[1:].sum())
         return g
 
-    def __h(self, f1, g):
+    @staticmethod
+    def __h(f1, g):
         return 1 - np.power(f1/g, 2)
 
 
-    def _is_dominated(self, y1, y2):
+    @staticmethod
+    def _is_dominated(y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
                (y1[0] < y2[0] or y1[1] < y2[1])
 
@@ -100,7 +106,8 @@ class ZDT3(MultiObjectiveProblem):
         f2 = self.__f2(X)
         return f1, f2
     
-    def __f1(self, X):
+    @staticmethod
+    def __f1(X):
         return X[0]
 
     def __f2(self, X):
@@ -112,11 +119,12 @@ class ZDT3(MultiObjectiveProblem):
         g = 1 + (9/(self.n_params-1) * X[1:].sum())
         return g
 
-    def __h(self, f1, g):
+    @staticmethod
+    def __h(f1, g):
         return 1 - np.power(f1/g, 0.5) - (f1/g) * sin(10 * pi * f1)
 
-
-    def _is_dominated(self, y1, y2):
+    @staticmethod
+    def _is_dominated(y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
                (y1[0] < y2[0] or y1[1] < y2[1])
 
@@ -152,9 +160,10 @@ class ZDT4(MultiObjectiveProblem):
     def _f(self, X):
         f1 = self.__f1(X)
         f2 = self.__f2(X)
-        return f1, f2
+        return (f1, f2)
     
-    def __f1(self, X):
+    @staticmethod
+    def __f1(X):
         return X[0]
 
     def __f2(self, X):
@@ -164,14 +173,14 @@ class ZDT4(MultiObjectiveProblem):
 
     def __g(self, X):
         g = (1 + (10*(self.n_params-1)) + (X[1:]**2 - 10*cos(4*pi*X[1:])).sum())
-        # g = 1 + (9/(self.n_params-1) * X[1:].sum())
         return g
 
-    def __h(self, f1, g):
+    @staticmethod
+    def __h(f1, g):
         return 1 - np.power(f1/g, 0.5)
 
-
-    def _is_dominated(self, y1, y2):
+    @staticmethod
+    def _is_dominated(y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
                (y1[0] < y2[0] or y1[1] < y2[1])
 
@@ -195,7 +204,8 @@ class ZDT6(MultiObjectiveProblem):
         f2 = self.__f2(X)
         return f1, f2
     
-    def __f1(self, X):
+    @staticmethod
+    def __f1(X):
         return 1 - exp(-4*X[0]) * sin(6*pi*X[0])**6
 
     def __f2(self, X):
@@ -203,14 +213,17 @@ class ZDT6(MultiObjectiveProblem):
         g = self.__g(X)
         return g * self.__h(f1, g)
 
-    def __g(self, X):
+    @staticmethod
+    def __g(X):
         g = 1 + 9 * (X[1:].sum()/9)**0.25
         return g
 
-    def __h(self, f1, g):
+    @staticmethod
+    def __h(f1, g):
         return 1 - np.power(f1/g, 2)
 
-    def _is_dominated(self, y1, y2):
+    @staticmethod
+    def _is_dominated(y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
                (y1[0] < y2[0] or y1[1] < y2[1])
 

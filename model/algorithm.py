@@ -81,9 +81,9 @@ class Algorithm:
         
 
         if log:
-            log_saver.log_dir = log_dir if log_dir is not None else log_saver.log_dir
-            if not os.path.exists(log_saver.log_dir):
-                os.makedirs(log_saver.log_dir)
+            self.log_saver.log_dir = log_dir if log_dir is not None else self.log_saver.log_dir
+            if not os.path.exists(self.log_saver.log_dir):
+                os.makedirs(self.log_saver.log_dir)
         if save:
             self.obj_saver.save_dir = save_dir if save_dir is not None else self.obj_saver.save_dir
             if not os.path.exists(self.obj_saver.save_dir):

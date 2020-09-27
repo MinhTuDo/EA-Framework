@@ -22,3 +22,13 @@ class EvoAgent(Agent):
         self.algorithm = globals()[config['algorithm']](**config['algorithm_args'])
         self.problem = globals()[config['problem']](**config['problem_args'])
         self.termination = globals()[config['termination']](**config['termination_args'])
+
+    def run(self):
+        self.algorithm.set_up_problem(problem=self.problem, 
+                                      termination=self.termination, 
+                                      **self.config['setup_args'])
+        result = self.algorithm.run()
+        return result
+
+    def finalize(self):
+        pass

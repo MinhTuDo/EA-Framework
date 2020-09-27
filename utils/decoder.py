@@ -44,7 +44,7 @@ class ChannelBasedDecoder(Decoder):
         # First, we remove all inactive phases.
         self._genome = self.get_effective_genome(list_genome)
         self._channels = channels[:len(self._genome)]
-        self._kernelsizes = kernel_sizes
+        self._kernel_sizes = kernel_sizes
         self._pool_sizes = pool_sizes
 
         # Use the provided repeats list, or a list of all ones (only repeat each phase once).
@@ -183,7 +183,12 @@ class ResidualPhase(nn.Module):
         super(ResidualPhase, self).__init__()
 
         self.channel_flag = in_channels != out_channels  # Flag to tell us if we need to increase channel size.
-        self.first_conv = nn.Conv2d(in_channels, out_channels, kernel_size=1 if idx != 0 else 3, stride=1, bias=False)
+        self.first_conv = nn.Conv2d(in_channels, 
+                                    out_channels, 
+                                    kernel_size=1 if idx != 0 else kernel_size, 
+                                    stride=1, 
+                                    padding=0 if idx != 0 else (kernel_size-1)//2, 
+                                    bias=False)
         self.dependency_graph = ResidualPhase.build_dependency_graph(gene)
 
         if preact:
@@ -425,7 +430,12 @@ class DensePhase(nn.Module):
 
         self.in_channel_flag = in_channels != out_channels  # Flag to tell us if we need to increase channel size.
         self.out_channel_flag = out_channels != DenseNode.t
-        self.first_conv = nn.Conv2d(in_channels, out_channels, kernel_size=1 if idx != 0 else 3, stride=1, bias=False)
+        self.first_conv = nn.Conv2d(in_channels, 
+                                    out_channels, 
+                                    kernel_size=1 if idx != 0 else kernel_size, 
+                                    stride=1, 
+                                    padding=0 if idx != 0 else (kernel_size-1)//2, 
+                                    bias=False)
         self.dependency_graph = ResidualPhase.build_dependency_graph(gene)
 
         channel_adjustment = 0
@@ -497,7 +507,7 @@ class DensePhase(nn.Module):
             # Same as above, we just don't worry about the 0th node.
             return self.out(torch.cat([outputs[i] for i in self.dependency_graph[len(self.nodes) + 1]], dim=1))
 
-        return self.out(torch.cat([outputs[i] for i in self.dependency_graph[len(self.nodes) + 1]]))
+        return self.out(torch.cat([outputs[i] for i in self.dependency_graph[len(self.nodes) + 1]], dim=1))
 
 
 
@@ -530,7 +540,7 @@ class ResidualNode(Module):
         super(ResidualNode, self).__init__()
 
         self.model = Sequential(nn.Conv2d(in_channels, out_channels, kernel_size, 
-                                          stride=1, padding=(kernel_size-1)/2),
+                                          stride=1, padding=(kernel_size-1)//2),
                                 nn.BatchNorm2d(out_channels),
                                 nn.ReLU(inplace=True))
 
@@ -550,7 +560,7 @@ class PreactResidualNode(Module):
                                           out_channels, 
                                           kernel_size,
                                           stride=1, 
-                                          padding=(kernel_size-1)/2))
+                                          padding=(kernel_size-1)//2))
     
     def forward(self, x):
         return self.model(x)
@@ -577,7 +587,7 @@ class DenseNode(Module):
             nn.Conv2d(in_channels, self.t * self.k, kernel_size=1, bias=False),
             nn.BatchNorm2d(self.t * self.k),
             nn.ReLU(inplace=True),
-            nn.Conv2d(self.t * self.k, self.t, kernel_size=kernel_size, stride=1, padding=1, bias=False)
+            nn.Conv2d(self.t * self.k, self.t, kernel_size=kernel_size, stride=1, padding=(kernel_size-1)//2, bias=False)
         )
 
     def forward(self, x):

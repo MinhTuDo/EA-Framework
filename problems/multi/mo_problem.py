@@ -21,14 +21,16 @@ class MultiObjectiveProblem(Problem):
         self._optimum = self.optimum
 
     ## Protected Methods ##
-    def _is_dominated(self, y1, y2):
+    @staticmethod
+    def _is_dominated(y1, y2):
         pass
     
     def _calc_pareto_front(self):
         pass
 
     ## Overide Methods ##
-    def _sol_compare(self, s1, s2):
+    @staticmethod
+    def _sol_compare(s1, s2):
         r1, r2 = s1[0], s2[0]
         cd1, cd2 = s1[1], s2[1]
         return (r1 < r2) or \
