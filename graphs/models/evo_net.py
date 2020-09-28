@@ -39,8 +39,9 @@ class EvoNet(Module):
                          genome, 
                          n_bits, 
                          target_val, 
-                         input_size):
-                         
+                         input_size,
+                         **kwargs):
+
         indices = np.arange(len(genome))
         connections_length = [((n*(n-1)) // 2) + 3 for n in n_nodes]
         list_connections, list_indices = [], []

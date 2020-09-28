@@ -10,7 +10,7 @@ class MBUniformCrossover(Operation):
         if hasattr(ga, 'model'):
             model = ga.model
         elif hasattr(ga.problem, 'problem_model'):
-            model = ga.problem.model
+            model = ga.problem.problem_model
         else:
             raise Exception('Model not found!') 
         (n_inds, n_params) = ga.pop.shape

@@ -24,8 +24,8 @@ class NSGANet(MultiObjectiveProblem):
         xl = np.zeros((self.n_params,))
         xu = np.ones((self.n_params,))
         self.domain = (xl, xu)
-        random_genome = np.zeros((self.n_params,))
-        self.problem_model = EvoNet.setup_model_args(genome=random_genome, **arch_config['model_args'])
+        random_genome = np.zeros((self.n_params,), dtype=self.param_type)
+        _, self.problem_model = EvoNet.setup_model_args(genome=random_genome, **arch_config['model_args'])
 
         self.arch_config = arch_config
 
@@ -62,12 +62,12 @@ class NSGANet(MultiObjectiveProblem):
 
             target = torch.tensor([valid_error], dtype=torch.float)
             self.predictor.feed_forward(_input, target)
-            
+
         self.hash_dict[key] = (valid_error, n_flops)
         return self.hash_dict[key]
 
     @staticmethod
-    def _is_dominated(self, y1, y2):
+    def _is_dominated(y1, y2):
         return (y1[0] <= y2[0] and y1[1] <= y2[1]) and \
                (y1[0] < y2[0] or y1[1] < y2[1])
 

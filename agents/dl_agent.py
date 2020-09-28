@@ -89,9 +89,9 @@ class DeepLearningAgent(Agent):
 
     def train(self):
         while self.current_epoch < self.max_epochs:
-            self.train_err, self.train_loss = self.train_one_epoch()
+            self.train_one_epoch()
             if self.current_epoch % self.validate_every == 0:
-                self.test_err, self.test_loss = self.validate()
+                self.validate()
             self.current_epoch += 1
 
 

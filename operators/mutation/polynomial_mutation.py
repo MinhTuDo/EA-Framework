@@ -29,7 +29,7 @@ class PolynomialMutation(Operation):
             delta_q = self.__calc_delta_q(rand, mut_pow, delta_1, delta_2)
 
             x = x + delta_q * (xu - xl)
-            x = minimum(maximum(x, xl), xu)
+            x = minimum(maximum(x, xl), xu).astype(ga.problem.param_type)
             
             pop[idx][mutation_points] = x
         return pop

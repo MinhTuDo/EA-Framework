@@ -8,7 +8,7 @@
             "max_epochs": 3,
             "verbose": true,
             "report_freq": 5,
-            "validate_every": 25,
+            "validate_every": 3,
             
             "data_loader": "FakeData",
             "data_loader_args": {
@@ -68,7 +68,7 @@
 
     "algorithm": "NSGAII",
     "algorithm_args": {
-        "pop_size": 40,
+        "pop_size": 5,
         "n_offs": 40,
         "elitist_archive": 4,
         "mutation": "BitFlipMutation",
@@ -86,5 +86,9 @@
     },
 
     "termination": "MaxGenTermination",
-    "termination_args": {"max_gen": 200}
+    "termination_args": {"max_gen": 200},
+
+    "display": "NSGANetDisplay",
+    "log_saver": "NSGANetLogSaver"
+
 }
