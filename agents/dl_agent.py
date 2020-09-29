@@ -94,6 +94,7 @@ class DeepLearningAgent(Agent):
             self.train_one_epoch()
             if self.current_epoch % self.validate_every == 0:
                 self.validate()
+        torch.cuda.empty_cache()
 
 
     def train_one_epoch(self):

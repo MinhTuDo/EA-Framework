@@ -1,3 +1,18 @@
 WARNING: You have a CUDA device, so you should enable CUDA
 Program will run on *****cpu*****
 Program will run on *****cuda:0*****
+Train Epoch: 1 [64/50000 (0%)]	Loss: 2.298245
+Train Epoch: 1 [5056/50000 (10%)]	Loss: 1.824801
+Train Epoch: 1 [10048/50000 (20%)]	Loss: 1.598891
+Train Epoch: 1 [15040/50000 (30%)]	Loss: 1.264076
+Train Epoch: 1 [20032/50000 (40%)]	Loss: 1.508286
+Train Epoch: 1 [25024/50000 (50%)]	Loss: 1.405176
+Train Epoch: 1 [30016/50000 (60%)]	Loss: 1.446514
+Train Epoch: 1 [35008/50000 (70%)]	Loss: 1.248211
+Train Epoch: 1 [40000/50000 (80%)]	Loss: 1.115872
+Train Epoch: 1 [44992/50000 (90%)]	Loss: 1.590789
+Train Epoch: 1 [49984/50000 (100%)]	Loss: 1.165669
+
+Test set: Average loss: 0.0191, Accuracy: 5649/10000 (56%)
+
+Retraining model...
