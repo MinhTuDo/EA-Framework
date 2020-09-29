@@ -16,6 +16,8 @@ class DeepLearningAgent(Agent):
     def __init__(self, config):
         super().__init__(config)
 
+        self.scheduler = None
+
         # save important parameter
         self.max_epochs = config['max_epochs'] if 'max_epochs' in config else 1
         self.verbose = True if 'report_freq' in config else False
@@ -31,7 +33,7 @@ class DeepLearningAgent(Agent):
                                                                     **config['optimizer_args'])
 
         if 'scheduler' in config:
-            self.optimizer = getattr(scheduler, config['scheduler'])(self.optimizer, self.max_epochs)
+            self.scheduler = getattr(scheduler, config['scheduler'])(optimizer=self.optimizer, **config['scheduler_args'])
     
 
         if 'data_loader' in config and 'data_loader_args' in config:
@@ -79,7 +81,6 @@ class DeepLearningAgent(Agent):
     def run(self):
         try:
             if self.config['mode'] == 'train':
-                self.to(self.device)
                 self.train()
             elif self.config['mode'] == 'eval':
                 self.validate()
@@ -89,10 +90,10 @@ class DeepLearningAgent(Agent):
 
     def train(self):
         while self.current_epoch < self.max_epochs:
+            self.scheduler.step() if self.scheduler else ...
             self.train_one_epoch()
             if self.current_epoch % self.validate_every == 0:
                 self.validate()
-            self.current_epoch += 1
 
 
     def train_one_epoch(self):
@@ -119,7 +120,7 @@ class DeepLearningAgent(Agent):
             self.summary_writer.add_scalar('Loss/train', avg_loss, self.current_epoch)
             self.summary_writer.add_scalar('Accuracy/train', err, self.current_epoch)
 
-        # torch.cuda.empty_cache()
+        self.current_epoch += 1
         return err, avg_loss
 
     def feed_forward(self, inputs, targets):
@@ -148,13 +149,13 @@ class DeepLearningAgent(Agent):
                 total += targets.size(0)
                 correct += predicted.eq(targets.view_as(predicted)).sum().item()
 
-                if self.verbose and step % self.report_freq == 0:
-                    avg_loss = test_loss/total
-                    acc = 100.*correct/total
-                    print(self.validate_msg.format(avg_loss, correct, total, acc))
+            avg_loss = test_loss/total
+            err = 100.*(1- (correct/total))
+            if self.verbose:
+                acc = 100.*correct/total
+                print(self.validate_msg.format(avg_loss, correct, total, acc))
 
-        avg_loss = test_loss/total
-        err = 100.*(1- (correct/total))
+        
         if self.summary_writer:
             self.summary_writer.add_scalar('Loss/test', avg_loss, self.current_epoch)
             self.summary_writer.add_scalar('Accuracy/test', err, self.current_epoch)

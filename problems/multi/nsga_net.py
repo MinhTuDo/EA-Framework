@@ -56,12 +56,15 @@ class NSGANet(MultiObjectiveProblem):
         with torch.no_grad():
             pred_val_err = self.predictor.model(_input)
         if pred_val_err < 20 or self.predictor.sample_count < 40:
+            print('Retraining model...')
             agent.train()
             self.predictor.sample_count += 1
             valid_error, infer_time = self.__infer(agent)
 
             target = torch.tensor([valid_error], dtype=torch.float)
             self.predictor.feed_forward(_input, target)
+        else:
+            print('Skip model!')
 
         self.hash_dict[key] = (valid_error, n_flops)
         return self.hash_dict[key]
