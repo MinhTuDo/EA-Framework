@@ -7,19 +7,16 @@
             "seed": 1,
             "max_epochs": 25,
             "verbose": true,
-            "report_freq": 10,
+            "report_freq": 78,
             "validate_every": 25,
             
             "data_loader": "Cifar10",
             "data_loader_args": {
                 "data_folder": "~/Downloads/cifar10-python/",
-                "pin_memory": false,
-                "num_workers": 1,
+                "pin_memory": true,
+                "num_workers": 4,
                 "batch_size": 64,
-                "input_size": [3, 32, 32],
-                "n_classes": 10,
-                "train_size": 200,
-                "test_size": 10
+                "input_size": [3, 32, 32]
             },
 
             "model": "EvoNet",
