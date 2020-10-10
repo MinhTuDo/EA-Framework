@@ -23,11 +23,11 @@
             "model_args": {
                 "input_size": [32, 32, 3],
                 "output_size": 10,
-                "n_bits": {"kernel_sizes": 2, "pool_sizes": 1, "channels": 2},
+                "n_bits": {"kernel_sizes": 2, "pool_sizes": 1, "channels": 3},
                 "target_val": {
                     "kernel_sizes": [3, 5, 7, 9],
                     "pool_sizes": [1, 2],
-                    "channels": [16, 32, 64, 128]},
+                    "channels": [16, 32, 64, 128, 256, 512, 1024, 2048]},
                 "n_nodes": [6, 6, 6]
             },
 
