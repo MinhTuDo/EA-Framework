@@ -16,6 +16,8 @@ class EvoNet(Module):
         
         super(EvoNet, self).__init__()
 
+        genome = genome if type(genome) == type(np.array) else np.array([bit for bit in genome.replace(' ', '')], dtype=np.int)
+
         genome_dict, list_indices = self.setup_model_args(n_nodes, genome, n_bits, target_val, input_size)
 
         self.model = VariableGenomeDecoder(**genome_dict, repeats=None).get_model()
@@ -23,7 +25,7 @@ class EvoNet(Module):
 
         out = None
         with torch.no_grad():
-            out = self.model(torch.autograd.Variable(torch.zeros(1, *list(reversed(input_size)))))
+            out = self.model(torch.autograd.Variable(torch.zeros(1, *(input_size))))
         shape = out.data.shape
 
         self.gap = nn.AvgPool2d(kernel_size=(shape[-2], shape[-1]), stride=1)
@@ -78,7 +80,7 @@ class EvoNet(Module):
         channels = genome_dict['channels']
         new_channels = [None] * len(channels)
         for i, channel in enumerate(channels):
-            new_channels[i] = [channels[i-1] if i != 0 else input_size[2], channel]
+            new_channels[i] = [channels[i-1] if i != 0 else input_size[0], channel]
         genome_dict['channels'] = new_channels
 
         genome_dict['list_genome'] = list_connections

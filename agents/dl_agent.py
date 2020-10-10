@@ -13,7 +13,7 @@ import os
 
 
 class DeepLearningAgent(Agent):
-    def __init__(self, config):
+    def __init__(self, config, callback=None):
         super().__init__(config)
 
         self.scheduler = None
@@ -23,7 +23,8 @@ class DeepLearningAgent(Agent):
         self.verbose = True if 'report_freq' in config else False
         self.report_freq = config['report_freq'] if 'report_freq' in config else 1
         self.validate_every = config['validate_every'] if 'validate_every' in config else self.max_epochs
-
+        self.grad_clip = config['grad_clip'] if 'grad_clip' in config else None
+        self.target_err = config['target_err'] if 'target_err' in config else 0
         
         self.criterion = getattr(nn, config['criterion'], None)(**config['criterion_args'])
 
@@ -34,7 +35,6 @@ class DeepLearningAgent(Agent):
 
         if 'scheduler' in config:
             self.scheduler = getattr(scheduler, config['scheduler'])(optimizer=self.optimizer, **config['scheduler_args'])
-    
 
         if 'data_loader' in config and 'data_loader_args' in config:
             data_loader = globals()[config['data_loader']](**config['data_loader_args'])
@@ -77,6 +77,10 @@ class DeepLearningAgent(Agent):
 
         self.train_err = self.train_loss = self.test_err = self.test_loss = 0
 
+        self.stop = False
+
+        callback(self)
+
 
     def run(self):
         try:
@@ -90,10 +94,13 @@ class DeepLearningAgent(Agent):
 
     def train(self):
         while self.current_epoch < self.max_epochs:
-            self.scheduler.step() if self.scheduler else ...
             self.train_one_epoch()
+            self.scheduler.step() if self.scheduler else ...
             if self.current_epoch % self.validate_every == 0:
                 self.validate()
+            if self.stop:
+                break
+
         torch.cuda.empty_cache()
 
 
@@ -131,6 +138,9 @@ class DeepLearningAgent(Agent):
         loss = self.criterion(outputs, targets)
 
         loss.backward()
+        if self.grad_clip:
+            nn.utils.clip_grad_norm_(self.model.parameters(), 
+                                     self.grad_clip)
         self.optimizer.step()
 
         return targets, loss, outputs
@@ -160,6 +170,9 @@ class DeepLearningAgent(Agent):
         if self.summary_writer:
             self.summary_writer.add_scalar('Loss/test', avg_loss, self.current_epoch)
             self.summary_writer.add_scalar('Accuracy/test', err, self.current_epoch)
+
+        if err < self.target_err:
+            self.stop = True
 
         return err, avg_loss
 

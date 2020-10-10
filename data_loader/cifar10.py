@@ -2,6 +2,7 @@ import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, TensorDataset, Dataset
 import os
 import torchvision.datasets as datasets
+from utils.cutout import Cutout
 
 
 class Cifar10:
@@ -12,12 +13,16 @@ class Cifar10:
                  num_workers, 
                  batch_size, 
                  pin_memory,
+                 cutout,
+                 cutout_length,
                  **kwargs):
         
         train_transform = transforms.Compose([transforms.RandomCrop(32, padding=4),
                                               transforms.RandomHorizontalFlip(),
                                               transforms.ToTensor(),
                                               transforms.Normalize(self.CIFAR_MEAN, self.CIFAR_STD)])
+        if cutout:
+            train_transform.transforms.append(Cutout(cutout_length))
         valid_transform = transforms.Compose([transforms.ToTensor(), 
                                               transforms.Normalize(self.CIFAR_MEAN, self.CIFAR_STD)])
 

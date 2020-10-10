@@ -17,7 +17,7 @@ with open(filename, 'rb') as handle:
     gen10 = pickle.load(handle)
 
 print(gen17.ranks_F[0])
-print(gen17.ranks[0][6])
+print(gen17.ranks[0][7])
 
 plt.plot(gen17.F_pop[:, 1], gen17.F_pop[:, 0], 'b.', label='gen-17', alpha=.5)
 plt.plot(gen10.F_pop[:, 1], gen10.F_pop[:, 0], 'r.', label='gen-10', alpha=.5)
