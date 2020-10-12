@@ -20,7 +20,7 @@ class NSGANet(MultiObjectiveProblem):
         n_nodes = arch_config['model_args']['n_nodes']
         max_node_per_phase = max(n_nodes)
         connection_bits = (max_node_per_phase * (max_node_per_phase-1)) // 2 + 2 + 1    # plus one residual bit & two node type bits
-        self.n_params = (sum(n_encode_bits.values()) + connection_bits) * len(n_nodes)
+        self.n_params = ((sum(n_encode_bits.values()) + connection_bits) * len(n_nodes)) - 1 # subtract kernel size bit encoding for last phase
         xl = np.zeros((self.n_params,))
         xu = np.ones((self.n_params,))
         self.domain = (xl, xu)

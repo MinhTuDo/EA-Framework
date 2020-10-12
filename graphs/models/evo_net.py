@@ -15,6 +15,7 @@ class EvoNet(Module):
                  **kwargs):
         
         super(EvoNet, self).__init__()
+        self.__name__ = 'EvoNet'
 
         genome = genome if type(genome) == type(np.array) else np.array([bit for bit in genome.replace(' ', '')], dtype=np.int)
 
@@ -69,12 +70,14 @@ class EvoNet(Module):
         for encode_name, n in n_bits.items():
             encode_indices = indices[::-1][bit_count : bit_count + (n*len(n_nodes))][::-1]
             list_indices += [encode_indices[i:i+n].tolist() for i in range(0, len(encode_indices), n)]
-
-            encode_bits = genome[::-1][bit_count : bit_count + (n*len(n_nodes))][::-1]
+            
+            bit_length = bit_count + (n*len(n_nodes))
+            bit_length = bit_length - 1 if encode_name == 'pool_sizes' else bit_length
+            encode_bits = genome[::-1][bit_count : bit_length][::-1]
             encode_val = [int(''.join(str(bit) for bit in encode_bits[i:i+n]), 2) for i in range(0, len(encode_bits), n)]
             target = np.array(target_val[encode_name])
             encode_val = target[encode_val]
-            bit_count += n * len(n_nodes)
+            bit_count += n * (len(n_nodes)-1) if encode_name == 'pool_sizes' else n * len(n_nodes)
             genome_dict[encode_name] = encode_val
 
         channels = genome_dict['channels']
