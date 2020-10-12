@@ -6,7 +6,7 @@
     "max_epochs": 600,
     "verbose": true,
     "report_freq": 52,
-    "validate_every": 1,
+    "validate_every": 20,
     
     "data_loader": "Cifar10",
     "data_loader_args": {

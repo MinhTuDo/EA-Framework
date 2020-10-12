@@ -3,6 +3,7 @@ import json
 from utils.flops_benchmark import add_flops_counting_methods
 import torch
 import numpy as np  
+import time
 
 def print_info(self):
     n_params = np.sum(np.prod(p.size()) for p in self.parameters) / 1e6
@@ -14,7 +15,7 @@ def print_info(self):
     self.model(torch.autograd.Variable(random_data).to(self.device))
     n_flops = (self.model.compute_average_flops_cost() / 1e6).round(4)
 
-    print('{} Million of parameters\n | {} MFLOPS'.format(n_params, n_flops))
+    print('{} Million of parameters | {} MFLOPS'.format(n_params, n_flops))
 
 config = None
 with open('./configs/train_arch.json') as  json_file:
@@ -22,5 +23,12 @@ with open('./configs/train_arch.json') as  json_file:
 agent_constructor = globals()[config['agent']]
 
 agent = agent_constructor(**config, callback=print_info)
-agent.run()
-agent.finalize()
+
+start = time.time()
+try:
+    agent.run()
+    agent.finalize()
+except:
+    end = time.time() - start
+
+print('Elapsed time: {}'.format(end))

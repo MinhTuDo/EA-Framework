@@ -21,7 +21,8 @@ class DeepLearningAgent(Agent):
                  optimizer,
                  optimizer_args,
                  criterion_args,
-                 criterion=None,
+                 criterion,
+                 mode='train',
                  seed=1,
                  cuda=False,
                  max_epochs=1,
@@ -32,13 +33,11 @@ class DeepLearningAgent(Agent):
                  grad_clip=None,
                  report_freq=1, 
                  summary_writer=False,
+                 checkpoint_file=None,
                  callback=None,
                  **kwargs):
-        super().__init__(config)
-
-        self.scheduler = scheduler
-
         # save important parameter
+        self.mode = mode
         self.max_epochs = max_epochs
         self.verbose = verbose
         self.report_freq = report_freq
@@ -52,7 +51,7 @@ class DeepLearningAgent(Agent):
         self.optimizer = getattr(optim, optimizer, None)(self.parameters,
                                                          **optimizer_args)
 
-        if self.scheduler:
+        if scheduler:
             self.scheduler = getattr(lr_scheduler, self.scheduler)(optimizer=self.optimizer, 
                                                                    **scheduler_args)
 
@@ -82,7 +81,7 @@ class DeepLearningAgent(Agent):
         self.manual_seed = seed
         torch.manual_seed(self.manual_seed)
         # load checkpoint
-        # self.load_checkpoint(self.config.checkpoint_file)
+        self.load_checkpoint(checkpoint_file) if checkpoint_file else ... 
 
         # summary writer
         self.summary_writer = SummaryWriter() if summary_writer else None
@@ -91,32 +90,45 @@ class DeepLearningAgent(Agent):
         self.save_path = './pretrained_weights'
 
         # default messages
-        self.validate_msg = '\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'
+        self.validate_msg = '\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.3f}%)\n'
         self.train_msg = 'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'
 
         self.train_err = self.train_loss = self.test_err = self.test_loss = 0
 
         callback(self)
 
+    @staticmethod
+    def load_checkpoint(model_path):
+        pass
+
+    @staticmethod
+    def save_checkpoint(model, 
+                        model_path, 
+                        model_name):
+        torch.save(model.state_dict(), 
+                   os.path.join(model_path, '{}.pth.tar'.format(model_name)))
 
     def run(self):
         try:
-            if self.config['mode'] == 'train':
-                self.train()
-            elif self.config['mode'] == 'eval':
-                self.validate()
-
+            self.train() if self.mode == 'train' else self.validate()
         except KeyboardInterrupt:
             print("You have entered CTRL+C.. Wait to finalize") 
 
     def train(self):
+        best_err = 100
         while self.current_epoch < self.max_epochs:
             self.train_one_epoch()
             self.scheduler.step() if self.scheduler else ...
             if self.current_epoch % self.validate_every == 0:
-                self.validate()
-            if self.stop:
-                break
+                valid_err, _ = self.validate()
+            
+            if valid_err < best_err:
+                best_err = valid_err
+                self.save_checkpoint(self.model, 
+                                     self.save_path, 
+                                     model_name='{}-Ep_{}-Err_{}'.format(self.model.__name__,
+                                                                         self.current_epoch,
+                                                                         valid_err))
 
         torch.cuda.empty_cache()
 
@@ -199,7 +211,7 @@ class DeepLearningAgent(Agent):
         return outputs.max(dim=1, keepdims=True)[1]
 
     def finalize(self):
-        torch.save(self.model.state_dict(), os.path.join(self.save_path, 'model.pth.tar'))
+        torch.save(self.model.state_dict(), os.path.join(self.save_path, '{}.pth.tar'.format()))
 
         
 
