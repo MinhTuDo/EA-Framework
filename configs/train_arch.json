@@ -5,7 +5,7 @@
     "seed": 1,
     "max_epochs": 600,
     "verbose": true,
-    "report_freq": 52,
+    "report_freq": 39,
     "validate_every": 20,
     
     "data_loader": "Cifar10",
@@ -13,7 +13,7 @@
         "data_folder": "~/Downloads/cifar10-python/",
         "pin_memory": true,
         "num_workers": 4,
-        "batch_size": 96,
+        "batch_size": 128,
         "input_size": [3, 32, 32],
         "cutout": true,
         "cutout_length": 16
@@ -31,7 +31,7 @@
         "weight_decay": 3e-4
     },
     "scheduler": "CosineAnnealingLR",
-    "scheduler_args": {"T_max": 600},
+    "scheduler_args": {"T_max": 600, "eta_min": 0},
 
     "model": "EvoNet",
     "model_args": {

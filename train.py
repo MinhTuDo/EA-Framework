@@ -6,12 +6,12 @@ import numpy as np
 import time
 
 def print_info(self):
-    n_params = np.sum(np.prod(p.size()) for p in self.parameters) / 1e6
+    n_params = sum([np.prod(p.size()) for p in self.parameters]) / 1e6
 
     self.model = add_flops_counting_methods(self.model)
     self.model.eval()
     self.model.start_flops_count()
-    random_data = torch.randn(1, *self.config['data_loader_args']['input_size'])
+    random_data = torch.randn(1, *self.data_info['input_size'])
     self.model(torch.autograd.Variable(random_data).to(self.device))
     n_flops = (self.model.compute_average_flops_cost() / 1e6).round(4)
 
@@ -25,10 +25,9 @@ agent_constructor = globals()[config['agent']]
 agent = agent_constructor(**config, callback=print_info)
 
 start = time.time()
-try:
-    agent.run()
-    agent.finalize()
-except:
-    end = time.time() - start
+agent.run()
+agent.finalize()
+
+end = time.time() - start
 
 print('Elapsed time: {}'.format(end))

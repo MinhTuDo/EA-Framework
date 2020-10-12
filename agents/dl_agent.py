@@ -37,6 +37,7 @@ class DeepLearningAgent(Agent):
                  callback=None,
                  **kwargs):
         # save important parameter
+        self.data_info = data_loader_args
         self.mode = mode
         self.max_epochs = max_epochs
         self.verbose = verbose
@@ -52,8 +53,8 @@ class DeepLearningAgent(Agent):
                                                          **optimizer_args)
 
         if scheduler:
-            self.scheduler = getattr(lr_scheduler, self.scheduler)(optimizer=self.optimizer, 
-                                                                   **scheduler_args)
+            self.scheduler = getattr(lr_scheduler, scheduler)(optimizer=self.optimizer, 
+                                                              **scheduler_args)
 
         data_loader = globals()[data_loader](**data_loader_args)
         self.train_queue = data_loader.train_loader
@@ -65,7 +66,7 @@ class DeepLearningAgent(Agent):
 
         # set cuda flag
         self.has_cuda = torch.cuda.is_available()
-        if self.has_cuda and not self.config['cuda']:
+        if self.has_cuda and not cuda:
             print("WARNING: You have a CUDA device, so you should enable CUDA")
 
         self.cuda = self.has_cuda and cuda
@@ -93,8 +94,6 @@ class DeepLearningAgent(Agent):
         self.validate_msg = '\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.3f}%)\n'
         self.train_msg = 'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'
 
-        self.train_err = self.train_loss = self.test_err = self.test_loss = 0
-
         callback(self)
 
     @staticmethod
@@ -106,7 +105,7 @@ class DeepLearningAgent(Agent):
                         model_path, 
                         model_name):
         torch.save(model.state_dict(), 
-                   os.path.join(model_path, '{}.pth.tar'.format(model_name)))
+                   os.path.join(model_path, '{}.pt'.format(model_name)))
 
     def run(self):
         try:
@@ -115,7 +114,7 @@ class DeepLearningAgent(Agent):
             print("You have entered CTRL+C.. Wait to finalize") 
 
     def train(self):
-        best_err = 100
+        best_err = valid_err = 100
         while self.current_epoch < self.max_epochs:
             self.train_one_epoch()
             self.scheduler.step() if self.scheduler else ...
@@ -198,7 +197,7 @@ class DeepLearningAgent(Agent):
         
         if self.summary_writer:
             self.summary_writer.add_scalar('Loss/test', avg_loss, self.current_epoch)
-            self.summary_writer.add_scalar('Accuracy/test', err, self.current_epoch)
+            self.summary_writer.add_scalar('Error_rate/test', err, self.current_epoch)
 
         return err, avg_loss
 
