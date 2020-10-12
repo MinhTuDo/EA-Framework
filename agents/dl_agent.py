@@ -4,7 +4,7 @@ from data_loader import *
 
 import torch
 import torch.nn as nn
-import torch.optim.lr_scheduler as scheduler
+import torch.optim.lr_scheduler as lr_scheduler
 from torch import optim
 from torch.utils.tensorboard import SummaryWriter
 import torch
@@ -13,33 +13,52 @@ import os
 
 
 class DeepLearningAgent(Agent):
-    def __init__(self, config, callback=None):
+    def __init__(self,
+                 model,
+                 model_args,
+                 data_loader,
+                 data_loader_args,
+                 optimizer,
+                 optimizer_args,
+                 criterion_args,
+                 criterion=None,
+                 seed=1,
+                 cuda=False,
+                 max_epochs=1,
+                 validate_every=None,
+                 verbose=False, 
+                 scheduler=None,
+                 scheduler_args={},
+                 grad_clip=None,
+                 report_freq=1, 
+                 summary_writer=False,
+                 callback=None,
+                 **kwargs):
         super().__init__(config)
 
-        self.scheduler = None
+        self.scheduler = scheduler
 
         # save important parameter
-        self.max_epochs = config['max_epochs'] if 'max_epochs' in config else 1
-        self.verbose = True if 'report_freq' in config else False
-        self.report_freq = config['report_freq'] if 'report_freq' in config else 1
-        self.validate_every = config['validate_every'] if 'validate_every' in config else self.max_epochs
-        self.grad_clip = config['grad_clip'] if 'grad_clip' in config else None
-        self.target_err = config['target_err'] if 'target_err' in config else 0
+        self.max_epochs = max_epochs
+        self.verbose = verbose
+        self.report_freq = report_freq
+        self.validate_every = validate_every if validate_every else self.max_epochs
+        self.grad_clip = grad_clip
         
-        self.criterion = getattr(nn, config['criterion'], None)(**config['criterion_args'])
+        self.criterion = getattr(nn, criterion, None)(**criterion_args)
 
-        self.model = globals()[config['model']](**config['model_args'])
+        self.model = globals()[model](**model_args)
         self.parameters = list(filter(lambda p: p.requires_grad, self.model.parameters()))
-        self.optimizer = getattr(optim, config['optimizer'], None)(self.parameters,
-                                                                    **config['optimizer_args'])
+        self.optimizer = getattr(optim, optimizer, None)(self.parameters,
+                                                         **optimizer_args)
 
-        if 'scheduler' in config:
-            self.scheduler = getattr(scheduler, config['scheduler'])(optimizer=self.optimizer, **config['scheduler_args'])
+        if self.scheduler:
+            self.scheduler = getattr(lr_scheduler, self.scheduler)(optimizer=self.optimizer, 
+                                                                   **scheduler_args)
 
-        if 'data_loader' in config and 'data_loader_args' in config:
-            data_loader = globals()[config['data_loader']](**config['data_loader_args'])
-            self.train_queue = data_loader.train_loader
-            self.valid_queue = data_loader.test_loader
+        data_loader = globals()[data_loader](**data_loader_args)
+        self.train_queue = data_loader.train_loader
+        self.valid_queue = data_loader.test_loader
 
         # initialize counter
         self.current_epoch = 1
@@ -50,7 +69,7 @@ class DeepLearningAgent(Agent):
         if self.has_cuda and not self.config['cuda']:
             print("WARNING: You have a CUDA device, so you should enable CUDA")
 
-        self.cuda = self.has_cuda and self.config['cuda']
+        self.cuda = self.has_cuda and cuda
 
         # get device
         self.device = device = torch.device("cuda:0" if self.cuda else "cpu")
@@ -60,13 +79,13 @@ class DeepLearningAgent(Agent):
         print("Program will run on *****{}*****".format(self.device))
 
         # set manual seed
-        self.manual_seed = config['seed']
+        self.manual_seed = seed
         torch.manual_seed(self.manual_seed)
         # load checkpoint
         # self.load_checkpoint(self.config.checkpoint_file)
 
         # summary writer
-        self.summary_writer = SummaryWriter() if 'summary_writer' in config and config['summary_writer'] else None
+        self.summary_writer = SummaryWriter() if summary_writer else None
 
         # save path
         self.save_path = './pretrained_weights'
@@ -76,8 +95,6 @@ class DeepLearningAgent(Agent):
         self.train_msg = 'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'
 
         self.train_err = self.train_loss = self.test_err = self.test_loss = 0
-
-        self.stop = False
 
         callback(self)
 
@@ -170,9 +187,6 @@ class DeepLearningAgent(Agent):
         if self.summary_writer:
             self.summary_writer.add_scalar('Loss/test', avg_loss, self.current_epoch)
             self.summary_writer.add_scalar('Accuracy/test', err, self.current_epoch)
-
-        if err < self.target_err:
-            self.stop = True
 
         return err, avg_loss
 

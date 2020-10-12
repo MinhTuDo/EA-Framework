@@ -21,6 +21,6 @@ with open('./configs/train_arch.json') as  json_file:
     config = json.load(json_file)
 agent_constructor = globals()[config['agent']]
 
-agent = agent_constructor(config, callback=print_info)
+agent = agent_constructor(**config, callback=print_info)
 agent.run()
 agent.finalize()

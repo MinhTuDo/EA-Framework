@@ -3,10 +3,10 @@
     "mode": "train",
     "cuda": true,
     "seed": 1,
-    "max_epochs": 350,
+    "max_epochs": 600,
     "verbose": true,
     "report_freq": 52,
-    "validate_every": 20,
+    "validate_every": 1,
     
     "data_loader": "Cifar10",
     "data_loader_args": {
@@ -31,7 +31,7 @@
         "weight_decay": 3e-4
     },
     "scheduler": "CosineAnnealingLR",
-    "scheduler_args": {"T_max": 350},
+    "scheduler_args": {"T_max": 600},
 
     "model": "EvoNet",
     "model_args": {

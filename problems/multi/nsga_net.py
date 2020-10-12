@@ -49,22 +49,22 @@ class NSGANet(MultiObjectiveProblem):
         n_params = self.__calc_trainable_params(agent.parameters)
         n_flops = self.__calc_flops(agent.model, agent.device, self.input_size)
 
-        train_error, _ = agent.train_one_epoch()
+        train_error, _ = agent.train()
         valid_error, infer_time = self.__infer(agent)
 
-        _input = self.__create_sample(train_error, valid_error, infer_time, n_params, n_flops)
-        with torch.no_grad():
-            pred_val_err = self.predictor.model(_input)
-        if pred_val_err < 20 or self.predictor.sample_count < 40:
-            print('Retraining model...')
-            agent.train()
-            self.predictor.sample_count += 1
-            valid_error, infer_time = self.__infer(agent)
+        # _input = self.__create_sample(train_error, valid_error, infer_time, n_params, n_flops)
+        # with torch.no_grad():
+        #     pred_val_err = self.predictor.model(_input)
+        # if pred_val_err < 20 or self.predictor.sample_count < 40:
+        #     print('Retraining model...')
+        #     agent.train()
+        #     self.predictor.sample_count += 1
+        #     valid_error, infer_time = self.__infer(agent)
 
-            target = torch.tensor([valid_error], dtype=torch.float)
-            self.predictor.feed_forward(_input, target)
-        else:
-            print('Skip model!')
+        #     target = torch.tensor([valid_error], dtype=torch.float)
+        #     self.predictor.feed_forward(_input, target)
+        # else:
+        #     print('Skip model!')
 
         self.hash_dict[key] = (valid_error, n_flops)
         return self.hash_dict[key]
