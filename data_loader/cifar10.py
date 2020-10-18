@@ -13,8 +13,8 @@ class Cifar10:
                  num_workers, 
                  batch_size, 
                  pin_memory,
-                 cutout,
-                 cutout_length,
+                 cutout=False,
+                 cutout_length=None,
                  **kwargs):
         
         train_transform = transforms.Compose([transforms.RandomCrop(32, padding=4),

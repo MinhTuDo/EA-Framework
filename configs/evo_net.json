@@ -21,7 +21,7 @@
 
             "model": "EvoNet",
             "model_args": {
-                "input_size": [32, 32, 3],
+                "input_size": [3, 32, 32],
                 "output_size": 10,
                 "n_bits": {"kernel_sizes": 2, "pool_sizes": 1, "channels": 3},
                 "target_val": {
