@@ -117,8 +117,8 @@ class DeepLearningAgent(Agent):
     def train(self):
         best_err = valid_err = 10
         while self.current_epoch < self.max_epochs:
-            self.train_one_epoch()
             self.scheduler.step() if self.scheduler else ...
+            self.train_one_epoch()
             if self.current_epoch % self.validate_every == 0:
                 valid_err, _ = self.validate()
             
@@ -126,7 +126,7 @@ class DeepLearningAgent(Agent):
                 best_err = valid_err
                 self.save_checkpoint(self.model, 
                                      self.save_path, 
-                                     model_name='{}-Ep_{}-Err_{}'.format(self.model.__name__,
+                                     model_name='{}-Ep_{}-Err_{:.3f}'.format(self.model.__name__,
                                                                          self.current_epoch,
                                                                          valid_err))
 
