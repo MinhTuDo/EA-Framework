@@ -11,16 +11,16 @@ gen17 = None
 with open(filename, 'rb') as handle:
     gen17 = pickle.load(handle)
 
-filename = './logs/obj_20201007-0006_gen-10__NSGAII-NSGANet_.pickle'
+filename = './logs/obj_20201019-2148_gen-25__NSGAII-NSGANet_.pickle'
 gen10 = None
 with open(filename, 'rb') as handle:
     gen10 = pickle.load(handle)
 
-print(gen17.ranks_F[0])
-print(gen17.ranks[0][7])
+print(gen17.ranks_F[0][6])
+print(gen17.ranks[0][6])
 
 plt.plot(gen17.F_pop[:, 1], gen17.F_pop[:, 0], 'b.', label='gen-17', alpha=.5)
-plt.plot(gen10.F_pop[:, 1], gen10.F_pop[:, 0], 'r.', label='gen-10', alpha=.5)
+plt.plot(gen10.F_pop[:, 1], gen10.F_pop[:, 0], 'r.', label='gen-25', alpha=.5)
 plt.xlabel('flops (MB)')
 plt.ylabel('error rate (%)')
 plt.legend(loc='upper right')

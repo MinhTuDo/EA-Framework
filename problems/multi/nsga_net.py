@@ -44,12 +44,12 @@ class NSGANet(MultiObjectiveProblem):
             return self.hash_dict[key]
 
         self.arch_config['model_args']['genome'] = X
-        agent = DeepLearningAgent(self.arch_config)
+        agent = DeepLearningAgent(**self.arch_config)
 
         n_params = self.__calc_trainable_params(agent.parameters)
         n_flops = self.__calc_flops(agent.model, agent.device, self.input_size)
 
-        train_error, _ = agent.train()
+        agent.train()
         valid_error, infer_time = self.__infer(agent)
 
         # _input = self.__create_sample(train_error, valid_error, infer_time, n_params, n_flops)
@@ -79,14 +79,14 @@ class NSGANet(MultiObjectiveProblem):
         model = add_flops_counting_methods(model)
         model.eval()
         model.start_flops_count()
-        random_data = torch.randn(1, *list(reversed(input_size)))
+        random_data = torch.randn(1, *input_size)
         model(torch.autograd.Variable(random_data).to(device))
         n_flops = (model.compute_average_flops_cost() / 1e6).round(4)
         return n_flops
 
     @staticmethod
     def __calc_trainable_params(params):
-        return np.sum(np.prod(p.size()) for p in params) / 1e6
+        return sum([np.prod(p.size()) for p in params]) / 1e6
 
     @staticmethod
     def __get_key(X):
@@ -109,8 +109,3 @@ class NSGANet(MultiObjectiveProblem):
         valid_error, _ = agent.validate()
         infer_time = time.time() - infer_time
         return valid_error, infer_time
-        
-
-
-        
-        valid_errvalid_errvalid_errvalid_errvalid_errvalid_err
