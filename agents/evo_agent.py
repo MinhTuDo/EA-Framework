@@ -14,27 +14,39 @@ from utils.displayer import *
 from utils.logger import *
 
 class EvoAgent(Agent):
-    def __init__(self, config):
-        super().__init__(config)
+    def __init__(self, 
+                 algorithm, 
+                 algorithm_args,
+                 problem,
+                 problem_args, 
+                 termination, 
+                 termination_args,
+                 setup_args,
+                 display=None, 
+                 log_saver=None, 
+                 **kwargs):
+
         operations = ['crossover', 'mutation', 'selection', 'model_builder', 'initialization']
         modules = [cx, mut, sel, mb, init]
         for op, module in zip(operations, modules):
-            if op in config['algorithm_args']:
-                name = config['algorithm_args'][op]
-                config['algorithm_args'][op] = getattr(module, name, None)(**config['algorithm_args']['{}_args'.format(op)])
-        self.algorithm = globals()[config['algorithm']](**config['algorithm_args'])
-        self.problem = globals()[config['problem']](**config['problem_args'])
-        self.termination = globals()[config['termination']](**config['termination_args'])
+            if op in algorithm_args:
+                name = algorithm_args[op]
+                algorithm_args[op] = getattr(module, name, None)(**algorithm_args['{}_args'.format(op)])
+        self.algorithm = globals()[algorithm](**algorithm_args)
+        self.problem = globals()[problem](**problem_args)
+        self.termination = globals()[termination](**termination_args)
 
-        self.display = globals()[config['display']]() if 'display' in config else None
-        self.log_saver = globals()[config['log_saver']]() if 'log_saver' in config else None
+        self.display = globals()[display]() if display else display
+        self.log_saver = globals()[log_saver]() if log_saver else log_saver
+        
+        self.setup_args = setup_args
 
     def run(self):
         self.algorithm.set_up_problem(problem=self.problem, 
                                       termination=self.termination, 
                                       log_saver=self.log_saver,
                                       display=self.display,
-                                      **self.config['setup_args'])
+                                      **self.setup_args)
         result = self.algorithm.run()
         return result
 

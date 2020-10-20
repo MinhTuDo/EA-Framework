@@ -29,9 +29,9 @@ class NSGANet(MultiObjectiveProblem):
 
         self.arch_config = arch_config
 
-        self.predictor = DeepLearningAgent(predictor_config)
-        self.predictor.model.train()
-        setattr(self.predictor, 'sample_count', 1)
+        # self.predictor = DeepLearningAgent(predictor_config)
+        # self.predictor.model.train()
+        # setattr(self.predictor, 'sample_count', 1)
 
         self.hash_dict = {}
         self.input_size = self.arch_config['model_args']['input_size']
@@ -41,15 +41,16 @@ class NSGANet(MultiObjectiveProblem):
     def _f(self, X):
         key = self.__get_key(X)
         if key in self.hash_dict:
-            return self.hash_dict[key]
+            (valid_error, n_flops, _, _) = self.hash_dict[key]
+            return valid_error, n_flops
 
         self.arch_config['model_args']['genome'] = X
-        agent = DeepLearningAgent(self.arch_config)
+        agent = DeepLearningAgent(**self.arch_config)
 
         n_params = self.__calc_trainable_params(agent.parameters)
         n_flops = self.__calc_flops(agent.model, agent.device, self.input_size)
 
-        train_error, _ = agent.train()
+        agent.train()
         valid_error, infer_time = self.__infer(agent)
 
         # _input = self.__create_sample(train_error, valid_error, infer_time, n_params, n_flops)
@@ -66,8 +67,8 @@ class NSGANet(MultiObjectiveProblem):
         # else:
         #     print('Skip model!')
 
-        self.hash_dict[key] = (valid_error, n_flops)
-        return self.hash_dict[key]
+        self.hash_dict[key] = (valid_error, n_flops, n_params, infer_time)
+        return valid_error, n_flops
 
     @staticmethod
     def _is_dominated(y1, y2):

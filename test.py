@@ -6,7 +6,7 @@ import time
 
 np.set_printoptions(suppress=True)
 
-filename = './logs/obj_20201010-0726_gen-17__NSGAII-NSGANet_.pickle'
+filename = './logs/obj_20201019-2148_gen-25__NSGAII-NSGANet_.pickle'
 last_gen = None
 with open(filename, 'rb') as handle:
     last_gen = pickle.load(handle)
@@ -30,8 +30,8 @@ plt.plot(init_gen.ranks_F[0][init_sorted_idx][:, 1], init_gen.ranks_F[0][init_so
 
 # plt.plot(init_gen.ranks_F[0][:, 1], init_gen.ranks_F[0][:, 0], 'rv', alpha=.5)
 # plt.plot(last_gen.ranks_F[0][:, 1], last_gen.ranks_F[0][:, 0], 'b^', alpha=.5)
-plt.ylim([7, 11])
-plt.xlim([100, 2000])
+# plt.ylim([7, 11])
+# plt.xlim([100, 2000])
 # plt.xscale('log')
 plt.xlabel('flops (Millions)')
 plt.ylabel('error rate (%)')

@@ -17,7 +17,7 @@ class EvoNet(Module):
         super(EvoNet, self).__init__()
         self.__name__ = 'EvoNet'
 
-        genome = genome if type(genome) == type(np.array) else np.array([bit for bit in genome.replace(' ', '')], dtype=np.int)
+        # genome = genome if type(genome) == type(np.ndarray) else np.array([bit for bit in genome.replace(' ', '')], dtype=np.int)
 
         genome_dict, list_indices = self.setup_model_args(n_nodes, genome, n_bits, target_val, input_size)
 

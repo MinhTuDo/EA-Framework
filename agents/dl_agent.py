@@ -9,6 +9,7 @@ from torch import optim
 from torch.utils.tensorboard import SummaryWriter
 import torch
 import os
+import datetime
 
 
 
@@ -94,7 +95,7 @@ class DeepLearningAgent(Agent):
         self.validate_msg = '\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.3f}%)\n'
         self.train_msg = 'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'
 
-        callback(self)
+        callback(self) if callback else ...
 
     @staticmethod
     def load_checkpoint(model, model_path):
@@ -210,7 +211,8 @@ class DeepLearningAgent(Agent):
         return outputs.max(dim=1, keepdims=True)[1]
 
     def finalize(self):
-        torch.save(self.model.state_dict(), os.path.join(self.save_path, '{}.pth.tar'.format(self.model.__name__)))
+        now = datetime.datetime.now()
+        torch.save(self.model.state_dict(), os.path.join(self.save_path, '{}.pth.tar'.format(now.strftime("%Y%m%d-%H%M"))))
 
         
 
