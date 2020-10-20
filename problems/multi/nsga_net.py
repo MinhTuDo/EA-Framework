@@ -29,9 +29,9 @@ class NSGANet(MultiObjectiveProblem):
 
         self.arch_config = arch_config
 
-        self.predictor = DeepLearningAgent(predictor_config)
-        self.predictor.model.train()
-        setattr(self.predictor, 'sample_count', 1)
+        # self.predictor = DeepLearningAgent(predictor_config)
+        # self.predictor.model.train()
+        # setattr(self.predictor, 'sample_count', 1)
 
         self.hash_dict = {}
         self.input_size = self.arch_config['model_args']['input_size']

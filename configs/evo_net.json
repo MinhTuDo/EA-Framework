@@ -4,7 +4,7 @@
     "problem_args": {
         "arch_config": {
             "cuda": true,
-            "seed": 1,
+            "seed": 0,
             "max_epochs": 25,
             "verbose": true,
             "report_freq": 78,
@@ -23,11 +23,11 @@
             "model_args": {
                 "input_size": [3, 32, 32],
                 "output_size": 10,
-                "n_bits": {"kernel_sizes": 2, "pool_sizes": 1, "channels": 3},
+                "n_bits": {"kernel_sizes": 2, "pool_sizes": 1, "channels": 2},
                 "target_val": {
                     "kernel_sizes": [3, 5, 7, 9],
                     "pool_sizes": [1, 2],
-                    "channels": [16, 32, 64, 128, 256, 512, 1024, 2048]},
+                    "channels": [16, 32, 64, 128]},
                 "n_nodes": [6, 6, 6]
             },
 
@@ -41,7 +41,7 @@
                 "weight_decay": 3e-4
             },
             "scheduler": "CosineAnnealingLR",
-            "scheduler_args": {"T_max": 25}
+            "scheduler_args": {"T_max": 25, "eta_min": 0}
         },
         "predictor_config": {
             "cuda": false,
@@ -69,7 +69,7 @@
     "algorithm_args": {
         "pop_size": 40,
         "n_offs": 40,
-        "elitist_archive": 4,
+        "elitist_archive": 2,
         "mutation": "BitFlipMutation",
         "mutation_args": {"prob": 0.02},
         "crossover": "MBUniformCrossover",
@@ -85,7 +85,7 @@
     },
 
     "termination": "MaxGenTermination",
-    "termination_args": {"max_gen": 200},
+    "termination_args": {"max_gen": 25},
 
     "display": "NSGANetDisplay",
     "log_saver": "NSGANetLogSaver"

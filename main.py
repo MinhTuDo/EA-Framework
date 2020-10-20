@@ -9,10 +9,9 @@ agent_constructor = globals()[config['agent']]
 
 agent = agent_constructor(**config)
 start = time.time()
-try:
-    agent.run()
-    agent.finalize()
-except:
-    end = time.time() - start
+
+agent.run()
+agent.finalize()
+end = time.time() - start
 
 print('Elapsed time: {}'.format(end))
