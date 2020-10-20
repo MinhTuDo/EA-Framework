@@ -2,17 +2,17 @@
     "agent": "DeepLearningAgent",
     "mode": "train",
     "cuda": true,
-    "seed": 1,
-    "max_epochs": 600,
+    "seed": 0,
+    "max_epochs": 350,
     "verbose": true,
     "report_freq": 39,
-    "validate_every": 20,
+    "validate_every": 1,
     
     "data_loader": "Cifar10",
     "data_loader_args": {
-        "data_folder": "~/Downloads/cifar10-python/",
+        "data_folder": "~/Downloads/cifar10-python",
         "pin_memory": true,
-        "num_workers": 4,
+        "num_workers": 2,
         "batch_size": 128,
         "input_size": [3, 32, 32],
         "cutout": true,
@@ -31,7 +31,7 @@
         "weight_decay": 3e-4
     },
     "scheduler": "CosineAnnealingLR",
-    "scheduler_args": {"T_max": 600, "eta_min": 0},
+    "scheduler_args": {"T_max": 350, "eta_min": 0},
 
     "model": "EvoNet",
     "model_args": {
@@ -46,6 +46,5 @@
         "genome": "1 1 0 0 1 0 0 0 1 1 0 0 1 1 0 0 0 0 0 1 1 1 1 0 1 0 0 1 1 1 0 1 0 1 0 0 1 0 0 1 1 1 1 0 1 1 0 0 1 0 1 1 1 0 0 1 1 1 1 1 0 0 1 0 0 0 0 0 0"
     },
 
-    "summary_writer": true,
-    "target_err": 3.85
+    "summary_writer": true
 }

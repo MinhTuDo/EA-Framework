@@ -48,6 +48,8 @@ class DeepLearningAgent(Agent):
         self.criterion = getattr(nn, criterion, None)(**criterion_args)
 
         self.model = globals()[model](**model_args)
+        # load checkpoint
+        self.load_checkpoint(self.model, checkpoint_file) if checkpoint_file else ...
         self.parameters = list(filter(lambda p: p.requires_grad, self.model.parameters()))
         self.optimizer = getattr(optim, optimizer, None)(self.parameters,
                                                          **optimizer_args)
@@ -81,8 +83,6 @@ class DeepLearningAgent(Agent):
         # set manual seed
         self.manual_seed = seed
         torch.manual_seed(self.manual_seed)
-        # load checkpoint
-        self.load_checkpoint(checkpoint_file) if checkpoint_file else ... 
 
         # summary writer
         self.summary_writer = SummaryWriter() if summary_writer else None
@@ -97,8 +97,8 @@ class DeepLearningAgent(Agent):
         callback(self)
 
     @staticmethod
-    def load_checkpoint(model_path):
-        pass
+    def load_checkpoint(model, model_path):
+        model.load_state_dict(torch.load(model_path))
 
     @staticmethod
     def save_checkpoint(model, 
@@ -114,10 +114,10 @@ class DeepLearningAgent(Agent):
             print("You have entered CTRL+C.. Wait to finalize") 
 
     def train(self):
-        best_err = valid_err = 100
+        best_err = valid_err = 10
         while self.current_epoch < self.max_epochs:
-            self.train_one_epoch()
             self.scheduler.step() if self.scheduler else ...
+            self.train_one_epoch()
             if self.current_epoch % self.validate_every == 0:
                 valid_err, _ = self.validate()
             
@@ -125,7 +125,7 @@ class DeepLearningAgent(Agent):
                 best_err = valid_err
                 self.save_checkpoint(self.model, 
                                      self.save_path, 
-                                     model_name='{}-Ep_{}-Err_{}'.format(self.model.__name__,
+                                     model_name='{}-Ep_{}-Err_{:.3f}'.format(self.model.__name__,
                                                                          self.current_epoch,
                                                                          valid_err))
 
@@ -154,7 +154,7 @@ class DeepLearningAgent(Agent):
         err = 100.*(1- (correct/total))
         if self.summary_writer:
             self.summary_writer.add_scalar('Loss/train', avg_loss, self.current_epoch)
-            self.summary_writer.add_scalar('Accuracy/train', err, self.current_epoch)
+            self.summary_writer.add_scalar('Error_rate/train', err, self.current_epoch)
 
         self.current_epoch += 1
         return err, avg_loss
@@ -210,7 +210,7 @@ class DeepLearningAgent(Agent):
         return outputs.max(dim=1, keepdims=True)[1]
 
     def finalize(self):
-        torch.save(self.model.state_dict(), os.path.join(self.save_path, '{}.pth.tar'.format()))
+        torch.save(self.model.state_dict(), os.path.join(self.save_path, '{}.pth.tar'.format(self.model.__name__)))
 
         
 

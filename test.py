@@ -16,8 +16,8 @@ init_gen = None
 with open(filename, 'rb') as handle:
     init_gen = pickle.load(handle)
 
-# print(gen17.ranks_F[0])
-# print(gen17.ranks[0][7])
+print(last_gen.ranks_F[0])
+print(last_gen.ranks[0][7])
 
 plt.plot(last_gen.F_pop[:, 1], last_gen.F_pop[:, 0], 'b.', label='Last Generation')
 plt.plot(init_gen.F_pop[:, 1], init_gen.F_pop[:, 0], 'r.', label='Initialization')
@@ -30,7 +30,8 @@ plt.plot(init_gen.ranks_F[0][init_sorted_idx][:, 1], init_gen.ranks_F[0][init_so
 
 # plt.plot(init_gen.ranks_F[0][:, 1], init_gen.ranks_F[0][:, 0], 'rv', alpha=.5)
 # plt.plot(last_gen.ranks_F[0][:, 1], last_gen.ranks_F[0][:, 0], 'b^', alpha=.5)
-# plt.xlim([0, 3000])
+plt.ylim([7, 11])
+plt.xlim([100, 2000])
 # plt.xscale('log')
 plt.xlabel('flops (Millions)')
 plt.ylabel('error rate (%)')

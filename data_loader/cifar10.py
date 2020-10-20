@@ -28,7 +28,7 @@ class Cifar10:
 
         train_data = datasets.CIFAR10(root=data_folder,
                                       train=True,
-                                      download=False,
+                                      download=True,
                                       transform=train_transform)
 
         test_data = datasets.CIFAR10(root=data_folder,
