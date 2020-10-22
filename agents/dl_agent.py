@@ -27,7 +27,7 @@ class DeepLearningAgent(Agent):
                  seed=1,
                  cuda=False,
                  max_epochs=1,
-                 validate_every=None,
+                 validate_every=1,
                  verbose=False, 
                  scheduler=None,
                  scheduler_args={},
@@ -43,7 +43,7 @@ class DeepLearningAgent(Agent):
         self.max_epochs = max_epochs
         self.verbose = verbose
         self.report_freq = report_freq
-        self.validate_every = validate_every if validate_every else self.max_epochs
+        self.validate_every = validate_every
         self.grad_clip = grad_clip
         
         self.criterion = getattr(nn, criterion, None)(**criterion_args)
@@ -75,7 +75,7 @@ class DeepLearningAgent(Agent):
         self.cuda = self.has_cuda and cuda
 
         # get device
-        self.device = device = torch.device("cuda:0" if self.cuda else "cpu")
+        self.device = torch.device("cuda:0" if self.cuda else "cpu")
         self.model = self.model.to(self.device)
         self.criterion = self.criterion.to(self.device)
         
@@ -86,6 +86,7 @@ class DeepLearningAgent(Agent):
         cudnn.benchmark = True
         self.manual_seed = seed
         torch.manual_seed(self.manual_seed)
+        torch.cuda.manual_seed(self.manual_seed)
 
         # summary writer
         self.summary_writer = SummaryWriter() if summary_writer else None
@@ -118,9 +119,9 @@ class DeepLearningAgent(Agent):
 
     def train(self):
         best_err = valid_err = 10
-        while self.current_epoch < self.max_epochs:
-            self.scheduler.step() if self.scheduler else ...
+        while self.current_epoch <= self.max_epochs:
             self.train_one_epoch()
+            self.scheduler.step() if self.scheduler else ...
             if self.current_epoch % self.validate_every == 0:
                 valid_err, _ = self.validate()
             
@@ -129,8 +130,8 @@ class DeepLearningAgent(Agent):
                 self.save_checkpoint(self.model, 
                                      self.save_path, 
                                      model_name='{}-Ep_{}-Err_{:.3f}'.format(self.model.__name__,
-                                                                         self.current_epoch,
-                                                                         valid_err))
+                                                                             self.current_epoch,
+                                                                             valid_err))
 
         torch.cuda.empty_cache()
 
@@ -205,12 +206,8 @@ class DeepLearningAgent(Agent):
         return err, avg_loss
 
     def predict(self, outputs):
-        if outputs.shape[1] == 1:
-            pred = outputs
-            pred[pred <= 0.5] = 0
-            pred[pred > 0.5] = 1
-            return pred
-        return outputs.max(dim=1, keepdims=True)[1]
+        _, pred = outputs.max(1)
+        return pred
 
     def finalize(self):
         now = datetime.datetime.now()

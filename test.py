@@ -1,8 +1,6 @@
 import pickle5 as pickle
 import numpy as np
 import matplotlib.pyplot as plt
-from model import Display, LogSaver
-import time
 
 np.set_printoptions(suppress=True)
 
@@ -11,13 +9,13 @@ last_gen = None
 with open(filename, 'rb') as handle:
     last_gen = pickle.load(handle)
 
-filename = './logs/obj_20201019-1010_gen-24__NSGAII-NSGANet_.pickle'
+filename = './logs/obj_20200930-2342_gen-1__NSGAII-NSGANet_.pickle'
 init_gen = None
 with open(filename, 'rb') as handle:
     init_gen = pickle.load(handle)
 
-print(last_gen.ranks_F[0][3])
-print(last_gen.ranks[0][3])
+print(last_gen.ranks_F[0][8])
+print(last_gen.ranks[0][8])
 
 plt.plot(last_gen.F_pop[:, 1], last_gen.F_pop[:, 0], 'b.', label='final pop')
 plt.plot(init_gen.F_pop[:, 1], init_gen.F_pop[:, 0], 'r.', label='init pop')
