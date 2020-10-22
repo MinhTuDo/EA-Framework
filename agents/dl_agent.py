@@ -10,7 +10,7 @@ from torch.utils.tensorboard import SummaryWriter
 import torch
 import os
 import datetime
-
+import torch.backends.cudnn as cudnn
 
 
 class DeepLearningAgent(Agent):
@@ -82,6 +82,8 @@ class DeepLearningAgent(Agent):
         print("Program will run on *****{}*****".format(self.device))
 
         # set manual seed
+        cudnn.enabled = True
+        cudnn.benchmark = True
         self.manual_seed = seed
         torch.manual_seed(self.manual_seed)
 
