@@ -2,16 +2,15 @@ from model.agent import Agent
 from graphs.models import *
 from data_loader import *
 
-import torch
 import torch.nn as nn
+import torch.backends.cudnn as cudnn
 import torch.optim.lr_scheduler as lr_scheduler
 from torch import optim
 from torch.utils.tensorboard import SummaryWriter
 import torch
+
 import os
 import datetime
-import torch.backends.cudnn as cudnn
-
 
 class DeepLearningAgent(Agent):
     def __init__(self,
@@ -78,7 +77,6 @@ class DeepLearningAgent(Agent):
         self.device = torch.device("cuda:0" if self.cuda else "cpu")
         self.model = self.model.to(self.device)
         self.criterion = self.criterion.to(self.device)
-        
         print("Program will run on *****{}*****".format(self.device))
 
         # set manual seed
@@ -110,7 +108,7 @@ class DeepLearningAgent(Agent):
                         model_name):
         torch.save(model.state_dict(), 
                    os.path.join(model_path, '{}.pt'.format(model_name)))
-
+        
     def run(self):
         try:
             self.train() if self.mode == 'train' else self.validate()

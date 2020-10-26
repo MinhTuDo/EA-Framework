@@ -35,8 +35,6 @@ class EvoNet(Module):
 
         self.linear = nn.Linear(shape[1]*shape[2]*shape[3], output_size)
 
-        self.model.zero_grad()
-
     @staticmethod
     def setup_model_args(n_nodes, 
                          genome, 
