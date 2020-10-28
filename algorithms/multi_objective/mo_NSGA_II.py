@@ -60,6 +60,9 @@ class NSGAII(GA):
 
         return ranks, ranks_F
 
+    def non_dominated_rank(self):
+        self.ranks, self.ranks_F = self.__non_dominated_rank()
+
     def __non_dominated_sort(self):
         rank = np.hstack([np.ones(self.ranks[i].shape[0]) * i for i in range(len(self.ranks))])
         pop = np.vstack(list(self.ranks.values()))
