@@ -11,3 +11,12 @@ class NSGANetLogSaver(LogSaver):
         
         now = time.time()
         self.add_attributes('time', now - ga.start_time)
+
+class SOLogSaver(LogSaver):
+    def _do(self, algorithm):
+        self.add_attributes('mean', algorithm.fitness_pop.mean())
+        self.add_attributes('std', algorithm.fitness_pop.std())
+        self.add_attributes('n_gens', algorithm.n_gens)
+        self.add_attributes('n_evals', algorithm.n_evals)
+
+        self.add_attributes('elite', algorithm.pop[algorithm.elite_idx])

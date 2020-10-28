@@ -1,0 +1,30 @@
+{
+    "agent": "EvoAgent",
+    "problem": "GoldsteinPrice",
+    "problem_args": {
+    },
+
+    "algorithm": "PSO",
+    "algorithm_args": {
+        "pop_size": 50,
+        "n_offs": 100,
+        "elitist_archive": 2,
+        "crossover": "UniformCrossover",
+        "crossover_args": {"prob": 0.9}
+    },
+
+    "setup_args": {
+        "seed": 1,
+        "log": false,
+        "save_history": true,
+        "verbose": true,
+        "save": false
+    },
+
+    "termination": "MaxGenTermination",
+    "termination_args": {"max_gen": 50},
+
+    "display": "SODisplay",
+    "log_saver": "SOLogSaver"
+
+}

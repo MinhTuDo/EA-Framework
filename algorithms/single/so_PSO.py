@@ -2,6 +2,7 @@ from algorithms.GA import GA
 from terminations.max_time import MaxTimeTermination
 from operators.selection.historical_best_selection import HistoricalBestSelection
 from operators.initialization.random_initialization import RandomInitialization
+from operators.repairer.out_of_bounds_repair import OutOfBoundsRepair, repair_out_of_bounds_manually
 import numpy as np
 from numpy.random import random, rand
 from utils import denormalize
@@ -13,6 +14,7 @@ class PSO(GA):
                  topology='star',
                  iw=0.7298,
                  ac=1.49618,
+                 max_velocity_rate=0.2,
                  **kwargs):
         super().__init__(pop_size, initialization, **kwargs)
         self.default_termination = MaxTimeTermination(5)
@@ -23,10 +25,12 @@ class PSO(GA):
             self.global_best_selection = self.ring_topology_selection
         self.intertia_weight = iw
         self.accel_const = ac
+        self.max_velocity_rate = max_velocity_rate
         self.global_best = None
         self.offs = None
         self.fitness_offs = None
         self.selection = HistoricalBestSelection()
+        self.repairer = OutOfBoundsRepair()
 
     def star_topology_selection(self):
         argopt = self.problem._argopt
@@ -60,7 +64,7 @@ class PSO(GA):
         g = self.global_best
         v = self.velocity
         new_v = w*v + c1*r_p * (p-P) + c2*r_g * (g-P)
-        return new_v
+        return repair_out_of_bounds_manually(new_v, -self.v_max, self.v_max)
 
     def initialize_velocity(self, xl, xu):
         xl = -abs(xu - xl)
@@ -73,6 +77,7 @@ class PSO(GA):
         self.offs = self.pop.copy()
         (xl, xu) = self.problem.domain
         self.velocity = self.initialize_velocity(xl, xu)
+        self.v_max = self.max_velocity_rate * (xu - xl)
 
     def _next(self):
         self.fitness_pop = self.evaluate(self.pop)
@@ -90,6 +95,7 @@ class PSO(GA):
 
         self.velocity = self.compute_velocity()
         self.pop = (self.pop + self.velocity).astype(self.problem.param_type)
+        self.pop = self.repairer._do(self.problem, self.pop)
 
     def _save_history(self):
         res = {'P': self.pop.copy(), 

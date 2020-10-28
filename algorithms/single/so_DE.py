@@ -4,9 +4,7 @@ from operators.mutation.mutant_vector import MutantVector
 from operators.crossover.de_crossover import DECrossover
 from operators.initialization.random_initialization import RandomInitialization
 from operators.selection.historical_best_selection import HistoricalBestSelection
-import numpy as np
-from numpy.random import uniform, rand
-
+from operators.repairer.bounds_back_repair import BoundsBackRepair
 
 class DE(GA):
     def __init__(self,
@@ -26,12 +24,13 @@ class DE(GA):
         self.mutant_vectors = None
         self.offs = None
         self.fitness_offs = None
-
+        self.repairer = BoundsBackRepair()
 
     def _next(self):
         self.mutant_vectors = self.mutation._do(self)
 
         self.offs = self.crossover._do(self)
+        self.offs = self.repairer._do(self.problem, self.offs)
 
         self.fitness_offs = self.evaluate(self.offs)
         self.fitness_pop = self.evaluate(self.pop)
