@@ -113,7 +113,7 @@ class DeepLearningAgent(Agent):
         now = datetime.datetime.now()
         name = '{}_{}.pickle'.format(self.__class__.__name__, now.strftime("%Y%m%d-%H%M"))
         with open(os.path.join(self.save_path, name), 'wb') as handle:
-            pickle.dump(handle, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self, handle, pickle.HIGHEST_PROTOCOL)
 
     def load_checkpoint(self, path=None):
         if not path:
