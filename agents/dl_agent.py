@@ -12,6 +12,8 @@ import torch
 import os
 import datetime
 
+import pickle
+
 class DeepLearningAgent(Agent):
     def __init__(self,
                  model,
@@ -25,46 +27,22 @@ class DeepLearningAgent(Agent):
                  mode='train',
                  seed=1,
                  cuda=False,
+                 save_agent=True,
+                 save_threshold=10,
+                 empty_cache=False,
                  max_epochs=1,
                  validate_every=1,
-                 verbose=False, 
+                 verbose=False,
+                 deterministic=False, 
                  scheduler=None,
                  scheduler_args={},
                  grad_clip=None,
                  report_freq=1, 
                  summary_writer=False,
                  checkpoint_file=None,
+                 save_path='./pretrained_weights',
                  callback=None,
                  **kwargs):
-        # save important parameter
-        self.data_info = data_loader_args
-        self.mode = mode
-        self.max_epochs = max_epochs
-        self.verbose = verbose
-        self.report_freq = report_freq
-        self.validate_every = validate_every
-        self.grad_clip = grad_clip
-        
-        self.criterion = getattr(nn, criterion, None)(**criterion_args)
-
-        self.model = globals()[model](**model_args)
-        # load checkpoint
-        self.load_checkpoint(self.model, checkpoint_file) if checkpoint_file else ...
-        self.parameters = list(filter(lambda p: p.requires_grad, self.model.parameters()))
-        self.optimizer = getattr(optim, optimizer, None)(self.parameters,
-                                                         **optimizer_args)
-
-        if scheduler:
-            self.scheduler = getattr(lr_scheduler, scheduler)(optimizer=self.optimizer, 
-                                                              **scheduler_args)
-
-        data_loader = globals()[data_loader](**data_loader_args)
-        self.train_queue = data_loader.train_loader
-        self.valid_queue = data_loader.test_loader
-
-        # initialize counter
-        self.current_epoch = 1
-        self.current_iter = 1
 
         # set cuda flag
         self.has_cuda = torch.cuda.is_available()
@@ -73,41 +51,93 @@ class DeepLearningAgent(Agent):
 
         self.cuda = self.has_cuda and cuda
 
+        # set manual seed
+        self.manual_seed = seed
+        torch.manual_seed(self.manual_seed)
+        if self.cuda:
+            cudnn.enabled = True
+            cudnn.benchmark = not deterministic
+            cudnn.deterministic = deterministic
+        
+        # save important parameter
+        self.data_info = data_loader_args
+        self.mode = mode
+        self.max_epochs = max_epochs
+        self.verbose = verbose
+        self.report_freq = report_freq
+        self.validate_every = validate_every
+        self.grad_clip = grad_clip
+        self.scheduler = scheduler
+        self.empty_cache = empty_cache
+        self.save_threshold = save_threshold
+        self.save_path = save_path
+
+        if not os.path.exists(self.save_path):
+            os.makedirs(self.save_path)
+
+        # initialize counter
+        self.current_epoch = self.current_iter = 1
+        
+        self.criterion = getattr(nn, criterion, None)(**criterion_args)
+        self.model = globals()[model](**model_args)
+        self.parameters = list(filter(lambda p: p.requires_grad, self.model.parameters()))
+        self.optimizer = getattr(optim, optimizer, None)(self.parameters,
+                                                         **optimizer_args)
+        if scheduler:
+            self.scheduler = getattr(lr_scheduler, scheduler)(optimizer=self.optimizer, 
+                                                              **scheduler_args)
+
         # get device
         self.device = torch.device("cuda:0" if self.cuda else "cpu")
         self.model = self.model.to(self.device)
         self.criterion = self.criterion.to(self.device)
         print("Program will run on *****{}*****".format(self.device))
 
-        # set manual seed
-        cudnn.enabled = True
-        cudnn.benchmark = True
-        self.manual_seed = seed
-        torch.manual_seed(self.manual_seed)
-        torch.cuda.manual_seed(self.manual_seed)
+        # load checkpoint
+        self.load_checkpoint(checkpoint_file)
+                
+        data_loader = globals()[data_loader](**data_loader_args)
+        self.train_queue = data_loader.train_loader
+        self.valid_queue = data_loader.test_loader
 
         # summary writer
         self.summary_writer = SummaryWriter() if summary_writer else None
 
-        # save path
-        self.save_path = './pretrained_weights'
-
         # default messages
-        self.validate_msg = '\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.3f}%)\n'
+        self.validate_msg = '{} set: Average loss: {:.4f}, Accuracy: {}/{} ({:.3f}%)\n'
         self.train_msg = 'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'
 
         callback(self) if callback else ...
 
-    @staticmethod
-    def load_checkpoint(model, model_path):
-        model.load_state_dict(torch.load(model_path))
+    def save_agent(self):
+        now = datetime.datetime.now()
+        name = '{}_{}.pickle'.format(self.__class__.__name__, now.strftime("%Y%m%d-%H%M"))
+        with open(os.path.join(self.save_path, name), 'wb') as handle:
+            pickle.dump(handle, pickle.HIGHEST_PROTOCOL)
 
-    @staticmethod
-    def save_checkpoint(model, 
-                        model_path, 
-                        model_name):
-        torch.save(model.state_dict(), 
-                   os.path.join(model_path, '{}.pt'.format(model_name)))
+    def load_checkpoint(self, path=None):
+        if not path:
+          return None
+        checkpoint = torch.load(path)
+        self.model.load_state_dict(checkpoint['model_state_dict'])
+        self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        self.current_epoch = checkpoint['epoch']
+        self.criterion = checkpoint['loss']
+        if 'scheduler' in checkpoint.keys():
+            self.scheduler = checkpoint['scheduler']
+
+    def save_checkpoint(self, error_rate):
+        checkpoint = {"epoch": self.current_epoch,
+                      "model_state_dict": self.model.state_dict(),
+                      "optimizer_state_dict": self.optimizer.state_dict(),
+                      "loss": self.criterion,
+                      "scheduler": self.scheduler}
+
+        name = '{}-Ep_{:03d}-Err_{:.3f}.pth.tar'
+        filepath = os.path.join(self.save_path, name.format(self.model.__class__.__name__,
+                                                            self.current_epoch,
+                                                            error_rate))
+        torch.save(checkpoint, filepath)
         
     def run(self):
         try:
@@ -116,22 +146,22 @@ class DeepLearningAgent(Agent):
             print("You have entered CTRL+C.. Wait to finalize") 
 
     def train(self):
-        best_err = valid_err = 10
+        best_err = valid_err = self.save_threshold
         while self.current_epoch <= self.max_epochs:
             self.train_one_epoch()
-            self.scheduler.step() if self.scheduler else ...
+            if self.scheduler:
+                self.scheduler.step()
+                print('Epoch: {} - lr {}'.format(self.current_epoch, 
+                                                 self.scheduler.get_last_lr()[0]))
             if self.current_epoch % self.validate_every == 0:
                 valid_err, _ = self.validate()
             
             if valid_err < best_err:
                 best_err = valid_err
-                self.save_checkpoint(self.model, 
-                                     self.save_path, 
-                                     model_name='{}-Ep_{}-Err_{:.3f}'.format(self.model.__name__,
-                                                                             self.current_epoch,
-                                                                             valid_err))
+                self.save_checkpoint(valid_err)
 
-        torch.cuda.empty_cache()
+        if self.empty_cache:
+          torch.cuda.empty_cache()
 
 
     def train_one_epoch(self):
@@ -148,12 +178,19 @@ class DeepLearningAgent(Agent):
             
             if self.verbose and step % self.report_freq == 0:
                 percentage = 100.*total/n_inputs
-                print(self.train_msg.format(self.current_epoch, total, n_inputs, percentage, loss.item()))
+                print(self.train_msg.format(self.current_epoch, 
+                                            total, 
+                                            n_inputs, 
+                                            percentage, 
+                                            loss.item()))
 
             self.current_iter += 1
         
         avg_loss = train_loss/total
         err = 100.*(1- (correct/total))
+        if self.verbose:
+            acc = 100.*correct/total
+            print(self.validate_msg.format('Train', avg_loss, correct, total, acc))
         if self.summary_writer:
             self.summary_writer.add_scalar('Loss/train', avg_loss, self.current_epoch)
             self.summary_writer.add_scalar('Error_rate/train', err, self.current_epoch)
@@ -194,7 +231,7 @@ class DeepLearningAgent(Agent):
             err = 100.*(1- (correct/total))
             if self.verbose:
                 acc = 100.*correct/total
-                print(self.validate_msg.format(avg_loss, correct, total, acc))
+                print(self.validate_msg.format('Test', avg_loss, correct, total, acc))
 
         
         if self.summary_writer:
@@ -210,6 +247,3 @@ class DeepLearningAgent(Agent):
     def finalize(self):
         now = datetime.datetime.now()
         torch.save(self.model.state_dict(), os.path.join(self.save_path, '{}.pth.tar'.format(now.strftime("%Y%m%d-%H%M"))))
-
-        
-
