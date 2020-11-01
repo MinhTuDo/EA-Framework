@@ -95,6 +95,9 @@ class DeepLearningAgent(Agent):
 
         # load checkpoint
         self.load_checkpoint(checkpoint_file)
+
+        # save agent
+        self.save_agent() if save_agent else ...
                 
         data_loader = globals()[data_loader](**data_loader_args)
         self.train_queue = data_loader.train_loader
