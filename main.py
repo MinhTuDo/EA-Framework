@@ -1,18 +1,24 @@
 from agents import *
 import json
 import time
+import click
 
-config = None
-with open('./configs/single_objective.json') as  json_file:
-    config = json.load(json_file)
-agent_constructor = globals()[config['agent']]
+@click.command()
+@click.option('--config', required=True)
+def cli(config):
+    with open('./configs/{}'.format(config)) as  json_file:
+        config = json.load(json_file)
+    agent_constructor = globals()[config['agent']]
 
-agent = agent_constructor(**config)
-start = time.time()
+    agent = agent_constructor(**config)
+    start = time.time()
 
-agent.run()
-agent.finalize()
-agent.problem._plot(agent.algorithm.result, plot_3D=False)
-end = time.time() - start
+    agent.run()
+    agent.finalize()
+    agent.problem._plot(agent.algorithm.result, plot_3D=False)
+    end = time.time() - start
 
-print('Elapsed time: {}'.format(end))
+    print('Elapsed time: {}'.format(end))
+
+if __name__ == '__main__':
+    cli()

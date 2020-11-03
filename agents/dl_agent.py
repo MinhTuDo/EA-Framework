@@ -83,10 +83,6 @@ class DeepLearningAgent(Agent):
         self.parameters = list(filter(lambda p: p.requires_grad, self.model.parameters()))
         self.optimizer = getattr(optim, optimizer, None)(self.parameters,
                                                          **optimizer_args)
-        if scheduler:
-            self.scheduler = getattr(lr_scheduler, scheduler)(optimizer=self.optimizer, 
-                                                              **scheduler_args)
-
         # get device
         self.device = torch.device("cuda:0" if self.cuda else "cpu")
         self.model = self.model.to(self.device)
@@ -95,6 +91,10 @@ class DeepLearningAgent(Agent):
 
         # load checkpoint
         self.load_checkpoint(checkpoint_file)
+
+        if scheduler:
+            self.scheduler = getattr(lr_scheduler, scheduler)(optimizer=self.optimizer, 
+                                                              **scheduler_args)
 
         # save agent
         self.save_agent() if save_agent else ...
@@ -124,17 +124,17 @@ class DeepLearningAgent(Agent):
         checkpoint = torch.load(path)
         self.model.load_state_dict(checkpoint['model_state_dict'])
         self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-        self.current_epoch = checkpoint['epoch']
+        self.current_epoch = checkpoint['epoch'] + 1
         self.criterion = checkpoint['loss']
-        if 'scheduler' in checkpoint.keys():
-            self.scheduler = checkpoint['scheduler']
+        self.save_threshold = checkpoint['save_threshold']
+            
 
-    def save_checkpoint(self, error_rate):
+    def save_checkpoint(self, error_rate, best_err):
         checkpoint = {"epoch": self.current_epoch,
                       "model_state_dict": self.model.state_dict(),
                       "optimizer_state_dict": self.optimizer.state_dict(),
                       "loss": self.criterion,
-                      "scheduler": self.scheduler}
+                      "save_threshold": best_err}
 
         name = '{}-Ep_{:03d}-Err_{:.3f}.pth.tar'
         filepath = os.path.join(self.save_path, name.format(self.model.__class__.__name__,
@@ -161,7 +161,7 @@ class DeepLearningAgent(Agent):
             
             if valid_err < best_err:
                 best_err = valid_err
-                self.save_checkpoint(valid_err)
+                self.save_checkpoint(valid_err, best_err)
 
         if self.empty_cache:
           torch.cuda.empty_cache()
