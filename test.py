@@ -14,8 +14,8 @@ for i in range(1, len(gens)-1):
 
 init_gen = gens[0]
 last_gen = gens[-1]
-print(last_gen.ranks_F[0][4])
-print(last_gen.ranks[0][4])
+print(last_gen.ranks_F[0][7])
+print(last_gen.ranks[0][7])
 
 plt.scatter(init_gen.F_pop[:, 1], init_gen.F_pop[:, 0], color='#ff441f', marker='.', alpha=.75)
 plt.scatter(last_gen.F_pop[:, 1], last_gen.F_pop[:, 0], color='#6d1fff', marker='.', alpha=.75)
