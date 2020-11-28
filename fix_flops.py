@@ -42,6 +42,6 @@ for idx, gen in enumerate(gens):
     print('Done')
 
 sorted_gens = sorted(gens, key=lambda g : g.n_gens)
-filename = './logs/run_1_seed_1.pickle'
+filename = './logs/run_2_seed_0.pickle'
 with open(filename, 'wb') as handle:
     pickle.dump(sorted_gens, handle, protocol=pickle.HIGHEST_PROTOCOL)

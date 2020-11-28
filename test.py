@@ -14,8 +14,8 @@ for i in range(1, len(gens)-1):
 
 init_gen = gens[0]
 last_gen = gens[-1]
-print(last_gen.ranks_F[0][7])
-print(last_gen.ranks[0][7])
+print(last_gen.ranks_F[0][30])
+print(last_gen.ranks[0][30])
 
 plt.scatter(init_gen.F_pop[:, 1], init_gen.F_pop[:, 0], color='#ff441f', marker='.', alpha=.75)
 plt.scatter(last_gen.F_pop[:, 1], last_gen.F_pop[:, 0], color='#6d1fff', marker='.', alpha=.75)
@@ -34,12 +34,12 @@ plt.plot(last_gen.ranks_F[0][:, 1], last_gen.ranks_F[0][:, 0], 'b^')
 plt.ylim(bottom=6)
 plt.xlim(right=2000, left=-100)
 # plt.xscale('log')
-plt.xlabel('Flops (Millions)')
+plt.xlabel('Floating-point operations (Millions)')
 plt.ylabel('Error Rate (%)')
-plt.title('Trade-off frontiers')
+plt.title('Trade-off frontiers (Seed 0)')
 plt.legend(loc='upper right')
 plt.grid(True, linestyle='--')
-# plt.savefig('./assets/nsga_net_fig2.png')
+# plt.savefig('./assets/nsga_net_fig4.png')
 plt.show()
 
 # 0 0 1 0 0 0 0 0 1 0 0 0 1 1 1 0 0 0 0 0 1 1 1 0 0 1 0 1 0 0 1 1 0 1 0 0 0 0 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 1

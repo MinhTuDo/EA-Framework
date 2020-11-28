@@ -58,6 +58,8 @@ class DeepLearningAgent(Agent):
             cudnn.enabled = True
             cudnn.benchmark = not deterministic
             cudnn.deterministic = deterministic
+            if deterministic:
+              print('applying deterministic mode; cudnn disabled!')
         
         # save important parameter
         self.data_info = data_loader_args
@@ -104,7 +106,7 @@ class DeepLearningAgent(Agent):
         self.valid_queue = data_loader.test_loader
 
         # summary writer
-        self.summary_writer = SummaryWriter() if summary_writer else None
+        self.summary_writer = SummaryWriter(self.save_path) if summary_writer else None
 
         # default messages
         self.validate_msg = '{} set: Average loss: {:.4f}, Accuracy: {}/{} ({:.3f}%)\n'
@@ -121,7 +123,7 @@ class DeepLearningAgent(Agent):
     def load_checkpoint(self, path=None):
         if not path:
           return None
-        checkpoint = torch.load(path)
+        checkpoint = torch.load(path, map_location=self.device)
         self.model.load_state_dict(checkpoint['model_state_dict'])
         self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
         self.current_epoch = checkpoint['epoch'] + 1

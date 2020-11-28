@@ -1,0 +1,54 @@
+{
+    "agent": "DeepLearningAgent",
+    "mode": "train",
+    "cuda": true,
+    "seed": 0,
+    "max_epochs": 600,
+    "verbose": true,
+    "report_freq": 78,
+    "validate_every": 1,
+    
+    "data_loader": "IntelImageClassification",
+    "data_loader_args": {
+        "train_folder": "./data/seg_train",
+        "test_folder": "./data/seg_test",
+        "pin_memory": true,
+        "num_workers": 4,
+        "batch_size": 96,
+        "input_size": [3, 150, 150],
+        "cutout": true,
+        "cutout_length": 75
+    },
+
+    "criterion": "CrossEntropyLoss",
+    "criterion_args": {},
+
+    "deterministic": true,
+
+    "grad_clip": 5,
+
+    "optimizer": "SGD",
+    "optimizer_args": {
+        "lr": 0.025,
+        "momentum": 0.9,
+        "weight_decay": 3e-4
+    },
+    "scheduler": "CosineAnnealingLR",
+    "scheduler_args": {"T_max": 600, "eta_min": 0},
+
+    "model": "EvoNet",
+    "model_args": {
+        "input_size": [3, 150, 150],
+        "output_size": 6,
+        "n_bits": {"kernel_sizes": 2, "pool_sizes": 1, "channels": 2},
+        "target_val": {
+            "kernel_sizes": [3, 5, 7, 9],
+            "pool_sizes": [1, 2],
+            "channels": [16, 32, 64, 128]},
+        "n_nodes": [6, 6, 6],
+        "genome": "0 0 1 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 0 1 0 1 1 1 0 0 0 1 0 0 0 0 0 0 1 1 1 0 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 0 1 1 0 0 0 0 0 0"
+    },
+
+    "summary_writer": true,
+    "save_path": "./pretrained_weights/2.89MP-988MF/tf/intel/seed_0"
+}
