@@ -5,14 +5,17 @@
     "seed": 0,
     "max_epochs": 600,
     "verbose": true,
-    "report_freq": 78,
+    "report_freq": 250,
     "validate_every": 1,
     
-    "data_loader": "SVHN",
+    "data_loader": "FakeData",
     "data_loader_args": {
-        "data_folder": "./data/SVHN",
+        "train_size": 500,
+        "extra_size": 200,
+        "test_size": 100,
         "pin_memory": true,
-        "num_workers": 4,
+        "n_classes": 10,
+        "num_workers": 2,
         "batch_size": 96,
         "input_size": [3, 32, 32],
         "cutout": true,
@@ -21,8 +24,6 @@
 
     "criterion": "CrossEntropyLoss",
     "criterion_args": {},
-
-    "deterministic": true,
 
     "grad_clip": 5,
 
@@ -45,9 +46,9 @@
             "pool_sizes": [1, 2],
             "channels": [16, 32, 64, 128]},
         "n_nodes": [6, 6, 6],
-        "genome": "1 0 1 0 1 1 0 0 1 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 1 1 1 0 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 0 1 1 0 0 0 0 0 1"
+        "genome": "0 0 1 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 0 1 0 1 1 1 0 0 0 1 0 0 0 0 0 0 1 1 1 0 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 0 1 1 0 0 0 0 0 0"
     },
 
     "summary_writer": true,
-    "save_path": "./pretrained_weights/2.89MP-988MF/tf/SVHN/seed_0"
+    "save_path": "./cifar10"
 }

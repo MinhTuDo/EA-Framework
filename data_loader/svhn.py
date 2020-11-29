@@ -1,9 +1,10 @@
 import torchvision.transforms as transforms
-from torch.utils.data import DataLoader
-import os
+from torch.utils.data import DataLoader, ConcatDataset
 import torchvision.datasets as datasets
-from utils.cutout import Cutout
+from utils.cutout import Cutout, load
 import torch
+
+from scipy.io import loadmat
 
 
 class SVHN:
@@ -32,10 +33,18 @@ class SVHN:
                                       download=True,
                                       transform=train_transform)
 
+        extra_data = datasets.SVHN(root=data_folder,
+                                    split='extra',
+                                    download=True,
+                                    transform=train_transform)
+        
+        train_data = ConcatDataset([train_data, extra_data])
+
         test_data = datasets.SVHN(root=data_folder,
                                      split='test',
                                      download=True,
                                      transform=valid_transform)
+
         
         self.train_loader = DataLoader(dataset=train_data,
                                        batch_size=batch_size,
