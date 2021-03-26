@@ -21,4 +21,4 @@ def cli(config):
     print('Elapsed time: {}'.format(end))
 
 if __name__ == '__main__':
-    cli(['--config', 'fake_data.json'])
+    cli()

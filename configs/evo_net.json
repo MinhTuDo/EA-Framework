@@ -4,7 +4,7 @@
     "problem_args": {
         "arch_config": {
             "cuda": true,
-            "seed": 1,
+            "seed": 0,
             "max_epochs": 25,
             "verbose": true,
             "report_freq": 78,
@@ -72,12 +72,12 @@
         "elitist_archive": 2,
         "mutation": "BitFlipMutation",
         "mutation_args": {"prob": 0.02},
-        "crossover": "MBUniformCrossover",
+        "crossover": "UniformCrossover",
         "crossover_args": {"prob": 0.9}
     },
 
     "setup_args": {
-        "seed": 1,
+        "seed": 0,
         "log": true,
         "save_history": true,
         "verbose": true,
